@@ -1,0 +1,13 @@
+--exclude=.git/*
+--exclude=node_modules/*
+--exclude=*.css
+--exclude=*.htm
+--exclude=*.html
+--exclude=*.ini
+--exclude=*.js
+--exclude=*.json
+--exclude=*.pl
+--exclude=*.sh
+--exclude=*.sql
+--exclude=*.svg
+

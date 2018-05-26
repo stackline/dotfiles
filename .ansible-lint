@@ -1,0 +1,3 @@
+exclude_paths:
+  - ./provisioning/vendor_roles/
+
