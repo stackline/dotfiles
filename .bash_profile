@@ -7,16 +7,35 @@ fi
 # User specific environment and startup programs
 
 # --------------------------------------
+# Check OS
+# --------------------------------------
+is_mac() {
+  [ "$(uname)" == "Darwin" ] && return 0
+  return 1
+}
+
+is_linux() {
+  [ "$(uname)" == "Linux" ] && return 0
+  return 1
+}
+
+
+# --------------------------------------
 # Linuxbrew
 # --------------------------------------
-export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-# Warning: Homebrew's sbin was not found in your PATH but you have installed formulae that put executables in /home/linuxbrew/.linuxbrew/sbin.
-export PATH="/home/linuxbrew/.linuxbrew/sbin:$PATH"
-# PostgreSQL (psql command)
-export PATH="/home/linuxbrew/.linuxbrew/opt/postgresql@9.5/bin:$PATH"
+export_linuxbrew_path() {
+  export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+  # Warning: Homebrew's sbin was not found in your PATH but you have installed formulae that put executables in /home/linuxbrew/.linuxbrew/sbin.
+  export PATH="/home/linuxbrew/.linuxbrew/sbin:$PATH"
+  # PostgreSQL (psql command)
+  export PATH="/home/linuxbrew/.linuxbrew/opt/postgresql@9.5/bin:$PATH"
 
-export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
-export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
+  export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
+  export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
+}
+if is_linux; then
+  export_linuxbrew_path
+fi
 
 
 # --------------------------------------
@@ -87,14 +106,21 @@ alias glp='git log -p'
 alias gpp='git pull -p'
 alias gs='git status'
 alias less='less -R'
-alias ls='ls -G --color=auto'
 alias ll='ls -al'
 alias rg='rg -i'
+alias vi='nvim'
 alias vim='nvim'
 ### execute command interactively
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
+
+if is_mac; then
+  alias ls='ls -G'
+fi
+if is_linux; then
+  alias ls='ls -G --color=auto'
+fi
 
 
 # --------------------------------------
