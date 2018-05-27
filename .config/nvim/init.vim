@@ -32,7 +32,7 @@ if dein#load_state(s:path)
   " ----------------------------------------
   call dein#add('airblade/vim-gitgutter') " git diff
   call dein#add('itchyny/lightline.vim')  " statusline
-  call dein#add('Yggdroot/indentLine')    " indent guide
+  call dein#add('nathanaelkane/vim-indent-guides')
   call dein#add('ntpeters/vim-better-whitespace')
 
   " ----------------------------------------
@@ -216,4 +216,14 @@ function! GitUrl()
   echo l:remote_url
 endfunction
 command! GitUrl call GitUrl()
+
+
+" --------------------------------------
+" vim-indent-guides
+" --------------------------------------
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+autocmd VimEnter,Colorscheme * hi IndentGuidesEven ctermbg=235
+autocmd VimEnter,Colorscheme * hi IndentGuidesOdd  ctermbg=236
 
