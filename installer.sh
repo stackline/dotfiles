@@ -5,14 +5,6 @@ readonly GIT_USER_NAME=""
 readonly GIT_USER_EMAIL=""
 readonly HOMEBREW_GITHUB_API_TOKEN=""
 
-arg=$1
-if [ "$arg" ]; then
-  [ "$GIT_USER_NAME" ]  && git config --global user.name  "$GIT_USER_NAME"
-  [ "$GIT_USER_EMAIL" ] && git config --global user.email "$GIT_USER_EMAIL"
-  [ "$HOMEBREW_GITHUB_API_TOKEN" ] && echo "export HOMEBREW_GITHUB_API_TOKEN=$HOMEBREW_GITHUB_API_TOKEN" > ~/.homebrew_github_api_token
-fi
-exit
-
 
 # --------------------------------------
 # constant
@@ -22,6 +14,10 @@ readonly HOMEBREW_PACKAGES=(
   nodenv # Node
   rbenv  # Ruby
   tfenv  # Terraform
+
+  ### pip
+  python
+  python@2
 
   ### Command-line completion
   bash-completion
@@ -137,6 +133,7 @@ create_symbolic_links() {
   mkdir ~/.config/peco
   mkdir ~/.config/pip
 
+  # TODO: Delete a config file that exists on default
   ### root directory
   ln -s -v "${dotfiles_root_dir}"/.ansible-lint ~/.ansible-lint
   ln -s -v "${dotfiles_root_dir}"/.bash_profile ~/.bash_profile
@@ -304,32 +301,93 @@ main() {
   heading 'install node packages'
   install_node_packages "${NODE_PACKAGES[@]}"
 
-  heading 'do post process'
-  do_post_process
+  heading 'do post processes'
+  do_post_processes
+}
+# main
 
+initialize() {
   ### Tasks not optimized
-  # diff-highlight
   if is_linux; then
+    # diff-highlight
     sudo ln -s -v /home/linuxbrew/.linuxbrew/opt/git/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/
+
+    # Warning: You have unlinked kegs in your Cellar
+    # ref. https://github.com/Linuxbrew/homebrew-core/issues/7624
+    brew link --overwrite util-linux
   fi
   if is_mac; then
+    # diff-highlight
     ln -s /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/
-  fi
 
-  # Warning: You have unlinked kegs in your Cellar
-  # ref. https://github.com/Linuxbrew/homebrew-core/issues/7624
-  brew link --overwrite util-linux
+    # Install Homebrew
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-  pip install ansible==2.3.2
+    # Install dein.vim
+    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > dein_installer.sh
+    sh ./dein_installer.sh ~/.cache/dein
 
-  if is_mac; then
-    echo '### Homebrew-Cask'
+    # Homebrew-Cask
     brew cask cleanup
     brew cask doctor
 
-    echo '### vagrant'
+    # vagrant
     vagrant plugin update
   fi
+
+  pip install ansible==2.3.2
+
+  # TODO: Install ruby, node before installing packages
+  nodenv install 10.1.0
+  nodenv global 10.1.0
+  rbenv install 2.5.1
+
+  if [ "$arg" ]; then
+    [ "$GIT_USER_NAME" ]  && git config --global user.name  "$GIT_USER_NAME"
+    [ "$GIT_USER_EMAIL" ] && git config --global user.email "$GIT_USER_EMAIL"
+    [ "$HOMEBREW_GITHUB_API_TOKEN" ] && echo "export HOMEBREW_GITHUB_API_TOKEN=$HOMEBREW_GITHUB_API_TOKEN" > ~/.homebrew_github_api_token
+  fi
 }
-main
+# miscellaneous_task
+
+if is_mac; then
+  brew cask install slack
+
+  ### Browser
+  brew cask install google-chrome
+  brew cask install google-chrome-canary
+
+  ### SQL Client
+  brew cask install tableplus
+  brew cask install sequel-pro
+  # brew cask install postico
+
+  ### FTP Client
+  brew cask install cyberduck
+
+  ### Editor
+  brew cask install visual-studio-code
+  # brew cask install atom
+  # brew cask install rubymine
+
+  ### Development
+  brew cask install docker
+  brew cask install vagrant
+  brew cask install virtualbox
+
+  ### Utility
+  brew cask install dropbox
+  brew cask install google-japanese-ime
+  brew cask install hyperswitch
+  brew cask install imageoptim
+
+  # dropbox
+  # gyazo
+  # java
+  # licecap
+  # paintbrush
+  # postman
+  # skitch
+  # toyviewer
+fi
 
