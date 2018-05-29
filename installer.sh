@@ -304,7 +304,7 @@ main() {
   heading 'do post processes'
   do_post_processes
 }
-# main
+main
 
 initialize() {
   ### Tasks not optimized
