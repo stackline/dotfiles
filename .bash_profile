@@ -21,6 +21,14 @@ is_linux() {
 
 
 # --------------------------------------
+# Add environment variables by using allexport
+# --------------------------------------
+set -a
+eval "$(cat ~/.env)"
+set +a
+
+
+# --------------------------------------
 # Linuxbrew
 # --------------------------------------
 export_linuxbrew_path() {
@@ -134,7 +142,12 @@ alias brew-remove-all-installed-packages='brew list | xargs brew remove --force 
 alias brew-maintenance='brew update && brew upgrade && brew prune && brew cleanup && brew doctor'
 
 git-show-pull-request() {
-  declare -r GIT_URL=""
+  if [ -z "$GIT_SHOW_PULL_REQUEST_URL" ]; then
+    echo 'Set environment variable "GIT_SHOW_PULL_REQUEST_URL"'
+    return 1
+  fi
+
+  declare -r URL_TEMPLATE=$GIT_SHOW_PULL_REQUEST_URL
   declare -r REGEXP="Merge pull request #([0-9]+)"
   local commit_hash
   local commit_message
@@ -148,8 +161,8 @@ git-show-pull-request() {
     repository_name=$(git rev-parse --show-toplevel | xargs basename)
     pull_request_number=${BASH_REMATCH[1]}
     echo "$commit_message"
-    tmp=${GIT_URL/REPOSITORY_NAME/"$repository_name"}
-    echo ${tmp/PULL_REQUEST_NUMBER/"$pull_request_number"}
+    tmp="${URL_TEMPLATE/REPOSITORY_NAME/$repository_name}"
+    echo "${tmp/PULL_REQUEST_NUMBER/$pull_request_number}"
   fi
 }
 
