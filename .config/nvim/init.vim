@@ -102,10 +102,14 @@ endif
 " --------------------------------------
 " lightline
 " --------------------------------------
-" get current repository name
+" Return current repository name
 function! MyRepository()
-  let s:repo = system('git rev-parse --show-toplevel | xargs basename | tr -d "\n"')
-  return s:repo
+  let s:absolute_git_root_dir = system('git rev-parse --show-toplevel')
+  if v:shell_error == 0
+    let s:repository_name = fnamemodify(s:absolute_git_root_dir, ":t")
+    return substitute(s:repository_name, "\n", '', '')
+  endif
+  return ''
 endfunction
 
 " show relative path
