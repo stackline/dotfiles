@@ -1,10 +1,5 @@
 #!/bin/bash
 
-
-readonly GIT_USER_NAME=""
-readonly GIT_USER_EMAIL=""
-
-
 # --------------------------------------
 # constant
 # --------------------------------------
@@ -145,7 +140,6 @@ create_symbolic_links() {
   ln -s -v "${dotfiles_root_dir}"/.ansible-lint ~/.ansible-lint
   ln -s -v "${dotfiles_root_dir}"/.bash_profile ~/.bash_profile
   ln -s -v "${dotfiles_root_dir}"/.gemrc ~/.gemrc
-  ln -s -v "${dotfiles_root_dir}"/.gitconfig ~/.gitconfig
   ln -s -v "${dotfiles_root_dir}"/.gitignore_global ~/.gitignore_global
   ln -s -v "${dotfiles_root_dir}"/.pryrc ~/.pryrc
   ln -s -v "${dotfiles_root_dir}"/.tmux.conf ~/.tmux.conf
@@ -354,14 +348,8 @@ initialize() {
   nodenv install 10.1.0
   nodenv global 10.1.0
   rbenv install 2.5.1
-
-  arg=$1
-  if [ "$arg" ]; then
-    [ "$GIT_USER_NAME" ]  && git config --global user.name  "$GIT_USER_NAME"
-    [ "$GIT_USER_EMAIL" ] && git config --global user.email "$GIT_USER_EMAIL"
-  fi
 }
-# miscellaneous_task
+initialize
 
 if is_mac; then
   brew cask install slack
@@ -403,4 +391,33 @@ if is_mac; then
   # skitch
   # toyviewer
 fi
+
+create_git_config_file() {
+  ### user
+  [ "$GIT_GLOBAL_USER_NAME" ]  && git config --global user.name  "$GIT_GLOBAL_USER_NAME"
+  [ "$GIT_GLOBAL_USER_EMAIL" ] && git config --global user.email "$GIT_GLOBAL_USER_EMAIL"
+
+  ### core
+  # shellcheck disable=SC2088
+  git config --global core.excludesfile "~/.gitignore_global"
+
+  ### diff
+  # Highlight diff
+  # ref. https://github.com/git/git/tree/master/contrib/diff-highlight
+  git config --global pager.log "diff-highlight | less"
+  git config --global pager.show "diff-highlight | less"
+  git config --global pager.diff "diff-highlight | less"
+
+  # Customized color for diff
+  # ref. https://git-scm.com/docs/git-config#git-config-colordiffltslotgt
+  git config --global color.diff.meta "magenta normal"
+
+  # Highlight whitespace
+  git config --global diff.wsErrorHighlight "all"
+
+  ### ghq
+  # shellcheck disable=SC2088
+  git config --global ghq.root "~/dev/src"
+}
+create_git_config_file
 
