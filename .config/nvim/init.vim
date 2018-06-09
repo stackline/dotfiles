@@ -213,11 +213,17 @@ endif
 
 " Utility
 function! GitUrl()
-  let l:TEMPLATE = ''
+  let l:TEMPLATE = $GIT_CODE_URL
+  if l:TEMPLATE == ""
+    echo 'Please define `GIT_CODE_URL` environment variable'
+    return
+  endif
+
   let l:project    = system('git remote get-url origin | sed "s/\// /g" | awk ''{print $(NF-1)}'' | tr ''[:lower:]'' ''[:upper:]'' | tr -d "\n"')
   let l:repository = system('git remote get-url origin | sed "s/\// /g" | awk ''{print $(NF)}'' | sed "s/.git$//" | tr -d "\n"')
   let l:path       = system('git rev-parse --show-prefix | tr -d "\n"') . expand('%')
   let l:remote_url = substitute(substitute(substitute(l:TEMPLATE, '__PROJECT__', l:project, ''), '__REPOSITORY__', l:repository, ''), '__PATH__', l:path, '')
+
   echo l:remote_url
 endfunction
 command! GitUrl call GitUrl()
