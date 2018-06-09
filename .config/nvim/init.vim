@@ -181,6 +181,7 @@ set splitright " open splited window to right
 set noswapfile " do not make .swp swap file
 set nobackup   " do not make tilda "~" backup file
 set ambiwidth=double " Show two byte character collectory on Mac Termianl"
+set formatoptions=tcrqj " Default `tcqj`. Add `r` option (complete comment sign automatically when breaking line)
 
 
 " --------------------------------------
