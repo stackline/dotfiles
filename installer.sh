@@ -3,7 +3,6 @@
 
 readonly GIT_USER_NAME=""
 readonly GIT_USER_EMAIL=""
-readonly HOMEBREW_GITHUB_API_TOKEN=""
 
 
 # --------------------------------------
@@ -351,7 +350,6 @@ initialize() {
   if [ "$arg" ]; then
     [ "$GIT_USER_NAME" ]  && git config --global user.name  "$GIT_USER_NAME"
     [ "$GIT_USER_EMAIL" ] && git config --global user.email "$GIT_USER_EMAIL"
-    [ "$HOMEBREW_GITHUB_API_TOKEN" ] && echo "export HOMEBREW_GITHUB_API_TOKEN=$HOMEBREW_GITHUB_API_TOKEN" > ~/.homebrew_github_api_token
   fi
 }
 # miscellaneous_task

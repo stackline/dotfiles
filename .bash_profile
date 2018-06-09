@@ -50,10 +50,6 @@ fi
 # Homebrew
 # --------------------------------------
 export HOMEBREW_NO_ANALYTICS=1
-# Increase access limit to Github by using the API key
-# ref. https://rcmdnk.com/blog/2013/12/05/mac-homebrew/
-# shellcheck source=/dev/null
-[ -f ~/.homebrew_github_api_token ] && source ~/.homebrew_github_api_token
 
 
 # --------------------------------------
