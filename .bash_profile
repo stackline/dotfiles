@@ -53,6 +53,17 @@ export HOMEBREW_NO_ANALYTICS=1
 
 
 # --------------------------------------
+# pngquant (Node package)
+# --------------------------------------
+# Without the following environment variable,
+# installation and execution errors occur because libpng library can not be referenced.
+# ref. https://edn.embarcadero.com/jp/article/36318
+if is_linux; then
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64
+fi
+
+
+# --------------------------------------
 # Version manager
 # --------------------------------------
 ### rbenv

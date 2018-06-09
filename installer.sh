@@ -50,13 +50,22 @@ readonly HOMEBREW_PACKAGES=(
   ripgrep
 
   ### required for package installation
-  libjpeg # jpegoptim (Node)
-  libpng  # pngquant (Node)
-  libffi  # ffi (Gem)
 
+  # [Node] jpegoptim requires libjpeg version 6b or later.
+  # ref. https://github.com/tjko/jpegoptim#readme
+  libjpeg
+
+  # [Node] pngquant requires libpng.
+  # MEMO: It is solved by defining LD_LIBRARY_PATH environment variable.
+  # libpng
+
+  # [Gem] ffi
+  libffi
+
+  # [Gem] pg
   # MEMO: You need to specify the path to the 'pg_config'
   # ref. https://bitbucket.org/ged/ruby-pg/wiki/Home
-  postgresql@9.5 # pg (gem)
+  postgresql@9.5
 
   ### gem command error
   # ref. https://github.com/Homebrew/homebrew-core/issues/11636
