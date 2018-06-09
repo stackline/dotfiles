@@ -49,7 +49,6 @@ readonly HOMEBREW_PACKAGES=(
   neovim
   peco
   ripgrep
-  tmux
 
   ### required for package installation
   libjpeg # jpegoptim (Node)
@@ -315,6 +314,12 @@ initialize() {
     # Warning: You have unlinked kegs in your Cellar
     # ref. https://github.com/Linuxbrew/homebrew-core/issues/7624
     brew link --overwrite util-linux
+
+    # Patched tmux that displays a horizontal split line as single-byte characters
+    # ref. https://attonblog.blogspot.com/2018/04/tmux-27.html
+    brew tap atton/customs
+    brew install atton/customs/utf8proc
+    brew install --HEAD atton/customs/tmux
   fi
   if is_mac; then
     # diff-highlight
