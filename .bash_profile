@@ -168,8 +168,8 @@ git-show-pull-request() {
     repository_name=$(git rev-parse --show-toplevel | xargs basename)
     pull_request_number=${BASH_REMATCH[1]}
     echo "$commit_message"
-    tmp="${URL_TEMPLATE/REPOSITORY_NAME/$repository_name}"
-    echo "${tmp/PULL_REQUEST_NUMBER/$pull_request_number}"
+    tmp="${URL_TEMPLATE/__REPOSITORY_NAME__/$repository_name}"
+    echo "${tmp/__PULL_REQUEST_NUMBER__/$pull_request_number}"
   fi
 }
 
