@@ -26,8 +26,11 @@ readonly HOMEBREW_PACKAGES=(
   redis # redis-cli
 
   ### Linter
-  shellcheck # Shell script
-  hadolint   # Dockerfile
+  # Shell script
+  shellcheck
+  shfmt
+  # Dockerfile
+  hadolint
 
   ### Utility
   nkf
