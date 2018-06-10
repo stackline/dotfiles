@@ -96,7 +96,7 @@ readonly RUBY_PACKAGES=(
 )
 
 # --------------------------------------
-# utilities
+# Utilities
 # --------------------------------------
 is_mac() {
   [ "$(uname)" == "Darwin" ] && return 0
