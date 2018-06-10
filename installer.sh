@@ -98,13 +98,6 @@ readonly RUBY_PACKAGES=(
 # --------------------------------------
 # utilities
 # --------------------------------------
-heading() {
-  echo ''
-  echo '# --------------------------------------'
-  echo "# ${1}"
-  echo '# --------------------------------------'
-}
-
 is_mac() {
   [ "$(uname)" == "Darwin" ] && return 0
   return 1
@@ -113,6 +106,37 @@ is_mac() {
 is_linux() {
   [ "$(uname)" == "Linux" ] && return 0
   return 1
+}
+
+# --------------------------------------
+# Create global .gitconfig file
+# --------------------------------------
+create_git_config_file() {
+  ### user
+  [ "$GIT_GLOBAL_USER_NAME" ]  && git config --global user.name  "$GIT_GLOBAL_USER_NAME"
+  [ "$GIT_GLOBAL_USER_EMAIL" ] && git config --global user.email "$GIT_GLOBAL_USER_EMAIL"
+
+  ### core
+  # shellcheck disable=SC2088
+  git config --global core.excludesfile "~/.gitignore_global"
+
+  ### diff
+  # Highlight diff
+  # ref. https://github.com/git/git/tree/master/contrib/diff-highlight
+  git config --global pager.log "diff-highlight | less"
+  git config --global pager.show "diff-highlight | less"
+  git config --global pager.diff "diff-highlight | less"
+
+  # Customized color for diff
+  # ref. https://git-scm.com/docs/git-config#git-config-colordiffltslotgt
+  git config --global color.diff.meta "magenta normal"
+
+  # Highlight whitespace
+  git config --global diff.wsErrorHighlight "all"
+
+  ### ghq
+  # shellcheck disable=SC2088
+  git config --global ghq.root "~/dev/src"
 }
 
 # --------------------------------------
@@ -160,11 +184,9 @@ create_symbolic_links() {
 
 # --------------------------------------
 # Install Homebrew packages
-# Arguments:
-#   Package name array
 # --------------------------------------
 install_homebrew_packages() {
-  local packages=("$@")
+  local packages=("${HOMEBREW_PACKAGES[@]}")
   local package
   local version
 
@@ -181,11 +203,9 @@ install_homebrew_packages() {
 
 # --------------------------------------
 # Install Ruby packages
-# Arguments:
-#   Package name array
 # --------------------------------------
 install_ruby_packages() {
-  local packages=("$@")
+  local packages=("${RUBY_PACKAGES[@]}")
   local package
   local installed
 
@@ -202,11 +222,9 @@ install_ruby_packages() {
 
 # --------------------------------------
 # Install Node packages
-# Arguments:
-#   Package name array
 # --------------------------------------
 install_node_packages() {
-  local packages=("$@")
+  local packages=("${NODE_PACKAGES[@]}")
   local package
   local not_installed
 
@@ -223,11 +241,9 @@ install_node_packages() {
 
 # --------------------------------------
 # Install Python packages
-# Arguments:
-#   Package name array
 # --------------------------------------
 install_python2_packages() {
-  local packages=("$@")
+  local packages=("${PYTHON2_PACKAGES[@]}")
   local package
   local version
 
@@ -244,11 +260,9 @@ install_python2_packages() {
 
 # --------------------------------------
 # Install Python packages
-# Arguments:
-#   Package name array
 # --------------------------------------
 install_python3_packages() {
-  local packages=("$@")
+  local packages=("${PYTHON3_PACKAGES[@]}")
   local package
   local version
 
@@ -282,33 +296,6 @@ do_post_processes() {
   gem update --system
   gem cleanup
 }
-
-# --------------------------------------
-# Main routine
-# --------------------------------------
-main() {
-  heading 'create symbolic links'
-  create_symbolic_links
-
-  heading 'install homebrew packages'
-  install_homebrew_packages "${HOMEBREW_PACKAGES[@]}"
-
-  heading 'install python2 packages'
-  install_python2_packages "${PYTHON2_PACKAGES[@]}"
-
-  heading 'install python3 packages'
-  install_python3_packages "${PYTHON3_PACKAGES[@]}"
-
-  heading 'install ruby packages'
-  install_ruby_packages "${RUBY_PACKAGES[@]}"
-
-  heading 'install node packages'
-  install_node_packages "${NODE_PACKAGES[@]}"
-
-  heading 'do post processes'
-  do_post_processes
-}
-main
 
 initialize() {
   ### Tasks not optimized
@@ -352,7 +339,6 @@ initialize() {
   nodenv global 10.1.0
   rbenv install 2.5.1
 }
-initialize
 
 if is_mac; then
   brew cask install slack
@@ -395,32 +381,50 @@ if is_mac; then
   # toyviewer
 fi
 
-create_git_config_file() {
-  ### user
-  [ "$GIT_GLOBAL_USER_NAME" ]  && git config --global user.name  "$GIT_GLOBAL_USER_NAME"
-  [ "$GIT_GLOBAL_USER_EMAIL" ] && git config --global user.email "$GIT_GLOBAL_USER_EMAIL"
+readonly PROCNAME=${0##*/}
 
-  ### core
-  # shellcheck disable=SC2088
-  git config --global core.excludesfile "~/.gitignore_global"
-
-  ### diff
-  # Highlight diff
-  # ref. https://github.com/git/git/tree/master/contrib/diff-highlight
-  git config --global pager.log "diff-highlight | less"
-  git config --global pager.show "diff-highlight | less"
-  git config --global pager.diff "diff-highlight | less"
-
-  # Customized color for diff
-  # ref. https://git-scm.com/docs/git-config#git-config-colordiffltslotgt
-  git config --global color.diff.meta "magenta normal"
-
-  # Highlight whitespace
-  git config --global diff.wsErrorHighlight "all"
-
-  ### ghq
-  # shellcheck disable=SC2088
-  git config --global ghq.root "~/dev/src"
+execute() {
+  local function_name=$1
+  echo "$(date '+%Y-%m-%dT%H:%M:%S') $PROCNAME $function_name start"
+  eval "$1"
+  echo "$(date '+%Y-%m-%dT%H:%M:%S') $PROCNAME $function_name end"
 }
-create_git_config_file
+
+execute_all() {
+  execute create_git_config_file
+  execute create_symbolic_links
+  execute install_homebrew_packages
+  execute install_python2_packages
+  execute install_python3_packages
+  execute install_ruby_packages
+  execute install_node_packages
+}
+
+usage() {
+  cat <<EOF
+usage: sh installer.sh <option>
+option:
+  a:  execute all
+  g:  create .gitconfig file
+  h:  install Homebrew packages
+  n:  install Node packages
+  p2: install Python2 packages
+  p3: install Python3 packages
+  r:  install Ruby packages
+  s:  create symbolic links
+EOF
+}
+
+### main
+case $1 in
+  a) execute execute_all ;;
+  g) execute create_git_config_file ;;
+  h) execute install_homebrew_packages ;;
+  n) execute install_node_packages ;;
+  p2) execute install_python2_packages ;;
+  p3) execute install_python3_packages ;;
+  r) execute install_ruby_packages ;;
+  s) execute create_symbolic_links ;;
+  *) usage ;;
+esac
 
