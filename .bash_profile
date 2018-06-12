@@ -123,6 +123,7 @@ alias gs='git status'
 alias less='less -R'
 alias ll='ls -al'
 alias rg='rg -i'
+alias shfmt='shfmt -i 2 -ci' # Google Style Guides
 alias vi='nvim'
 alias vim='nvim'
 ### execute command interactively
