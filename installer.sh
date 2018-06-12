@@ -6,8 +6,8 @@
 readonly HOMEBREW_PACKAGES=(
   ### Version manager
   nodenv # Node
-  rbenv  # Ruby
-  tfenv  # Terraform
+  rbenv # Ruby
+  tfenv # Terraform
 
   ### pip
   python
@@ -113,7 +113,7 @@ is_linux() {
 # --------------------------------------
 create_git_config_file() {
   ### user
-  [ "$GIT_GLOBAL_USER_NAME" ]  && git config --global user.name  "$GIT_GLOBAL_USER_NAME"
+  [ "$GIT_GLOBAL_USER_NAME" ] && git config --global user.name "$GIT_GLOBAL_USER_NAME"
   [ "$GIT_GLOBAL_USER_EMAIL" ] && git config --global user.email "$GIT_GLOBAL_USER_EMAIL"
 
   ### core
@@ -321,7 +321,7 @@ initialize() {
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
     # Install dein.vim
-    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > dein_installer.sh
+    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh >dein_installer.sh
     sh ./dein_installer.sh ~/.cache/dein
 
     # Homebrew-Cask
@@ -427,4 +427,3 @@ case $1 in
   s) execute create_symbolic_links ;;
   *) usage ;;
 esac
-
