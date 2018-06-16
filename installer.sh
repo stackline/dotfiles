@@ -439,6 +439,8 @@ EOF
 }
 
 ### main
+eval "$(cat ~/.env)"
+
 case $1 in
   a) execute execute_all ;;
   g) execute create_git_config_file ;;
