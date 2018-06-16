@@ -425,5 +425,10 @@ case $1 in
   p3) execute install_python3_packages ;;
   r) execute install_ruby_packages ;;
   s) execute create_symbolic_links ;;
-  *) usage ;;
+  *)
+    if [ -n "$1" ]; then
+      printf "warning: Do not support '%s' option\\n\\n" "$1"
+    fi
+    usage
+    ;;
 esac
