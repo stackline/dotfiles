@@ -70,6 +70,44 @@ readonly HOMEBREW_PACKAGES=(
   libyaml
 )
 
+readonly HOMEBREW_CASK_PACKAGES=(
+  ### Browser
+  google-chrome
+  firefox
+
+  ### SQL Client
+  tableplus
+  sequel-pro # MySQL
+  # postico # PostgreSQL
+
+  ### FTP Client
+  cyberduck
+
+  ### Editor
+  visual-studio-code
+  # rubymine
+
+  ### Development environment
+  docker
+  vagrant
+  virtualbox
+
+  ### Utility
+  dropbox
+  google-japanese-ime
+  hyperswitch
+  imageoptim
+  postman
+  skitch
+  slack
+
+  # gyazo
+  # java
+  # licecap
+  # paintbrush
+  # toyviewer
+)
+
 readonly NODE_PACKAGES=(
   eslint
   htmllint
@@ -197,6 +235,30 @@ install_homebrew_packages() {
       echo "${package} is already installed"
     else
       brew install "${package}"
+    fi
+  done
+}
+
+# --------------------------------------
+# Install Homebrew-Cask packages
+# --------------------------------------
+install_homebrew_cask_packages() {
+  if ! is_mac; then
+    echo 'This is Mac only.'
+    return 1
+  fi
+
+  local packages=("${HOMEBREW_CASK_PACKAGES[@]}")
+  local package
+  local version
+
+  for package in "${packages[@]}"; do
+    version=$(brew cask ls --versions "${package}")
+
+    if [ "${version}" ]; then
+      echo "${package} is already installed"
+    else
+      brew cask install "${package}"
     fi
   done
 }
@@ -340,47 +402,6 @@ initialize() {
   rbenv install 2.5.1
 }
 
-if is_mac; then
-  brew cask install slack
-
-  ### Browser
-  brew cask install google-chrome
-  brew cask install google-chrome-canary
-
-  ### SQL Client
-  brew cask install tableplus
-  brew cask install sequel-pro
-  # brew cask install postico
-
-  ### FTP Client
-  brew cask install cyberduck
-
-  ### Editor
-  brew cask install visual-studio-code
-  # brew cask install atom
-  # brew cask install rubymine
-
-  ### Development
-  brew cask install docker
-  brew cask install vagrant
-  brew cask install virtualbox
-
-  ### Utility
-  brew cask install dropbox
-  brew cask install google-japanese-ime
-  brew cask install hyperswitch
-  brew cask install imageoptim
-
-  # dropbox
-  # gyazo
-  # java
-  # licecap
-  # paintbrush
-  # postman
-  # skitch
-  # toyviewer
-fi
-
 readonly PROCNAME=${0##*/}
 
 execute() {
@@ -394,6 +415,7 @@ execute_all() {
   execute create_git_config_file
   execute create_symbolic_links
   execute install_homebrew_packages
+  execute install_homebrew_cask_packages
   execute install_python2_packages
   execute install_python3_packages
   execute install_ruby_packages
@@ -407,6 +429,7 @@ option:
   a:  execute all
   g:  create .gitconfig file
   h:  install Homebrew packages
+  hc: install Homebrew-Cask packages
   n:  install Node packages
   p2: install Python2 packages
   p3: install Python3 packages
@@ -420,6 +443,7 @@ case $1 in
   a) execute execute_all ;;
   g) execute create_git_config_file ;;
   h) execute install_homebrew_packages ;;
+  hc) execute install_homebrew_cask_packages ;;
   n) execute install_node_packages ;;
   p2) execute install_python2_packages ;;
   p3) execute install_python3_packages ;;
