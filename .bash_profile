@@ -111,6 +111,7 @@ PROMPT_COMMAND='__git_ps1 "${GREEN}\u@\h${BLUE}:\w${RED}" "${RESET}\n\\\$ "'
 # --------------------------------------
 # alias
 # --------------------------------------
+alias bbg='brew bundle --global'
 alias ga='git add'
 alias gb='git branch -v'
 alias gcm='git commit -m'

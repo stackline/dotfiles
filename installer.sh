@@ -3,111 +3,6 @@
 # --------------------------------------
 # constant
 # --------------------------------------
-readonly HOMEBREW_PACKAGES=(
-  ### Version manager
-  nodenv # Node
-  rbenv # Ruby
-  tfenv # Terraform
-
-  ### pip
-  python
-  python@2
-
-  ### Command-line completion
-  bash-completion
-  gem-completion
-
-  ### Git
-  git
-  ghq
-
-  ### Database
-  mysql
-  redis # redis-cli
-
-  ### Linter
-  # Shell script
-  shellcheck
-  shfmt
-  # Dockerfile
-  hadolint
-
-  ### Utility
-  nkf
-  nmap
-  tree
-  wget
-
-  ### Middleware
-  # imagemagick # MEMO: Many dependencies
-  colordiff
-  composer
-  lftp
-  neovim
-  peco
-  ripgrep
-
-  ### required for package installation
-
-  # [Node] jpegoptim requires libjpeg version 6b or later.
-  # ref. https://github.com/tjko/jpegoptim#readme
-  libjpeg
-
-  # [Node] pngquant requires libpng.
-  # MEMO: It is solved by defining LD_LIBRARY_PATH environment variable.
-  # libpng
-
-  # [Gem] ffi
-  libffi
-
-  # [Gem] pg
-  # MEMO: You need to specify the path to the 'pg_config'
-  # ref. https://bitbucket.org/ged/ruby-pg/wiki/Home
-  postgresql@9.5
-
-  ### gem command error
-  # ref. https://github.com/Homebrew/homebrew-core/issues/11636
-  libyaml
-)
-
-readonly HOMEBREW_CASK_PACKAGES=(
-  ### Browser
-  google-chrome
-  firefox
-
-  ### SQL Client
-  tableplus
-  sequel-pro # MySQL
-  # postico # PostgreSQL
-
-  ### FTP Client
-  cyberduck
-
-  ### Editor
-  visual-studio-code
-  # rubymine
-
-  ### Development environment
-  docker
-  vagrant
-  virtualbox
-
-  ### Utility
-  dropbox
-  google-japanese-ime
-  hyperswitch
-  imageoptim
-  postman
-  skitch
-  slack
-
-  # gyazo
-  # java
-  # licecap
-  # paintbrush
-  # toyviewer
-)
-
 readonly NODE_PACKAGES=(
   eslint
   htmllint
@@ -204,6 +99,7 @@ create_symbolic_links() {
   ### root directory
   ln -s -v "${dotfiles_root_dir}"/.ansible-lint ~/.ansible-lint
   ln -s -v "${dotfiles_root_dir}"/.bash_profile ~/.bash_profile
+  ln -s -v "${dotfiles_root_dir}"/.Brewfile ~/.Brewfile
   ln -s -v "${dotfiles_root_dir}"/.gemrc ~/.gemrc
   ln -s -v "${dotfiles_root_dir}"/.gitignore_global ~/.gitignore_global
   ln -s -v "${dotfiles_root_dir}"/.pryrc ~/.pryrc
@@ -224,43 +120,7 @@ create_symbolic_links() {
 # Install Homebrew packages
 # --------------------------------------
 install_homebrew_packages() {
-  local packages=("${HOMEBREW_PACKAGES[@]}")
-  local package
-  local version
-
-  for package in "${packages[@]}"; do
-    version=$(brew ls --versions "${package}")
-
-    if [ "${version}" ]; then
-      echo "${package} is already installed"
-    else
-      brew install "${package}"
-    fi
-  done
-}
-
-# --------------------------------------
-# Install Homebrew-Cask packages
-# --------------------------------------
-install_homebrew_cask_packages() {
-  if ! is_mac; then
-    echo 'This is Mac only.'
-    return 1
-  fi
-
-  local packages=("${HOMEBREW_CASK_PACKAGES[@]}")
-  local package
-  local version
-
-  for package in "${packages[@]}"; do
-    version=$(brew cask ls --versions "${package}")
-
-    if [ "${version}" ]; then
-      echo "${package} is already installed"
-    else
-      brew cask install "${package}"
-    fi
-  done
+  brew bundle --global
 }
 
 # --------------------------------------
@@ -343,13 +203,6 @@ install_python3_packages() {
 # Do post processes
 # --------------------------------------
 do_post_processes() {
-  echo '### homebrew'
-  brew upgrade --cleanup
-  brew prune --dry-run
-  # MEMO: brew cleanup is slow
-  brew cleanup
-  brew doctor
-
   echo '### node'
   npm update -g
 
@@ -368,12 +221,6 @@ initialize() {
     # Warning: You have unlinked kegs in your Cellar
     # ref. https://github.com/Linuxbrew/homebrew-core/issues/7624
     brew link --overwrite util-linux
-
-    # Patched tmux that displays a horizontal split line as single-byte characters
-    # ref. https://attonblog.blogspot.com/2018/04/tmux-27.html
-    brew tap atton/customs
-    brew install atton/customs/utf8proc
-    brew install --HEAD atton/customs/tmux
   fi
   if is_mac; then
     # diff-highlight
@@ -388,13 +235,8 @@ initialize() {
 
     # Use bash version 4 in order to use READLINE_LINE in peco-select-history function
     # ref. https://rcmdnk.com/blog/2015/05/25/computer-mac-bash-zsh/
-    brew install bash
     sudo dscl . -create /Users/"$USER" UserShell /usr/local/bin/bash
     dscl . -read /Users/"$USER" UserShell
-
-    # Homebrew-Cask
-    brew cask cleanup
-    brew cask doctor
 
     # vagrant
     vagrant plugin update
@@ -421,7 +263,6 @@ execute_all() {
   execute create_git_config_file
   execute create_symbolic_links
   execute install_homebrew_packages
-  execute install_homebrew_cask_packages
   execute install_python2_packages
   execute install_python3_packages
   execute install_ruby_packages
@@ -435,7 +276,6 @@ option:
   a:  execute all
   g:  create .gitconfig file
   h:  install Homebrew packages
-  hc: install Homebrew-Cask packages
   n:  install Node packages
   p2: install Python2 packages
   p3: install Python3 packages
@@ -451,7 +291,6 @@ case $1 in
   a) execute execute_all ;;
   g) execute create_git_config_file ;;
   h) execute install_homebrew_packages ;;
-  hc) execute install_homebrew_cask_packages ;;
   n) execute install_node_packages ;;
   p2) execute install_python2_packages ;;
   p3) execute install_python3_packages ;;
