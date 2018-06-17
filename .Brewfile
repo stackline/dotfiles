@@ -71,7 +71,7 @@ brew 'libffi'
 brew 'postgresql@9.5'
 
 # Mac OS only install below packages.
-exit unless /darwin/ =~ RUBY_PLATFORM
+return unless /darwin/ =~ RUBY_PLATFORM
 
 # Use bash 4.x in order to use READLINE_LINE in peco-select-history function
 # ref. https://rcmdnk.com/blog/2015/05/25/computer-mac-bash-zsh/
