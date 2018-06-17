@@ -386,6 +386,12 @@ initialize() {
     curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh >dein_installer.sh
     sh ./dein_installer.sh ~/.cache/dein
 
+    # Use bash version 4 in order to use READLINE_LINE in peco-select-history function
+    # ref. https://rcmdnk.com/blog/2015/05/25/computer-mac-bash-zsh/
+    brew install bash
+    sudo dscl . -create /Users/"$USER" UserShell /usr/local/bin/bash
+    dscl . -read /Users/"$USER" UserShell
+
     # Homebrew-Cask
     brew cask cleanup
     brew cask doctor
