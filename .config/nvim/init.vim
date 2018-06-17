@@ -198,6 +198,10 @@ autocmd FileType php        setlocal expandtab shiftwidth=4 tabstop=4 softtabsto
 autocmd FileType ruby       setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType sh         setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 
+" Use Ruby syntax highlight on Brewfile
+" ref. http://vim-jp.org/vimdoc-ja/filetype.html#ftdetect
+autocmd BufRead,BufNewFile Brewfile,.Brewfile setfiletype ruby
+
 " When editing a file, always jump to the last cursor position
 " ref. /etc/vimrc
 if has("autocmd")
