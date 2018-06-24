@@ -53,8 +53,17 @@ export HOMEBREW_NO_ANALYTICS=1
 
 
 # --------------------------------------
-# pngquant (Node package)
+# Node
 # --------------------------------------
+
+# initialize nodenv
+eval "$(nodenv init -)"
+
+# use lint tools globally
+export PATH="$HOME/dev/src/github.com/stackline/dotfiles/node_modules/.bin:$PATH"
+
+# pngquant
+#
 # Without the following environment variable,
 # installation and execution errors occur because libpng library can not be referenced.
 # ref. https://edn.embarcadero.com/jp/article/36318
@@ -64,14 +73,12 @@ fi
 
 
 # --------------------------------------
-# Version manager
+# Ruby
 # --------------------------------------
-### rbenv
+
+# initialize rbenv
 export RBENV_ROOT="$HOME/.rbenv"
 eval "$(rbenv init -)"
-
-### nodenv
-eval "$(nodenv init -)"
 
 
 # --------------------------------------

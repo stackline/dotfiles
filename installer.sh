@@ -3,11 +3,6 @@
 # --------------------------------------
 # constant
 # --------------------------------------
-readonly NODE_PACKAGES=(
-  eslint
-  htmllint
-)
-
 readonly PYTHON2_PACKAGES=(
   # MEMO: If an error that python can't be found occuers,
   # you need to reinstall Ansible-lint.
@@ -100,8 +95,10 @@ create_symbolic_links() {
   ln -s -v "${dotfiles_root_dir}"/.ansible-lint ~/.ansible-lint
   ln -s -v "${dotfiles_root_dir}"/.bash_profile ~/.bash_profile
   ln -s -v "${dotfiles_root_dir}"/.Brewfile ~/.Brewfile
+  ln -s -v "${dotfiles_root_dir}"/.eslintrc.js ~/.eslintrc.js
   ln -s -v "${dotfiles_root_dir}"/.gemrc ~/.gemrc
   ln -s -v "${dotfiles_root_dir}"/.gitignore_global ~/.gitignore_global
+  ln -s -v "${dotfiles_root_dir}"/.htmllintrc ~/.htmllintrc
   ln -s -v "${dotfiles_root_dir}"/.pryrc ~/.pryrc
   ln -s -v "${dotfiles_root_dir}"/.tmux.conf ~/.tmux.conf
 
@@ -146,19 +143,7 @@ install_ruby_packages() {
 # Install Node packages
 # --------------------------------------
 install_node_packages() {
-  local packages=("${NODE_PACKAGES[@]}")
-  local package
-  local not_installed
-
-  for package in "${packages[@]}"; do
-    not_installed=$(npm ls -g "${package}" | grep '(empty)')
-
-    if [ -z "${not_installed}" ]; then
-      echo "${package} is already installed"
-    else
-      npm install -g "${package}"
-    fi
-  done
+  npm install
 }
 
 # --------------------------------------
@@ -203,9 +188,6 @@ install_python3_packages() {
 # Do post processes
 # --------------------------------------
 do_post_processes() {
-  echo '### node'
-  npm update -g
-
   echo '### ruby'
   gem update
   gem update --system
