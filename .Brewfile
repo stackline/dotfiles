@@ -12,8 +12,7 @@ brew 'atton/customs/tmux', args: ['HEAD']
 # Node
 brew 'nodenv'
 # Python
-brew 'python'
-brew 'python@2'
+brew 'pyenv'
 # Ruby
 brew 'rbenv'
 # Terraform

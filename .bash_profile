@@ -82,6 +82,14 @@ eval "$(rbenv init -)"
 
 
 # --------------------------------------
+# Python
+# --------------------------------------
+# initialize pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+eval "$(pyenv init -)"
+
+
+# --------------------------------------
 # Git
 # --------------------------------------
 GIT_PS1_SHOWDIRTYSTATE=1

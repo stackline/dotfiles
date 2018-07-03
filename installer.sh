@@ -224,7 +224,14 @@ initialize() {
     vagrant plugin update
   fi
 
-  pip install ansible==2.3.2
+  ### initialize Python environment
+  pyenv install 2.7.15
+  pyenv install 3.7.0
+  pyenv global 3.7.0 2.7.15
+  pip2 install ansible==2.3.2
+  pip2 install ansible-lint
+  pip2 install neovim
+  pip3 install neovim
 
   # TODO: Install ruby, node before installing packages
   nodenv install 10.1.0
