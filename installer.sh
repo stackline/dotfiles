@@ -3,17 +3,6 @@
 # --------------------------------------
 # constant
 # --------------------------------------
-readonly PYTHON2_PACKAGES=(
-  # MEMO: If an error that python can't be found occuers,
-  # you need to reinstall Ansible-lint.
-  ansible-lint
-  pip
-)
-
-readonly PYTHON3_PACKAGES=(
-  neovim # required for deoplete (Vim plugin)
-)
-
 readonly RUBY_PACKAGES=(
   mailcatcher
   neovim # required for deoplete-ruby
@@ -150,38 +139,11 @@ install_node_packages() {
 # Install Python packages
 # --------------------------------------
 install_python2_packages() {
-  local packages=("${PYTHON2_PACKAGES[@]}")
-  local package
-  local version
-
-  for package in "${packages[@]}"; do
-    version=$(pip show "${package}" | grep Version)
-
-    if [ "${version}" ]; then
-      echo "${package} is already installed"
-    else
-      pip install --upgrade "${package}"
-    fi
-  done
+  pip2 install --upgrade -r requirements.txt
 }
 
-# --------------------------------------
-# Install Python packages
-# --------------------------------------
 install_python3_packages() {
-  local packages=("${PYTHON3_PACKAGES[@]}")
-  local package
-  local version
-
-  for package in "${packages[@]}"; do
-    version=$(pip3 show "${package}" | grep Version)
-
-    if [ "${version}" ]; then
-      echo "${package} is already installed"
-    else
-      pip3 install --upgrade "${package}"
-    fi
-  done
+  pip3 install --upgrade -r requirements.txt
 }
 
 # --------------------------------------
@@ -228,10 +190,6 @@ initialize() {
   pyenv install 2.7.15
   pyenv install 3.7.0
   pyenv global 3.7.0 2.7.15
-  pip2 install ansible==2.3.2
-  pip2 install ansible-lint
-  pip2 install neovim
-  pip3 install neovim
 
   # TODO: Install ruby, node before installing packages
   nodenv install 10.1.0
