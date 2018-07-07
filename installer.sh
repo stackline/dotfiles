@@ -83,7 +83,6 @@ create_symbolic_links() {
   ### root directory
   ln -s -v "${dotfiles_root_dir}"/.ansible-lint ~/.ansible-lint
   ln -s -v "${dotfiles_root_dir}"/.bash_profile ~/.bash_profile
-  ln -s -v "${dotfiles_root_dir}"/.Brewfile ~/.Brewfile
   ln -s -v "${dotfiles_root_dir}"/.eslintrc.js ~/.eslintrc.js
   ln -s -v "${dotfiles_root_dir}"/.gemrc ~/.gemrc
   ln -s -v "${dotfiles_root_dir}"/.gitignore_global ~/.gitignore_global
@@ -106,9 +105,9 @@ create_symbolic_links() {
 # Install packages
 # --------------------------------------
 
-# Manage homebrew packages with .Brewfile
+# Manage homebrew packages with Brewfile
 install_homebrew_packages() {
-  brew bundle --global
+  brew bundle
 }
 
 # Manage node packages with package.json
