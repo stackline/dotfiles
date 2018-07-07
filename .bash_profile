@@ -47,6 +47,21 @@ fi
 
 
 # --------------------------------------
+# PostgreSQL (pg gem)
+#
+# bundle config build.pg --with-pg-config=/<postgresql bin path>/bin/pg_config
+# ~/.bundle/config
+# BUNDLE_BUILD__PG: "--with-pg-config=/<postgresql bin path>/bin/pg_config"
+# --------------------------------------
+if is_mac; then
+  export PATH="/usr/local/opt/postgresql@9.5/bin:$PATH"
+fi
+if is_linux; then
+  export PATH="/home/linuxbrew/.linuxbrew/opt/postgresql@9.5/bin:$PATH"
+fi
+
+
+# --------------------------------------
 # Homebrew
 # --------------------------------------
 export HOMEBREW_NO_ANALYTICS=1

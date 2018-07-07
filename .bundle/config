@@ -2,5 +2,3 @@
 BUNDLE_PATH: "vendor/bundle"
 BUNDLE_JOBS: "4"
 BUNDLE_BUILD__NOKOGIRI: "--use-system-libraries"
-BUNDLE_BUILD__PG: "--with-pg-config=/home/linuxbrew/.linuxbrew/opt/postgresql@9.5/bin/pg_config"
-
