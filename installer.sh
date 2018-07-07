@@ -103,10 +103,27 @@ create_symbolic_links() {
 }
 
 # --------------------------------------
-# Install Homebrew packages
+# Install packages
 # --------------------------------------
+
+# Manage homebrew packages with .Brewfile
 install_homebrew_packages() {
   brew bundle --global
+}
+
+# Manage node packages with package.json
+install_node_packages() {
+  npm install
+}
+
+# Manage python packages with requirements.txt
+# Specify "--upgrade" option to upgrade pip of Python2
+install_python2_packages() {
+  pip2 install --upgrade -r requirements.txt
+}
+
+install_python3_packages() {
+  pip3 install --upgrade -r requirements.txt
 }
 
 # --------------------------------------
@@ -126,24 +143,6 @@ install_ruby_packages() {
       gem install "${package}"
     fi
   done
-}
-
-# --------------------------------------
-# Install Node packages
-# --------------------------------------
-install_node_packages() {
-  npm install
-}
-
-# --------------------------------------
-# Install Python packages
-# --------------------------------------
-install_python2_packages() {
-  pip2 install --upgrade -r requirements.txt
-}
-
-install_python3_packages() {
-  pip3 install --upgrade -r requirements.txt
 }
 
 # --------------------------------------
