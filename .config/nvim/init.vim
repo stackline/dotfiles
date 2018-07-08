@@ -144,9 +144,6 @@ set updatetime=250
 " --------------------------------------
 " ale
 " --------------------------------------
-let g:ale_linters = {
-      \ 'php': ['phpcs', 'php']
-      \}
 let g:ale_php_phpcs_standard = 'PSR1,PSR2'
 let g:ale_php_phpcs_executable = '/usr/bin/phpcs'
 
