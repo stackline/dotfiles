@@ -48,7 +48,9 @@ brew 'tree'
 brew 'wget'
 
 ### Database
-brew 'mysql'
+# Linuxbrew can not install mysql@5.6 on linux
+# because pidof that is depended from mysql@5.6 can not be installed on linux
+brew 'mysql@5.7'
 # Using redis-cli
 brew 'redis'
 

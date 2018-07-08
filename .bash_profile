@@ -47,16 +47,16 @@ fi
 
 
 # --------------------------------------
-# PostgreSQL (pg gem)
-#
-# bundle config build.pg --with-pg-config=/<postgresql bin path>/bin/pg_config
-# ~/.bundle/config
-# BUNDLE_BUILD__PG: "--with-pg-config=/<postgresql bin path>/bin/pg_config"
+# MySQL client is necessary to install mysql2 gem.
+# PostgreSQL pg_config is necessary to install pg gem.
+# ref. https://bitbucket.org/ged/ruby-pg/wiki/Home
 # --------------------------------------
 if is_mac; then
+  export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
   export PATH="/usr/local/opt/postgresql@9.5/bin:$PATH"
 fi
 if is_linux; then
+  export PATH="/home/linuxbrew/.linuxbrew/opt/mysql@5.7/bin:$PATH"
   export PATH="/home/linuxbrew/.linuxbrew/opt/postgresql@9.5/bin:$PATH"
 fi
 
