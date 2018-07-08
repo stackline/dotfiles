@@ -35,8 +35,6 @@ export_linuxbrew_path() {
   export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
   # Warning: Homebrew's sbin was not found in your PATH but you have installed formulae that put executables in /home/linuxbrew/.linuxbrew/sbin.
   export PATH="/home/linuxbrew/.linuxbrew/sbin:$PATH"
-  # PostgreSQL (psql command)
-  export PATH="/home/linuxbrew/.linuxbrew/opt/postgresql@9.5/bin:$PATH"
 
   export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
   export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
