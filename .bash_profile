@@ -46,12 +46,17 @@ if is_linux; then
   # ref. https://bitbucket.org/ged/ruby-pg/wiki/Home
   export PATH="/home/linuxbrew/.linuxbrew/opt/postgresql@9.5/bin:$PATH"
 
-  # pngquant node package
+  # Node pngquant package references libpng12.so.0.
   #
-  # Without the following environment variable,
-  # installation and execution errors occur because libpng library can not be referenced.
-  # ref. https://edn.embarcadero.com/jp/article/36318
-  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64
+  # - Install yum libpng package
+  # - Add "/usr/lib64" to LD_LIBRARY_PATH
+  #
+  # Without LD_LIBRARY_PATH environment variable below, the following error occurs at execution.
+  #
+  # - Error: node_modules/pngquant-bin/vendor/pngquant: error while loading shared libraries: libpng12.so.0: cannot open shared object file: No such file or directory
+  #
+  # Also, homebrew's libpng package is version 1.6.
+  export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib64"
 fi
 
 if is_mac; then

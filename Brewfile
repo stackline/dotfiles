@@ -59,10 +59,6 @@ brew 'redis'
 # ref. https://github.com/tjko/jpegoptim#readme
 brew 'jpeg'
 
-# [Node] pngquant requires libpng.
-# MEMO: It is solved by defining LD_LIBRARY_PATH environment variable.
-# brew 'libpng'
-
 # [Ruby] ffi
 brew 'libffi'
 
