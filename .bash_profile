@@ -29,39 +29,37 @@ set +a
 
 
 # --------------------------------------
-# Linuxbrew
+# Environment variables
 # --------------------------------------
-export_linuxbrew_path() {
-  export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-  # Warning: Homebrew's sbin was not found in your PATH but you have installed formulae that put executables in /home/linuxbrew/.linuxbrew/sbin.
-  export PATH="/home/linuxbrew/.linuxbrew/sbin:$PATH"
+if is_linux; then
 
+  # Linuxbrew
+  export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+  export PATH="/home/linuxbrew/.linuxbrew/sbin:$PATH"
   export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
   export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
-}
-if is_linux; then
-  export_linuxbrew_path
+
+  # MySQL client is necessary to install mysql2 gem.
+  export PATH="/home/linuxbrew/.linuxbrew/opt/mysql@5.7/bin:$PATH"
+
+  # PostgreSQL pg_config is necessary to install pg gem.
+  # ref. https://bitbucket.org/ged/ruby-pg/wiki/Home
+  export PATH="/home/linuxbrew/.linuxbrew/opt/postgresql@9.5/bin:$PATH"
+
+  # pngquant node package
+  #
+  # Without the following environment variable,
+  # installation and execution errors occur because libpng library can not be referenced.
+  # ref. https://edn.embarcadero.com/jp/article/36318
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64
 fi
 
-
-# --------------------------------------
-# MySQL client is necessary to install mysql2 gem.
-# PostgreSQL pg_config is necessary to install pg gem.
-# ref. https://bitbucket.org/ged/ruby-pg/wiki/Home
-# --------------------------------------
 if is_mac; then
   export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
   export PATH="/usr/local/opt/postgresql@9.5/bin:$PATH"
 fi
-if is_linux; then
-  export PATH="/home/linuxbrew/.linuxbrew/opt/mysql@5.7/bin:$PATH"
-  export PATH="/home/linuxbrew/.linuxbrew/opt/postgresql@9.5/bin:$PATH"
-fi
 
-
-# --------------------------------------
-# Homebrew
-# --------------------------------------
+# common
 export HOMEBREW_NO_ANALYTICS=1
 
 
@@ -74,15 +72,6 @@ eval "$(nodenv init -)"
 
 # use lint tools globally
 export PATH="$HOME/dev/src/github.com/stackline/dotfiles/node_modules/.bin:$PATH"
-
-# pngquant
-#
-# Without the following environment variable,
-# installation and execution errors occur because libpng library can not be referenced.
-# ref. https://edn.embarcadero.com/jp/article/36318
-if is_linux; then
-  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64
-fi
 
 
 # --------------------------------------
