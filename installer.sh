@@ -99,6 +99,9 @@ create_symbolic_links() {
   ln -s -v "${dotfiles_root_dir}"/.config/nvim/init.vim ~/.config/nvim/init.vim
   ln -s -v "${dotfiles_root_dir}"/.config/peco/config.json ~/.config/peco/config.json
   ln -s -v "${dotfiles_root_dir}"/.config/pip/pip.conf ~/.config/pip/pip.conf
+
+  ### Homebrew's install path
+  ln -s -v "$(brew --prefix)"/opt/git/share/git-core/contrib/diff-highlight/diff-highlight "$(brew --prefix)"/bin
 }
 
 # --------------------------------------
@@ -157,17 +160,11 @@ do_post_processes() {
 initialize() {
   ### Tasks not optimized
   if is_linux; then
-    # diff-highlight
-    sudo ln -s -v /home/linuxbrew/.linuxbrew/opt/git/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/
-
     # Warning: You have unlinked kegs in your Cellar
     # ref. https://github.com/Linuxbrew/homebrew-core/issues/7624
     brew link --overwrite util-linux
   fi
   if is_mac; then
-    # diff-highlight
-    ln -s /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/
-
     # Install Homebrew
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
