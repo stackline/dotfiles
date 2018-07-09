@@ -160,6 +160,17 @@ do_post_processes() {
 initialize() {
   ### Tasks not optimized
   if is_linux; then
+
+    # Linuxbrew
+    #
+    # Install Linuxbrew in "/home/linuxbrew/.linuxbrew" instead of "$HOME/.linuxbrew"
+    # because pre-compiled binary bottles can only be used in "/home/linuxbrew/.linuxbrew"
+    # ref. https://github.com/Linuxbrew/brew/issues/452#issuecomment-321108383
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+
+    # Homebrew bundle
+    brew bundle
+
     # Warning: You have unlinked kegs in your Cellar
     # ref. https://github.com/Linuxbrew/homebrew-core/issues/7624
     brew link --overwrite util-linux
