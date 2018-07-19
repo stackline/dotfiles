@@ -72,6 +72,7 @@ let g:strip_whitespace_on_save=1
 " --------------------------------------
 " Show the list when it has many candidates
 nnoremap <C-]> g<C-]>
+au BufNewFile,BufRead *.php set tags+=~/.cache/ctags/php.tags
 
 
 " --------------------------------------
