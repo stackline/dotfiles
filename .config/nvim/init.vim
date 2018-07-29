@@ -196,6 +196,10 @@ autocmd FileType php        setlocal expandtab shiftwidth=4 tabstop=4 softtabsto
 autocmd FileType ruby       setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType sh         setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 
+" Enable tag jump to methods with ! or ?
+" ref. https://www.reddit.com/r/vim/comments/60el1r/question_jumping_to_tags/
+autocmd FileType ruby setlocal iskeyword+=!,?
+
 " Use Ruby syntax highlight on Brewfile
 " ref. http://vim-jp.org/vimdoc-ja/filetype.html#ftdetect
 autocmd BufRead,BufNewFile Brewfile,.Brewfile setfiletype ruby
