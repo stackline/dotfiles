@@ -3,10 +3,6 @@
 " MEMO: remove plugin
 " ref. https://github.com/Shougo/dein.vim/issues/71#issuecomment-208601678
 " --------------------------------------
-if &compatible
-  set nocompatible " Be iMproved
-endif
-
 let s:path = expand('~/.cache/dein')
 let s:runtimepath = expand(s:path . '/repos/github.com/Shougo/dein.vim')
 
