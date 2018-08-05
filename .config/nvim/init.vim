@@ -1,58 +1,44 @@
 " --------------------------------------
-" dein.vim
-" MEMO: remove plugin
-" ref. https://github.com/Shougo/dein.vim/issues/71#issuecomment-208601678
+" vim-plug
 " --------------------------------------
-let s:path = expand('~/.cache/dein')
-let s:runtimepath = expand(s:path . '/repos/github.com/Shougo/dein.vim')
+call plug#begin('~/.local/share/nvim/plugged')
 
-execute 'set runtimepath+=' . s:runtimepath
+Plug 'w0rp/ale' " linter
+Plug 'ludovicchabant/vim-gutentags' " ctags generator
+Plug 'tpope/vim-fugitive' " git wrapper
+" Plug 'tpope/vim-rails'
+" Plug 'joonty/vdebug', { 'rev': 'v1.5.2' }
+" Plug 'Shougo/neosnippet.vim'
+" Plug 'Shougo/neosnippet-snippets'
 
-if dein#load_state(s:path)
-  call dein#begin(s:path)
+" ----------------------------------------
+" additional information
+" ----------------------------------------
+Plug 'airblade/vim-gitgutter' " git diff
+Plug 'itchyny/lightline.vim'  " statusline
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'ntpeters/vim-better-whitespace'
 
-  " Let dein manage dein
-  call dein#add(s:runtimepath)
+" ----------------------------------------
+" incremental search
+" ----------------------------------------
+Plug 'ctrlpvim/ctrlp.vim' " file search
+Plug 'mileszs/ack.vim'    " code search
 
-  " Add or remove your plugins here:
-  call dein#add('w0rp/ale') " linter
-  call dein#add('ludovicchabant/vim-gutentags') " ctags generator
-  call dein#add('tpope/vim-fugitive') " git wrapper
-  " call dein#add('tpope/vim-rails')
-  " call dein#add('joonty/vdebug', { 'rev': 'v1.5.2' })
-  " call dein#add('Shougo/neosnippet.vim')
-  " call dein#add('Shougo/neosnippet-snippets')
+" ----------------------------------------
+" auto complete
+" ----------------------------------------
+Plug 'Shougo/deoplete.nvim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-endwise'
 
-  " ----------------------------------------
-  " additional information
-  " ----------------------------------------
-  call dein#add('airblade/vim-gitgutter') " git diff
-  call dein#add('itchyny/lightline.vim')  " statusline
-  call dein#add('nathanaelkane/vim-indent-guides')
-  call dein#add('ntpeters/vim-better-whitespace')
+" ----------------------------------------
+" syntax highlight
+" ----------------------------------------
+Plug 'cocopon/iceberg.vim' " color scheme
+Plug 'slim-template/vim-slim' " slim
 
-  " ----------------------------------------
-  " incremental search
-  " ----------------------------------------
-  call dein#add('ctrlpvim/ctrlp.vim') " file search
-  call dein#add('mileszs/ack.vim')    " code search
-
-  " ----------------------------------------
-  " auto complete
-  " ----------------------------------------
-  call dein#add('Shougo/deoplete.nvim')
-  call dein#add('jiangmiao/auto-pairs')
-  call dein#add('tpope/vim-endwise')
-
-  " ----------------------------------------
-  " syntax highlight
-  " ----------------------------------------
-  call dein#add('cocopon/iceberg.vim') " color scheme
-  call dein#add('slim-template/vim-slim') " slim
-
-  call dein#end()
-  call dein#save_state()
-endif
+call plug#end()
 
 
 " --------------------------------------
