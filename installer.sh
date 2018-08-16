@@ -79,29 +79,28 @@ create_symbolic_links() {
   mkdir ~/.config/peco
   mkdir ~/.config/pip
 
-  # TODO: Delete a config file that exists on default
   ### root directory
-  ln -s -v "${dotfiles_root_dir}"/.ansible-lint ~/.ansible-lint
-  ln -s -v "${dotfiles_root_dir}"/.bash_profile ~/.bash_profile
-  ln -s -v "${dotfiles_root_dir}"/.eslintrc.js ~/.eslintrc.js
-  ln -s -v "${dotfiles_root_dir}"/.gemrc ~/.gemrc
-  ln -s -v "${dotfiles_root_dir}"/.gitignore_global ~/.gitignore_global
-  ln -s -v "${dotfiles_root_dir}"/.htmllintrc ~/.htmllintrc
-  ln -s -v "${dotfiles_root_dir}"/.pryrc ~/.pryrc
-  ln -s -v "${dotfiles_root_dir}"/.tmux.conf ~/.tmux.conf
+  ln -fsv "${dotfiles_root_dir}"/.ansible-lint ~/.ansible-lint
+  ln -fsv "${dotfiles_root_dir}"/.bash_profile ~/.bash_profile
+  ln -fsv "${dotfiles_root_dir}"/.eslintrc.js ~/.eslintrc.js
+  ln -fsv "${dotfiles_root_dir}"/.gemrc ~/.gemrc
+  ln -fsv "${dotfiles_root_dir}"/.gitignore_global ~/.gitignore_global
+  ln -fsv "${dotfiles_root_dir}"/.htmllintrc ~/.htmllintrc
+  ln -fsv "${dotfiles_root_dir}"/.pryrc ~/.pryrc
+  ln -fsv "${dotfiles_root_dir}"/.tmux.conf ~/.tmux.conf
 
   ### sub directory
-  ln -s -v "${dotfiles_root_dir}"/.bundle/config ~/.bundle/config
-  ln -s -v "${dotfiles_root_dir}"/.ctags.d/config.ctags ~/.ctags.d/config.ctags
-  ln -s -v "${dotfiles_root_dir}"/.composer/composer.json ~/.composer/composer.json
+  ln -fsv "${dotfiles_root_dir}"/.bundle/config ~/.bundle/config
+  ln -fsv "${dotfiles_root_dir}"/.ctags.d/config.ctags ~/.ctags.d/config.ctags
+  ln -fsv "${dotfiles_root_dir}"/.composer/composer.json ~/.composer/composer.json
 
   ### .config directory
-  ln -s -v "${dotfiles_root_dir}"/.config/nvim/init.vim ~/.config/nvim/init.vim
-  ln -s -v "${dotfiles_root_dir}"/.config/peco/config.json ~/.config/peco/config.json
-  ln -s -v "${dotfiles_root_dir}"/.config/pip/pip.conf ~/.config/pip/pip.conf
+  ln -fsv "${dotfiles_root_dir}"/.config/nvim/init.vim ~/.config/nvim/init.vim
+  ln -fsv "${dotfiles_root_dir}"/.config/peco/config.json ~/.config/peco/config.json
+  ln -fsv "${dotfiles_root_dir}"/.config/pip/pip.conf ~/.config/pip/pip.conf
 
   ### Homebrew's install path
-  ln -s -v "$(brew --prefix)"/opt/git/share/git-core/contrib/diff-highlight/diff-highlight "$(brew --prefix)"/bin
+  ln -fsv "$(brew --prefix)"/opt/git/share/git-core/contrib/diff-highlight/diff-highlight "$(brew --prefix)"/bin
 }
 
 # --------------------------------------
