@@ -174,7 +174,14 @@ alias pip3-uninstall-all-packages='pip3 freeze | xargs pip3 uninstall -y'
 alias brew-remove-all-installed-packages='brew list | xargs brew remove --force --ignore-dependencies'
 
 # Maintain Homebrew packages
-alias brew-maintenance='brew update && brew upgrade && brew prune && brew cleanup && brew doctor'
+brew-maintenance() {
+  brew update
+  brew upgrade
+  is_mac && brew cu -a
+  brew prune
+  brew cleanup
+  brew doctor
+}
 
 git-show-pull-request() {
   if [ -z "$GIT_SHOW_PULL_REQUEST_URL" ]; then
