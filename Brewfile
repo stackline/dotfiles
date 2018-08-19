@@ -81,7 +81,7 @@ brew 'bash'
 # --------------------------------------
 # Homebrew-Cask packages
 # --------------------------------------
-### Taps (third-party repositories)
+### Taps
 tap 'buo/cask-upgrade'
 tap 'homebrew/cask'
 
