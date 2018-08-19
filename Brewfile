@@ -87,7 +87,8 @@ tap 'homebrew/cask'
 
 ### Browser
 cask 'google-chrome'
-cask 'homebrew/cask-versions/google-chrome-canary'
+tap 'homebrew/cask-versions'
+cask 'google-chrome-canary'
 
 ### SQL Client
 # cask 'postico'
