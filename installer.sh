@@ -178,10 +178,6 @@ initialize() {
     # Install Homebrew
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-    # Install dein.vim
-    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh >dein_installer.sh
-    sh ./dein_installer.sh ~/.cache/dein
-
     # Use bash version 4 in order to use READLINE_LINE in peco-select-history function
     # ref. https://rcmdnk.com/blog/2015/05/25/computer-mac-bash-zsh/
     sudo dscl . -create /Users/"$USER" UserShell /usr/local/bin/bash
@@ -190,6 +186,10 @@ initialize() {
     # vagrant
     vagrant plugin update
   fi
+
+  ### Install vim-plug
+  ### ref. https://github.com/junegunn/vim-plug#neovim
+  curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   ### initialize Python environment
   pyenv install 2.7.15
