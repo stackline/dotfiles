@@ -182,6 +182,8 @@ initialize() {
     # ref. https://rcmdnk.com/blog/2015/05/25/computer-mac-bash-zsh/
     sudo dscl . -create /Users/"$USER" UserShell /usr/local/bin/bash
     dscl . -read /Users/"$USER" UserShell
+    # Confirm that bash version is 4.x
+    echo $BASH_VERSION
 
     # vagrant
     vagrant plugin update
