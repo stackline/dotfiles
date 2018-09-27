@@ -188,7 +188,8 @@ brew-maintenance() {
   brew upgrade
   is_mac && brew cu -a
   brew prune
-  brew cleanup
+  # Delete the cache of uninstalled formulas with the "-s" option
+  brew cleanup -s
   brew doctor
 }
 
