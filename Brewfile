@@ -112,6 +112,7 @@ cask 'virtualbox'
 ### Utility
 cask 'dropbox'
 cask 'google-japanese-ime'
+cask 'grammarly'
 cask 'hyperswitch'
 cask 'imageoptim'
 cask 'postman'
