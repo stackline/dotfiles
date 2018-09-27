@@ -193,6 +193,13 @@ initialize() {
   ### ref. https://github.com/junegunn/vim-plug#neovim
   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+  ### Install SDKMAN
+  ### ref. https://sdkman.io/install
+  ### MEMO: Install Leiningen with Homebrew
+  curl -s "https://get.sdkman.io" | bash
+  source "$HOME/.sdkman/bin/sdkman-init.sh"
+  sdk install java
+
   ### initialize Python environment
   pyenv install 2.7.15
   # An error occurs when executing old version ansible with python 3.7

@@ -9,6 +9,8 @@ brew 'atton/customs/utf8proc'
 brew 'atton/customs/tmux', args: ['HEAD']
 
 ### Runtime
+# Clojure
+brew 'leiningen'
 # Node
 brew 'nodenv'
 # Python
