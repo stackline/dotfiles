@@ -107,6 +107,8 @@ cask 'visual-studio-code'
 ### Development environment
 cask 'docker'
 cask 'vagrant'
+# MEMO: Need to allow applications downloaded from Oracle
+# ref. https://qiita.com/nemui-fujiu/items/231971609762a6562af3
 cask 'virtualbox'
 
 ### Utility
