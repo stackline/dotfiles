@@ -41,6 +41,7 @@ brew 'lftp'
 # gem command error
 # ref. https://github.com/Homebrew/homebrew-core/issues/11636
 brew 'libyaml'
+brew 'mas'
 brew 'neovim'
 brew 'nkf'
 brew 'nmap'
@@ -127,3 +128,9 @@ cask 'slack'
 # cask 'licecap'
 # cask 'paintbrush'
 # cask 'toyviewer'
+
+# --------------------------------------
+# Mac App Store
+# --------------------------------------
+# To use the iOS simulator
+mas 'Xcode', id: 497799835
