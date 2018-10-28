@@ -125,6 +125,7 @@ cask 'imageoptim'
 cask 'postman'
 cask 'skitch'
 cask 'slack'
+cask 'spectacle' # Resize windows
 # cask 'gyazo'
 # cask 'java'
 # cask 'licecap'
