@@ -102,6 +102,9 @@ cask 'tableplus'
 ### FTP Client
 cask 'cyberduck'
 
+### Terminal emulator
+cask 'iterm2'
+
 ### Editor
 # cask 'rubymine'
 cask 'visual-studio-code'
