@@ -96,6 +96,7 @@ cask 'google-chrome-canary'
 ### SQL Client
 # cask 'postico'
 # cask 'sequel-pro'
+cask 'sequel-pro-nightly'
 # cask 'teamsql'
 cask 'tableplus'
 
