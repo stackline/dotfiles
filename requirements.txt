@@ -3,3 +3,4 @@ ansible-lint; python_version < '3.0'
 # deoplete requires neovim package
 neovim
 pip
+vim-vint
