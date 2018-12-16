@@ -8,17 +8,12 @@ tap 'atton/customs'
 brew 'atton/customs/utf8proc'
 brew 'atton/customs/tmux', args: ['HEAD']
 
-### Runtime
-# Clojure
-brew 'leiningen'
-# Node
-brew 'nodenv'
-# Python
-brew 'pyenv'
-# Ruby
-brew 'rbenv'
-# Terraform
-brew 'tfenv'
+### Manager
+brew 'leiningen' # Clojure build and package manager
+brew 'nodenv'    # Node version manager
+brew 'pyenv'     # Python version manager
+brew 'rbenv'     # Ruby version manager
+brew 'tfenv'     # Terraform version manager
 
 ### Linter
 # Dockerfile
