@@ -12,6 +12,7 @@ brew 'atton/customs/tmux', args: ['HEAD']
 brew 'leiningen' # Clojure build and package manager
 brew 'nodenv'    # Node version manager
 brew 'pyenv'     # Python version manager
+brew 'pipenv'    # Python development workflow
 brew 'rbenv'     # Ruby version manager
 brew 'tfenv'     # Terraform version manager
 
