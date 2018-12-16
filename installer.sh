@@ -186,6 +186,7 @@ initialize() {
     echo $BASH_VERSION
 
     # vagrant
+    vagrant plugin install vagrant-vbguest
     vagrant plugin update
   fi
 
