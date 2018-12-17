@@ -119,7 +119,7 @@ cask 'google-japanese-ime'
 cask 'grammarly'
 cask 'hyperswitch'
 cask 'imageoptim'
-cask 'postman'
+cask 'insomnia'
 cask 'skitch'
 cask 'slack'
 cask 'spectacle' # Resize windows
