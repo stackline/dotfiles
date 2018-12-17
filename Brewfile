@@ -89,15 +89,11 @@ cask 'google-chrome'
 tap 'homebrew/cask-versions'
 cask 'google-chrome-canary'
 
-### SQL Client
-# cask 'postico'
-# cask 'sequel-pro'
-cask 'sequel-pro-nightly'
-# cask 'teamsql'
-cask 'tableplus'
-
-### FTP Client
-cask 'cyberduck'
+### Client
+cask 'cyberduck'          # FTP client
+cask 'insomnia'           # Rest client
+cask 'sequel-pro-nightly' # SQL client
+cask 'tableplus'          # SQL client
 
 ### Terminal emulator
 cask 'iterm2'
@@ -119,7 +115,6 @@ cask 'google-japanese-ime'
 cask 'grammarly'
 cask 'hyperswitch'
 cask 'imageoptim'
-cask 'insomnia'
 cask 'skitch'
 cask 'slack'
 cask 'spectacle' # Resize windows
