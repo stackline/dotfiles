@@ -125,6 +125,8 @@ GIT_PS1_SHOWUNTRACKEDFILES=1
 ### Linuxbrew
 [ -f /home/linuxbrew/.linuxbrew/etc/bash_completion ] && . /home/linuxbrew/.linuxbrew/etc/bash_completion
 [ -f /home/linuxbrew/.linuxbrew/etc/bash_completion.d/git-prompt.sh ] && source /home/linuxbrew/.linuxbrew/etc/bash_completion.d/git-prompt.sh
+# Git's completion does not work so apply the following patch.
+[ -f /home/linuxbrew/.linuxbrew/etc/bash_completion.d/git-completion.bash ] && source /home/linuxbrew/.linuxbrew/etc/bash_completion.d/git-completion.bash
 
 
 # --------------------------------------
