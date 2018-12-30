@@ -9,6 +9,8 @@
 
     // Disable
     // ----------------------------------------
+    // Folding
+    "editor.folding": false,
     // Minimap
     "editor.minimap.enabled": false,
     // Tweet feedback
