@@ -99,7 +99,6 @@ cask 'tableplus'          # SQL client
 cask 'iterm2'
 
 ### Editor
-# cask 'rubymine'
 cask 'visual-studio-code'
 cask 'visual-studio-code-insiders'
 
