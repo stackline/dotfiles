@@ -18,6 +18,8 @@
     "telemetry.enableTelemetry": false,
     // Crash reporting
     "telemetry.enableCrashReporter": false,
+    // Automatic update checks
+    "update.channel": "manual",
     // Tweet feedback
     "workbench.statusBar.feedback.visible": false,
 }
