@@ -14,10 +14,10 @@
     "editor.folding": false,
     // Minimap
     "editor.minimap.enabled": false,
-    // Tweet feedback
-    "workbench.statusBar.feedback.visible": false,
     // Telemetry reporting
     "telemetry.enableTelemetry": false,
     // Crash reporting
     "telemetry.enableCrashReporter": false,
+    // Tweet feedback
+    "workbench.statusBar.feedback.visible": false,
 }
