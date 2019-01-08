@@ -93,12 +93,12 @@ cask 'insomnia'           # Rest client
 cask 'sequel-pro-nightly' # SQL client
 cask 'tableplus'          # SQL client
 
-### Terminal emulator
-cask 'iterm2'
-
 ### Editor
 cask 'visual-studio-code'
 cask 'visual-studio-code-insiders'
+
+### Terminal emulator
+cask 'iterm2'
 
 ### Development environment
 cask 'docker'
