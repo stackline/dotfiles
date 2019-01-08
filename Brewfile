@@ -86,8 +86,6 @@ tap 'homebrew/cask'
 
 ### Browser
 cask 'google-chrome'
-tap 'homebrew/cask-versions'
-cask 'google-chrome-canary'
 
 ### Client
 cask 'cyberduck'          # FTP client
