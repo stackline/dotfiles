@@ -100,6 +100,9 @@ cask 'visual-studio-code-insiders'
 ### Terminal emulator
 cask 'iterm2'
 
+### Viewer
+cask 'adobe-acrobat-reader' # PDF Viewer
+
 ### Development environment
 cask 'docker'
 cask 'vagrant'
