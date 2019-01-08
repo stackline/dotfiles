@@ -122,11 +122,8 @@ cask 'hyperswitch'
 cask 'imageoptim'
 cask 'skitch'
 cask 'spectacle' # Resize windows
-# cask 'gyazo'
 # cask 'java'
 # cask 'licecap'
-# cask 'paintbrush'
-# cask 'toyviewer'
 
 # --------------------------------------
 # Mac App Store
