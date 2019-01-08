@@ -93,6 +93,10 @@ cask 'insomnia'           # Rest client
 cask 'sequel-pro-nightly' # SQL client
 cask 'tableplus'          # SQL client
 
+### Communication tool
+cask 'slack'
+cask 'zoomus'
+
 ### Editor
 cask 'visual-studio-code'
 cask 'visual-studio-code-insiders'
@@ -117,7 +121,6 @@ cask 'grammarly'
 cask 'hyperswitch'
 cask 'imageoptim'
 cask 'skitch'
-cask 'slack'
 cask 'spectacle' # Resize windows
 # cask 'gyazo'
 # cask 'java'
