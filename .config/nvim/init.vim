@@ -206,4 +206,6 @@ endfunction
 command! GitUrl call GitUrl()
 
 
+" Delete unnecessary trailing spaces
+autocmd BufWritePre * :%s/\s\+$//ge
 
