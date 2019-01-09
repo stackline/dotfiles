@@ -16,8 +16,6 @@ Plug 'tpope/vim-fugitive' " git wrapper
 " ----------------------------------------
 Plug 'airblade/vim-gitgutter' " git diff
 Plug 'itchyny/lightline.vim'  " statusline
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'ntpeters/vim-better-whitespace'
 
 " ----------------------------------------
 " incremental search
@@ -39,15 +37,6 @@ Plug 'cocopon/iceberg.vim' " color scheme
 Plug 'slim-template/vim-slim' " slim
 
 call plug#end()
-
-
-" --------------------------------------
-" vim-better-whitespace
-" --------------------------------------
-highlight ExtraWhitespace ctermbg=red
-let g:better_whitespace_enabled=1
-let g:strip_whitespace_on_save=1
-
 
 " --------------------------------------
 " ctags
@@ -217,12 +206,4 @@ endfunction
 command! GitUrl call GitUrl()
 
 
-" --------------------------------------
-" vim-indent-guides
-" --------------------------------------
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-autocmd VimEnter,Colorscheme * hi IndentGuidesEven ctermbg=235
-autocmd VimEnter,Colorscheme * hi IndentGuidesOdd  ctermbg=236
 
