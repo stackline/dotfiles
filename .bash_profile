@@ -254,6 +254,10 @@ peco-select-history() {
 }
 bind -x '"\C-r": peco-select-history'
 
+check-trailing-character-hexdump() {
+  tail -c 1 "$1" | xxd -p
+}
+
 # Delete PATH dupulication
 # ref. https://qiita.com/b4b4r07/items/45d34a434f05aa896d69
 alias check-path='echo $PATH | perl -pe "s/:/\n/g"'
