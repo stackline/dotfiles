@@ -33,7 +33,7 @@ Plug 'tpope/vim-endwise'
 " ----------------------------------------
 " syntax highlight
 " ----------------------------------------
-Plug 'cocopon/iceberg.vim' " color scheme
+Plug 'morhetz/gruvbox' " color scheme
 Plug 'slim-template/vim-slim' " slim
 
 call plug#end()
@@ -87,7 +87,7 @@ endfunction
 " show relative path
 " ref. https://github.com/itchyny/lightline.vim/issues/87#issuecomment-189616314
 let g:lightline = {
-      \ 'colorscheme': 'iceberg',
+      \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'repository', 'relativepath', 'modified' ] ]
       \ },
@@ -138,7 +138,7 @@ nnoremap <silent> tp :tabprevious<CR>
 " --------------------------------------
 " common
 " --------------------------------------
-colorscheme iceberg
+colorscheme gruvbox
 set number
 set list
 set nowrap
