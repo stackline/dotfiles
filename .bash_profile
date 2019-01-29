@@ -184,7 +184,19 @@ alias pip3-uninstall-all-packages='pip3 freeze | xargs pip3 uninstall -y'
 # ref. https://darryldias.me/12/remove-all-installed-homebrew-packages/
 alias brew-remove-all-installed-packages='brew list | xargs brew remove --force --ignore-dependencies'
 
-# Maintain Homebrew packages
+# Update packages
+# Visual Studio Code
+update-vscode-extensions() {
+  local installed_extensions
+  # @see https://github.com/koalaman/shellcheck/wiki/SC2207
+  mapfile -t installed_extensions < <(code --list-extensions)
+
+  for e in "${installed_extensions[@]}"; do
+    code --install-extension "${e}" --force
+  done
+}
+
+# Homebrew
 brew-maintenance() {
   brew update
   brew upgrade
