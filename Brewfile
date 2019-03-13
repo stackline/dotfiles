@@ -83,6 +83,7 @@ brew 'bash'
 ### Taps
 tap 'buo/cask-upgrade'
 tap 'homebrew/cask'
+tap 'homebrew/cask-versions' # for sequel-pro-nightly
 
 ### Browser
 cask 'chromium'
