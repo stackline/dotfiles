@@ -85,7 +85,8 @@ tap 'buo/cask-upgrade'
 tap 'homebrew/cask'
 
 ### Browser
-cask 'firefox'
+cask 'chromium'
+# cask 'firefox'
 cask 'google-chrome'
 
 ### Client
