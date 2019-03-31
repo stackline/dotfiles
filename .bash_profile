@@ -155,6 +155,7 @@ alias gl='git log'
 alias glp='git log -p'
 alias gpp='git pull -p'
 alias gs='git status'
+alias grep='grep --color=auto' # colorize the output
 alias less='less -R'
 alias ll='ls -al'
 alias rg='rg -i'
