@@ -198,6 +198,17 @@ update-vscode-extensions() {
 }
 
 # Homebrew
+
+# Avoid pyenv warnings when executing brew doctor
+# ref. https://github.com/pyenv/pyenv/issues/106#issuecomment-190418988
+brew() {
+  if command -v pyenv > /dev/null 2>&1; then
+    env PATH="${PATH//$(pyenv root)\/shims:/}" command brew "$@"
+  else
+    command brew "$@"
+  fi
+}
+
 brew-maintenance() {
   brew update
   brew upgrade
