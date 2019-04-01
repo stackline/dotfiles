@@ -203,7 +203,7 @@ update-vscode-extensions() {
 # ref. https://github.com/pyenv/pyenv/issues/106#issuecomment-190418988
 brew() {
   if command -v pyenv > /dev/null 2>&1; then
-    env PATH="${PATH//$(pyenv root)\/shims:/}" command brew "$@"
+    PATH="${PATH//$(pyenv root)\/shims:/}" command brew "$@"
   else
     command brew "$@"
   fi
