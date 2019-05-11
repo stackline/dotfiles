@@ -26,7 +26,13 @@ Plug 'mileszs/ack.vim'    " code search
 " ----------------------------------------
 " auto complete
 " ----------------------------------------
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', { 'on': [] }
+augroup load_us_ycm
+  autocmd!
+  autocmd InsertEnter * call plug#load('deoplet.nvim')
+                     \| autocmd! load_us_ycm
+augroup END
+
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-endwise'
 " Language server protocol
