@@ -29,6 +29,12 @@ Plug 'mileszs/ack.vim'    " code search
 Plug 'Shougo/deoplete.nvim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-endwise'
+" Language server protocol
+Plug 'prabirshrestha/async.vim', { 'for': 'ruby' }
+Plug 'prabirshrestha/asyncomplete.vim', { 'for': 'ruby' }
+Plug 'prabirshrestha/asyncomplete-lsp.vim', { 'for': 'ruby' }
+Plug 'prabirshrestha/vim-lsp', { 'for': 'ruby' }
+Plug 'lighttiger2505/deoplete-vim-lsp'
 
 " ----------------------------------------
 " syntax highlight
@@ -105,6 +111,42 @@ let g:deoplete#enable_at_startup = 1
 set completeopt+=noinsert
 " complement with the tab key
 inoremap <expr> <Tab> pumvisible() ? "\<Enter>" : "\<Tab>"
+
+
+" --------------------------------------
+" vim-lsp
+"
+" Setup
+"
+"   1. Install vim-lsp plugin
+"   2. Install solargraph gem on ruby to execute via rbenv
+"      ref. https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Ruby
+"   3. Add .solargraph.yml
+"      ref. https://github.com/castwide/solargraph/issues/152
+"
+" Debugging
+"
+"   ref. https://github.com/prabirshrestha/vim-lsp#debugging
+"
+" --------------------------------------
+if executable('solargraph')
+  augroup LspRuby
+    autocmd!
+    " gem install solargraph
+    au User lsp_setup call lsp#register_server({
+      \ 'name': 'solargraph',
+      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
+      \ 'initialization_options': {"diagnostics": "true"},
+      \ 'whitelist': ['ruby'],
+      \ })
+  augroup END
+endif
+
+" Disable vim-lsp diagnostics support to linting with ALE
+let g:lsp_diagnostics_enabled = 0
+
+" (Disable) Use vim-lsp 'go to definision' instead of tag jump
+" nmap <C-]> :LspDefinition<CR>
 
 
 " --------------------------------------
