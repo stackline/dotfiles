@@ -197,6 +197,13 @@ update-vscode-extensions() {
   done
 }
 
+# Vim
+# modifiable config are required when writing file.
+update-vim-plugins() {
+  nvim -c 'PlugUpdate' -c 'set modifiable' -c '%w /tmp/vim-plug.log' -c 'qa'
+  cat /tmp/vim-plug.log
+}
+
 # Homebrew
 
 # Avoid pyenv warnings when executing brew doctor
