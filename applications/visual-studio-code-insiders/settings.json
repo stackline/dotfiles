@@ -1,4 +1,7 @@
 {
+    // Editor
+    "editor.fontFamily": "'Source Han Code JP', Menlo, Monaco, 'Courier New', monospace",
+
     // Extensions
     // ----------------------------------------
     // Vim
