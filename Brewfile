@@ -126,7 +126,6 @@ cask 'grammarly'
 cask 'hyperswitch'
 cask 'imageoptim'
 cask 'skitch'
-cask 'spectacle' # Resize windows
 # cask 'java'
 # cask 'licecap'
 
