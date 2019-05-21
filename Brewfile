@@ -103,7 +103,6 @@ cask 'zoomus'
 
 ### Editor
 cask 'visual-studio-code'
-cask 'visual-studio-code-insiders'
 
 ### Terminal emulator
 cask 'iterm2'
