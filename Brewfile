@@ -105,6 +105,7 @@ cask 'zoomus'
 cask 'visual-studio-code'
 
 ### Terminal emulator
+# cask 'alacritty'
 cask 'iterm2'
 
 ### Viewer
