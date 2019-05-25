@@ -54,6 +54,7 @@ create_git_config_file() {
   ### ghq
   # shellcheck disable=SC2088
   git config --global ghq.root "~/dev/src"
+  git config --global ghq.vcs "git"
 }
 
 # --------------------------------------
