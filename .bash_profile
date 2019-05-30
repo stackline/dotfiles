@@ -66,7 +66,9 @@ fi
 
 # common
 export HOMEBREW_NO_ANALYTICS=1
-
+# Fail on the failure of installation from a bottle
+# rather than falling back to building from source.
+export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
 
 # --------------------------------------
 # Node
