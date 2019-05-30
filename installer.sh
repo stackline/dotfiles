@@ -76,7 +76,6 @@ create_symbolic_links() {
   mkdir ~/.composer
   mkdir ~/.config
   mkdir ~/.config/nvim
-  mkdir ~/.config/peco
   mkdir ~/.config/pip
 
   ### root directory
@@ -96,7 +95,6 @@ create_symbolic_links() {
 
   ### .config directory
   ln -fsv "${dotfiles_root_dir}"/.config/nvim/init.vim ~/.config/nvim/init.vim
-  ln -fsv "${dotfiles_root_dir}"/.config/peco/config.json ~/.config/peco/config.json
   ln -fsv "${dotfiles_root_dir}"/.config/pip/pip.conf ~/.config/pip/pip.conf
 
   ### Homebrew's install path
