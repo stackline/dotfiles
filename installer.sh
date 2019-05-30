@@ -5,7 +5,6 @@
 # --------------------------------------
 readonly RUBY_PACKAGES=(
   mailcatcher
-  neovim # required for deoplete-ruby
   rubocop
   rubocop-rspec
   slim_lint

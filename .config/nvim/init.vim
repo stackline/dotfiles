@@ -24,23 +24,15 @@ Plug 'ctrlpvim/ctrlp.vim' " file search
 Plug 'mileszs/ack.vim'    " code search
 
 " ----------------------------------------
+" LSP client
+" ----------------------------------------
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+
+" ----------------------------------------
 " auto complete
 " ----------------------------------------
-Plug 'Shougo/deoplete.nvim', { 'on': [] }
-augroup load_us_ycm
-  autocmd!
-  autocmd InsertEnter * call plug#load('deoplet.nvim')
-                     \| autocmd! load_us_ycm
-augroup END
-
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-endwise'
-" Language server protocol
-Plug 'prabirshrestha/async.vim', { 'for': 'ruby' }
-Plug 'prabirshrestha/asyncomplete.vim', { 'for': 'ruby' }
-Plug 'prabirshrestha/asyncomplete-lsp.vim', { 'for': 'ruby' }
-Plug 'prabirshrestha/vim-lsp', { 'for': 'ruby' }
-Plug 'lighttiger2505/deoplete-vim-lsp'
 
 " ----------------------------------------
 " syntax highlight
@@ -56,7 +48,6 @@ call plug#end()
 " Show the list when it has many candidates
 nnoremap <C-]> g<C-]>
 au BufNewFile,BufRead *.php set tags+=~/.cache/ctags/php.tags
-
 
 " --------------------------------------
 " ctrlp
@@ -107,52 +98,6 @@ let g:lightline = {
       \   'repository': 'MyRepository'
       \ }
       \ }
-
-
-" --------------------------------------
-" deoplete
-" --------------------------------------
-let g:deoplete#enable_at_startup = 1
-" focus first word by default
-set completeopt+=noinsert
-" complement with the tab key
-inoremap <expr> <Tab> pumvisible() ? "\<Enter>" : "\<Tab>"
-
-
-" --------------------------------------
-" vim-lsp
-"
-" Setup
-"
-"   1. Install vim-lsp plugin
-"   2. Install solargraph gem on ruby to execute via rbenv
-"      ref. https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Ruby
-"   3. Add .solargraph.yml
-"      ref. https://github.com/castwide/solargraph/issues/152
-"
-" Debugging
-"
-"   ref. https://github.com/prabirshrestha/vim-lsp#debugging
-"
-" --------------------------------------
-if executable('solargraph')
-  augroup LspRuby
-    autocmd!
-    " gem install solargraph
-    au User lsp_setup call lsp#register_server({
-      \ 'name': 'solargraph',
-      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
-      \ 'initialization_options': {"diagnostics": "true"},
-      \ 'whitelist': ['ruby'],
-      \ })
-  augroup END
-endif
-
-" Disable vim-lsp diagnostics support to linting with ALE
-let g:lsp_diagnostics_enabled = 0
-
-" (Disable) Use vim-lsp 'go to definision' instead of tag jump
-" nmap <C-]> :LspDefinition<CR>
 
 
 " --------------------------------------
@@ -259,4 +204,126 @@ command! GitUrl call GitUrl()
 
 " Delete unnecessary trailing spaces
 autocmd BufWritePre * :%s/\s\+$//ge
+
+
+" --------------------------------------
+" coc.nvim
+" ref. https://github.com/neoclide/coc.nvim#example-vim-configuration
+" --------------------------------------
+" if hidden is not set, TextEdit might fail.
+set hidden
+
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
+
+" Better display for messages
+set cmdheight=2
+
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+
+" Use `[c` and `]c` to navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add diagnostic info for https://github.com/itchyny/lightline.vim
+" let g:lightline = {
+"       \ 'colorscheme': 'wombat',
+"       \ 'active': {
+"       \   'left': [ [ 'mode', 'paste' ],
+"       \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+"       \ },
+"       \ 'component_function': {
+"       \   'cocstatus': 'coc#status'
+"       \ },
+"       \ }
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 

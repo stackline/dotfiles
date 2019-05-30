@@ -78,6 +78,8 @@ eval "$(nodenv init -)"
 # use lint tools globally
 export PATH="$HOME/dev/src/github.com/stackline/dotfiles/node_modules/.bin:$PATH"
 
+# Use yarn with coc.nvim
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # --------------------------------------
 # Ruby
