@@ -37,7 +37,6 @@ brew 'lftp'
 # gem command error
 # ref. https://github.com/Homebrew/homebrew-core/issues/11636
 brew 'libyaml'
-brew 'mas'
 brew 'neovim'
 brew 'nkf'
 brew 'nmap'
@@ -76,6 +75,9 @@ return unless /darwin/ =~ RUBY_PLATFORM
 # Use bash 4.x in order to use READLINE_LINE in peco-select-history function
 # ref. https://rcmdnk.com/blog/2015/05/25/computer-mac-bash-zsh/
 brew 'bash'
+
+# Mac App Store command line interface
+brew 'mas'
 
 # --------------------------------------
 # Homebrew-Cask packages
