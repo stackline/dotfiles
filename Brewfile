@@ -5,7 +5,7 @@
 # Patched tmux that displays a horizontal split line as single-byte characters
 # ref. https://attonblog.blogspot.com/2018/04/tmux-27.html
 tap 'atton/customs'
-brew 'atton/customs/utf8proc'
+brew 'utf8proc'
 brew 'atton/customs/tmux', args: ['HEAD']
 
 ### Manager
