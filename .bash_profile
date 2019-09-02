@@ -58,7 +58,12 @@ if is_linux; then
   # - Error: node_modules/pngquant-bin/vendor/pngquant: error while loading shared libraries: libpng12.so.0: cannot open shared object file: No such file or directory
   #
   # Also, homebrew's libpng package is version 1.6.
-  export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib64"
+  #
+  # The following error occurs in CentOS7.
+  #
+  # - tput: relocation error: /usr/lib64/libc.so.6: symbol _dl_starting_up, version GLIBC_PRIVATE not defined in file ld-linux-x86-64.so.2 with link time reference
+  #
+  # export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib64"
 fi
 
 if is_mac; then
