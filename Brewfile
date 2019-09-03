@@ -29,6 +29,8 @@ brew 'gem-completion'
 
 ### Utility
 brew 'composer'
+brew 'fd'
+brew 'fzf'
 brew 'ghq'
 brew 'git'
 # imagemagick has many dependencies.
