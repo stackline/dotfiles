@@ -41,9 +41,6 @@ if is_linux; then
   export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
   export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
 
-  # MySQL client is necessary to install mysql2 gem.
-  export PATH="/home/linuxbrew/.linuxbrew/opt/mysql@5.7/bin:$PATH"
-
   # PostgreSQL pg_config is necessary to install pg gem.
   # ref. https://bitbucket.org/ged/ruby-pg/wiki/Home
   export PATH="/home/linuxbrew/.linuxbrew/opt/postgresql@9.5/bin:$PATH"
