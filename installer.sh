@@ -51,8 +51,6 @@ create_git_config_file() {
   git config --global diff.wsErrorHighlight "all"
 
   ### ghq
-  # shellcheck disable=SC2088
-  git config --global ghq.root "~/dev/src"
   git config --global ghq.vcs "git"
 }
 
@@ -70,7 +68,6 @@ create_symbolic_links() {
   echo current directory is "${dotfiles_root_dir}"
 
   ### make directories
-  mkdir ~/dev/src # use git repositories
   mkdir ~/.bundle
   mkdir ~/.ctags.d
   mkdir ~/.composer
@@ -101,7 +98,7 @@ create_symbolic_links() {
   ln -fsv "$(brew --prefix)"/opt/git/share/git-core/contrib/diff-highlight/diff-highlight "$(brew --prefix)"/bin
 
   ### Visual Studio Code Insiders
-  ln -fsv "$HOME/dev/src/github.com/stackline/dotfiles/applications/visual-studio-code-insiders/settings.json" "$HOME/Library/Application Support/Code - Insiders/User/settings.json"
+  ln -fsv "$HOME/.ghq/github.com/stackline/dotfiles/applications/visual-studio-code-insiders/settings.json" "$HOME/Library/Application Support/Code - Insiders/User/settings.json"
 }
 
 # --------------------------------------
