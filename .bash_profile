@@ -69,6 +69,16 @@ export HOMEBREW_NO_ANALYTICS=1
 # rather than falling back to building from source.
 export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
 
+# Avoid error when starting tmux
+# ref. https://astropengu.in/blog/12/
+#
+# Package bash-completion was not found in the pkg-config search path.
+# Perhaps you should add the directory containing `bash-completion.pc'
+# to the PKG_CONFIG_PATH environment variable
+# No package 'bash-completion' found
+# -bash: /yum: No such file or directory
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/share/pkgconfig
+
 # --------------------------------------
 # Node
 # --------------------------------------
