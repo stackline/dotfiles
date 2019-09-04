@@ -26,7 +26,7 @@ Plug 'mileszs/ack.vim'    " code search
 " ----------------------------------------
 " LSP client
 " ----------------------------------------
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " ----------------------------------------
 " auto complete
