@@ -93,7 +93,6 @@ tap 'homebrew/cask-versions' # for sequel-pro-nightly
 
 ### Browser
 cask 'chromium'
-cask 'firefox'
 cask 'google-chrome'
 
 ### Client
