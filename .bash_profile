@@ -59,6 +59,7 @@ if is_linux; then
 fi
 
 if is_mac; then
+  export PATH="/usr/local/sbin:$PATH" # for Homebrew's sbin
   export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
   export PATH="/usr/local/opt/postgresql@9.5/bin:$PATH"
 fi
