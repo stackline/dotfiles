@@ -39,9 +39,9 @@ create_git_config_file() {
   ### diff
   # Highlight diff
   # ref. https://github.com/git/git/tree/master/contrib/diff-highlight
-  git config --global pager.log "diff-highlight | less"
-  git config --global pager.show "diff-highlight | less"
-  git config --global pager.diff "diff-highlight | less"
+  git config --global pager.log "(diff-highlight 2>/dev/null || cat) | less"
+  git config --global pager.show "(diff-highlight 2>/dev/null || cat) | less"
+  git config --global pager.diff "(diff-highlight 2>/dev/null || cat) | less"
 
   # Customized color for diff
   # ref. https://git-scm.com/docs/git-config#git-config-colordiffltslotgt
