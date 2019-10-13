@@ -8,8 +8,6 @@ Plug 'ludovicchabant/vim-gutentags' " ctags generator
 Plug 'tpope/vim-fugitive' " git wrapper
 " Plug 'tpope/vim-rails'
 " Plug 'joonty/vdebug', { 'rev': 'v1.5.2' }
-" Plug 'Shougo/neosnippet.vim'
-" Plug 'Shougo/neosnippet-snippets'
 
 " ----------------------------------------
 " additional information
