@@ -25,36 +25,6 @@ is_linux() {
 }
 
 # --------------------------------------
-# Create global .gitconfig file
-# --------------------------------------
-create_git_config_file() {
-  ### user
-  [ "$GIT_GLOBAL_USER_NAME" ] && git config --global user.name "$GIT_GLOBAL_USER_NAME"
-  [ "$GIT_GLOBAL_USER_EMAIL" ] && git config --global user.email "$GIT_GLOBAL_USER_EMAIL"
-
-  ### core
-  # shellcheck disable=SC2088
-  git config --global core.excludesfile "~/.gitignore_global"
-
-  ### diff
-  # Highlight diff
-  # ref. https://github.com/git/git/tree/master/contrib/diff-highlight
-  git config --global pager.log "(diff-highlight 2>/dev/null || cat) | less"
-  git config --global pager.show "(diff-highlight 2>/dev/null || cat) | less"
-  git config --global pager.diff "(diff-highlight 2>/dev/null || cat) | less"
-
-  # Customized color for diff
-  # ref. https://git-scm.com/docs/git-config#git-config-colordiffltslotgt
-  git config --global color.diff.meta "magenta normal"
-
-  # Highlight whitespace
-  git config --global diff.wsErrorHighlight "all"
-
-  ### ghq
-  git config --global ghq.vcs "git"
-}
-
-# --------------------------------------
 # Create symbolic links to files and directories
 # --------------------------------------
 create_symbolic_links() {
@@ -80,6 +50,7 @@ create_symbolic_links() {
   ln -fsv "${dotfiles_root_dir}"/.bash_profile ~/.bash_profile
   ln -fsv "${dotfiles_root_dir}"/.eslintrc.js ~/.eslintrc.js
   ln -fsv "${dotfiles_root_dir}"/.gemrc ~/.gemrc
+  ln -fsv "${dotfiles_root_dir}"/.gitconfig ~/.gitconfig
   ln -fsv "${dotfiles_root_dir}"/.gitignore_global ~/.gitignore_global
   ln -fsv "${dotfiles_root_dir}"/.htmllintrc ~/.htmllintrc
   ln -fsv "${dotfiles_root_dir}"/.pryrc ~/.pryrc
@@ -222,7 +193,6 @@ execute() {
 }
 
 execute_all() {
-  execute create_git_config_file
   execute create_symbolic_links
   execute install_homebrew_packages
   execute install_python2_packages
@@ -236,7 +206,6 @@ usage() {
 usage: sh installer.sh <option>
 option:
   a:  execute all
-  g:  create .gitconfig file
   h:  install Homebrew packages
   n:  install Node packages
   p2: install Python2 packages
@@ -251,7 +220,6 @@ eval "$(cat ~/.env)"
 
 case $1 in
   a) execute execute_all ;;
-  g) execute create_git_config_file ;;
   h) execute install_homebrew_packages ;;
   n) execute install_node_packages ;;
   p2) execute install_python2_packages ;;

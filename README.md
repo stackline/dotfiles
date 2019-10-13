@@ -1,5 +1,12 @@
 # dotfiles
 
+## Append user local git settings to ~/.gitconfig_local
+
+```bash
+$ git config --file ~/.gitconfig_local user.name "User name"
+$ git config --file ~/.gitconfig_local user.email "username@example.com"
+```
+
 ## How to install PHP 7 and PHPStan
 
 Install PHP 7 to use PHPStan. However, linuxbrew and phpenv have errors, so build.

@@ -1,0 +1,19 @@
+[core]
+  excludesfile = ~/.gitignore_global
+[include]
+  # User local settings
+  path = ~/.gitconfig_local
+[pager]
+  # ref. https://github.com/git/git/tree/master/contrib/diff-highlight
+  log  = (diff-highlight 2>/dev/null || cat) | less
+  show = (diff-highlight 2>/dev/null || cat) | less
+  diff = (diff-highlight 2>/dev/null || cat) | less
+[color "diff"]
+  # Customized color for diff
+  # ref. https://git-scm.com/docs/git-config#git-config-colordiffltslotgt
+  meta = magenta normal
+[diff]
+  # Highlight whitespace
+  wsErrorHighlight = all
+[ghq]
+  vcs = git
