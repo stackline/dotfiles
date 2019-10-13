@@ -8,6 +8,9 @@
   log  = (diff-highlight 2>/dev/null || cat) | less
   show = (diff-highlight 2>/dev/null || cat) | less
   diff = (diff-highlight 2>/dev/null || cat) | less
+[interactive]
+  # Use diff-highlight with "git add --patch"
+  diffFilter = (diff-highlight 2>/dev/null || cat)
 [color "diff"]
   # Customized color for diff
   # ref. https://git-scm.com/docs/git-config#git-config-colordiffltslotgt
