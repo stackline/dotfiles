@@ -44,6 +44,7 @@ create_symbolic_links() {
   mkdir ~/.config
   mkdir ~/.config/nvim
   mkdir ~/.config/pip
+  mkdir ~/.docker
 
   ### root directory
   ln -fsv "${dotfiles_root_dir}"/.ansible-lint ~/.ansible-lint
@@ -60,6 +61,7 @@ create_symbolic_links() {
   ln -fsv "${dotfiles_root_dir}"/.bundle/config ~/.bundle/config
   ln -fsv "${dotfiles_root_dir}"/.ctags.d/config.ctags ~/.ctags.d/config.ctags
   ln -fsv "${dotfiles_root_dir}"/.composer/composer.json ~/.composer/composer.json
+  ln -fsv "${dotfiles_root_dir}"/.docker/config.json ~/.docker/config.json
 
   ### .config directory
   ln -fsv "${dotfiles_root_dir}"/.config/nvim/init.vim ~/.config/nvim/init.vim
