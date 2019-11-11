@@ -94,6 +94,9 @@ tap 'homebrew/cask-versions' # for sequel-pro-nightly
 ### Browser
 cask 'chromium'
 cask 'google-chrome'
+# In November 2019, using Google Sheets with Firefox inserts unnecessary line breaks
+# ref. https://support.google.com/docs/thread/18235069?hl=en
+# cask 'firefox'
 
 ### Client
 cask 'cyberduck'          # FTP client
