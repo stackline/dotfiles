@@ -110,7 +110,7 @@ cask 'visual-studio-code'
 
 ### Terminal emulator
 # cask 'alacritty'
-cask 'hyper'
+cask 'iterm2'
 
 ### Viewer
 cask 'adobe-acrobat-reader' # PDF Viewer
