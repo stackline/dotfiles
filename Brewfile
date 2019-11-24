@@ -87,8 +87,7 @@ brew 'mas'
 ### Taps
 tap 'buo/cask-upgrade'
 tap 'homebrew/cask'
-tap 'homebrew/cask-fonts'    # for font-source-han-code-jp
-tap 'homebrew/cask-versions' # for sequel-pro-nightly
+tap 'homebrew/cask-fonts' # for font-source-han-code-jp
 
 ### Browser
 cask 'chromium'
@@ -100,7 +99,6 @@ cask 'google-chrome'
 ### Client
 cask 'cyberduck'          # FTP client
 cask 'insomnia'           # Rest client
-cask 'sequel-pro-nightly' # SQL client
 cask 'tableplus'          # SQL client
 
 ### Communication tool
