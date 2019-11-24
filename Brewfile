@@ -45,10 +45,8 @@ brew 'nmap'
 brew 'peco'
 brew 'ripgrep'
 brew 'tree'
-# Specify "--without-doc" option since compilation error occurs
-# error: option --no-user-cfg not recognized
 tap 'universal-ctags/universal-ctags'
-brew 'universal-ctags', args: ['without-doc', 'HEAD']
+brew 'universal-ctags', args: ['HEAD']
 brew 'wget'
 
 ### Database
