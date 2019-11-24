@@ -114,6 +114,7 @@ cask 'hyper'
 
 ### Viewer
 cask 'adobe-acrobat-reader' # PDF Viewer
+cask 'kindle' # Kindle books Viewer
 
 ### Development environment
 cask 'docker'
