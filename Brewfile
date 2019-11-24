@@ -45,7 +45,9 @@ brew 'peco'
 brew 'ripgrep'
 brew 'tree'
 tap 'universal-ctags/universal-ctags'
-brew 'universal-ctags', args: ['HEAD']
+# Specify the without-xml option to avoid the following errors with Linuxbrew
+# Log: ./main/lxpath.h:21:26: fatal error: libxml/xpath.h: No such file or directory
+brew 'universal-ctags', args: ['without-xml', 'HEAD']
 brew 'wget'
 
 ### Database
