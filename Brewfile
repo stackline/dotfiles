@@ -9,7 +9,6 @@ brew 'utf8proc'
 brew 'atton/customs/tmux', args: ['HEAD']
 
 ### Manager
-brew 'leiningen' # Clojure build and package manager
 brew 'nodenv'    # Node version manager
 brew 'pyenv'     # Python version manager
 brew 'pipenv'    # Python development workflow
