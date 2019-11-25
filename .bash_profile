@@ -301,21 +301,6 @@ select-command-from-history() {
 }
 bind -x '"\C-r": select-command-from-history'
 
-pdns-cli-search() {
-  local query
-  local dns_record
-  # local domain_with_dot
-  # local domain
-
-  query="$1"
-  dns_record=$(pdns-cli list | peco --query "$query")
-  echo "$dns_record"
-
-  # domain_with_dot=$(echo "$dns_record" | awk '{print $1}')
-  # # shellcheck disable=SC2001
-  # domain=$(echo "$domain_with_dot" | sed -e "s/\.$//")
-}
-
 check-trailing-character-hexdump() {
   tail -c 1 "$1" | xxd -p
 }
