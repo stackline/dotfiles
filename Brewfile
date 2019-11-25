@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # --------------------------------------
 # Homebrew packages
 # --------------------------------------
@@ -46,8 +48,11 @@ brew 'ripgrep'
 brew 'tree'
 tap 'universal-ctags/universal-ctags'
 # Specify the without-xml option to avoid the following errors with Linuxbrew
-# Log: ./main/lxpath.h:21:26: fatal error: libxml/xpath.h: No such file or directory
-brew 'universal-ctags', args: ['without-xml', 'HEAD']
+#
+#   ./main/lxpath.h:21:26:
+#   fatal error: libxml/xpath.h: No such file or directory
+#
+brew 'universal-ctags', args: %w[without-xml HEAD]
 brew 'wget'
 
 ### Database
@@ -106,7 +111,7 @@ tap 'homebrew/cask-fonts' # for font-source-han-code-jp
 ### Browser
 cask 'chromium'
 cask 'google-chrome'
-# In November 2019, using Google Sheets with Firefox inserts unnecessary line breaks
+# Using Google Sheets with Firefox inserts unnecessary line breaks
 # ref. https://support.google.com/docs/thread/18235069?hl=en
 # cask 'firefox'
 
@@ -151,4 +156,4 @@ cask 'skitch'
 # Mac App Store
 # --------------------------------------
 # To use the iOS simulator
-mas 'Xcode', id: 497799835
+mas 'Xcode', id: 497_799_835
