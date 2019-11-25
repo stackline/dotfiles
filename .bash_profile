@@ -292,14 +292,14 @@ alias g='go-to-repository'
 
 # Select a command from history interactively
 # ref. https://qiita.com/comuttun/items/f54e755f22508a6c7d78
-peco-select-history() {
+select-command-from-history() {
   local selected_command
-  selected_command=$(history | sort -k1,1nr | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | peco --query "$READLINE_LINE")
+  selected_command=$(history | sort -k1,1nr | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | fzf --reverse --query "$READLINE_LINE")
 
   READLINE_LINE="$selected_command"
   READLINE_POINT=${#selected_command}
 }
-bind -x '"\C-r": peco-select-history'
+bind -x '"\C-r": select-command-from-history'
 
 pdns-cli-search() {
   local query
