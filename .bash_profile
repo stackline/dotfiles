@@ -290,6 +290,16 @@ go-to-repository() {
 }
 alias g='go-to-repository'
 
+jump-to-directory() {
+  local selected_dir
+  selected_dir=$(fd --no-ignore --type d | fzf --reverse)
+
+  if [ "$selected_dir" ]; then
+    cd "$selected_dir" || return
+  fi
+}
+alias j='jump-to-directory'
+
 # Select a command from history interactively
 # ref. https://qiita.com/comuttun/items/f54e755f22508a6c7d78
 select-command-from-history() {
