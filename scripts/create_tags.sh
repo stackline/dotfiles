@@ -17,7 +17,7 @@ log 'start'
 readonly PHP_TAGS="$HOME/.cache/ctags/php.tags"
 readonly TEMPORARY_PHP_TAGS="$HOME/.cache/ctags/_php.tags"
 
-ctags -R --languages=PHP -f "$TEMPORARY_PHP_TAGS" "$1" "$2"
+ctags -R --languages=PHP -f "$TEMPORARY_PHP_TAGS" "$1" "$2" "$3"
 
 [ -e "$PHP_TAGS" ] && rm "$PHP_TAGS"
 mv "$TEMPORARY_PHP_TAGS" "$PHP_TAGS"
