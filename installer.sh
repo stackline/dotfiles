@@ -133,6 +133,8 @@ initialize() {
     # Install Linuxbrew in "/home/linuxbrew/.linuxbrew" instead of "$HOME/.linuxbrew"
     # because pre-compiled binary bottles can only be used in "/home/linuxbrew/.linuxbrew"
     # ref. https://github.com/Linuxbrew/brew/issues/452#issuecomment-321108383
+    #
+    export HOMEBREW_FORCE_VENDOR_RUBY=1 # Use portable ruby
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 
     # Homebrew bundle
