@@ -54,7 +54,7 @@ brew 'wget'
 # Using redis-cli
 brew 'redis'
 
-### required for package installation
+### required for installation
 # [Node] jpegoptim requires libjpeg version 6b or later.
 # ref. https://github.com/tjko/jpegoptim#readme
 brew 'jpeg'
@@ -66,6 +66,15 @@ brew 'libffi'
 # MEMO: You need to specify the path to the 'pg_config'
 # ref. https://bitbucket.org/ged/ruby-pg/wiki/Home
 brew 'postgresql@9.5'
+
+if RUBY_PLATFORM.include?('linux')
+  # If you do not have this package when installing ruby via rbenv,
+  # the following error will occur.
+  #
+  #   configure: error: gettimeofday() must exist
+  #
+  brew 'linux-headers'
+end
 
 # Mac OS only install below packages.
 return unless /darwin/ =~ RUBY_PLATFORM
