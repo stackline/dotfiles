@@ -137,10 +137,6 @@ initialize() {
 
     # Homebrew bundle
     brew bundle
-
-    # Warning: You have unlinked kegs in your Cellar
-    # ref. https://github.com/Linuxbrew/homebrew-core/issues/7624
-    brew link --overwrite util-linux
   fi
   if is_mac; then
     # Install Homebrew
