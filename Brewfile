@@ -74,6 +74,11 @@ if RUBY_PLATFORM.include?('linux')
   #   configure: error: gettimeofday() must exist
   #
   brew 'linux-headers'
+
+  # GCC and glibc are used in the basic part of linuxbrew.
+  # If it is deleted, an error occurs during package installation
+  # or application execution.
+  brew 'gcc'
 end
 
 # Mac OS only install below packages.
