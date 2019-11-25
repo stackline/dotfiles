@@ -34,7 +34,7 @@ set +a
 if is_linux; then
 
   # Linuxbrew
-  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
   # PostgreSQL pg_config is necessary to install pg gem.
   # ref. https://bitbucket.org/ged/ruby-pg/wiki/Home
