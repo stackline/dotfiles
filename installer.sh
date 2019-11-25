@@ -139,6 +139,15 @@ initialize() {
 
     # Homebrew bundle
     brew bundle -v
+
+    # If you do not have this setting when installing ruby via rbenv,
+    # the following error will occur.
+    #
+    #   The Ruby openssl extension was not compiled.
+    #   ERROR: Ruby install aborted due to missing extensions
+    #   Try running `yum install -y openssl-devel` to fetch missing dependencies.
+    #
+    brew link openssl@1.1 --force
   fi
   if is_mac; then
     # Install Homebrew
