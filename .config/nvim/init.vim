@@ -4,7 +4,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'w0rp/ale' " linter
-Plug 'ludovicchabant/vim-gutentags' " ctags generator
+Plug 'jsfaint/gen_tags.vim', { 'for': 'ruby' } " Async ctag generator
 Plug 'tpope/vim-fugitive' " git wrapper
 " Plug 'tpope/vim-rails'
 " Plug 'joonty/vdebug', { 'rev': 'v1.5.2' }
@@ -39,6 +39,16 @@ Plug 'morhetz/gruvbox' " color scheme
 Plug 'slim-template/vim-slim' " slim
 
 call plug#end()
+
+" --------------------------------------
+" gen_tags.vim
+" https://github.com/jsfaint/gen_tags.vim
+" --------------------------------------
+let g:gen_tags#ctags_auto_gen = 1 " enable ctags auto generating
+let g:loaded_gentags#ctags    = 0 " enable ctags support
+let g:gen_tags#gtags_auto_gen = 0 " disable gtags auto generating
+let g:loaded_gentags#gtags    = 1 " disable gtags support
+let g:gen_tags#statusline     = 0 " disable to show tags generating info
 
 " --------------------------------------
 " ctags
