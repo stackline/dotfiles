@@ -174,8 +174,10 @@ alias less='less -R'
 alias ll='ls -al'
 alias rg='rg -i'
 alias shfmt='shfmt -i 2 -ci' # Google Style Guides
-alias vi='nvim'
-alias vim='nvim'
+if type 'nvim' > /dev/null; then
+  alias vi='nvim'
+  alias vim='nvim'
+fi
 ### execute command interactively
 alias cp='cp -i'
 alias mv='mv -i'
