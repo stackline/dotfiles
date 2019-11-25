@@ -280,15 +280,15 @@ brew-dependencies() {
 
 # Change directory to specific repository
 # ref. https://weblog.bulknews.net/ghq-peco-percol-b6be7828dc1b
-peco-src() {
+go-to-repository() {
   local selected_dir
-  selected_dir=$(ghq list --full-path | peco)
+  selected_dir=$(ghq list --full-path | fzf --reverse)
 
   if [ "$selected_dir" ]; then
     cd "$selected_dir" || return
   fi
 }
-alias g='peco-src'
+alias g='go-to-repository'
 
 # Select a command from history interactively
 # ref. https://qiita.com/comuttun/items/f54e755f22508a6c7d78
