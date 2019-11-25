@@ -138,7 +138,7 @@ initialize() {
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 
     # Homebrew bundle
-    brew bundle
+    brew bundle -v
   fi
   if is_mac; then
     # Install Homebrew
