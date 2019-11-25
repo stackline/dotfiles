@@ -69,9 +69,6 @@ create_symbolic_links() {
 
   ### Homebrew's install path
   ln -fsv "$(brew --prefix)"/opt/git/share/git-core/contrib/diff-highlight/diff-highlight "$(brew --prefix)"/bin
-
-  ### Visual Studio Code Insiders
-  ln -fsv "$HOME/.ghq/github.com/stackline/dotfiles/applications/visual-studio-code-insiders/settings.json" "$HOME/Library/Application Support/Code - Insiders/User/settings.json"
 }
 
 # --------------------------------------
