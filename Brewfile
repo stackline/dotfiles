@@ -33,6 +33,7 @@ brew 'ghq'
 brew 'git'
 # imagemagick has many dependencies.
 # brew 'imagemagick'
+brew 'jq' # Command-line JSON processor
 brew 'lftp'
 # gem command error
 # ref. https://github.com/Homebrew/homebrew-core/issues/11636
