@@ -3,9 +3,8 @@
 # --------------------------------------
 ### tmux
 # Patched tmux that displays a horizontal split line as single-byte characters
-# ref. https://attonblog.blogspot.com/2018/04/tmux-27.html
+# ref. https://attonblog.blogspot.com/2019/08/tmux-29a.html
 tap 'atton/customs'
-brew 'utf8proc'
 brew 'atton/customs/tmux', args: ['HEAD']
 
 ### Manager
