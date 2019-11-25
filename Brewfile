@@ -91,6 +91,7 @@ return unless /darwin/ =~ RUBY_PLATFORM
 
 # Linuxbrew can not install mysql@5.6 on linux
 # because pidof that is depended from mysql@5.6 can not be installed on linux
+# Linuxbrew can not install mariadb@10.3 on linux
 brew 'mysql@5.7'
 
 # Use bash 4.x in order to use READLINE_LINE in peco-select-history function
