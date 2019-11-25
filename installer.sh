@@ -158,7 +158,7 @@ initialize() {
     sudo dscl . -create /Users/"$USER" UserShell /usr/local/bin/bash
     dscl . -read /Users/"$USER" UserShell
     # Confirm that bash version is 4.x
-    echo $BASH_VERSION
+    echo "$BASH_VERSION"
 
     # vagrant
     vagrant plugin install vagrant-vbguest
