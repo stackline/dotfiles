@@ -110,7 +110,7 @@ tap 'homebrew/cask'
 tap 'homebrew/cask-fonts' # for font-source-han-code-jp
 
 ### Browser
-cask 'chromium'
+# cask 'chromium'
 cask 'google-chrome'
 # Using Google Sheets with Firefox inserts unnecessary line breaks
 # ref. https://support.google.com/docs/thread/18235069?hl=en
