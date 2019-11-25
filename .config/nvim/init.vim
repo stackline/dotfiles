@@ -18,8 +18,8 @@ Plug 'itchyny/lightline.vim'  " statusline
 " ----------------------------------------
 " incremental search
 " ----------------------------------------
-Plug 'ctrlpvim/ctrlp.vim' " file search
-Plug 'mileszs/ack.vim'    " code search
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim' " Incremental file and code search
 
 " ----------------------------------------
 " LSP client
@@ -58,29 +58,10 @@ nnoremap <C-]> g<C-]>
 au BufNewFile,BufRead *.php set tags+=~/.cache/ctags/php.tags
 
 " --------------------------------------
-" ctrlp
+" fzf.vim
+" https://github.com/junegunn/fzf.vim
 " --------------------------------------
-" ref. https://elliotekj.com/2016/11/22/setup-ctrlp-to-use-ripgrep-in-vim/
-if executable('rg')
-  set wildignore+=*/.git/*,*/tmp/*,*.swp
-  set grepprg=rg\ --color=never
-
-  " Open a quickfix-window to "grep" and "Ggrep" command
-  autocmd QuickFixCmdPost vimgrep cwindow
-  autocmd QuickFixCmdPost *grep* cwindow
-
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-  let g:ctrlp_use_caching = 0
-endif
-
-
-" --------------------------------------
-" ack.vim
-" --------------------------------------
-if executable('rg')
-  let g:ackprg = 'rg --vimgrep --no-heading'
-endif
-
+nnoremap <C-p> :GFiles<cr>
 
 " --------------------------------------
 " lightline
