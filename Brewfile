@@ -81,6 +81,12 @@ if RUBY_PLATFORM.include?('linux')
   # If it is deleted, an error occurs during package installation
   # or application execution.
   brew 'gcc'
+
+  # docker formula do not have two files for systemd.
+  # So, we use a yum package.
+  # ref. http://docs.docker.jp/engine/articles/systemd.html#systemd
+  # brew 'docker'
+  brew 'docker-compose'
 end
 
 # Mac OS only install below packages.
