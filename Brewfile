@@ -3,12 +3,6 @@
 # --------------------------------------
 # Homebrew packages
 # --------------------------------------
-### tmux
-# Patched tmux that displays a horizontal split line as single-byte characters
-# ref. https://attonblog.blogspot.com/2019/08/tmux-29a.html
-tap 'atton/customs'
-brew 'atton/customs/tmux', args: ['HEAD']
-
 ### Manager
 brew 'nodenv'    # Node version manager
 brew 'pyenv'     # Python version manager
@@ -45,6 +39,9 @@ brew 'nkf'
 brew 'nmap'
 brew 'peco'
 brew 'ripgrep'
+# Be careful when using tmux with Terminal.app
+# ref. https://attonblog.blogspot.com/2017/11/tmux-pull-request.html
+brew 'tmux'
 brew 'tree'
 tap 'universal-ctags/universal-ctags'
 # Specify the without-xml option to avoid the following errors with Linuxbrew
