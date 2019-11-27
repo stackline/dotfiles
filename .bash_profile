@@ -69,6 +69,8 @@ export HOMEBREW_NO_ANALYTICS=1
 # Fail on the failure of installation from a bottle
 # rather than falling back to building from source.
 export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
+# Do not generate Brewfile.lock.json
+export HOMEBREW_BUNDLE_NO_LOCK=1
 
 # Avoid error when starting tmux
 # ref. https://astropengu.in/blog/12/
