@@ -25,9 +25,11 @@ Plug 'junegunn/fzf.vim' " Incremental file and code search
 " LSP client
 " ----------------------------------------
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Manage coc extensions with Vim plugin manager
-" ref. https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#use-vims-plugin-manager-for-coc-extension
-Plug 'neoclide/coc-solargraph', { 'do': 'yarn install --frozen-lockfile' }
+" coc extensions
+" ref. https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#install-extensions
+"
+"   :CocInstall coc-solargraph
+"
 
 " ----------------------------------------
 " auto complete
