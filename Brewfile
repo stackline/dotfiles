@@ -140,7 +140,6 @@ cask 'hyper'
 cask 'iterm2'
 
 ### Viewer
-cask 'adobe-acrobat-reader' # PDF Viewer
 cask 'kindle' # Kindle books Viewer
 
 ### Development environment
