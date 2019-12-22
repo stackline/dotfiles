@@ -29,6 +29,12 @@ set +a
 
 
 # --------------------------------------
+# Initialize
+# --------------------------------------
+HOMEBREW_INSTALL_PATH=$(brew --prefix)
+
+
+# --------------------------------------
 # Environment variables
 # --------------------------------------
 if is_linux; then
@@ -175,6 +181,8 @@ alias grep='grep --color=auto' # colorize the output
 alias less='less -R'
 alias ll='ls -al'
 alias rg='rg -i'
+# INFO: Need to install libpq with Homebrew
+alias psql12='$HOMEBREW_INSTALL_PATH/opt/libpq/bin/psql'
 alias shfmt='shfmt -i 2 -ci' # Google Style Guides
 if type 'nvim' > /dev/null; then
   alias vi='nvim'

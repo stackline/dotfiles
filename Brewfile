@@ -69,6 +69,9 @@ brew 'libffi'
 # ref. https://bitbucket.org/ged/ruby-pg/wiki/Home
 brew 'postgresql@9.5'
 
+# For PostgreSQL 12 psql command
+brew 'libpq'
+
 if RUBY_PLATFORM.include?('linux')
   # If you do not have this package when installing ruby via rbenv,
   # the following error will occur.
