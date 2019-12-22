@@ -75,7 +75,7 @@ nnoremap <expr> <C-j> ':Rg ' . expand('<cword>') . '<cr>'
 function! MyRepository()
   let s:absolute_git_root_dir = system('git rev-parse --show-toplevel')
   if v:shell_error == 0
-    let s:repository_name = fnamemodify(s:absolute_git_root_dir, ":t")
+    let s:repository_name = fnamemodify(s:absolute_git_root_dir, ':t')
     return substitute(s:repository_name, "\n", '', '')
   endif
   return ''
@@ -194,7 +194,7 @@ augroup END
 
 " When editing a file, always jump to the last cursor position
 " ref. /etc/vimrc
-if has("autocmd")
+if has('autocmd')
   augroup redhat
     autocmd!
     autocmd BufReadPost *
@@ -208,7 +208,7 @@ endif
 " Utility
 function! GetURLComponents()
   let l:remote_url = system('git remote get-url origin | tr -d "\n"')
-  let l:components = split(l:remote_url, "/")
+  let l:components = split(l:remote_url, '/')
 
   " scheme
   let l:scheme = 'https'
