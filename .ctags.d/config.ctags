@@ -10,5 +10,10 @@
 --exclude=*.sh
 --exclude=*.sql
 --exclude=*.svg
---regex-ruby=/^[\t ]*([A-Z][-_A-Za-z0-9]*::)*([A-Z][-_A-Za-z0-9]*)[\t ]*=/\2/C,constant/
 
+# Ruby constant
+--regex-ruby=/(^|[:;])[ \t]*([A-Z][[:alnum:]_]+) *=/\2/c,class,constant/
+# Rails Active Record association
+--regex-ruby=/(^|;)[ \t]*(has_many|belongs_to|has_one|has_and_belongs_to_many)\(? *:([[:alnum:]_]+)/\3/f,method,association/
+# Rails Active Record scope
+--regex-ruby=/(^|;)[ \t]*(named_)?scope\(? *:([[:alnum:]_]+)/\3/f,method,named_scope/
