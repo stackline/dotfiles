@@ -87,10 +87,11 @@ endfunction
 let g:lightline = {
       \ 'colorscheme': 'gruvbox',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'repository', 'relativepath', 'modified' ] ]
+      \   'left': [ [ 'mode', 'paste' ], [  'cocstatus', 'readonly', 'repository', 'relativepath', 'modified' ] ]
       \ },
       \ 'component_function': {
-      \   'repository': 'MyRepository'
+      \   'repository': 'MyRepository',
+      \   'cocstatus': 'coc#status'
       \ }
       \ }
 
