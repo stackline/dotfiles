@@ -192,17 +192,15 @@ augroup init_bufnewfile_bufreadpost_event
   autocmd BufNewFile,BufReadPost *.php set tags+=~/.cache/ctags/php.tags
 augroup END
 
-" When editing a file, always jump to the last cursor position
-" ref. /etc/vimrc
-if has('autocmd')
-  augroup redhat
-    autocmd!
-    autocmd BufReadPost *
-            \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-            \   exe "normal! g'\"" |
-            \ endif
-  augroup END
-endif
+augroup init_bufreadpost_event
+  autocmd!
+
+  " When editing a file, always jump to the last cursor position
+  autocmd BufReadPost *
+        \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+        \   exe "normal! g'\"" |
+        \ endif
+augroup END
 
 
 " Utility
