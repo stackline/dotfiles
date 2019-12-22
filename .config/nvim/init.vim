@@ -60,7 +60,6 @@ let g:gen_tags#statusline     = 0 " disable to show tags generating info
 " --------------------------------------
 " Show the list when it has many candidates
 nnoremap <C-]> g<C-]>
-au BufNewFile,BufRead *.php set tags+=~/.cache/ctags/php.tags
 
 " --------------------------------------
 " fzf.vim
@@ -159,18 +158,39 @@ set tabstop=2
 
 filetype plugin on
 filetype indent on
-autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType php        setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType ruby       setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType sh         setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 
-" Enable tag jump to methods with ! or ?
-" ref. https://www.reddit.com/r/vim/comments/60el1r/question_jumping_to_tags/
-autocmd FileType ruby setlocal iskeyword+=!,?
 
-" Use Ruby syntax highlight on Brewfile
-" ref. http://vim-jp.org/vimdoc-ja/filetype.html#ftdetect
-autocmd BufRead,BufNewFile Brewfile,.Brewfile setfiletype ruby
+" --------------------------------------
+" Autocommands
+" --------------------------------------
+augroup init_filetype_event
+  autocmd!
+
+  autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+  autocmd FileType php        setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
+  autocmd FileType ruby       setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+  autocmd FileType sh         setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+
+  " Enable tag jump to methods with ! or ?
+  " ref. https://www.reddit.com/r/vim/comments/60el1r/question_jumping_to_tags/
+  autocmd FileType ruby setlocal iskeyword+=!,?
+augroup END
+
+augroup init_bufwritepre_event
+  autocmd!
+
+  " Delete unnecessary trailing spaces
+  autocmd BufWritePre * :%s/\s\+$//ge
+augroup END
+
+augroup init_bufnewfile_bufreadpost_event
+  autocmd!
+
+  " Use Ruby syntax highlight on Brewfile
+  " ref. http://vim-jp.org/vimdoc-ja/filetype.html#ftdetect
+  autocmd BufNewFile,BufReadPost Brewfile,.Brewfile setfiletype ruby
+  autocmd BufNewFile,BufReadPost *.php set tags+=~/.cache/ctags/php.tags
+augroup END
 
 " When editing a file, always jump to the last cursor position
 " ref. /etc/vimrc
@@ -253,9 +273,6 @@ function! GitHubUrl()
   echo l:components['scheme'] . '://' . l:components['host'] . l:path
 endfunction
 command! GitHubUrl call GitHubUrl()
-
-" Delete unnecessary trailing spaces
-autocmd BufWritePre * :%s/\s\+$//ge
 
 
 " --------------------------------------
