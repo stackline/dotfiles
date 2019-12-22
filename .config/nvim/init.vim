@@ -105,8 +105,6 @@ let g:lightline = {
 " https://github.com/airblade/vim-gitgutter
 " --------------------------------------
 set updatetime=250
-nmap ]h <Plug>(GitGutterNextHunk)
-nmap [h <Plug>(GitGutterPrevHunk)
 
 
 " --------------------------------------
