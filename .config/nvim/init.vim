@@ -4,7 +4,8 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'w0rp/ale' " linter
-Plug 'jsfaint/gen_tags.vim', { 'for': 'ruby' } " Async ctag generator
+Plug 'prabirshrestha/async.vim'
+Plug 'stackline/rctags.vim', { 'for': 'ruby' } " Async ctag generator
 Plug 'tpope/vim-fugitive' " git wrapper
 " Plug 'tpope/vim-rails'
 " Plug 'joonty/vdebug', { 'rev': 'v1.5.2' }
@@ -46,20 +47,24 @@ Plug 'slim-template/vim-slim' " slim
 call plug#end()
 
 " --------------------------------------
-" gen_tags.vim
-" https://github.com/jsfaint/gen_tags.vim
+" rctags.vim
+" https://github.com/stackline/rctags.vim
 " --------------------------------------
-let g:gen_tags#ctags_auto_gen = 1 " enable ctags auto generating
-let g:loaded_gentags#ctags    = 0 " enable ctags support
-let g:gen_tags#gtags_auto_gen = 0 " disable gtags auto generating
-let g:loaded_gentags#gtags    = 1 " disable gtags support
-let g:gen_tags#statusline     = 0 " disable to show tags generating info
+let g:rctags_ctags_opts = []
+let g:rctags_ctags_opts = add(g:rctags_ctags_opts, '-R')
+let g:rctags_ctags_opts = add(g:rctags_ctags_opts, '--languages=ruby')
+let g:rctags_ctags_opts = g:rctags_ctags_opts
 
 " --------------------------------------
 " ctags
 " --------------------------------------
-" Show the list when it has many candidates
-nnoremap <C-]> g<C-]>
+" " Show the list when it has many candidates
+" " Use :tjump instead of :tag
+" nnoremap <C-]> g<C-]>
+nnoremap <C-]> :RCTagsJump<cr>
+augroup rctags_set_tags
+  autocmd BufNewFile,BufRead *.ruby set tags+=system('git rev-parse --show-toplevel | tr -d "\n"') . '/tags'
+augroup END
 
 " --------------------------------------
 " fzf.vim
