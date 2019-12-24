@@ -31,6 +31,10 @@ set +a
 # --------------------------------------
 # Initialize
 # --------------------------------------
+# Homebrew
+is_linux && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# Global variables
 HOMEBREW_INSTALL_PATH=$(brew --prefix)
 
 
@@ -38,10 +42,6 @@ HOMEBREW_INSTALL_PATH=$(brew --prefix)
 # Environment variables
 # --------------------------------------
 if is_linux; then
-
-  # Linuxbrew
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
   # PostgreSQL pg_config is necessary to install pg gem.
   # ref. https://bitbucket.org/ged/ruby-pg/wiki/Home
   export PATH="/home/linuxbrew/.linuxbrew/opt/postgresql@9.5/bin:$PATH"
