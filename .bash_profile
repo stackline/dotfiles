@@ -119,15 +119,6 @@ eval "$(pyenv init -)"
 
 
 # --------------------------------------
-# Java
-# --------------------------------------
-# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-# shellcheck source=/dev/null
-[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
-
-
-# --------------------------------------
 # Git
 # --------------------------------------
 GIT_PS1_SHOWDIRTYSTATE=1
