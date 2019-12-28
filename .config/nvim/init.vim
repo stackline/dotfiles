@@ -11,7 +11,7 @@ Plug 'tpope/vim-fugitive' " git wrapper
 " Plug 'joonty/vdebug', { 'rev': 'v1.5.2' }
 
 " Testing framework for Vim script
-Plug 'thinca/vim-themis', { 'do': 'ln -fsv ./bin/themis /usr/local/bin/themis' }
+Plug 'thinca/vim-themis', { 'do': 'ln -fsv `pwd`/bin/themis /usr/local/bin/themis' }
 
 " ----------------------------------------
 " additional information
