@@ -188,7 +188,7 @@ if is_mac; then
   alias ls='ls -G'
 fi
 if is_linux; then
-  alias ls='ls -G --color=auto'
+  alias ls='ls --color=auto'
 fi
 
 
