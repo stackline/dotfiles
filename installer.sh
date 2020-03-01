@@ -1,17 +1,6 @@
 #!/bin/bash
 
 # --------------------------------------
-# constant
-# --------------------------------------
-readonly RUBY_PACKAGES=(
-  mailcatcher
-  rubocop
-  rubocop-rspec
-  slim_lint
-  solargraph
-)
-
-# --------------------------------------
 # Utilities
 # --------------------------------------
 is_mac() {
@@ -95,35 +84,6 @@ install_python3_packages() {
   pip3 install --upgrade -r requirements.txt
 }
 
-# --------------------------------------
-# Install Ruby packages
-# --------------------------------------
-install_ruby_packages() {
-  local packages=("${RUBY_PACKAGES[@]}")
-  local package
-  local installed
-
-  for package in "${packages[@]}"; do
-    installed=$(gem list ^"${package}"$ --installed)
-
-    if [ "${installed}" = "true" ]; then
-      echo "${package} is already installed"
-    else
-      gem install "${package}"
-    fi
-  done
-}
-
-# --------------------------------------
-# Do post processes
-# --------------------------------------
-do_post_processes() {
-  echo '### ruby'
-  gem update
-  gem update --system
-  gem cleanup
-}
-
 initialize() {
   ### Tasks not optimized
   if is_linux; then
@@ -203,7 +163,6 @@ execute_all() {
   execute install_homebrew_packages
   execute install_python2_packages
   execute install_python3_packages
-  execute install_ruby_packages
   execute install_node_packages
 }
 
@@ -216,7 +175,6 @@ option:
   n:  install Node packages
   p2: install Python2 packages
   p3: install Python3 packages
-  r:  install Ruby packages
   s:  create symbolic links
 EOF
 }
@@ -230,7 +188,6 @@ case $1 in
   n) execute install_node_packages ;;
   p2) execute install_python2_packages ;;
   p3) execute install_python3_packages ;;
-  r) execute install_ruby_packages ;;
   s) execute create_symbolic_links ;;
   *)
     if [ -n "$1" ]; then
