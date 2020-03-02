@@ -10,13 +10,19 @@ fi
 # Check OS
 # --------------------------------------
 function is_mac() {
-  [ "$(uname)" == "Darwin" ] && return 0
-  return 1
+  if [ "$(uname)" == "Darwin" ]; then
+    return 0
+  else
+    return 1
+  fi
 }
 
 function is_linux() {
-  [ "$(uname)" == "Linux" ] && return 0
-  return 1
+  if [ "$(uname)" == "Linux" ]; then
+    return 0
+  else
+    return 1
+  fi
 }
 
 
