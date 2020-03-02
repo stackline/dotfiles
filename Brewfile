@@ -7,6 +7,17 @@
 brew 'nodenv'    # Node version manager
 brew 'pyenv'     # Python version manager
 brew 'pipenv'    # Python development workflow
+# Build development environments with Docker containers
+# because build error occurs when installing Ruby 2.3 or less.
+#
+# * Ruby 2.3 does not support openssl 1.1
+# * ref. https://github.com/rbenv/ruby-build/issues/1207#issuecomment-399744332
+# * ref. https://github.com/rbenv/ruby-build/issues/1353
+#
+# Build error occurs when installing OpenSSL 1.0 with the following formula.
+#
+# * https://github.com/rbenv/homebrew-tap
+#
 brew 'rbenv'     # Ruby version manager
 brew 'tfenv'     # Terraform version manager
 
