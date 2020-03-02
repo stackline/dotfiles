@@ -28,8 +28,16 @@ function is_linux() {
 # --------------------------------------
 # Export
 # --------------------------------------
+function export_git_environments() {
+  export GIT_PS1_SHOWDIRTYSTATE=1
+  export GIT_PS1_SHOWSTASHSTATE=1
+  export GIT_PS1_SHOWUNTRACKEDFILES=1
+  export GIT_PS1_SHOWUPSTREAM=1
+}
+
 function export_mac_environments() {
   eval "$(brew shellenv)"
+  export_git_environments
   export HOMEBREW_NO_ANALYTICS=1
   export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1 # Do not install dependent build tools
   export HOMEBREW_BUNDLE_NO_LOCK=1 # Do not generate Brewfile.lock.json
@@ -41,6 +49,7 @@ function export_mac_environments() {
 
 function export_linux_environments() {
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  export_git_environments
   export HOMEBREW_NO_ANALYTICS=1
   export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1 # Do not install dependent build tools
   export HOMEBREW_BUNDLE_NO_LOCK=1 # Do not generate Brewfile.lock.json
@@ -128,15 +137,6 @@ eval "$(rbenv init -)"
 # initialize pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
-
-
-# --------------------------------------
-# Git
-# --------------------------------------
-GIT_PS1_SHOWDIRTYSTATE=1
-GIT_PS1_SHOWSTASHSTATE=1
-GIT_PS1_SHOWUPSTREAM=1
-GIT_PS1_SHOWUNTRACKEDFILES=1
 
 
 # --------------------------------------
