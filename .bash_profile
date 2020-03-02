@@ -9,12 +9,12 @@ fi
 # --------------------------------------
 # Check OS
 # --------------------------------------
-is_mac() {
+function is_mac() {
   [ "$(uname)" == "Darwin" ] && return 0
   return 1
 }
 
-is_linux() {
+function is_linux() {
   [ "$(uname)" == "Linux" ] && return 0
   return 1
 }
@@ -204,7 +204,7 @@ alias brew-remove-all-installed-packages='brew list | xargs brew remove --force 
 
 # Update packages
 # Visual Studio Code
-update-vscode-extensions() {
+function update-vscode-extensions() {
   local installed_extensions
   # @see https://github.com/koalaman/shellcheck/wiki/SC2207
   mapfile -t installed_extensions < <(code --list-extensions)
@@ -216,7 +216,7 @@ update-vscode-extensions() {
 
 # Vim
 # modifiable config are required when writing file.
-update-vim-plugins() {
+function update-vim-plugins() {
   nvim -c 'PlugUpdate' -c 'set modifiable' -c '%w /tmp/vim-plug.log' -c 'qa'
   cat /tmp/vim-plug.log
 }
@@ -225,7 +225,7 @@ update-vim-plugins() {
 
 # Avoid pyenv warnings when executing brew doctor
 # ref. https://github.com/pyenv/pyenv/issues/106#issuecomment-190418988
-brew() {
+function brew() {
   if command -v pyenv > /dev/null 2>&1; then
     PATH="${PATH//$(pyenv root)\/shims:/}" command brew "$@"
   else
@@ -233,7 +233,7 @@ brew() {
   fi
 }
 
-brew-maintenance() {
+function brew-maintenance() {
   brew update
   brew upgrade
   is_mac && brew cu -a
@@ -242,7 +242,7 @@ brew-maintenance() {
   brew doctor
 }
 
-git-show-pull-request() {
+function git-show-pull-request() {
   if [ -z "$GIT_SHOW_PULL_REQUEST_URL" ]; then
     echo 'Set environment variable "GIT_SHOW_PULL_REQUEST_URL"'
     return 1
@@ -269,7 +269,7 @@ git-show-pull-request() {
 
 # Show dependencies for installed formulaes
 # ref. https://zanshin.net/2014/02/03/how-to-list-brew-dependencies/
-brew-dependencies() {
+function brew-dependencies() {
   local formula
 
   brew list | while read -r formula; do
@@ -281,7 +281,7 @@ brew-dependencies() {
 
 # Change directory to specific repository
 # ref. https://weblog.bulknews.net/ghq-peco-percol-b6be7828dc1b
-go-to-repository() {
+function go-to-repository() {
   local selected_dir
   selected_dir=$(ghq list --full-path | fzf --reverse)
 
@@ -291,7 +291,7 @@ go-to-repository() {
 }
 alias g='go-to-repository'
 
-jump-to-directory() {
+function jump-to-directory() {
   local selected_dir
   selected_dir=$(fd --no-ignore --type d | fzf --reverse)
 
@@ -303,7 +303,7 @@ alias j='jump-to-directory'
 
 # Select a command from history interactively
 # ref. https://qiita.com/comuttun/items/f54e755f22508a6c7d78
-select-command-from-history() {
+function select-command-from-history() {
   local selected_command
   selected_command=$(history | sort -k1,1nr | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | fzf --reverse --query "$READLINE_LINE")
 
@@ -312,13 +312,13 @@ select-command-from-history() {
 }
 bind -x '"\C-r": select-command-from-history'
 
-check-trailing-character-hexdump() {
+function check-trailing-character-hexdump() {
   tail -c 1 "$1" | xxd -p
 }
 
 # Colorize the output of man
 # ref. https://wiki.archlinux.org/index.php/Color_output_in_console#man
-man() {
+function man() {
   LESS_TERMCAP_md=$'\e[01;31m' \
   LESS_TERMCAP_me=$'\e[0m' \
   LESS_TERMCAP_se=$'\e[0m' \
