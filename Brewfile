@@ -23,6 +23,7 @@ brew 'gem-completion'
 
 ### Utility
 brew 'composer'
+brew 'coreutils' if OS.mac?
 brew 'fd'
 brew 'fzf'
 brew 'ghq'
