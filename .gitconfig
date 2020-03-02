@@ -18,5 +18,3 @@
 [diff]
   # Highlight whitespace
   wsErrorHighlight = all
-[ghq]
-  vcs = git
