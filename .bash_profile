@@ -25,32 +25,29 @@ function is_linux() {
   fi
 }
 
-
 # --------------------------------------
-# Add environment variables by using allexport
+# Export
 # --------------------------------------
-set -a
-eval "$(cat ~/.env)"
-set +a
+function export_mac_environments() {
+  eval "$(brew shellenv)"
+  export HOMEBREW_NO_ANALYTICS=1
+  export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1 # Do not install dependent build tools
+  export HOMEBREW_BUNDLE_NO_LOCK=1 # Do not generate Brewfile.lock.json
+  export PATH="/usr/local/sbin:$PATH" # for Homebrew's sbin
+  export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+  export PATH="/usr/local/opt/postgresql@9.5/bin:$PATH" # Need pg_config to install pg gem
+}
 
-
-# --------------------------------------
-# Initialize
-# --------------------------------------
-# Homebrew
-is_linux && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-# Global variables
-HOMEBREW_INSTALL_PATH=$(brew --prefix)
-
-
-# --------------------------------------
-# Environment variables
-# --------------------------------------
-if is_linux; then
-  # PostgreSQL pg_config is necessary to install pg gem.
-  # ref. https://bitbucket.org/ged/ruby-pg/wiki/Home
-  export PATH="/home/linuxbrew/.linuxbrew/opt/postgresql@9.5/bin:$PATH"
+function export_linux_environments() {
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  export HOMEBREW_NO_ANALYTICS=1
+  export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1 # Do not install dependent build tools
+  export HOMEBREW_BUNDLE_NO_LOCK=1 # Do not generate Brewfile.lock.json
+  export PATH="/home/linuxbrew/.linuxbrew/opt/postgresql@9.5/bin:$PATH" # Need pg_config to install pg gem
+  # Avoid error when starting tmux
+  # ref. https://astropengu.in/blog/12/
+  #      https://github.com/Linuxbrew/legacy-linuxbrew/issues/46#issuecomment-120759893
+  export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/share/pkgconfig
 
   # Node pngquant package references libpng12.so.0.
   #
@@ -68,31 +65,18 @@ if is_linux; then
   # - tput: relocation error: /usr/lib64/libc.so.6: symbol _dl_starting_up, version GLIBC_PRIVATE not defined in file ld-linux-x86-64.so.2 with link time reference
   #
   # export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib64"
-fi
+}
 
-if is_mac; then
-  export PATH="/usr/local/sbin:$PATH" # for Homebrew's sbin
-  export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-  export PATH="/usr/local/opt/postgresql@9.5/bin:$PATH"
-fi
+is_mac && export_mac_environments
+is_linux && export_linux_environments
 
-# common
-export HOMEBREW_NO_ANALYTICS=1
-# Fail on the failure of installation from a bottle
-# rather than falling back to building from source.
-export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
-# Do not generate Brewfile.lock.json
-export HOMEBREW_BUNDLE_NO_LOCK=1
+# --------------------------------------
+# Add environment variables by using allexport
+# --------------------------------------
+set -a
+eval "$(cat ~/.env)"
+set +a
 
-# Avoid error when starting tmux
-# ref. https://astropengu.in/blog/12/
-#
-# Package bash-completion was not found in the pkg-config search path.
-# Perhaps you should add the directory containing `bash-completion.pc'
-# to the PKG_CONFIG_PATH environment variable
-# No package 'bash-completion' found
-# -bash: /yum: No such file or directory
-export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/share/pkgconfig
 
 # --------------------------------------
 # Node
@@ -179,7 +163,7 @@ alias less='less -R'
 alias ll='ls -al'
 alias rg='rg -i'
 # INFO: Need to install libpq with Homebrew
-alias psql12='$HOMEBREW_INSTALL_PATH/opt/libpq/bin/psql'
+alias psql12='$HOMEBREW_PREFIX/opt/libpq/bin/psql'
 alias shfmt='shfmt -i 2 -ci' # Google Style Guides
 if type 'nvim' > /dev/null; then
   alias vi='nvim'
