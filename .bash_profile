@@ -34,6 +34,7 @@ function export_mac_environments() {
   export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1 # Do not install dependent build tools
   export HOMEBREW_BUNDLE_NO_LOCK=1 # Do not generate Brewfile.lock.json
   export PATH="/usr/local/sbin:$PATH" # for Homebrew's sbin
+  export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
   export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
   export PATH="/usr/local/opt/postgresql@9.5/bin:$PATH" # Need pg_config to install pg gem
 }
@@ -69,6 +70,27 @@ function export_linux_environments() {
 
 is_mac && export_mac_environments
 is_linux && export_linux_environments
+
+# --------------------------------------
+# Time measurement
+# ref. https://www.golinuxcloud.com/get-script-execution-time-command-bash-script/
+# --------------------------------------
+function get_current_time_with_nanosec() {
+  date +%s.%N
+}
+
+function calc_script_execution_time() {
+  local start_time=$1
+  local end_time=$2
+  local duration
+  local formatted_duration
+
+  duration=$(echo "$end_time - $start_time" | bc)
+  formatted_duration=$(printf "%.2f" "$duration")
+  echo "$formatted_duration"
+}
+
+readonly script_start_time=$(get_current_time_with_nanosec)
 
 # --------------------------------------
 # Add environment variables by using allexport
@@ -326,3 +348,6 @@ _p=$(echo "$PATH" | tr ':' '\n' | awk '!a[$0]++' | awk 'NF' | tr '\n' ':' | sed 
 PATH=$_p
 unset _p
 
+readonly script_end_time=$(get_current_time_with_nanosec)
+readonly execution_time=$(calc_script_execution_time "$script_start_time" "$script_end_time")
+echo "Script execution Time: $execution_time"
