@@ -28,6 +28,12 @@ function is_linux() {
 # --------------------------------------
 # Export
 # --------------------------------------
+function export_homebrew_environments() {
+  export HOMEBREW_NO_ANALYTICS=1
+  export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1 # Do not install dependent build tools
+  export HOMEBREW_BUNDLE_NO_LOCK=1 # Do not generate Brewfile.lock.json
+}
+
 function export_git_environments() {
   export GIT_PS1_SHOWDIRTYSTATE=1
   export GIT_PS1_SHOWSTASHSTATE=1
@@ -37,10 +43,8 @@ function export_git_environments() {
 
 function export_mac_environments() {
   eval "$(brew shellenv)"
+  export_homebrew_environments
   export_git_environments
-  export HOMEBREW_NO_ANALYTICS=1
-  export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1 # Do not install dependent build tools
-  export HOMEBREW_BUNDLE_NO_LOCK=1 # Do not generate Brewfile.lock.json
   export PATH="/usr/local/sbin:$PATH" # for Homebrew's sbin
   export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
   export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
@@ -49,10 +53,8 @@ function export_mac_environments() {
 
 function export_linux_environments() {
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  export_homebrew_environments
   export_git_environments
-  export HOMEBREW_NO_ANALYTICS=1
-  export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1 # Do not install dependent build tools
-  export HOMEBREW_BUNDLE_NO_LOCK=1 # Do not generate Brewfile.lock.json
   export PATH="/home/linuxbrew/.linuxbrew/opt/postgresql@9.5/bin:$PATH" # Need pg_config to install pg gem
   # Avoid error when starting tmux
   # ref. https://astropengu.in/blog/12/
