@@ -4,12 +4,12 @@
 # Utilities
 # --------------------------------------
 is_mac() {
-  [ "$(uname)" == "Darwin" ] && return 0
+  [ "$(uname)" = "Darwin" ] && return 0
   return 1
 }
 
 is_linux() {
-  [ "$(uname)" == "Linux" ] && return 0
+  [ "$(uname)" = "Linux" ] && return 0
   return 1
 }
 
