@@ -30,9 +30,6 @@ create_symbolic_links() {
   mkdir ~/.bundle
   mkdir ~/.ctags.d
   mkdir ~/.composer
-  mkdir ~/.config
-  mkdir ~/.config/nvim
-  mkdir ~/.config/pip
   mkdir ~/.docker
 
   ### root directory
@@ -53,8 +50,7 @@ create_symbolic_links() {
   ln -fsv "${dotfiles_root_dir}"/.docker/config.json ~/.docker/config.json
 
   ### .config directory
-  ln -fsv "${dotfiles_root_dir}"/.config/nvim/init.vim ~/.config/nvim/init.vim
-  ln -fsv "${dotfiles_root_dir}"/.config/pip/pip.conf ~/.config/pip/pip.conf
+  ln -fsv "${dotfiles_root_dir}"/.config ~/.config
 
   ### Homebrew's install path
   ln -fsv "$(brew --prefix)"/opt/git/share/git-core/contrib/diff-highlight/diff-highlight "$(brew --prefix)"/bin
