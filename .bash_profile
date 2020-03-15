@@ -190,6 +190,8 @@ if is_linux; then
   alias ls='ls --color=auto'
 fi
 
+# function aliases
+alias g='go_to_repository'
 
 # --------------------------------------
 # Utilities
@@ -277,18 +279,6 @@ function brew-dependencies() {
     echo ''
   done
 }
-
-# Change directory to specific repository
-# ref. https://weblog.bulknews.net/ghq-peco-percol-b6be7828dc1b
-function go-to-repository() {
-  local selected_dir
-  selected_dir=$(ghq list --full-path | fzf --reverse)
-
-  if [ "$selected_dir" ]; then
-    cd "$selected_dir" || return
-  fi
-}
-alias g='go-to-repository'
 
 function jump-to-directory() {
   local selected_dir
