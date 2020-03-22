@@ -34,7 +34,7 @@ create_symbolic_links() {
 
   ### root directory
   ln -fsv "${dotfiles_root_dir}"/.ansible-lint ~/.ansible-lint
-  ln -fsv "${dotfiles_root_dir}"/.bash_profile ~/.bash_profile
+  ln -fsv "${dotfiles_root_dir}"/.bashrc ~/.bashrc
   ln -fsv "${dotfiles_root_dir}"/.eslintrc.js ~/.eslintrc.js
   ln -fsv "${dotfiles_root_dir}"/.gemrc ~/.gemrc
   ln -fsv "${dotfiles_root_dir}"/.gitconfig ~/.gitconfig
