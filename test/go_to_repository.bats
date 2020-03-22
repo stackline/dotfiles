@@ -2,7 +2,7 @@
 
 function setup() {
   readonly root_dir="$(git rev-parse --show-toplevel)"
-  readonly file="$root_dir/.config/profile.d/go_to_repository.sh"
+  readonly file="$root_dir/.config/bash/go_to_repository.sh"
   source $file
 
   readonly current_dir="$(pwd)"

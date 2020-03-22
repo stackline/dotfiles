@@ -2,7 +2,7 @@
 
 # User specific environment and startup programs
 
-for file in ~/.config/profile.d/*; do
+for file in ~/.config/bash/*; do
   source $file
 done
 

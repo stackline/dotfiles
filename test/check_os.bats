@@ -3,7 +3,7 @@
 setup() {
   readonly os_name="$(uname)"
   readonly root_directory="$(git rev-parse --show-toplevel)"
-  readonly file="$root_directory/.config/profile.d/check_os.sh"
+  readonly file="$root_directory/.config/bash/check_os.sh"
   source $file
 }
 
