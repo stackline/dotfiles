@@ -50,7 +50,7 @@ create_symbolic_links() {
   ln -fsv "${dotfiles_root_dir}"/.docker/config.json ~/.docker/config.json
 
   ### .config directory
-  ln -fsv "${dotfiles_root_dir}"/.config ~/.config
+  ln -fnsv "${dotfiles_root_dir}"/.config ~/.config
 
   ### Homebrew's install path
   ln -fsv "$(brew --prefix)"/opt/git/share/git-core/contrib/diff-highlight/diff-highlight "$(brew --prefix)"/bin
