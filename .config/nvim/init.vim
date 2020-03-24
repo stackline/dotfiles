@@ -5,7 +5,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'w0rp/ale' " linter
 Plug 'prabirshrestha/async.vim'
-Plug 'stackline/rctags.vim', { 'for': 'ruby' } " Async ctag generator
+Plug 'stackline/vim-asynctags', { 'for': 'ruby' } " Async ctag generator
 Plug 'tpope/vim-fugitive' " git wrapper
 " Plug 'tpope/vim-rails'
 " Plug 'joonty/vdebug', { 'rev': 'v1.5.2' }
