@@ -36,6 +36,7 @@ function export_linux_environments() {
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   export_homebrew_environments
   export_git_environments
+  export LESSCHARSET=utf-8
   export PATH="/home/linuxbrew/.linuxbrew/opt/postgresql@9.5/bin:$PATH" # Need pg_config to install pg gem
   # Avoid error when starting tmux
   # ref. https://astropengu.in/blog/12/
