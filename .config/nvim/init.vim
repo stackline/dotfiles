@@ -53,10 +53,10 @@ call plug#end()
 " rctags.vim
 " https://github.com/stackline/rctags.vim
 " --------------------------------------
-let g:rctags_ctags_opts = []
-let g:rctags_ctags_opts = add(g:rctags_ctags_opts, '-R')
-let g:rctags_ctags_opts = add(g:rctags_ctags_opts, '--languages=ruby')
-let g:rctags_ctags_opts = g:rctags_ctags_opts
+let g:asynctags_ctags_opts = []
+let g:asynctags_ctags_opts = add(g:asynctags_ctags_opts, '-R')
+let g:asynctags_ctags_opts = add(g:asynctags_ctags_opts, '--languages=ruby')
+let g:asynctags_ctags_opts = g:asynctags_ctags_opts
 
 " --------------------------------------
 " ctags
