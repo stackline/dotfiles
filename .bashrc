@@ -4,7 +4,7 @@
 
 CURRENT_SHELL=$0
 for file in ~/.config/bash/*; do
-  source $file
+  source "$file"
 done
 
 # --------------------------------------
