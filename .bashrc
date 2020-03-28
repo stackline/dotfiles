@@ -2,6 +2,7 @@
 
 # User specific environment and startup programs
 
+CURRENT_SHELL=$0
 for file in ~/.config/bash/*; do
   source $file
 done
@@ -15,17 +16,9 @@ function export_homebrew_environments() {
   export HOMEBREW_BUNDLE_NO_LOCK=1 # Do not generate Brewfile.lock.json
 }
 
-function export_git_environments() {
-  export GIT_PS1_SHOWDIRTYSTATE=1
-  export GIT_PS1_SHOWSTASHSTATE=1
-  export GIT_PS1_SHOWUNTRACKEDFILES=1
-  export GIT_PS1_SHOWUPSTREAM=1
-}
-
 function export_mac_environments() {
   eval "$(brew shellenv)"
   export_homebrew_environments
-  export_git_environments
   export PATH="/usr/local/sbin:$PATH" # for Homebrew's sbin
   export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
   export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
@@ -35,7 +28,6 @@ function export_mac_environments() {
 function export_linux_environments() {
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   export_homebrew_environments
-  export_git_environments
   export LESSCHARSET=utf-8
   export PATH="/home/linuxbrew/.linuxbrew/opt/postgresql@9.5/bin:$PATH" # Need pg_config to install pg gem
   # Avoid error when starting tmux
@@ -63,6 +55,7 @@ function export_linux_environments() {
 
 is_mac && export_mac_environments
 is_linux && export_linux_environments
+prompt::initialize
 
 # --------------------------------------
 # Time measurement
@@ -136,18 +129,6 @@ eval "$(pyenv init -)"
 [ -f /home/linuxbrew/.linuxbrew/etc/bash_completion.d/git-prompt.sh ] && source /home/linuxbrew/.linuxbrew/etc/bash_completion.d/git-prompt.sh
 # Git's completion does not work so apply the following patch.
 [ -f /home/linuxbrew/.linuxbrew/etc/bash_completion.d/git-completion.bash ] && source /home/linuxbrew/.linuxbrew/etc/bash_completion.d/git-completion.bash
-
-
-# --------------------------------------
-# Bash prompt
-# ref. XTerm Number https://jonasjacek.github.io/colors/
-# --------------------------------------
-RED="\\[$(tput setaf 9)\\]"
-GREEN="\\[$(tput setaf 10)\\]"
-# YELLOW="\\[$(tput setaf 11)\\]"
-BLUE="\\[$(tput setaf 12)\\]"
-RESET="\\[$(tput sgr0)\\]"
-PROMPT_COMMAND='__git_ps1 "${GREEN}\u@\h${BLUE}:\w${RED}" "${RESET}\n\\\$ "'
 
 
 # --------------------------------------
