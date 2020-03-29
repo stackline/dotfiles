@@ -4,7 +4,7 @@
 
 function homebrew::initialize() {
   # NOTE: Same as `eval "$(brew shellenv)"`
-  #       Linuxbrew takes about 0.2 seconds to run brew shellenv.
+  #       Execution time of `brew shellenv` takes about 0.1 to 0.2 seconds.
   case $(uname) in
     'Darwin' )
       export HOMEBREW_PREFIX="/usr/local";
