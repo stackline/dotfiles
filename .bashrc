@@ -269,7 +269,9 @@ function select-command-from-history() {
   READLINE_LINE="$selected_command"
   READLINE_POINT=${#selected_command}
 }
-bind -x '"\C-r": select-command-from-history'
+if [ "$CURRENT_SHELL" = 'bash' ]; then
+  bind -x '"\C-r": select-command-from-history'
+fi
 
 function check-trailing-character-hexdump() {
   tail -c 1 "$1" | xxd -p
