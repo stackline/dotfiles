@@ -159,6 +159,7 @@ cask 'iterm2'
 cask 'kindle' # Kindle books Viewer
 
 ### Development environment
+cask 'android-studio'
 cask 'docker'
 cask 'vagrant'
 # MEMO: Need to allow applications downloaded from Oracle
