@@ -113,8 +113,14 @@ fi
 # Bash completion
 # MEMO: Homebrew git formula install to bash_completion.d
 # --------------------------------------
-readonly BASH_COMPLETION_SH_PATH="$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
-[ -r "$BASH_COMPLETION_SH_PATH" ] && . "$BASH_COMPLETION_SH_PATH"
+if [ "$CURRENT_SHELL" = 'bash' ]; then
+  readonly BASH_COMPLETION_SH_PATH="$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
+  [ -r "$BASH_COMPLETION_SH_PATH" ] && . "$BASH_COMPLETION_SH_PATH"
+fi
+if [ "$CURRENT_SHELL" = 'zsh' ] || [ "$CURRENT_SHELL" = '-zsh' ]; then
+  autoload -U compinit
+  compinit
+fi
 
 
 # --------------------------------------
