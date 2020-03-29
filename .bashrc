@@ -71,39 +71,42 @@ readonly script_start_time=$(get_current_time_with_nanosec)
 # --------------------------------------
 # Add environment variables by using allexport
 # --------------------------------------
-set -a
-eval "$(cat ~/.env)"
-set +a
+if [ -f ~/.env ]; then
+  set -a
+  eval "$(cat ~/.env)"
+  set +a
+fi
 
 
 # --------------------------------------
 # Node
 # --------------------------------------
+if command -v nodenv > /dev/null 2>&1; then
+  eval "$(nodenv init -)"
 
-# initialize nodenv
-eval "$(nodenv init -)"
+  # use lint tools globally
+  export PATH="$HOME/dev/src/github.com/stackline/dotfiles/node_modules/.bin:$PATH"
+  # Use yarn with coc.nvim
+  export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+fi
 
-# use lint tools globally
-export PATH="$HOME/dev/src/github.com/stackline/dotfiles/node_modules/.bin:$PATH"
-
-# Use yarn with coc.nvim
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # --------------------------------------
 # Ruby
 # --------------------------------------
-
-# initialize rbenv
-export RBENV_ROOT="$HOME/.rbenv"
-eval "$(rbenv init -)"
+if command -v rbenv > /dev/null 2>&1; then
+  export RBENV_ROOT="$HOME/.rbenv"
+  eval "$(rbenv init -)"
+fi
 
 
 # --------------------------------------
 # Python
 # --------------------------------------
-# initialize pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-eval "$(pyenv init -)"
+if command -v pyenv > /dev/null 2>&1; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  eval "$(pyenv init -)"
+fi
 
 
 # --------------------------------------
