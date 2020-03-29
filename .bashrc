@@ -113,14 +113,8 @@ fi
 # Bash completion
 # MEMO: Homebrew git formula install to bash_completion.d
 # --------------------------------------
-### Homebrew
-# shellcheck disable=SC1091
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
-
-### Linuxbrew
-[ -f /home/linuxbrew/.linuxbrew/etc/bash_completion ] && . /home/linuxbrew/.linuxbrew/etc/bash_completion
-# Git's completion does not work so apply the following patch.
-[ -f /home/linuxbrew/.linuxbrew/etc/bash_completion.d/git-completion.bash ] && source /home/linuxbrew/.linuxbrew/etc/bash_completion.d/git-completion.bash
+readonly BASH_COMPLETION_SH_PATH="$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
+[ -r "$BASH_COMPLETION_SH_PATH" ] && . "$BASH_COMPLETION_SH_PATH"
 
 
 # --------------------------------------
