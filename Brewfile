@@ -4,6 +4,7 @@
 # Homebrew packages
 # --------------------------------------
 ### Manager
+brew 'goenv', args: %w[HEAD] # Go (Add --HEAD option because stable version is old)
 brew 'nodenv'    # Node version manager
 brew 'pyenv'     # Python version manager
 brew 'pipenv'    # Python development workflow
