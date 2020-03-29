@@ -38,7 +38,7 @@ function teardown() {
 }
 
 @test "When dependencies are satisfied and current shell is zsh, return success" {
-  CURRENT_SHELL='-zsh'
+  CURRENT_SHELL='zsh'
   HOMEBREW_PREFIX="$bats_test_suite_tmpdir"
   touch "$git_prompt_file_path/git-prompt.sh"
 

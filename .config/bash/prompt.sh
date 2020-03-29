@@ -8,7 +8,7 @@ function prompt::build_git_prompt_file_path() {
 
 function prompt::check_dependencies() {
   local exit_status=0
-  if [ "$CURRENT_SHELL" != 'bash' ] && [ "$CURRENT_SHELL" != 'zsh' ] && [ "$CURRENT_SHELL" != '-zsh' ]; then
+  if [ "$CURRENT_SHELL" != 'bash' ] && [ "$CURRENT_SHELL" != 'zsh' ]; then
     echo "warning: CURRENT_SHELL variable is not bash and zsh. Please check CURRENT_SHELL=\$0 is in .bashrc."
     exit_status=1
   fi
@@ -66,7 +66,7 @@ ${reset}\$ "
 function prompt::customize() {
   if [ "$CURRENT_SHELL" = 'bash' ]; then
     prompt::customize_bash_ps1
-  elif [ "$CURRENT_SHELL" = 'zsh' ] || [ "$CURRENT_SHELL" = '-zsh' ]; then
+  elif [ "$CURRENT_SHELL" = 'zsh' ]; then
     prompt::customize_zsh_ps1
   fi
 }

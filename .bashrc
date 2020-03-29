@@ -2,7 +2,23 @@
 
 # User specific environment and startup programs
 
-CURRENT_SHELL=$0
+# Normalize process name for login shell and non-login shell.
+#
+# A process name of a login shell has a hyphen at the beginning. (ex. -bash,-zsh)
+#
+# ref. bash manual
+#   A login shell is one whose first character of argument zero is a -,
+#   or one started with the --login option.
+# ref. su manual
+#   sets argv[0] of the shell to '-' in order to make the shell a login shell
+if [[ $0 =~ ^-?bash$ ]]; then
+  CURRENT_SHELL='bash'
+elif [[ $0 =~ ^-?zsh$ ]]; then
+  CURRENT_SHELL='zsh'
+else
+  CURRENT_SHELL=$0
+fi
+
 for file in ~/.config/bash/*; do
   source "$file"
 done
@@ -120,7 +136,7 @@ if [ "$CURRENT_SHELL" = 'bash' ]; then
   readonly BASH_COMPLETION_SH_PATH="$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
   [ -r "$BASH_COMPLETION_SH_PATH" ] && . "$BASH_COMPLETION_SH_PATH"
 fi
-if [ "$CURRENT_SHELL" = 'zsh' ] || [ "$CURRENT_SHELL" = '-zsh' ]; then
+if [ "$CURRENT_SHELL" = 'zsh' ]; then
   autoload -U compinit
   compinit
 fi
