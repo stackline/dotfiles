@@ -11,7 +11,6 @@ done
 # Export
 # --------------------------------------
 function export_mac_environments() {
-  export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
   export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
   export PATH="/usr/local/opt/postgresql@9.5/bin:$PATH" # Need pg_config to install pg gem
 }
@@ -50,11 +49,12 @@ prompt::initialize
 # --------------------------------------
 # Time measurement
 # ref. https://www.golinuxcloud.com/get-script-execution-time-command-bash-script/
+#
+# Use my own tool because the BSD date command cannot display nanoseconds.
+# Setup:
+#   1. go get github.com/stackline/mydate
+#   2. ln -s $GOPATH/bin/mydate /usr/local/bin/mydate
 # --------------------------------------
-function get_current_time_with_nanosec() {
-  date +%s.%N
-}
-
 function calc_script_execution_time() {
   local start_time=$1
   local end_time=$2
@@ -66,7 +66,7 @@ function calc_script_execution_time() {
   echo "$formatted_duration"
 }
 
-readonly script_start_time=$(get_current_time_with_nanosec)
+readonly script_start_time=$(mydate)
 
 # --------------------------------------
 # Add environment variables by using allexport
@@ -305,6 +305,6 @@ _p=$(echo "$PATH" | tr ':' '\n' | awk '!a[$0]++' | awk 'NF' | tr '\n' ':' | sed 
 PATH=$_p
 unset _p
 
-readonly script_end_time=$(get_current_time_with_nanosec)
+readonly script_end_time=$(mydate)
 readonly execution_time=$(calc_script_execution_time "$script_start_time" "$script_end_time")
 echo "Script execution Time: $execution_time"

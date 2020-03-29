@@ -36,7 +36,6 @@ brew 'gem-completion'
 ### Utility
 brew 'bats-core' # Testing framework for Bash
 brew 'composer'
-brew 'coreutils' if OS.mac?
 brew 'fd'
 brew 'fzf'
 brew 'ghq'
