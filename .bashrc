@@ -11,7 +11,6 @@ done
 # Export
 # --------------------------------------
 function export_mac_environments() {
-  export PATH="/usr/local/sbin:$PATH" # for Homebrew's sbin
   export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
   export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
   export PATH="/usr/local/opt/postgresql@9.5/bin:$PATH" # Need pg_config to install pg gem
