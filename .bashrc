@@ -7,22 +7,21 @@ for file in ~/.config/bash/*; do
   source "$file"
 done
 
-# --------------------------------------
-# Export
-# --------------------------------------
-function export_mac_environments() {
-  export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-  export PATH="/usr/local/opt/postgresql@9.5/bin:$PATH" # Need pg_config to install pg gem
-}
+homebrew::initialize
+prompt::initialize
 
-function export_linux_environments() {
+# --------------------------------------
+# export
+# --------------------------------------
+export PATH="$HOMEBREW_PREFIX/opt/mysql@5.7/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/postgresql@9.5/bin:$PATH" # Need pg_config to install pg gem
+if is_linux; then
+  # Correspondence of garbled characters when displaying Japanese with less
   export LESSCHARSET=utf-8
-  export PATH="/home/linuxbrew/.linuxbrew/opt/postgresql@9.5/bin:$PATH" # Need pg_config to install pg gem
   # Avoid error when starting tmux
   # ref. https://astropengu.in/blog/12/
   #      https://github.com/Linuxbrew/legacy-linuxbrew/issues/46#issuecomment-120759893
   export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/share/pkgconfig
-
   # Node pngquant package references libpng12.so.0.
   #
   # - Install yum libpng package
@@ -38,13 +37,9 @@ function export_linux_environments() {
   #
   # - tput: relocation error: /usr/lib64/libc.so.6: symbol _dl_starting_up, version GLIBC_PRIVATE not defined in file ld-linux-x86-64.so.2 with link time reference
   #
-  # export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib64"
-}
+  # sexport LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib64"
+fi
 
-is_mac && export_mac_environments
-is_linux && export_linux_environments
-homebrew::initialize
-prompt::initialize
 
 # --------------------------------------
 # Time measurement
