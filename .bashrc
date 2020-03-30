@@ -30,7 +30,6 @@ prompt::initialize
 # export
 # --------------------------------------
 export PATH="$HOMEBREW_PREFIX/opt/mysql@5.7/bin:$PATH"
-export PATH="$HOMEBREW_PREFIX/opt/postgresql@9.5/bin:$PATH" # Need pg_config to install pg gem
 if is_linux; then
   # Correspondence of garbled characters when displaying Japanese with less
   export LESSCHARSET=utf-8
