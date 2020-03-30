@@ -26,13 +26,7 @@ create_symbolic_links() {
   dotfiles_root_dir=$(cd "${relative_file_path}" && pwd)
   echo current directory is "${dotfiles_root_dir}"
 
-  ### make directories
-  mkdir ~/.bundle
-  mkdir ~/.ctags.d
-  mkdir ~/.composer
-  mkdir ~/.docker
-
-  ### root directory
+  ### Files
   ln -fsv "${dotfiles_root_dir}"/.ansible-lint ~/.ansible-lint
   ln -fsv "${dotfiles_root_dir}"/.bashrc ~/.bashrc
   ln -fsv "${dotfiles_root_dir}"/.eslintrc.js ~/.eslintrc.js
@@ -43,14 +37,12 @@ create_symbolic_links() {
   ln -fsv "${dotfiles_root_dir}"/.pryrc ~/.pryrc
   ln -fsv "${dotfiles_root_dir}"/.tmux.conf ~/.tmux.conf
 
-  ### sub directory
-  ln -fsv "${dotfiles_root_dir}"/.bundle/config ~/.bundle/config
-  ln -fsv "${dotfiles_root_dir}"/.ctags.d/config.ctags ~/.ctags.d/config.ctags
-  ln -fsv "${dotfiles_root_dir}"/.composer/composer.json ~/.composer/composer.json
-  ln -fsv "${dotfiles_root_dir}"/.docker/config.json ~/.docker/config.json
-
-  ### .config directory
+  ### Directories
+  ln -fnsv "${dotfiles_root_dir}"/.bundle ~/.bundle
+  ln -fnsv "${dotfiles_root_dir}"/.composer ~/.composer
   ln -fnsv "${dotfiles_root_dir}"/.config ~/.config
+  ln -fnsv "${dotfiles_root_dir}"/.ctags.d ~/.ctags.d
+  ln -fnsv "${dotfiles_root_dir}"/.docker ~/.docker
 
   ### Homebrew's install path
   ln -fsv "$(brew --prefix)"/opt/git/share/git-core/contrib/diff-highlight/diff-highlight "$(brew --prefix)"/bin
