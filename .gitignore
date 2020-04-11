@@ -3,4 +3,4 @@
 /package-lock.json
 
 # Bundler
-/.bundle/cache/
+/.config/bundle/cache/

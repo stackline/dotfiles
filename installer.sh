@@ -38,7 +38,6 @@ create_symbolic_links() {
   ln -fsv "${dotfiles_root_dir}"/.tmux.conf ~/.tmux.conf
 
   ### Directories
-  ln -fnsv "${dotfiles_root_dir}"/.bundle ~/.bundle
   ln -fnsv "${dotfiles_root_dir}"/.composer ~/.composer
   ln -fnsv "${dotfiles_root_dir}"/.config ~/.config
   ln -fnsv "${dotfiles_root_dir}"/.ctags.d ~/.ctags.d

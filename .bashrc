@@ -89,6 +89,13 @@ fi
 
 
 # --------------------------------------
+# XDG_CONFIG_HOME
+# --------------------------------------
+export XDG_CONFIG_HOME="${HOME}/.config"
+export BUNDLE_USER_HOME="${XDG_CONFIG_HOME}/bundle"
+
+
+# --------------------------------------
 # Go
 # --------------------------------------
 if command -v goenv > /dev/null 2>&1; then
