@@ -36,7 +36,6 @@ create_symbolic_links() {
   ### Directories
   ln -fnsv "${dotfiles_root_dir}"/.composer ~/.composer
   ln -fnsv "${dotfiles_root_dir}"/.config ~/.config
-  ln -fnsv "${dotfiles_root_dir}"/.docker ~/.docker
 
   ### Homebrew's install path
   ln -fsv "$(brew --prefix)"/opt/git/share/git-core/contrib/diff-highlight/diff-highlight "$(brew --prefix)"/bin
