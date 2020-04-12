@@ -103,34 +103,22 @@ export RBENV_ROOT="${XDG_DATA_HOME}/rbenv"
 
 
 # --------------------------------------
-# Go
+# Version management tools
 # --------------------------------------
 if command -v goenv > /dev/null 2>&1; then
   eval "$(goenv init -)"
 fi
 
-
-# --------------------------------------
-# Node
-# --------------------------------------
 if command -v nodenv > /dev/null 2>&1; then
   eval "$(nodenv init -)"
 fi
 
-
-# --------------------------------------
-# Ruby
-# --------------------------------------
-if command -v rbenv > /dev/null 2>&1; then
-  eval "$(rbenv init -)"
-fi
-
-
-# --------------------------------------
-# Python
-# --------------------------------------
 if command -v pyenv > /dev/null 2>&1; then
   eval "$(pyenv init -)"
+fi
+
+if command -v rbenv > /dev/null 2>&1; then
+  eval "$(rbenv init -)"
 fi
 
 
