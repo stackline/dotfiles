@@ -1,10 +1,10 @@
 # dotfiles
 
-## Append user local git settings to ~/.gitconfig_local
+## Append user local git settings to $XDG_CONFIG_HOME/git/config_local
 
 ```bash
-$ git config --file ~/.gitconfig_local user.name "User name"
-$ git config --file ~/.gitconfig_local user.email "username@example.com"
+$ git config --file $XDG_CONFIG_HOME/git/config_local user.name "User name"
+$ git config --file $XDG_CONFIG_HOME/git/config_local user.email "username@example.com"
 ```
 
 ## Display the search bar on the top in Firefox

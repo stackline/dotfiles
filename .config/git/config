@@ -1,6 +1,6 @@
 [include]
   # User local settings
-  path = ~/.gitconfig_local
+  path = ~/.config/git/config_local
 [pager]
   # ref. https://github.com/git/git/tree/master/contrib/diff-highlight
   log  = (diff-highlight 2>/dev/null || cat) | less

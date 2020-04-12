@@ -4,3 +4,6 @@
 
 # Bundler
 /.config/bundle/cache/
+
+# Git
+/.config/git/config_local
