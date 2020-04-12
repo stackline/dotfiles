@@ -118,8 +118,6 @@ if command -v nodenv > /dev/null 2>&1; then
 
   # use lint tools globally
   export PATH="$HOME/dev/src/github.com/stackline/dotfiles/node_modules/.bin:$PATH"
-  # Use yarn with coc.nvim
-  export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 fi
 
 
