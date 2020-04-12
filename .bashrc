@@ -115,9 +115,6 @@ fi
 # --------------------------------------
 if command -v nodenv > /dev/null 2>&1; then
   eval "$(nodenv init -)"
-
-  # use lint tools globally
-  export PATH="$HOME/dev/src/github.com/stackline/dotfiles/node_modules/.bin:$PATH"
 fi
 
 

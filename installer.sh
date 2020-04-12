@@ -30,9 +30,7 @@ create_symbolic_links() {
   ln -fsv "${dotfiles_root_dir}"/.ansible-lint ~/.ansible-lint
   ln -fsv "${dotfiles_root_dir}"/.bashrc ~/.bashrc
   ln -fsv "${dotfiles_root_dir}"/.bashrc ~/.zshrc # Share config file with Bash
-  ln -fsv "${dotfiles_root_dir}"/.eslintrc.js ~/.eslintrc.js
   ln -fsv "${dotfiles_root_dir}"/.gemrc ~/.gemrc
-  ln -fsv "${dotfiles_root_dir}"/.htmllintrc ~/.htmllintrc
   ln -fsv "${dotfiles_root_dir}"/.pryrc ~/.pryrc
   ln -fsv "${dotfiles_root_dir}"/.tmux.conf ~/.tmux.conf
 
