@@ -46,16 +46,6 @@ create_symbolic_links() {
 # Install packages
 # --------------------------------------
 
-# Manage homebrew packages with Brewfile
-install_homebrew_packages() {
-  brew bundle
-}
-
-# Manage node packages with package.json
-install_node_packages() {
-  npm install
-}
-
 # Manage python packages with requirements.txt
 # Specify "--upgrade" option to upgrade pip of Python2
 install_python2_packages() {
@@ -95,13 +85,6 @@ initialize() {
     # Install Homebrew
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-    # Use bash version 4 in order to use READLINE_LINE in peco-select-history function
-    # ref. https://rcmdnk.com/blog/2015/05/25/computer-mac-bash-zsh/
-    sudo dscl . -create /Users/"$USER" UserShell /usr/local/bin/bash
-    dscl . -read /Users/"$USER" UserShell
-    # Confirm that bash version is 4.x
-    echo "$BASH_VERSION"
-
     # vagrant
     vagrant plugin install vagrant-vbguest
     vagrant plugin update
@@ -111,24 +94,12 @@ initialize() {
   ### ref. https://github.com/junegunn/vim-plug#neovim
   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-  ### Install SDKMAN
-  ### ref. https://sdkman.io/install
-  ### MEMO: Install Leiningen with Homebrew
-  curl -s "https://get.sdkman.io" | bash
-  source "$HOME/.sdkman/bin/sdkman-init.sh"
-  sdk install java
-
   ### initialize Python environment
   pyenv install 2.7.15
   # An error occurs when executing old version ansible with python 3.7
   # ref. https://github.com/ansible/ansible/issues/32816
   pyenv install 3.6.6
   pyenv global 3.6.6 2.7.15
-
-  # TODO: Install ruby, node before installing packages
-  nodenv install 10.1.0
-  nodenv global 10.1.0
-  rbenv install 2.5.1
 }
 
 readonly PROCNAME=${0##*/}
@@ -142,10 +113,8 @@ execute() {
 
 execute_all() {
   execute create_symbolic_links
-  execute install_homebrew_packages
   execute install_python2_packages
   execute install_python3_packages
-  execute install_node_packages
 }
 
 usage() {
@@ -153,8 +122,6 @@ usage() {
 usage: sh installer.sh <option>
 option:
   a:  execute all
-  h:  install Homebrew packages
-  n:  install Node packages
   p2: install Python2 packages
   p3: install Python3 packages
   s:  create symbolic links
@@ -166,8 +133,6 @@ eval "$(cat ~/.env)"
 
 case $1 in
   a) execute execute_all ;;
-  h) execute install_homebrew_packages ;;
-  n) execute install_node_packages ;;
   p2) execute install_python2_packages ;;
   p3) execute install_python3_packages ;;
   s) execute create_symbolic_links ;;
