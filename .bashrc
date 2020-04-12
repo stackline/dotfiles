@@ -89,10 +89,17 @@ fi
 
 
 # --------------------------------------
-# XDG_CONFIG_HOME
+# XDG_Base Directory
+# ref. https://wiki.archlinux.org/index.php/XDG_Base_Directory
 # --------------------------------------
 export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_DATA_HOME="${HOME}/.local/share"
+
 export BUNDLE_USER_HOME="${XDG_CONFIG_HOME}/bundle"
+export GOENV_ROOT="${XDG_DATA_HOME}/goenv"
+export NODENV_ROOT="${XDG_DATA_HOME}/nodenv"
+export PYENV_ROOT="${XDG_DATA_HOME}/pyenv"
+export RBENV_ROOT="${XDG_DATA_HOME}/rbenv"
 
 
 # --------------------------------------
@@ -120,7 +127,6 @@ fi
 # Ruby
 # --------------------------------------
 if command -v rbenv > /dev/null 2>&1; then
-  export RBENV_ROOT="$HOME/.rbenv"
   eval "$(rbenv init -)"
 fi
 
@@ -129,7 +135,6 @@ fi
 # Python
 # --------------------------------------
 if command -v pyenv > /dev/null 2>&1; then
-  export PYENV_ROOT="$HOME/.pyenv"
   eval "$(pyenv init -)"
 fi
 
