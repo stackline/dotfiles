@@ -19,6 +19,9 @@ else
   CURRENT_SHELL=$0
 fi
 
+# Load utilities first
+source ~/.config/bash/debug.sh
+
 for file in ~/.config/bash/*; do
   source "$file"
 done
