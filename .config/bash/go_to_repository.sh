@@ -8,6 +8,6 @@ function go_to_repository() {
   selected_dir=$(ghq list --full-path | fzf --reverse)
 
   if [ -d "$selected_dir" ]; then
-    cd "$selected_dir"
+    cd "$selected_dir" || return 1
   fi
 }
