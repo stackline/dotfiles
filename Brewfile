@@ -98,6 +98,31 @@ if RUBY_PLATFORM.include?('linux')
   # or application execution.
   brew 'gcc'
 
+  # NOTE: Using gcc@9 to build sassc gem ad hoc.
+  #
+  # ### Background
+  #
+  # The version of Linuxbrew's gcc package is 5.5.0.
+  # Error when building sassc gem 2.2.1 with GCC 5.5.0.
+  # Need to build sassc 2.2.1 with more recent version of GCC.
+  #
+  # * https://github.com/sass/sassc-ruby/issues/149#issuecomment-552517260
+  #
+  # ### How to build ad hoc
+  #
+  # ```
+  # $ brew install gcc
+  # $ bundle install # with gcc 5.5 (Sassc build fails at this point)
+  #
+  # $ brew unlink gcc
+  # $ brew install gcc@9
+  # $ bundle install # with gcc 9.2 (Sassc build success)
+  #
+  # $ brew link gcc # If unlinked, "cannot open shared object file" error occurs when executing rails s.
+  # $ bin/rails s
+  # ```
+  brew 'gcc@9'
+
   # docker formula do not have two files for systemd.
   # So, we use a yum package.
   # ref. http://docs.docker.jp/engine/articles/systemd.html#systemd
