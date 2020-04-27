@@ -3,3 +3,6 @@
 
 # Git
 /.config/git/config_local
+
+# Vim
+/.config/nvim/.netrwhist
