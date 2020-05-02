@@ -34,6 +34,7 @@ brew 'bash-completion'
 brew 'gem-completion'
 
 ### Utility
+brew 'bat' # alternative to cat
 brew 'bats-core' # Testing framework for Bash
 brew 'composer'
 brew 'fd'
