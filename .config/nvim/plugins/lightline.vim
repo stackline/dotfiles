@@ -11,15 +11,25 @@ function! MyRepository()
   return ''
 endfunction
 
-" show relative path
-" ref. https://github.com/itchyny/lightline.vim/issues/87#issuecomment-189616314
+" NOTE: require vim-gitbranch plugin
+" https://github.com/itchyny/lightline.vim/issues/293#issuecomment-373710096
+function! LightlineFilename()
+  let root = fnamemodify(get(b:, 'gitbranch_path'), ':h:h')
+  let path = expand('%:p')
+  if path[:len(root)-1] ==# root
+    return path[len(root)+1:]
+  endif
+  return expand('%')
+endfunction
+
 let g:lightline = {
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [  'cocstatus', 'readonly', 'repository', 'gitbranch', 'relativepath', 'modified' ] ]
+      \   'left': [ [ 'mode', 'paste' ], [  'cocstatus', 'readonly', 'repository', 'gitbranch', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
       \   'cocstatus': 'coc#status',
       \   'repository': 'MyRepository',
-      \   'gitbranch': 'gitbranch#name'
+      \   'gitbranch': 'gitbranch#name',
+      \   'filename': 'LightlineFilename'
       \ }
       \ }
