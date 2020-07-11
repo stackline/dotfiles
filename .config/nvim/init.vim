@@ -111,10 +111,6 @@ set nobackup   " do not make tilda "~" backup file
 set ambiwidth=double " Show two byte character collectory on Mac Termianl"
 set formatoptions=tcrqj " Default `tcqj`. Add `r` option (complete comment sign automatically when breaking line)
 set tagcase=match " Search a tag file by case match
-
-" --------------------------------------
-" filetype indent
-" --------------------------------------
 set expandtab
 set shiftwidth=2
 set tabstop=2
