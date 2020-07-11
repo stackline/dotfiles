@@ -15,9 +15,10 @@ endfunction
 " ref. https://github.com/itchyny/lightline.vim/issues/87#issuecomment-189616314
 let g:lightline = {
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [  'cocstatus', 'readonly', 'repository', 'relativepath', 'modified' ] ]
+      \   'left': [ [ 'mode', 'paste' ], [  'cocstatus', 'readonly', 'repository', 'gitbranch', 'relativepath', 'modified' ] ]
       \ },
       \ 'component_function': {
+      \   'gitbranch': 'gitbranch#name',
       \   'repository': 'MyRepository',
       \   'cocstatus': 'coc#status'
       \ }

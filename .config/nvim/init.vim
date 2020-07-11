@@ -18,6 +18,7 @@ Plug 'thinca/vim-themis', { 'do': 'ln -fsv `pwd`/bin/themis /usr/local/bin/themi
 " ----------------------------------------
 Plug 'airblade/vim-gitgutter' " git diff
 Plug 'itchyny/lightline.vim'  " statusline
+Plug 'itchyny/vim-gitbranch'  " git branch name
 
 " ----------------------------------------
 " incremental search
