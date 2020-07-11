@@ -3,49 +3,29 @@
 " --------------------------------------
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'w0rp/ale' " linter
-Plug 'tpope/vim-fugitive' " git wrapper
-
-" Testing framework for Vim script
-Plug 'thinca/vim-themis', { 'do': 'ln -fsv `pwd`/bin/themis /usr/local/bin/themis' }
-
-" ----------------------------------------
-" additional information
-" ----------------------------------------
+" --------------------------------------
+" Common settings
+" --------------------------------------
 Plug 'airblade/vim-gitgutter' " git diff
+Plug 'crusoexia/vim-monokai'  " syntax highlight
 Plug 'itchyny/lightline.vim'  " statusline
 Plug 'itchyny/vim-gitbranch'  " git branch name
-
-" ----------------------------------------
-" incremental search
-" ----------------------------------------
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim' " Incremental file and code search
-
-" ----------------------------------------
-" LSP client
-" ----------------------------------------
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" coc extensions
-" ref. https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#install-extensions
-"
-"   :CocInstall coc-solargraph
-"
-
-" ----------------------------------------
-" auto complete
-" ----------------------------------------
 Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'       " Incremental file and code search
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" ### coc extensions
+" * coc-snippets
+" * coc-neosnippet
+" * coc-solargraph
+Plug 'thinca/vim-themis', { 'do': 'ln -fsv `pwd`/bin/themis /usr/local/bin/themis' }
 Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'     " git wrapper (mainly use git blame only)
+Plug 'w0rp/ale'               " linter
 
-" ----------------------------------------
-" syntax highlight
-" ----------------------------------------
-Plug 'crusoexia/vim-monokai'
-
-" ----------------------------------------
+" --------------------------------------
 " Language specific settings
-" ----------------------------------------
+" --------------------------------------
 " c++
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
 Plug 'honza/vim-snippets', {'for': 'cpp'}
