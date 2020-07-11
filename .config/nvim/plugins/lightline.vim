@@ -18,8 +18,8 @@ let g:lightline = {
       \   'left': [ [ 'mode', 'paste' ], [  'cocstatus', 'readonly', 'repository', 'gitbranch', 'relativepath', 'modified' ] ]
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'gitbranch#name',
+      \   'cocstatus': 'coc#status',
       \   'repository': 'MyRepository',
-      \   'cocstatus': 'coc#status'
+      \   'gitbranch': 'gitbranch#name'
       \ }
       \ }
