@@ -1,8 +1,7 @@
 " --------------------------------------
 " lightline
 " --------------------------------------
-" Return current repository name
-function! MyRepository()
+function! LightlineRepositoryName()
   let s:absolute_git_root_dir = system('git rev-parse --show-toplevel')
   if v:shell_error == 0
     let s:repository_name = fnamemodify(s:absolute_git_root_dir, ':t')
@@ -28,7 +27,7 @@ let g:lightline = {
       \ },
       \ 'component_function': {
       \   'cocstatus': 'coc#status',
-      \   'repository': 'MyRepository',
+      \   'repository': 'LightlineRepositoryName',
       \   'gitbranch': 'gitbranch#name',
       \   'filename': 'LightlineFilename'
       \ }
