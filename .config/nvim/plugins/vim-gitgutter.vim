@@ -2,4 +2,4 @@
 " vim-gitgutter
 " https://github.com/airblade/vim-gitgutter
 " --------------------------------------
-set updatetime=250
+set updatetime=100
