@@ -49,6 +49,9 @@ Plug 'slim-template/vim-slim' " slim
 
 call plug#end()
 
+" When [!] is included, all found files are sourced.
+runtime! plugins/*.vim
+
 " --------------------------------------
 " rctags.vim
 " https://github.com/stackline/rctags.vim
@@ -75,32 +78,6 @@ augroup END
 " --------------------------------------
 nnoremap <C-p> :GFiles<cr>
 nnoremap <expr> <C-j> ':Rg ' . expand('<cword>') . '<cr>'
-
-" --------------------------------------
-" lightline
-" --------------------------------------
-" Return current repository name
-function! MyRepository()
-  let s:absolute_git_root_dir = system('git rev-parse --show-toplevel')
-  if v:shell_error == 0
-    let s:repository_name = fnamemodify(s:absolute_git_root_dir, ':t')
-    return substitute(s:repository_name, "\n", '', '')
-  endif
-  return ''
-endfunction
-
-" show relative path
-" ref. https://github.com/itchyny/lightline.vim/issues/87#issuecomment-189616314
-let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [  'cocstatus', 'readonly', 'repository', 'relativepath', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'repository': 'MyRepository',
-      \   'cocstatus': 'coc#status'
-      \ }
-      \ }
 
 
 " --------------------------------------
