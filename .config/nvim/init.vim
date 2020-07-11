@@ -74,12 +74,6 @@ augroup rctags_set_tags
 augroup END
 
 " --------------------------------------
-" vim-gitgutter
-" https://github.com/airblade/vim-gitgutter
-" --------------------------------------
-set updatetime=250
-
-" --------------------------------------
 " tab jump
 " ref. https://qiita.com/wadako111/items/755e753677dd72d8036d
 " --------------------------------------
