@@ -21,7 +21,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'thinca/vim-themis', { 'do': 'ln -fsv `pwd`/bin/themis /usr/local/bin/themis' }
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'     " git wrapper (mainly use git blame only)
-Plug 'w0rp/ale'               " linter
+Plug 'dense-analysis/ale'     " linter
 
 " --------------------------------------
 " Language specific settings
