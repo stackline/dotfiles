@@ -47,15 +47,6 @@ call plug#end()
 runtime! plugins/*.vim
 
 " --------------------------------------
-" rctags.vim
-" https://github.com/stackline/rctags.vim
-" --------------------------------------
-let g:asynctags_ctags_options = []
-let g:asynctags_ctags_options = add(g:asynctags_ctags_options, '-R')
-let g:asynctags_ctags_options = add(g:asynctags_ctags_options, '--languages=ruby')
-let g:asynctags_ctags_options = g:asynctags_ctags_options
-
-" --------------------------------------
 " ctags
 " --------------------------------------
 " " Show the list when it has many candidates
