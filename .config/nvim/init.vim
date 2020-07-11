@@ -92,6 +92,9 @@ nnoremap <silent> tp :tabprevious<CR>
 " common
 " --------------------------------------
 colorscheme monokai
+" Unify to monokai line number font color
+" https://github.com/crusoexia/vim-monokai/blob/master/colors/monokai.vim
+highlight Comment ctermfg=243 guifg=#8F908A
 
 " Enable true color (24-bit color) in the TUI.
 "
