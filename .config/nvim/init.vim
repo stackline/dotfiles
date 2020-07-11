@@ -19,7 +19,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " * coc-neosnippet
 " * coc-solargraph
 Plug 'sheerun/vim-polyglot'
-Plug 'thinca/vim-themis', { 'do': 'ln -fsv `pwd`/bin/themis /usr/local/bin/themis' }
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'     " git wrapper (mainly use git blame only)
 Plug 'dense-analysis/ale'     " linter
@@ -36,6 +35,11 @@ Plug 'honza/vim-snippets', {'for': 'cpp'}
 " ruby
 Plug 'prabirshrestha/async.vim', { 'for': 'ruby' }
 Plug 'stackline/vim-asynctags', { 'for': 'ruby' } " Async ctag generator
+
+" vim
+" NOTE: Do not load vim-themis plugin because it is a plugin used as a CUI
+" command during test execution
+Plug 'thinca/vim-themis', { 'for': 'none', 'do': 'ln -fsv `pwd`/bin/themis /usr/local/bin/themis' }
 
 call plug#end()
 
