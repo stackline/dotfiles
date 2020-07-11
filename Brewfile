@@ -152,7 +152,6 @@ brew 'mas'
 ### Taps
 tap 'buo/cask-upgrade'
 tap 'homebrew/cask'
-tap 'homebrew/cask-fonts' # for font-source-han-code-jp
 
 ### Browser
 # cask 'chromium'
@@ -194,7 +193,6 @@ cask 'virtualbox'
 
 ### Utility
 cask 'dropbox'
-cask 'font-source-han-code-jp'
 cask 'google-japanese-ime'
 cask 'hyperswitch'
 cask 'imageoptim'
