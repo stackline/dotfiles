@@ -4,10 +4,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'w0rp/ale' " linter
-Plug 'prabirshrestha/async.vim'
-Plug 'stackline/vim-asynctags', { 'for': 'ruby' } " Async ctag generator
 Plug 'tpope/vim-fugitive' " git wrapper
-" Plug 'joonty/vdebug', { 'rev': 'v1.5.2' }
 
 " Testing framework for Vim script
 Plug 'thinca/vim-themis', { 'do': 'ln -fsv `pwd`/bin/themis /usr/local/bin/themis' }
@@ -45,7 +42,24 @@ Plug 'tpope/vim-endwise'
 " syntax highlight
 " ----------------------------------------
 Plug 'crusoexia/vim-monokai'
-Plug 'slim-template/vim-slim' " slim
+
+" ----------------------------------------
+" Language specific settings
+" ----------------------------------------
+" c++
+Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
+Plug 'honza/vim-snippets', {'for': 'cpp'}
+
+" javascript
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+
+" php
+" Plug 'joonty/vdebug', {  'for': 'php', 'rev': 'v1.5.2' }
+
+" ruby
+Plug 'prabirshrestha/async.vim', { 'for': 'ruby' }
+Plug 'stackline/vim-asynctags', { 'for': 'ruby' } " Async ctag generator
+Plug 'slim-template/vim-slim', { 'for': 'ruby' }
 
 call plug#end()
 
