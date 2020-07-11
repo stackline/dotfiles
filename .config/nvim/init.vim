@@ -80,7 +80,6 @@ nnoremap <silent> tx :tabclose<CR>
 nnoremap <silent> tn :tabnext<CR>
 nnoremap <silent> tp :tabprevious<CR>
 
-
 " --------------------------------------
 " common
 " --------------------------------------
@@ -113,7 +112,6 @@ set ambiwidth=double " Show two byte character collectory on Mac Termianl"
 set formatoptions=tcrqj " Default `tcqj`. Add `r` option (complete comment sign automatically when breaking line)
 set tagcase=match " Search a tag file by case match
 
-
 " --------------------------------------
 " filetype indent
 " --------------------------------------
@@ -123,7 +121,6 @@ set tabstop=2
 
 filetype plugin on
 filetype indent on
-
 
 " --------------------------------------
 " Autocommands
