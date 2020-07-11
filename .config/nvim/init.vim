@@ -44,7 +44,7 @@ Plug 'tpope/vim-endwise'
 " ----------------------------------------
 " syntax highlight
 " ----------------------------------------
-Plug 'morhetz/gruvbox' " color scheme
+Plug 'crusoexia/vim-monokai'
 Plug 'slim-template/vim-slim' " slim
 
 call plug#end()
@@ -117,7 +117,7 @@ nnoremap <silent> tp :tabprevious<CR>
 " --------------------------------------
 " common
 " --------------------------------------
-colorscheme gruvbox
+colorscheme monokai
 
 " Enable true color (24-bit color) in the TUI.
 "
