@@ -67,16 +67,16 @@ function! GitHubURLBuilder(components)
 endfunction
 
 " URL getter
-function! BitbucketUrl()
+function! BitbucketURL()
   let l:components = GetURLComponents()
   let l:url = BitbucketURLBuilder(l:components)
   echo l:url
 endfunction
-command! BitbucketUrl call BitbucketUrl()
+command! BitbucketURL call BitbucketURL()
 
-function! GitHubUrl()
+function! GitHubURL()
   let l:components = GetURLComponents()
   let l:url = GitHubURLBuilder(l:components);
   echo l:url
 endfunction
-command! GitHubUrl call GitHubUrl()
+command! GitHubURL call GitHubURL()
