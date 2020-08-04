@@ -44,27 +44,39 @@ function! GetURLComponents()
         \ }
 endfunction
 
-function! BitbucketUrl()
-  let l:components = GetURLComponents()
+" URL Builder
+function! BitbucketURLBuilder(components)
   let l:path = '/' . 'projects'
-           \ . '/' . toupper(l:components['user_name'])
+           \ . '/' . toupper(a:components['user_name'])
            \ . '/' . 'repos'
-           \ . '/' . l:components['repository_name']
+           \ . '/' . a:components['repository_name']
            \ . '/' . 'browse'
-           \ . '/' . l:components['file_path']
+           \ . '/' . a:components['file_path']
 
-  echo l:components['scheme'] . '://' . l:components['host'] . l:path
+  return a:components['scheme'] . '://' . a:components['host'] . l:path
 endfunction
-command! BitbucketUrl call BitbucketUrl()
 
-function! GitHubUrl()
-  let l:components = GetURLComponents()
+function! GitHubURLBuilder(components)
   let l:path = '/' . l:components['user_name']
            \ . '/' . l:components['repository_name']
            \ . '/' . 'blob'
            \ . '/' . 'master'
            \ . '/' . l:components['file_path']
 
-  echo l:components['scheme'] . '://' . l:components['host'] . l:path
+  return a:components['scheme'] . '://' . a:components['host'] . l:path
+endfunction
+
+" URL getter
+function! BitbucketUrl()
+  let l:components = GetURLComponents()
+  let l:url = BitbucketURLBuilder(l:components)
+  echo l:url
+endfunction
+command! BitbucketUrl call BitbucketUrl()
+
+function! GitHubUrl()
+  let l:components = GetURLComponents()
+  let l:url = GitHubURLBuilder(l:components);
+  echo l:url
 endfunction
 command! GitHubUrl call GitHubUrl()
