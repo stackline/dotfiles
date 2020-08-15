@@ -4,14 +4,14 @@
 
 # Normalize process name for login shell and non-login shell.
 #
-# A process name of a login shell has a hyphen at the beginning. (ex. -bash,-zsh)
+# * A process name of a login shell has a hyphen at the beginning. (ex. -bash,-zsh)
 #
-# ref. bash manual
-#   A login shell is one whose first character of argument zero is a -,
-#   or one started with the --login option.
-# ref. su manual
-#   sets argv[0] of the shell to '-' in order to make the shell a login shell
 if [ "$0" = "-bash" ] || [ "$0" = "bash" ]; then
+# > A login shell is one whose first character of argument zero is a -,
+# > or one started with the --login option.
+# >
+# > bash manual
+#
   CURRENT_SHELL='bash'
 elif [ "$0" = "-zsh" ] || [ "$0" = "zsh" ]; then
   CURRENT_SHELL='zsh'
