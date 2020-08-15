@@ -44,7 +44,7 @@ Plug 'thinca/vim-themis', { 'for': 'none', 'do': 'ln -fsv `pwd`/bin/themis /usr/
 call plug#end()
 
 " When [!] is included, all found files are sourced.
-runtime! plugins/*.vim
+runtime! configs/*.vim
 
 " --------------------------------------
 " ctags
