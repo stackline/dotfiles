@@ -11,9 +11,9 @@
 #   or one started with the --login option.
 # ref. su manual
 #   sets argv[0] of the shell to '-' in order to make the shell a login shell
-if [[ $0 =~ ^-?bash$ ]]; then
+if [ "$0" = "-bash" ] || [ "$0" = "bash" ]; then
   CURRENT_SHELL='bash'
-elif [[ $0 =~ ^-?zsh$ ]]; then
+elif [ "$0" = "-zsh" ] || [ "$0" = "zsh" ]; then
   CURRENT_SHELL='zsh'
 else
   CURRENT_SHELL=$0
