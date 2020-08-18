@@ -173,7 +173,7 @@ cask 'zoomus'
 cask 'visual-studio-code'
 
 ### Input method
-# NOTE: Trying the MacOS standard Japanese input method.
+# NOTE: Trying MacOS standard input method.
 #
 # cask 'google-japanese-ime'
 
