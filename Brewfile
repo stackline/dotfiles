@@ -172,6 +172,11 @@ cask 'zoomus'
 ### Editor
 cask 'visual-studio-code'
 
+### Input method
+# NOTE: Trying the MacOS standard Japanese input method.
+#
+# cask 'google-japanese-ime'
+
 ### Terminal emulator
 # cask 'alacritty'
 cask 'hyper'
@@ -193,7 +198,6 @@ cask 'virtualbox'
 
 ### Utility
 cask 'dropbox'
-cask 'google-japanese-ime'
 cask 'hyperswitch'
 cask 'imageoptim'
 cask 'skitch'
