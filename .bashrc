@@ -6,14 +6,18 @@
 #
 # * A process name of a login shell has a hyphen at the beginning. (ex. -bash,-zsh)
 #
-if [ "$0" = "-bash" ] || [ "$0" = "bash" ]; then
 # > A login shell is one whose first character of argument zero is a -,
 # > or one started with the --login option.
 # >
 # > bash manual
 #
+# * Neovim terminal sets shell name with full path like '/bin/zsh' to $0.
+#   * '--' passed to basename command is delimiter of the option list.
+#   * https://www.gnu.org/software/coreutils/manual/coreutils.html#Common-options
+#
+if [ "$0" = "-bash" ] || [ "$0" = "bash" ] || [ "$(basename -- "$0")" = "bash" ]; then
   CURRENT_SHELL='bash'
-elif [ "$0" = "-zsh" ] || [ "$0" = "zsh" ]; then
+elif [ "$0" = "-zsh" ] || [ "$0" = "zsh" ] || [ "$(basename -- "$0")" = "zsh" ]; then
   CURRENT_SHELL='zsh'
 else
   CURRENT_SHELL=$0
