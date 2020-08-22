@@ -2,8 +2,11 @@
 " Terminal
 " --------------------------------------
 
-" Return to normal-mode from terminal-mode
-tnoremap <C-[> <C-\><C-n>
+" NOTE: When executing Vim in the terminal emulator,
+" <C-[> command make original Vim normal-mode.
+"
+" tnoremap <C-[> <C-\><C-n>
+
 " Enable to move of a cursor to another window on terminal-mode
 " ref. help CTRL-W_w
 tnoremap <C-w>w <C-\><C-n><C-w>w
