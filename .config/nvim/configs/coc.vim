@@ -2,6 +2,7 @@
 " coc.nvim
 " ref. https://github.com/neoclide/coc.nvim#example-vim-configuration
 " --------------------------------------
+
 " if hidden is not set, TextEdit might fail.
 set hidden
 

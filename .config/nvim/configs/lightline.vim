@@ -1,6 +1,7 @@
 " --------------------------------------
 " lightline
 " --------------------------------------
+
 function! LightlineRepositoryName()
   let s:absolute_git_root_dir = system('git rev-parse --show-toplevel')
   if v:shell_error == 0

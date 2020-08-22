@@ -1,6 +1,7 @@
 " --------------------------------------
 " ale
 " --------------------------------------
+
 " Do not use LSP because other plugin use LSP
 let g:ale_disable_lsp = 1
 " Change rubocop execution command from 'rubocop' to 'bundle exec rubocop'
