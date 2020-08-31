@@ -76,7 +76,7 @@ command! BitbucketURL call BitbucketURL()
 
 function! GitHubURL()
   let l:components = GetURLComponents()
-  let l:url = GitHubURLBuilder(l:components);
+  let l:url = GitHubURLBuilder(l:components)
   echo l:url
 endfunction
 command! GitHubURL call GitHubURL()
