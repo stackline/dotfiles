@@ -57,11 +57,11 @@ function! BitbucketURLBuilder(components)
 endfunction
 
 function! GitHubURLBuilder(components)
-  let l:path = '/' . l:components['user_name']
-           \ . '/' . l:components['repository_name']
+  let l:path = '/' . a:components['user_name']
+           \ . '/' . a:components['repository_name']
            \ . '/' . 'blob'
            \ . '/' . 'master'
-           \ . '/' . l:components['file_path']
+           \ . '/' . a:components['file_path']
 
   return a:components['scheme'] . '://' . a:components['host'] . l:path
 endfunction
