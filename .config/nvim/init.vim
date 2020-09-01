@@ -13,7 +13,7 @@ Plug 'itchyny/vim-gitbranch'  " git branch name
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'       " Incremental file and code search
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " ### coc extensions
 " * coc-snippets
 " * coc-neosnippet
@@ -27,7 +27,7 @@ Plug 'dense-analysis/ale'     " linter
 " Language specific settings
 " --------------------------------------
 " c++
-Plug 'honza/vim-snippets', {'for': 'cpp'}
+Plug 'honza/vim-snippets', { 'for': 'cpp' }
 
 " php
 " Plug 'joonty/vdebug', {  'for': 'php', 'rev': 'v1.5.2' }
