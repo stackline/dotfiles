@@ -215,8 +215,6 @@ cask 'dropbox'
 cask 'hyperswitch'
 cask 'imageoptim'
 cask 'skitch'
-# cask 'java'
-# cask 'licecap'
 
 # --------------------------------------
 # Mac App Store
