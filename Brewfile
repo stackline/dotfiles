@@ -160,10 +160,6 @@ return unless /darwin/ =~ RUBY_PLATFORM
 # Linuxbrew can not install mariadb@10.3 on linux
 brew 'mysql@5.7'
 
-# Use bash 4.x in order to use READLINE_LINE in peco-select-history function
-# ref. https://rcmdnk.com/blog/2015/05/25/computer-mac-bash-zsh/
-brew 'bash'
-
 # Mac App Store command line interface
 brew 'mas'
 
