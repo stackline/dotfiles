@@ -1,0 +1,8 @@
+{
+  "clangd": {
+    "arguments": ["-header-insertion=never"],
+    "disableDiagnostics": true,
+    "disableSnippetCompletion": true
+  },
+  "diagnostic.enable": false
+}
