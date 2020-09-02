@@ -178,9 +178,9 @@ cask 'google-chrome'
 # cask 'firefox'
 
 ### Client
-cask 'cyberduck'          # FTP client
-cask 'insomnia'           # Rest client
-cask 'tableplus'          # SQL client
+cask 'cyberduck' # FTP client
+cask 'insomnia'  # Rest client
+cask 'tableplus' # SQL client
 
 ### Communication tool
 cask 'slack'
