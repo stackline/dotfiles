@@ -103,7 +103,6 @@ brew 'libyaml'
 brew 'neovim'
 brew 'nkf'
 brew 'nmap'
-brew 'peco'
 brew 'ripgrep'
 # Be careful when using tmux with Terminal.app
 # ref. https://attonblog.blogspot.com/2017/11/tmux-pull-request.html
