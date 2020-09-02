@@ -31,6 +31,7 @@ create_symbolic_links() {
   ln -fsv "${dotfiles_root_dir}"/.bashrc ~/.bashrc
   ln -fsv "${dotfiles_root_dir}"/.bashrc ~/.zshrc # Share config file with Bash
   ln -fsv "${dotfiles_root_dir}"/.gemrc ~/.gemrc
+  ln -fsv "${dotfiles_root_dir}"/.npmrc ~/.npmrc
   # TODO: Consider adding an include path to gcc and llvm
   ln -fsv "${dotfiles_root_dir}"/include/bits/stdc++.h /usr/local/include/bits/stdc++.h
   ln -fsv "${dotfiles_root_dir}"/include/bits/stdc++.h /usr/local/opt/llvm/include/c++/v1/bits/stdc++.h
