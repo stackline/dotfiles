@@ -190,9 +190,7 @@ cask 'zoomus'
 cask 'visual-studio-code'
 
 ### Input method
-# NOTE: Trying MacOS standard input method.
-#
-# cask 'google-japanese-ime'
+cask 'google-japanese-ime'
 
 ### Terminal emulator
 # cask 'alacritty'
