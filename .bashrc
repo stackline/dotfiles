@@ -182,6 +182,7 @@ if is_linux; then
 fi
 
 # function aliases
+alias b='g++run'
 alias c='cbcopy'
 alias g='go_to_repository'
 
