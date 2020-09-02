@@ -14,10 +14,11 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'       " Incremental file and code search
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-" ### coc extensions
-" * coc-snippets
-" * coc-neosnippet
-" * coc-solargraph
+let g:coc_global_extensions = [
+    \ 'coc-neosnippet',
+    \ 'coc-snippets',
+    \ 'coc-solargraph'
+    \ ]
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'     " git wrapper (mainly use git blame only)
