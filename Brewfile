@@ -201,7 +201,6 @@ cask 'visual-studio-code'
 
 ### Terminal emulator
 # cask 'alacritty'
-cask 'hyper'
 # When starting nvim with iterm2, unintentional input is sometimes done.
 # However, iterm2 + tmux's copy mode is useful when copying long texts
 # that require scrolling.
