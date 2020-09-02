@@ -15,7 +15,6 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'       " Incremental file and code search
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 let s:exts = []
-let s:exts = add(s:exts, 'coc-neosnippet') " snippets
 let s:exts = add(s:exts, 'coc-snippets')   " snippets
 let s:exts = add(s:exts, 'coc-solargraph') " for ruby, use solargraph
 let g:coc_global_extensions = s:exts
