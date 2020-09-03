@@ -42,15 +42,10 @@ brew 'gcc@9'
 
 # [macOS]
 # Use clangd with coc.nvim + coc-clangd.
-# Copy below header file for including "bits/stdc++.h" with clangd.
+# Put below compile_flags.txt to the repository root directory, if you need to include "bits/stdc++.h".
 #
 # ```
-# ### gcc
-# $ mkdir -p /usr/local/include/bits
-# ### llvm
-# $ mkdir -p /usr/local/opt/llvm/include/c++/v1/bits
-# ### make symbolic links
-# $ ./installer.sh s
+# $ echo "-I/usr/local/include" > compile_flags.txt
 # ```
 #
 brew 'llvm' if /darwin/ =~ RUBY_PLATFORM
