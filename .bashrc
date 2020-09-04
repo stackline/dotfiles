@@ -37,6 +37,10 @@ prompt::initialize
 # export
 # --------------------------------------
 export PATH="$HOMEBREW_PREFIX/opt/mysql@5.7/bin:$PATH"
+if is_mac; then
+  # coc.nvim + coc-clangd uses clangd as language server.
+  export PATH="/usr/local/opt/llvm/bin:$PATH"
+fi
 if is_linux; then
   # Correspondence of garbled characters when displaying Japanese with less
   export LESSCHARSET=utf-8
