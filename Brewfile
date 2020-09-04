@@ -166,11 +166,8 @@ tap 'buo/cask-upgrade'
 tap 'homebrew/cask'
 
 ### Browser
-# cask 'chromium'
+cask 'firefox'
 cask 'google-chrome'
-# Using Google Sheets with Firefox inserts unnecessary line breaks
-# ref. https://support.google.com/docs/thread/18235069?hl=en
-# cask 'firefox'
 
 ### Client
 cask 'cyberduck' # FTP client
