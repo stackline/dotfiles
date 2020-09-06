@@ -10,6 +10,21 @@ let g:ale_disable_lsp = 1
 " --------------------
 let g:ale_cpp_cc_executable = 'g++-9'
 let g:ale_cpp_cc_options    = '-std=gnu++17 -Wall -Wextra'
+" --
+"   Since being able to pass options to clang with --extra-arg option, use --.
+" -x c++
+"   clang-check treats input file as c language.
+"   When including iostream header, iostream file not found error occurs.
+"   Therefore, specify c++ as an option.
+" -I/usr/local/include
+"   Include /usr/local/include/bits/stdc++.h
+"   NOTE: IF passing options to clang with '--', it may not refer to options in the compile_flags.txt.
+" -std=c++17
+" -stdlib=libc++
+" -Wall
+"   AtCoder clang++ compile option
+"   ref. https://atcoder.jp/contests/language-test-202001
+let g:ale_cpp_clangcheck_options = '-- -x c++ -I/usr/local/include -std=c++17 -stdlib=libc++ -Wall'
 
 " --------------------
 " Ruby
