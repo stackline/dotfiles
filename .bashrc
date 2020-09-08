@@ -37,6 +37,8 @@ prompt::initialize
 # export
 # --------------------------------------
 export PATH="$HOMEBREW_PREFIX/opt/mysql@5.7/bin:$PATH"
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+
 if is_mac; then
   # coc.nvim + coc-clangd uses clangd as language server.
   export PATH="/usr/local/opt/llvm/bin:$PATH"
