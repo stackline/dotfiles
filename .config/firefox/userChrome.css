@@ -1,0 +1,25 @@
+/**
+ * Display the search bar on the top in Firefox
+ *
+ * ref. https://www.userchrome.org/how-create-userchrome-css.html
+ *
+ * ### Add userChrome.css
+ *
+ * 1. Open "about:support" on Firefox.
+ * 2. Click "Show in Finder" button of "profile folder" item.
+ * 3. Change directory to the "profile folder". (In step2, it displays the parent folder of "profile folder")
+ * 4. Make "chrome" directory.
+ * 5. Copy ~/.config/firefox/userChrome.css to this directory.
+ *
+ * ### Enable userChrome.css
+ *
+ * 6. Open "about:config" on Firefox.
+ * 7. Search by "userprof"
+ * 8. Switch the value of "toolkit.legacyUserProfileCustomizations.stylesheets" from false to true.
+ *
+ * 9. Finally, restart Firefox.
+ *
+ */
+.browserContainer > findbar {
+  -moz-box-ordinal-group: 0;
+}
