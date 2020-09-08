@@ -306,7 +306,10 @@ fi
 function docker-container-login() {
   local container_name
   container_name=$(docker ps --format "{{.Names}}" | fzf -1 -q "$1")
-  docker exec -it "$container_name" /bin/bash
+
+  if [ -n "$container_name" ]; then
+    docker exec -it "$container_name" /bin/bash
+  fi
 }
 
 function check-trailing-character-hexdump() {
