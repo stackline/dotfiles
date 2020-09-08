@@ -189,6 +189,7 @@ fi
 alias b='g++run'
 alias c='cbcopy'
 alias g='go_to_repository'
+alias j='jump-to-directory'
 
 # --------------------------------------
 # Utilities
@@ -285,7 +286,6 @@ function jump-to-directory() {
     cd "$selected_dir" || return
   fi
 }
-alias j='jump-to-directory'
 
 # Select a command from history interactively
 # ref. https://qiita.com/comuttun/items/f54e755f22508a6c7d78
