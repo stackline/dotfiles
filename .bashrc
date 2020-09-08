@@ -192,6 +192,7 @@ alias b='g++run'
 alias c='cbcopy'
 alias g='go_to_repository'
 alias j='jump-to-directory'
+alias dcl='docker-container-login'
 
 # --------------------------------------
 # Utilities
@@ -301,6 +302,12 @@ function select-command-from-history() {
 if [ "$CURRENT_SHELL" = 'bash' ]; then
   bind -x '"\C-r": select-command-from-history'
 fi
+
+function docker-container-login() {
+  local container_name
+  container_name=$(docker ps --format "{{.Names}}" | fzf -1 -q "$1")
+  docker exec -it "$container_name" /bin/bash
+}
 
 function check-trailing-character-hexdump() {
   tail -c 1 "$1" | xxd -p
