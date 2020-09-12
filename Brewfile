@@ -81,6 +81,10 @@ brew 'bash-completion'
 brew 'gem-completion'
 
 ### Utility
+# [macOS]
+# $ echo '/usr/local/bin/bash' | sudo tee -a /etc/shells
+# $ chsh -s /usr/local/bin/bash
+brew 'bash'
 brew 'bat' # alternative to cat
 brew 'bats-core' # Testing framework for Bash
 brew 'composer'
