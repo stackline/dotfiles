@@ -1,6 +1,6 @@
 # .bashrc
 
-# User specific environment and startup programs
+# User specific aliases and functions
 
 # Normalize process name for login shell and non-login shell.
 #
