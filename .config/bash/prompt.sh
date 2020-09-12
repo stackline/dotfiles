@@ -8,10 +8,6 @@ function prompt::build_git_prompt_file_path() {
 
 function prompt::check_dependencies() {
   local exit_status=0
-  if [ "$CURRENT_SHELL" != 'bash' ] && [ "$CURRENT_SHELL" != 'zsh' ]; then
-    echo "warning: CURRENT_SHELL variable is not bash and zsh. Please check CURRENT_SHELL=\$0 is in .bashrc."
-    exit_status=1
-  fi
   if [ -z "$HOMEBREW_PREFIX" ]; then
     echo 'warning: HOMEBREW_PREFIX variable is empty. Please check Homebrew config.'
     exit_status=1
@@ -49,32 +45,10 @@ function prompt::customize_bash_ps1() {
   PS1="${lime}${USER_NAME}@${HOST_NAME}${blue}:${DIRECTORY}${red}\$(__git_ps1)\n${reset}\$ "
 }
 
-function prompt::customize_zsh_ps1() {
-  local -r USER_NAME='%n'
-  local -r HOST_NAME='%m'
-  local -r DIRECTORY='%~'
-  local -r red='%F{red}'
-  local -r green='%F{green}'
-  local -r blue='%F{blue}'
-  local -r reset='%f'
-
-  setopt PROMPT_SUBST
-  PS1="${green}${USER_NAME}@${HOST_NAME}${blue}:${DIRECTORY}${red}\$(__git_ps1)
-${reset}\$ "
-}
-
-function prompt::customize() {
-  if [ "$CURRENT_SHELL" = 'bash' ]; then
-    prompt::customize_bash_ps1
-  elif [ "$CURRENT_SHELL" = 'zsh' ]; then
-    prompt::customize_zsh_ps1
-  fi
-}
-
 function prompt::initialize() {
   if ! prompt::check_dependencies; then
     return 1
   fi
   prompt::initialize_git_prompt
-  prompt::customize
+  prompt::customize_bash_ps1
 }
