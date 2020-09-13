@@ -40,7 +40,15 @@ snippet init
 using namespace std;
 using ll = long long;
 
+void init() {
+  cin.tie(nullptr);               // Do not flush "cout" when processing "cin".
+  // cout << "hogehoge" << '\n';  // "endl" executes flush in addition to line break.
+  // ios::sync_with_stdio(false); // Be careful when using both "cin/cout" and "scanf/printf".
+}
+
 int main() {
+  init();
+
   return 0;
 }
 endsnippet
