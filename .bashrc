@@ -193,6 +193,9 @@ alias c='cbcopy'
 alias g='go_to_repository'
 alias j='jump-to-directory'
 alias dcl='docker-container-login'
+alias drm='docker-container-remove'
+alias dps='docker ps'
+alias dpsa='docker ps -a'
 
 # --------------------------------------
 # Utilities
@@ -309,6 +312,15 @@ function docker-container-login() {
 
   if [ -n "$container_name" ]; then
     docker exec -it "$container_name" /bin/bash
+  fi
+}
+
+function docker-container-remove() {
+  local container_name
+  container_name=$(docker ps -a --format "{{.Names}}" | fzf -q "$1")
+
+  if [ -n "$container_name" ]; then
+    docker rm "$container_name"
   fi
 }
 
