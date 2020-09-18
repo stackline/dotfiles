@@ -68,6 +68,13 @@ brew 'pipenv'    # Python development workflow
 #
 brew 'rbenv'     # Ruby version manager
 brew 'tfenv'     # Terraform version manager
+# NOTE: There is no SDKMAN Homebrew formula, so install it manually.
+#
+# 1. Install SDKMAN while referring to the official manual.
+#    ref. https://sdkman.io/install
+# 2. Add settings to .config/bash/sdkman.sh
+#
+# brew 'sdkman'
 
 ### Linter
 # Dockerfile
