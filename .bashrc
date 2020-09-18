@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # .bashrc
 
 # User specific aliases and functions
