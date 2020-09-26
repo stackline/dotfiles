@@ -12,7 +12,7 @@
 tnoremap <C-w>w <C-\><C-n><C-w>w
 tnoremap <C-w><C-w> <C-\><C-n><C-w>w
 
-command! Term split | terminal
+command! Term split | resize -5 | terminal
 command! Termv vsplit | terminal
 
 augroup initialize_terminal_event
