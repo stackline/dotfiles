@@ -37,6 +37,9 @@ prompt::initialize
 # --------------------------------------
 # export
 # --------------------------------------
+
+# Prevent the display of multibyte characters from being garbled on neovim's terminal
+export LANG=C
 export PATH="$HOMEBREW_PREFIX/opt/mysql@5.7/bin:$PATH"
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
