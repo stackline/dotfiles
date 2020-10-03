@@ -19,6 +19,7 @@ let s:exts = add(s:exts, 'coc-json')       " for json
 let s:exts = add(s:exts, 'coc-clangd')     " for c/c++/objective-c, use clangd
 let s:exts = add(s:exts, 'coc-snippets')   " snippets
 let s:exts = add(s:exts, 'coc-solargraph') " for ruby, use solargraph
+let s:exts = add(s:exts, 'coc-tsserver')   " for javascript and typescript
 let g:coc_global_extensions = s:exts
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-endwise'
