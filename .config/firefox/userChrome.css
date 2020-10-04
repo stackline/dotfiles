@@ -23,3 +23,8 @@
 .browserContainer > findbar {
   -moz-box-ordinal-group: 0;
 }
+
+/* Increase the font size of the bookmark toolbar */
+toolbarbutton.bookmark-item {
+  font-size: 14px !important;
+}
