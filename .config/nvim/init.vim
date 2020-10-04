@@ -37,8 +37,8 @@ Plug 'honza/vim-snippets', { 'for': 'cpp' }
 " Plug 'joonty/vdebug', {  'for': 'php', 'rev': 'v1.5.2' }
 
 " ruby
-Plug 'prabirshrestha/async.vim', { 'for': 'ruby' }
-Plug 'stackline/vim-asynctags', { 'for': 'ruby' } " Async ctag generator
+" Plug 'prabirshrestha/async.vim', { 'for': 'ruby' }
+" Plug 'stackline/vim-asynctags', { 'for': 'ruby' } " Async ctag generator
 
 " vim
 " NOTE: Do not load vim-themis plugin because it is a plugin used as a CUI
@@ -56,10 +56,6 @@ runtime! plugins/*.vim
 " " Show the list when it has many candidates
 " " Use :tjump instead of :tag
 " nnoremap <C-]> g<C-]>
-nnoremap <C-]> :RCTagsJump<cr>
-augroup rctags_set_tags
-  autocmd BufNewFile,BufRead *.ruby set tags+=system('git rev-parse --show-toplevel | tr -d "\n"') . '/tags'
-augroup END
 
 " --------------------------------------
 " tab jump
