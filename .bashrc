@@ -35,11 +35,24 @@ homebrew::initialize
 prompt::initialize
 
 # --------------------------------------
+# Add environment variables by using allexport
+# --------------------------------------
+if [ -f ~/.env ]; then
+  set -a
+  eval "$(cat ~/.env)"
+  set +a
+fi
+
+# --------------------------------------
 # export
 # --------------------------------------
 
 # Prevent the display of multibyte characters from being garbled on neovim's terminal
 export LANG=C
+# NOTE: Declare DOTFILES_ROOT environment variable in .env
+if [ -n "$DOTFILES_ROOT" ]; then
+  export PATH="$DOTFILES_ROOT/bin:$PATH"
+fi
 export PATH="$HOMEBREW_PREFIX/opt/mysql@5.7/bin:$PATH"
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
@@ -94,16 +107,6 @@ function calc_script_execution_time() {
 }
 
 readonly script_start_time=$(mydate)
-
-# --------------------------------------
-# Add environment variables by using allexport
-# --------------------------------------
-if [ -f ~/.env ]; then
-  set -a
-  eval "$(cat ~/.env)"
-  set +a
-fi
-
 
 # --------------------------------------
 # XDG_Base Directory

@@ -1,8 +1,14 @@
+# General
+/bin/
+
 # Bundler
 /.config/bundle/cache/
 
 # Git
 /.config/git/config_local
+
+# npm
+/node_modules
 
 # Vim
 /.config/nvim/.netrwhist
