@@ -1,19 +1,6 @@
 #!/bin/bash
 
 # --------------------------------------
-# Utilities
-# --------------------------------------
-is_mac() {
-  [ "$(uname)" = "Darwin" ] && return 0
-  return 1
-}
-
-is_linux() {
-  [ "$(uname)" = "Linux" ] && return 0
-  return 1
-}
-
-# --------------------------------------
 # Create symbolic links to files and directories
 # --------------------------------------
 create_symbolic_links() {
@@ -57,52 +44,6 @@ install_python2_packages() {
 
 install_python3_packages() {
   pip3 install --upgrade -r requirements.txt
-}
-
-initialize() {
-  ### Tasks not optimized
-  if is_linux; then
-
-    # Linuxbrew
-    #
-    # Install Linuxbrew in "/home/linuxbrew/.linuxbrew" instead of "$HOME/.linuxbrew"
-    # because pre-compiled binary bottles can only be used in "/home/linuxbrew/.linuxbrew"
-    # ref. https://github.com/Linuxbrew/brew/issues/452#issuecomment-321108383
-    #
-    export HOMEBREW_FORCE_VENDOR_RUBY=1 # Use portable ruby
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-
-    # Homebrew bundle
-    brew bundle -v
-
-    # If you do not have this setting when installing ruby via rbenv,
-    # the following error will occur.
-    #
-    #   The Ruby openssl extension was not compiled.
-    #   ERROR: Ruby install aborted due to missing extensions
-    #   Try running `yum install -y openssl-devel` to fetch missing dependencies.
-    #
-    brew link openssl@1.1 --force
-  fi
-  if is_mac; then
-    # Install Homebrew
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-    # vagrant
-    vagrant plugin install vagrant-vbguest
-    vagrant plugin update
-  fi
-
-  ### Install vim-plug
-  ### ref. https://github.com/junegunn/vim-plug#neovim
-  curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-  ### initialize Python environment
-  pyenv install 2.7.15
-  # An error occurs when executing old version ansible with python 3.7
-  # ref. https://github.com/ansible/ansible/issues/32816
-  pyenv install 3.6.6
-  pyenv global 3.6.6 2.7.15
 }
 
 readonly PROCNAME=${0##*/}
