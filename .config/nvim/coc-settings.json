@@ -4,5 +4,17 @@
     "disableDiagnostics": true,
     "disableSnippetCompletion": true
   },
-  "diagnostic.enable": false
+  "diagnostic.enable": false,
+  "languageserver": {
+    "golang": {
+      "_coc-go setting": "https://github.com/golang/tools/blob/master/gopls/doc/vim.md#cocnvim",
+      "_gopls installation": "https://github.com/golang/tools/blob/master/gopls/doc/user.md#installation",
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "usePlaceholders": true
+      }
+    }
+  }
 }
