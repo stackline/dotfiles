@@ -20,6 +20,8 @@
  * 9. Finally, restart Firefox.
  *
  */
+
+/* Display findbar at the top of the screen */
 .browserContainer > findbar {
   -moz-box-ordinal-group: 0;
 }
