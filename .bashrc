@@ -156,6 +156,9 @@ if [ "$CURRENT_SHELL" = 'zsh' ]; then
   compinit
 fi
 
+if command -v npm > /dev/null 2>&1; then
+  eval "$(npm completion)"
+fi
 
 # --------------------------------------
 # alias
