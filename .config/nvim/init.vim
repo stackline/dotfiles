@@ -15,6 +15,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'       " Incremental file and code search
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 let s:exts = []
+let s:exts = add(s:exts, 'coc-css')        " for css, scss and less
 let s:exts = add(s:exts, 'coc-go')         " for go, use gopls
 let s:exts = add(s:exts, 'coc-json')       " for json
 let s:exts = add(s:exts, 'coc-clangd')     " for c/c++/objective-c, use clangd
