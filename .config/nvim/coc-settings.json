@@ -1,5 +1,7 @@
 {
   "clangd.arguments": ["-header-insertion=never"],
   "clangd.disableDiagnostics": true,
-  "clangd.disableSnippetCompletion": true
+  "clangd.disableSnippetCompletion": true,
+  "javascript.validate.enable": false,
+  "typescript.validate.enable": false
 }
