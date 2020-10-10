@@ -117,6 +117,7 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 
 export BUNDLE_USER_HOME="${XDG_CONFIG_HOME}/bundle"
 export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
+export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}"/npm/npmrc
 export GOENV_ROOT="${XDG_DATA_HOME}/goenv"
 export NODENV_ROOT="${XDG_DATA_HOME}/nodenv"
 export PYENV_ROOT="${XDG_DATA_HOME}/pyenv"
