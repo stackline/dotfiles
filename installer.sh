@@ -24,7 +24,6 @@ create_symbolic_links() {
   ln -fsv "${dotfiles_root_dir}"/include/bits/stdc++.h /usr/local/include/bits/stdc++.h
 
   ### Directories
-  ln -fnsv "${dotfiles_root_dir}"/.composer ~/.composer
   ln -fnsv "${dotfiles_root_dir}"/.config ~/.config
 
   ### Homebrew's install path
