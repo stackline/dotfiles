@@ -14,6 +14,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'       " Incremental file and code search
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'neoclide/jsonc.vim'
 let s:exts = []
 let s:exts = add(s:exts, 'coc-css')        " for css, scss and less
 let s:exts = add(s:exts, 'coc-go')         " for go, use gopls
@@ -126,6 +127,9 @@ augroup init_filetype_event
   " Enable tag jump to methods with ! or ?
   " ref. https://www.reddit.com/r/vim/comments/60el1r/question_jumping_to_tags/
   autocmd FileType ruby setlocal iskeyword+=!,?
+
+  " json with comments
+  autocmd FileType json set filetype=jsonc
 augroup END
 
 augroup init_bufwritepre_event
