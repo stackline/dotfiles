@@ -214,6 +214,7 @@ cask 'dropbox'
 cask 'hyperswitch'
 cask 'imageoptim'
 cask 'skitch'
+cask 'spotify'
 
 # --------------------------------------
 # Mac App Store
