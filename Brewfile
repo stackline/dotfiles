@@ -182,7 +182,7 @@ cask 'google-chrome'
 
 ### Client
 cask 'cyberduck' # FTP client
-cask 'insomnia'  # Rest client
+cask 'insomnia'  # API client for REST and GraphQL
 cask 'tableplus' # SQL client
 
 ### Communication tool
