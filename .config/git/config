@@ -10,8 +10,17 @@
   # Use diff-highlight with "git add --patch"
   diffFilter = (diff-highlight 2>/dev/null || cat)
 [color "diff"]
-  # Customized color for diff
-  meta = blue black bold
+  meta = 11
+  frag = magenta bold
+  commit = yellow bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
 [diff]
   # Highlight whitespace
   wsErrorHighlight = all
