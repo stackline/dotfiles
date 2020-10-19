@@ -5,7 +5,8 @@
 #include <cstdint>   // int64_t, int*_t
 #include <cstdio>    // printf
 #include <deque>     // deque
-#include <iostream>  // cout, endl, cin
+#include <iomanip>   // setprecision
+#include <iostream>  // cout, endl, cin, fixed
 #include <map>       // map
 #include <numeric>   // gcd
 #include <queue>     // queue, priority_queue
