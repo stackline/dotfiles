@@ -8,7 +8,8 @@ let g:ale_disable_lsp = 1
 " Fix code when they are saved
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
-  \ 'cpp': ['clang-format']
+  \ 'cpp': ['clang-format'],
+  \ 'go': ['gofmt']
   \ }
 
 " --------------------
