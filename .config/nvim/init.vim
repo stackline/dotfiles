@@ -33,7 +33,6 @@ Plug 'dense-analysis/ale'     " linter
 " Language specific settings
 " --------------------------------------
 " c++
-Plug 'bfrg/vim-cpp-modern', { 'for': 'cpp' } " preferred over vim-polyglot
 Plug 'honza/vim-snippets', { 'for': 'cpp' }
 
 " php
