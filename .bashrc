@@ -3,6 +3,28 @@
 
 # User specific aliases and functions
 
+# --------------------------------------
+# Time measurement
+# ref. https://www.golinuxcloud.com/get-script-execution-time-command-bash-script/
+#
+# Use my own tool because the BSD date command cannot display nanoseconds.
+# Setup:
+#   1. go get github.com/stackline/mydate
+#   2. ln -s $GOPATH/bin/mydate /usr/local/bin/mydate
+# --------------------------------------
+function calc_script_execution_time() {
+  local start_time=$1
+  local end_time=$2
+  local duration
+  local formatted_duration
+
+  duration=$(echo "$end_time - $start_time" | bc)
+  formatted_duration=$(printf "%.2f" "$duration")
+  echo "$formatted_duration"
+}
+
+readonly script_start_time=$(mydate)
+
 # Normalize process name for login shell and non-login shell.
 #
 # * A process name of a login shell has a hyphen at the beginning. (ex. -bash,-zsh)
@@ -94,29 +116,6 @@ if is_linux; then
   #
   # sexport LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib64"
 fi
-
-
-# --------------------------------------
-# Time measurement
-# ref. https://www.golinuxcloud.com/get-script-execution-time-command-bash-script/
-#
-# Use my own tool because the BSD date command cannot display nanoseconds.
-# Setup:
-#   1. go get github.com/stackline/mydate
-#   2. ln -s $GOPATH/bin/mydate /usr/local/bin/mydate
-# --------------------------------------
-function calc_script_execution_time() {
-  local start_time=$1
-  local end_time=$2
-  local duration
-  local formatted_duration
-
-  duration=$(echo "$end_time - $start_time" | bc)
-  formatted_duration=$(printf "%.2f" "$duration")
-  echo "$formatted_duration"
-}
-
-readonly script_start_time=$(mydate)
 
 # --------------------------------------
 # Bash completion
