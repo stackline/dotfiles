@@ -186,11 +186,40 @@ alias pip3-uninstall-all-packages='pip3 freeze | xargs pip3 uninstall -y'
 # ref. https://darryldias.me/12/remove-all-installed-homebrew-packages/
 alias brew-remove-all-installed-packages='brew list | xargs brew remove --force --ignore-dependencies'
 
-# Vim
-# modifiable config are required when writing file.
-function update-vim-plugins() {
-  nvim -c 'PlugUpdate' -c 'set modifiable' -c '%w /tmp/vim-plug.log' -c 'qa'
-  cat /tmp/vim-plug.log
+function update-various-packages() {
+  local readonly vim_plug_update_log='/tmp/vim-plug-update.log'
+  if [ -f "$vim_plug_update_log" ]; then
+    touch "$vim_plug_update_log"
+  fi
+
+  local readonly vim_coc_update_sync_log='/tmp/vim-coc-update-sync.log'
+  if [ -f "$vim_coc_update_sync_log" ]; then
+    touch "$vim_coc_update_sync_log"
+  fi
+
+  # --headless
+  #   Do not switch screen from shell to vim.
+  # set modifiable
+  #   Enable to modify buffer.
+  # %w
+  #   % means all lines for range.
+  #   %w means write all lines to a file.
+  nvim --headless -c 'PlugUpdate' -c 'set modifiable' -c "%w $vim_plug_update_log" -c 'qa'
+  echo ''
+  # sleep
+  #   Since the update is performed asynchronously, if we do not wait with sleep,
+  #   the status during the update will be written to the log file.
+  nvim --headless -c 'CocUpdateSync|sleep 3' -c 'set modifiable' -c "%w $vim_coc_update_sync_log" -c 'qa'
+  echo ''
+
+  echo -e '\n### update vim plugins\n'
+  cat "$vim_plug_update_log"
+
+  echo -e '\n### update coc.nvim extensions\n'
+  cat "$vim_coc_update_sync_log"
+
+  echo -e '\n### update homebrew formulas and casks\n'
+  brew-maintenance
 }
 
 # Homebrew
