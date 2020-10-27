@@ -12,17 +12,6 @@
 #   1. go get github.com/stackline/mydate
 #   2. ln -s $GOPATH/bin/mydate /usr/local/bin/mydate
 # --------------------------------------
-function calc_script_execution_time() {
-  local start_time=$1
-  local end_time=$2
-  local duration
-  local formatted_duration
-
-  duration=$(echo "$end_time - $start_time" | bc)
-  formatted_duration=$(printf "%.2f" "$duration")
-  echo "$formatted_duration"
-}
-
 readonly script_start_time=$(mydate)
 
 # Normalize process name for login shell and non-login shell.
@@ -344,5 +333,6 @@ PATH=$_p
 unset _p
 
 readonly script_end_time=$(mydate)
-readonly execution_time=$(calc_script_execution_time "$script_start_time" "$script_end_time")
-echo "Script execution Time: $execution_time"
+readonly bashrc_execution_msec=$(echo "($script_end_time - $script_start_time) * 1000" | bc | xargs printf "%.0f")
+readonly bashrc_execution_sec=$(echo "($script_end_time - $script_start_time)" | bc | xargs printf "%.3f")
+echo "Script execution Time: $bashrc_execution_msec msec ($bashrc_execution_sec sec)"
