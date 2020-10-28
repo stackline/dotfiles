@@ -106,6 +106,7 @@ set formatoptions=tcrqj " Default `tcqj`. Add `r` option (complete comment sign 
 set tagcase=match " Search a tag file by case match
 set expandtab
 set shiftwidth=2
+set shortmess+=I " Do not display the intro message when starting Vim.
 set tabstop=2
 
 filetype plugin on
