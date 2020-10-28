@@ -7,7 +7,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Common settings
 " --------------------------------------
 Plug 'airblade/vim-gitgutter' " git diff
-Plug 'crusoexia/vim-monokai'  " syntax highlight
+Plug 'morhetz/gruvbox'        " syntax highlight
 Plug 'itchyny/lightline.vim'  " statusline
 Plug 'itchyny/vim-gitbranch'  " git branch name
 Plug 'jiangmiao/auto-pairs'
@@ -76,7 +76,7 @@ nnoremap <silent> tp :tabprevious<CR>
 " --------------------------------------
 " common
 " --------------------------------------
-colorscheme monokai
+colorscheme gruvbox
 " Unify to monokai line number font color
 " https://github.com/crusoexia/vim-monokai/blob/master/colors/monokai.vim
 highlight Comment ctermfg=243 guifg=#8F908A
