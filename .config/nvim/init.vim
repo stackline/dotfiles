@@ -81,16 +81,7 @@ colorscheme gruvbox
 " https://github.com/crusoexia/vim-monokai/blob/master/colors/monokai.vim
 highlight Comment ctermfg=243 guifg=#8F908A
 
-" Enable true color (24-bit color) in the TUI.
-"
-" MEMO:
-" Hyper v3.0.2 does not support true color. (Specifically, xterm.js)
-" Therefore, the color scheme is represented by 8-bit color (256 colors).
-"
-" To use true color in Hyper, we need to build canary or wait for v4.
-" ref. True colors support / https://github.com/zeit/hyper/issues/3695
-"
-set termguicolors
+set termguicolors " Enable true color (24-bit color) in the TUI.
 set number
 set list
 set nowrap
