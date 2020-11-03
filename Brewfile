@@ -84,7 +84,7 @@ brew 'shellcheck'
 brew 'shfmt'
 
 ### Bash completion
-brew 'bash-completion'
+brew 'bash-completion@2'
 brew 'gem-completion'
 
 ### Utility
