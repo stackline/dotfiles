@@ -106,13 +106,6 @@ if is_linux; then
   # sexport LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib64"
 fi
 
-# --------------------------------------
-# Bash completion
-# MEMO: Homebrew git formula install to bash_completion.d
-# --------------------------------------
-readonly BASH_COMPLETION_SH_PATH="$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
-[ -r "$BASH_COMPLETION_SH_PATH" ] && . "$BASH_COMPLETION_SH_PATH"
-
 if command -v npm > /dev/null 2>&1; then
   eval "$(npm completion)"
 fi
