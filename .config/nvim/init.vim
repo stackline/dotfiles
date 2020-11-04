@@ -10,7 +10,6 @@ Plug 'airblade/vim-gitgutter' " git diff
 Plug 'morhetz/gruvbox'        " syntax highlight
 Plug 'itchyny/lightline.vim'  " statusline
 Plug 'itchyny/vim-gitbranch'  " git branch name
-Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'       " Incremental file and code search
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
@@ -20,6 +19,7 @@ let s:exts = add(s:exts, 'coc-css')        " for css, scss and less
 let s:exts = add(s:exts, 'coc-go')         " for go, use gopls
 let s:exts = add(s:exts, 'coc-json')       " for json
 let s:exts = add(s:exts, 'coc-clangd')     " for c/c++/objective-c, use clangd
+let s:exts = add(s:exts, 'coc-pairs')      " auto pair
 let s:exts = add(s:exts, 'coc-snippets')   " snippets
 let s:exts = add(s:exts, 'coc-solargraph') " for ruby, use solargraph
 let s:exts = add(s:exts, 'coc-tsserver')   " for javascript and typescript
