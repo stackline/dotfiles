@@ -106,10 +106,6 @@ if is_linux; then
   # sexport LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib64"
 fi
 
-if command -v npm > /dev/null 2>&1; then
-  eval "$(npm completion)"
-fi
-
 # --------------------------------------
 # alias
 # --------------------------------------
