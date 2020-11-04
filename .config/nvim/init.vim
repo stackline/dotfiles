@@ -24,7 +24,8 @@ let s:exts = add(s:exts, 'coc-snippets')   " snippets
 let s:exts = add(s:exts, 'coc-solargraph') " for ruby, use solargraph
 let s:exts = add(s:exts, 'coc-tsserver')   " for javascript and typescript
 let g:coc_global_extensions = s:exts
-Plug 'sheerun/vim-polyglot'
+" TODO: If there is no problem with installing syntax highlighting individually, remove the following setting.
+" Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'     " git wrapper (mainly use git blame only)
 Plug 'dense-analysis/ale'     " linter
@@ -34,6 +35,7 @@ Plug 'dense-analysis/ale'     " linter
 " --------------------------------------
 " c++
 Plug 'honza/vim-snippets', { 'for': 'cpp' }
+Plug 'bfrg/vim-cpp-modern', { 'for': 'cpp' }
 
 " php
 " Plug 'joonty/vdebug', {  'for': 'php', 'rev': 'v1.5.2' }
