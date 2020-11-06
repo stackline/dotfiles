@@ -23,6 +23,7 @@ let s:exts = add(s:exts, 'coc-pairs')      " auto pair
 let s:exts = add(s:exts, 'coc-snippets')   " snippets
 let s:exts = add(s:exts, 'coc-solargraph') " for ruby, use solargraph
 let s:exts = add(s:exts, 'coc-tsserver')   " for javascript and typescript
+let s:exts = add(s:exts, 'coc-vimlsp')     " for vim script
 let g:coc_global_extensions = s:exts
 " TODO: If there is no problem with installing syntax highlighting individually, remove the following setting.
 " Plug 'sheerun/vim-polyglot'
