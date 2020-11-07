@@ -46,9 +46,9 @@ Plug 'bfrg/vim-cpp-modern', { 'for': 'cpp' }
 " Plug 'stackline/vim-asynctags', { 'for': 'ruby' } " Async ctag generator
 
 " vim
-" NOTE: Do not load vim-themis plugin because it is a plugin used as a CUI
-" command during test execution
-Plug 'thinca/vim-themis', { 'for': 'none', 'do': 'ln -fsv `pwd`/bin/themis /usr/local/bin/themis' }
+" vim-themis is a testing framework for vim script.
+" Do not load the plugin with vim-plug, use only as a command line tool.
+Plug 'thinca/vim-themis', { 'on': [], 'do': 'ln -fsv `pwd`/bin/themis /usr/local/bin/themis' }
 
 call plug#end()
 
