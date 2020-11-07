@@ -7,11 +7,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Common settings
 " --------------------------------------
 Plug 'airblade/vim-gitgutter' " git diff
-Plug 'morhetz/gruvbox'        " syntax highlight
 Plug 'itchyny/lightline.vim'  " statusline
 Plug 'itchyny/vim-gitbranch'  " git branch name
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'       " Incremental file and code search
+Plug 'morhetz/gruvbox'        " syntax highlight
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'neoclide/jsonc.vim'
 let s:exts = []
