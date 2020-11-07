@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+# ### NOTE
+#
+# * File mode
+#   * If the git hook file is not allowed to execute, git ignores the file.
+#   * $ chmod u+x commit-msg
+# * npx commitlint --edit
+#   * "--edit" option reads last commit message from ".git/COMMIT_EDITMSG".
+#   * Git executes the hook file on the repository root directory.
+#     * From these, it does not matter which direcotry that making the commit.
+#   * When git executes the hook file, git sets ".git/COMMIT_EDITMSG" to $1.
+#   * It returns the same results by the following command.
+#     * $ cat "$1" | npx commitlint
+#
+
+npx --no-install commitlint -v > /dev/null 2>&1
+readonly installed=$?
+
+if [ "$installed" == 0 ]; then
+  echo "[commit-msg hook] do commitlint"
+  npx commitlint --edit --config "$HOME/.config/commitlint/commitlint.config.js"
+else
+  echo "[commit-msg hook] skip commitlint (because it is not installed)"
+fi

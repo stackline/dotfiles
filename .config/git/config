@@ -1,6 +1,8 @@
 [include]
   # User local settings
   path = ~/.config/git/config_local
+[core]
+  hooksPath = ~/.config/git/hooks
 [pager]
   # ref. https://github.com/git/git/tree/master/contrib/diff-highlight
   log  = (diff-highlight 2>/dev/null || cat) | less
