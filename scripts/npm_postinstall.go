@@ -49,7 +49,7 @@ func Exist(name string) bool {
 
 // After installing npm packages, create symbolic links under dotfiles/bin directory.
 func main() {
-	out, err := exec.Command("npm", "list", "--depth=0", "--parseable").Output()
+	out, err := exec.Command("npm", "ls", "--depth=0", "--parseable").Output()
 	Check(err)
 
 	dirnames := strings.Split(string(out), "\n")
