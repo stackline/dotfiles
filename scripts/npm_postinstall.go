@@ -54,6 +54,8 @@ func main() {
 
 	dirnames := strings.Split(string(out), "\n")
 	dirnames = Filter(dirnames)
+	// The first line of "npm list --parseable"
+	// is the parent directory of node_modules directory.
 	dirnames, err = Remove(dirnames, 0)
 	Check(err)
 
