@@ -53,8 +53,6 @@ func main() {
 	Check(err)
 
 	dirnames := strings.Split(string(out), "\n")
-	root_dirname := dirnames[0]
-
 	dirnames = Filter(dirnames)
 	dirnames, err = Remove(dirnames, 0)
 	Check(err)
@@ -67,7 +65,7 @@ func main() {
 			filename := file.Name()
 			filename_without_ext := filename[0 : len(filename)-len(filepath.Ext(filename))]
 			oldname := dirname + "/bin/" + filename
-			newname := root_dirname + "/bin/" + filename_without_ext
+			newname := "/usr/local/bin/" + filename_without_ext
 
 			if !Exist(newname) {
 				err = os.Symlink(oldname, newname)
