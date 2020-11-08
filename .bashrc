@@ -23,9 +23,12 @@ readonly script_start_time=$(mydate)
 # >
 # > bash manual
 #
-# * Neovim terminal sets shell name with full path like '/bin/zsh' to $0.
-#   * '--' passed to basename command is delimiter of the option list.
-#   * https://www.gnu.org/software/coreutils/manual/coreutils.html#Common-options
+# * basename -- "$0"
+#   * basename interprets "basename -bash" as "basename -b ash", and treats "-b" as a illegal option.
+#   * "--" is a delimiter of options and string.
+#     * Example: $ basename -s .sh -- -bash.sh
+#       * basename interprets "-s .sh" as option part and "-bash.sh" as string part.
+#       * basename writes "-bash" to stdout.
 #
 if [ "$0" = "-bash" ] || [ "$0" = "bash" ] || [ "$(basename -- "$0")" = "bash" ]; then
   CURRENT_SHELL='bash'
