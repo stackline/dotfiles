@@ -23,6 +23,10 @@
   oldHighlight = red bold 52
   newNormal = green bold
   newHighlight = green bold 22
+[color "status"]
+  added = red bold
+  changed = green bold
+  untracked = red bold
 [diff]
   # Highlight whitespace
   wsErrorHighlight = all
