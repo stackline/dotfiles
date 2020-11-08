@@ -25,8 +25,6 @@ let s:exts = add(s:exts, 'coc-solargraph') " for ruby, use solargraph
 let s:exts = add(s:exts, 'coc-tsserver')   " for javascript and typescript
 let s:exts = add(s:exts, 'coc-vimlsp')     " for vim script
 let g:coc_global_extensions = s:exts
-" TODO: If there is no problem with installing syntax highlighting individually, remove the following setting.
-" Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'     " git wrapper (mainly use git blame only)
 Plug 'dense-analysis/ale'     " linter
