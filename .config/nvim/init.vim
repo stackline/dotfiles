@@ -26,7 +26,7 @@ let s:exts = add(s:exts, 'coc-tsserver')   " for javascript and typescript
 let s:exts = add(s:exts, 'coc-vimlsp')     " for vim script
 let g:coc_global_extensions = s:exts
 Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-fugitive'     " git wrapper (mainly use git blame only)
+Plug 'tpope/vim-fugitive', { 'on': 'Gblame' } " git wrapper (mainly use git blame only)
 Plug 'dense-analysis/ale'     " linter
 
 " --------------------------------------
