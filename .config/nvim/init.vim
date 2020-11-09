@@ -12,7 +12,7 @@ Plug 'itchyny/vim-gitbranch'  " git branch name
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'       " Incremental file and code search
 Plug 'morhetz/gruvbox'        " syntax highlight
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'neoclide/coc.nvim'      " Language server client
 Plug 'neoclide/jsonc.vim'
 let s:exts = []
 let s:exts = add(s:exts, 'coc-css')        " for css, scss and less
