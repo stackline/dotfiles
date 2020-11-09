@@ -108,6 +108,7 @@ brew 'neovim'
 brew 'nkf'
 brew 'nmap'
 brew 'ripgrep'
+brew 'tig' # Text-mode interface for git
 # Be careful when using tmux with Terminal.app
 # ref. https://attonblog.blogspot.com/2017/11/tmux-pull-request.html
 brew 'tmux'
