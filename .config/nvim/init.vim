@@ -16,7 +16,7 @@ Plug 'itchyny/vim-gitbranch'  " git branch name
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'       " Incremental file and code search
-Plug 'morhetz/gruvbox'        " syntax highlight
+Plug 'lifepillar/vim-gruvbox8' " Color scheme
 Plug 'neoclide/coc.nvim'      " Language server client
 Plug 'neoclide/jsonc.vim'
 let s:exts = []
@@ -81,12 +81,15 @@ nnoremap <silent> tp :tabprevious<CR>
 " --------------------------------------
 " common
 " --------------------------------------
-colorscheme gruvbox
+" NOTE: Gruvbox8 requires to define "termguicolors = 1" and "background = dark"
+" before loading the color scheme.
+set termguicolors " Enable true color (24-bit color) in the TUI.
+set background=dark
+colorscheme gruvbox8
 " Unify to monokai line number font color
 " https://github.com/crusoexia/vim-monokai/blob/master/colors/monokai.vim
 highlight Comment ctermfg=243 guifg=#8F908A
 
-set termguicolors " Enable true color (24-bit color) in the TUI.
 set number
 set list
 set nowrap
