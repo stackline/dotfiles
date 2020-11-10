@@ -17,7 +17,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'       " Incremental file and code search
 Plug 'lifepillar/vim-gruvbox8' " Color scheme
-Plug 'neoclide/coc.nvim'      " Language server client
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " Language server client
 Plug 'neoclide/jsonc.vim'
 let s:exts = []
 let s:exts = add(s:exts, 'coc-css')        " for css, scss and less
