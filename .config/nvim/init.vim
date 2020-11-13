@@ -7,8 +7,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Common settings
 " --------------------------------------
 Plug 'airblade/vim-gitgutter' " git diff
-Plug 'itchyny/lightline.vim'  " statusline
-Plug 'itchyny/vim-gitbranch'  " git branch name
 " * coc-pairs
 "   * The default settings for coc-pairs do not work with smartindent or cindent.
 "   * When adding settings of following issue, an invalid expression occurred.
@@ -29,8 +27,9 @@ let s:exts = add(s:exts, 'coc-solargraph') " for ruby, use solargraph
 let s:exts = add(s:exts, 'coc-tsserver')   " for javascript and typescript
 let s:exts = add(s:exts, 'coc-vimlsp')     " for vim script
 let g:coc_global_extensions = s:exts
+Plug 'rbong/vim-crystalline' " statusline
 Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-fugitive', { 'on': 'Gblame' } " git wrapper (mainly use git blame only)
+Plug 'tpope/vim-fugitive'    " git wrapper
 Plug 'dense-analysis/ale'     " linter
 
 " --------------------------------------
