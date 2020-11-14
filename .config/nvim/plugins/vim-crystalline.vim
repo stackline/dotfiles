@@ -2,6 +2,36 @@
 " vim-crystalline
 " --------------------------------------
 
+" Preparation
+" * Define global counter variable.
+" * Increment the counter in the StatusLine function.
+" * The sample code is below.
+"
+" ```
+" let g:cnt = 0
+" function! StatusLine(...)
+"   let g:cnt = g:cnt + 1
+" ```
+"
+function! MeasureTime()
+  vsplit
+  let start_cnt = g:cnt
+  let start_time = reltime()
+  for i in range(500)
+    redrawstatus
+  endfor
+  let stop_time = reltime()
+  let stop_cnt = g:cnt
+  quit
+
+  let elapsed_time = str2float(reltimestr(stop_time)) - str2float(reltimestr(start_time))
+  let cnt_diff = stop_cnt - start_cnt
+
+  echom string(elapsed_time) . ' sec / ' . cnt_diff . ' times'
+  echom string(elapsed_time * 1000) . ' msec / ' . cnt_diff . ' times'
+  echom string(elapsed_time * 1000 / cnt_diff) . ' msec by time'
+endfunction
+
 function! CrystallineRepositoryName()
   let s:absolute_git_root_dir = system('git rev-parse --show-toplevel')
   if v:shell_error == 0
