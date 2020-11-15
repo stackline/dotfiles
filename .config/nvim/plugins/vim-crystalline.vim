@@ -16,7 +16,7 @@ function! MeasureTime()
   let elapsed_time = str2float(reltimestr(stop_time)) - str2float(reltimestr(start_time))
   echom string(elapsed_time) . ' sec / ' . TRIALS . ' times'
   echom string(elapsed_time * 1000) . ' msec / ' . TRIALS . ' times'
-  echom string(elapsed_time * 1000 / TRIALS) . ' msec by time'
+  echom string(trunc(elapsed_time * 1000) / TRIALS) . ' msec by time'
 endfunction
 
 function! CrystallineRepositoryName()
