@@ -19,13 +19,21 @@ function! MeasureTime()
   echom string(trunc(elapsed_time * 1000) / TRIALS) . ' msec by time'
 endfunction
 
-function! CrystallineRepositoryName()
-  let s:absolute_git_root_dir = system('git rev-parse --show-toplevel')
-  if v:shell_error == 0
-    let s:repository_name = fnamemodify(s:absolute_git_root_dir, ':t')
-    return substitute(s:repository_name, "\n", '', '')
+function! CrystallineCachedRepositoryName()
+  if !exists("w:crystalline_repository_name")
+    let root = fnamemodify(FugitiveGitDir(), ':h')
+    if root != ''
+      let w:crystalline_repository_name = fnamemodify(root, ':t')
+    endif
   endif
-  return ''
+  return w:crystalline_repository_name
+endfunction
+
+function! CrystallineCachedBranchName()
+  if !exists('w:crystalline_branch_name')
+    let w:crystalline_branch_name = fugitive#head()
+  endif
+  return w:crystalline_branch_name
 endfunction
 
 " require: vim-fugitive plugin
@@ -39,11 +47,18 @@ function! CrystallineFilename()
   return expand('%')
 endfunction
 
-" TODO: Hide unnecessary separators.
+" NOTE: Consider whether the branch name should not be cached or updated asynchronously.
+function! CrystallineLeftContents()
+  let items = [coc#status(), CrystallineCachedRepositoryName(), CrystallineCachedBranchName(), CrystallineFilename()]
+  let filtered_items = filter(items, 'v:val != ""')
+  let left_contents = join(filtered_items, ' | ')
+  return left_contents
+endfunction
+
 " ref. https://github.com/rbong/vim-crystalline#adding-powerline-style-separators-between-sections
 function! StatusLine(...)
   return crystalline#mode() . crystalline#right_mode_sep('')
-        \ . ' %{coc#status()} | %{CrystallineRepositoryName()} | %{fugitive#head()} | %{CrystallineFilename()} %h%w%m%r ' . crystalline#right_sep('', 'Fill') . '%='
+        \ . ' %{CrystallineLeftContents()} %h%w%m%r ' . crystalline#right_sep('', 'Fill') . '%='
         \ . crystalline#left_sep('', 'Fill') . ' %{&ft}[%{&fenc!=#""?&fenc:&enc}][%{&ff}] %l/%L %c%V %P '
 endfunction
 
