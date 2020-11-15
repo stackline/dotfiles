@@ -211,11 +211,8 @@ function brew() {
 }
 
 function brew-maintenance() {
-  brew update
-  brew upgrade
+  brew upgrade # includes formula updating and cache deletion
   is_mac && brew cu -a
-  # Delete the cache of uninstalled formulas with the "-s" option
-  brew cleanup -s
   brew doctor
 }
 
