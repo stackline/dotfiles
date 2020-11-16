@@ -19,6 +19,13 @@ function! MeasureTime()
   echom string(trunc(elapsed_time * 1000) / TRIALS) . ' msec by time'
 endfunction
 
+" NOTE: Considering when to destroy the cache
+"
+"   * Cache the current file name.
+"   * If the current file name and the cached file name are different, retrieve
+"     the repository name again.
+"   * ref. https://vim.fandom.com/wiki/Get_the_name_of_the_current_file
+"
 function! CrystallineCachedRepositoryName()
   if !exists("w:crystalline_repository_name")
     let root = fnamemodify(FugitiveGitDir(), ':h')
