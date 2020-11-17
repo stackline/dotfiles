@@ -56,7 +56,11 @@ endfunction
 
 " NOTE: Consider whether the branch name should not be cached or updated asynchronously.
 function! CrystallineLeftContents()
-  let items = [coc#status(), CrystallineCachedRepositoryName(), CrystallineCachedBranchName(), CrystallineFilename()]
+  if has_key(g:plugs, 'coc.nvim')
+    let items = [coc#status(), CrystallineCachedRepositoryName(), CrystallineCachedBranchName(), CrystallineFilename()]
+  else
+    let items = [CrystallineCachedRepositoryName(), CrystallineCachedBranchName(), CrystallineFilename()]
+  endif
   let filtered_items = filter(items, 'v:val != ""')
   let left_contents = join(filtered_items, ' | ')
   return left_contents

@@ -3,53 +3,56 @@
 " --------------------------------------
 call plug#begin('~/.local/share/nvim/plugged')
 
-" --------------------------------------
-" Common settings
-" --------------------------------------
-Plug 'airblade/vim-gitgutter' " git diff
-" * coc-pairs
-"   * The default settings for coc-pairs do not work with smartindent or cindent.
-"   * When adding settings of following issue, an invalid expression occurred.
-"   * ref. https://github.com/neoclide/coc-pairs/issues/13
+Plug 'airblade/vim-gitgutter'  " git diff
+Plug 'dense-analysis/ale'      " linter
+Plug 'honza/vim-snippets', { 'on': [] }
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'       " Incremental file and code search
+Plug 'junegunn/fzf.vim'        " Incremental file and code search
 Plug 'lifepillar/vim-gruvbox8' " Color scheme
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " Language server client
-Plug 'neoclide/jsonc.vim'
-let s:exts = []
-let s:exts = add(s:exts, 'coc-css')        " for css, scss and less
-let s:exts = add(s:exts, 'coc-go')         " for go, use gopls
-let s:exts = add(s:exts, 'coc-json')       " for json
-let s:exts = add(s:exts, 'coc-clangd')     " for c/c++/objective-c, use clangd
-let s:exts = add(s:exts, 'coc-snippets')   " snippets
-let s:exts = add(s:exts, 'coc-solargraph') " for ruby, use solargraph
-let s:exts = add(s:exts, 'coc-tsserver')   " for javascript and typescript
-let s:exts = add(s:exts, 'coc-vimlsp')     " for vim script
-let g:coc_global_extensions = s:exts
-Plug 'rbong/vim-crystalline' " statusline
+Plug 'rbong/vim-crystalline'   " statusline
+" vim-themis is a testing framework for vim script.
+" Do not load the plugin with vim-plug, use only as a command line tool.
+Plug 'thinca/vim-themis', { 'on': [], 'do': 'ln -fsv `pwd`/bin/themis /usr/local/bin/themis' }
 Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-fugitive'    " git wrapper
-Plug 'dense-analysis/ale'     " linter
+Plug 'tpope/vim-fugitive'      " git wrapper
+
+" Neovim 5.0 and above
+if has('nvim-0.5.0')
+  Plug 'neovim/nvim-lspconfig'           " for Neovim built-in LSP
+  Plug 'nvim-lua/completion-nvim'        " for Neovim built-in LSP
+  Plug 'nvim-treesitter/nvim-treesitter' " Tree-sitter based highlighting
+  Plug 'Shougo/neosnippet.vim'
+else
+  Plug 'bfrg/vim-cpp-modern', { 'for': 'cpp' }
+  Plug 'neoclide/coc.nvim', {'branch': 'release'} " LSP client
+  let s:exts = []
+  let s:exts = add(s:exts, 'coc-css')        " for css, scss and less
+  let s:exts = add(s:exts, 'coc-go')         " for go, use gopls
+  let s:exts = add(s:exts, 'coc-json')       " for json
+  let s:exts = add(s:exts, 'coc-clangd')     " for c/c++/objective-c, use clangd
+  " The default settings for coc-pairs do not work with smartindent or cindent.
+  " When adding settings of following issue, an invalid expression occurred.
+  " ref. https://github.com/neoclide/coc-pairs/issues/13
+  "
+  " let s:exts = add(s:exts, 'coc-pairs')      " auto pair
+  let s:exts = add(s:exts, 'coc-snippets')   " snippets
+  let s:exts = add(s:exts, 'coc-solargraph') " for ruby, use solargraph
+  let s:exts = add(s:exts, 'coc-tsserver')   " for javascript and typescript
+  let s:exts = add(s:exts, 'coc-vimlsp')     " for vim script
+  let g:coc_global_extensions = s:exts
+  Plug 'neoclide/jsonc.vim'
+endif
 
 " --------------------------------------
 " Language specific settings
 " --------------------------------------
-" c++
-Plug 'honza/vim-snippets', { 'for': 'cpp' }
-Plug 'bfrg/vim-cpp-modern', { 'for': 'cpp' }
-
 " php
 " Plug 'joonty/vdebug', {  'for': 'php', 'rev': 'v1.5.2' }
 
 " ruby
 " Plug 'prabirshrestha/async.vim', { 'for': 'ruby' }
 " Plug 'stackline/vim-asynctags', { 'for': 'ruby' } " Async ctag generator
-
-" vim
-" vim-themis is a testing framework for vim script.
-" Do not load the plugin with vim-plug, use only as a command line tool.
-Plug 'thinca/vim-themis', { 'on': [], 'do': 'ln -fsv `pwd`/bin/themis /usr/local/bin/themis' }
 
 call plug#end()
 
