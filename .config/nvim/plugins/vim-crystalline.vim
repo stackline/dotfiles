@@ -68,9 +68,16 @@ endfunction
 
 " ref. https://github.com/rbong/vim-crystalline#adding-powerline-style-separators-between-sections
 function! StatusLine(...)
-  return crystalline#mode() . crystalline#right_mode_sep('')
-        \ . ' %{CrystallineLeftContents()} %h%w%m%r ' . crystalline#right_sep('', 'Fill') . '%='
-        \ . crystalline#left_sep('', 'Fill') . ' %{&ft}[%{&fenc!=#""?&fenc:&enc}][%{&ff}] %l/%L %c%V %P '
+  if !exists('s:crystalline_cached_sep')
+    let s:crystalline_right_mode_sep = crystalline#right_mode_sep('')
+    let s:crystalline_right_sep = crystalline#right_sep('', 'Fill')
+    let s:crystalline_left_sep = crystalline#left_sep('', 'Fill')
+    let s:crystalline_cached_sep = 1
+  endif
+
+  return crystalline#mode() . s:crystalline_right_mode_sep
+        \ . ' %{CrystallineLeftContents()} %h%w%m%r ' . s:crystalline_right_sep . '%='
+        \ . s:crystalline_left_sep . ' %{&ft}[%{&fenc!=#""?&fenc:&enc}][%{&ff}] %l/%L %c%V %P '
 endfunction
 
 let g:crystalline_enable_sep = 0
