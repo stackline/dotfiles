@@ -5,7 +5,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'airblade/vim-gitgutter'  " git diff
 Plug 'dense-analysis/ale'      " linter
-Plug 'honza/vim-snippets', { 'on': [] }
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'        " Incremental file and code search
@@ -25,6 +24,8 @@ if has('nvim-0.5.0')
   Plug 'Shougo/neosnippet.vim'
 else
   Plug 'bfrg/vim-cpp-modern', { 'for': 'cpp' }
+  " Require loading vim-snippets plugin for snippets with coc-snippets.
+  Plug 'honza/vim-snippets'
   Plug 'neoclide/coc.nvim', {'branch': 'release'} " LSP client
   let s:exts = []
   let s:exts = add(s:exts, 'coc-css')        " for css, scss and less
