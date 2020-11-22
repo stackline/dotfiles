@@ -36,11 +36,16 @@ function! CrystallineCachedRepositoryName()
   return w:crystalline_repository_name
 endfunction
 
-function! CrystallineCachedBranchName()
-  if !exists('w:crystalline_branch_name')
-    let w:crystalline_branch_name = fugitive#head()
+function! CrystallineRepositoryName()
+  let root = fnamemodify(get(b:, 'git_dir'), ':h')
+  if root != ''
+    return fnamemodify(root, ':t')
   endif
-  return w:crystalline_branch_name
+  return ''
+endfunction
+
+function! CrystallineBranchName()
+  return fugitive#head()
 endfunction
 
 " require: vim-fugitive plugin
@@ -67,7 +72,9 @@ function! CrystallineCacheSeparators()
   let s:crystalline_left_sep = crystalline#left_sep('', 'Fill')
 endfunction
 
-function! CrystallineCacheFilename()
+function! CrystallineCacheBufferItems()
+  let b:crystalline_repository_name = CrystallineRepositoryName()
+  let b:crystalline_branch_name = CrystallineBranchName()
   let b:crystalline_filename = CrystallineFilename()
 endfunction
 
@@ -75,15 +82,15 @@ augroup crystalline_cache_items
   autocmd!
   autocmd VimEnter * call CrystallineCacheSeparators()
   " NOTE: vim-fugitive sets a buffer variable `b:git_dir` during BufReadPost event.
-  autocmd BufEnter * call CrystallineCacheFilename()
+  autocmd BufEnter * call CrystallineCacheBufferItems()
 augroup END
 
 " NOTE: Consider whether the branch name should not be cached or updated asynchronously.
 function! CrystallineLeftContents()
   if has_key(g:plugs, 'coc.nvim')
-    let items = [coc#status(), CrystallineCachedRepositoryName(), CrystallineCachedBranchName(), CrystallineFilename()]
+    let items = [coc#status(), b:crystalline_repository_name, b:crystalline_branch_name, b:crystalline_filename]
   else
-    let items = [CrystallineCachedRepositoryName(), CrystallineCachedBranchName(), b:crystalline_filename]
+    let items = [b:crystalline_repository_name, b:crystalline_branch_name, b:crystalline_filename]
   endif
   let filtered_items = filter(items, 'v:val != ""')
   let left_contents = join(filtered_items, ' | ')
