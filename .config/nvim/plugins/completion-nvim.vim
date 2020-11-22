@@ -31,4 +31,11 @@ if has_key(g:plugs, 'completion-nvim')
   " --------------------------------------------------------
   " Use the same key as coc.nvim (default key: <CR>)
   let g:completion_confirm_key = "\<C-y>"
+
+  " --------------------------------------------------------
+  "  Other settings
+  " --------------------------------------------------------
+  " Prevent text area shift by always displaying the signcolumn.
+  " (same setting as coc.nvim)
+  set signcolumn=yes
 endif
