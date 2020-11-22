@@ -54,12 +54,22 @@ function! CrystallineFilename()
   return expand('%')
 endfunction
 
+function! CrystallineCacheFilename()
+  let b:crystalline_filename = CrystallineFilename()
+endfunction
+
+augroup crystalline_cache_items
+  autocmd!
+  " NOTE: vim-fugitive sets a buffer variable `b:git_dir` during BufReadPost event.
+  autocmd BufEnter * call CrystallineCacheFilename()
+augroup END
+
 " NOTE: Consider whether the branch name should not be cached or updated asynchronously.
 function! CrystallineLeftContents()
   if has_key(g:plugs, 'coc.nvim')
     let items = [coc#status(), CrystallineCachedRepositoryName(), CrystallineCachedBranchName(), CrystallineFilename()]
   else
-    let items = [CrystallineCachedRepositoryName(), CrystallineCachedBranchName(), CrystallineFilename()]
+    let items = [CrystallineCachedRepositoryName(), CrystallineCachedBranchName(), b:crystalline_filename]
   endif
   let filtered_items = filter(items, 'v:val != ""')
   let left_contents = join(filtered_items, ' | ')
