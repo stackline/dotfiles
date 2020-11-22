@@ -54,12 +54,26 @@ function! CrystallineFilename()
   return expand('%')
 endfunction
 
+" NOTE: When Neovim is started with --headless option, the VimEnter event does
+" not occur. Initialize in case the CrystallineCacheSeparators function is not
+" executed in headless mode.
+let s:crystalline_right_mode_sep = ''
+let s:crystalline_right_sep = ''
+let s:crystalline_left_sep = ''
+
+function! CrystallineCacheSeparators()
+  let s:crystalline_right_mode_sep = crystalline#right_mode_sep('')
+  let s:crystalline_right_sep = crystalline#right_sep('', 'Fill')
+  let s:crystalline_left_sep = crystalline#left_sep('', 'Fill')
+endfunction
+
 function! CrystallineCacheFilename()
   let b:crystalline_filename = CrystallineFilename()
 endfunction
 
 augroup crystalline_cache_items
   autocmd!
+  autocmd VimEnter * call CrystallineCacheSeparators()
   " NOTE: vim-fugitive sets a buffer variable `b:git_dir` during BufReadPost event.
   autocmd BufEnter * call CrystallineCacheFilename()
 augroup END
@@ -78,13 +92,6 @@ endfunction
 
 " ref. https://github.com/rbong/vim-crystalline#adding-powerline-style-separators-between-sections
 function! StatusLine(...)
-  if !exists('s:crystalline_cached_sep')
-    let s:crystalline_right_mode_sep = crystalline#right_mode_sep('')
-    let s:crystalline_right_sep = crystalline#right_sep('', 'Fill')
-    let s:crystalline_left_sep = crystalline#left_sep('', 'Fill')
-    let s:crystalline_cached_sep = 1
-  endif
-
   return crystalline#mode() . s:crystalline_right_mode_sep
         \ . ' %{CrystallineLeftContents()} %h%w%m%r ' . s:crystalline_right_sep . '%='
         \ . s:crystalline_left_sep . ' %{&ft}[%{&fenc!=#""?&fenc:&enc}][%{&ff}] %l/%L %c%V %P '
