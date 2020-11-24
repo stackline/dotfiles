@@ -31,3 +31,24 @@ lspconfig.clangd.setup({
 })
 lspconfig.sumneko_lua.setup{}
 lspconfig.vimls.setup{}
+
+--
+-- TODO: Enable underlining where errors are detected.
+-- MEMO: How to disable Neovim built-in LSP diagnostics globally
+--
+-- ```lua
+-- vim.lsp.callbacks["textDocument/publishDiagnostics"] = function() end
+-- ```
+--
+local vim_lsp = vim.lsp
+
+vim_lsp.handlers["textDocument/publishDiagnostics"] = vim_lsp.with(
+  -- ref. :h vim.lsp.diagnostic.on_publish_diagnostics
+  vim_lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = {
+      -- NOTE: Default prefix may be an East Asian Width.
+      -- It shifts the text when displaying virtual text with default prefix.
+      prefix = "-",
+    },
+  }
+)
