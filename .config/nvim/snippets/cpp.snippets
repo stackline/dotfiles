@@ -1,0 +1,42 @@
+##
+## Preprocessor
+# #include <...>
+snippet incc
+	#include <${1:iostream}>
+##
+## Input/Output
+# cout
+snippet cout
+	cout << ${1} << endl;
+# cin
+snippet cin
+	cin >> ${1};
+##
+## Iteration
+# for i
+snippet fori
+	for (int i = 0; i < ${1:count}; i++) {
+
+	}
+snippet forj
+	for (int j = 0; j < ${1:count}; j++) {
+
+	}
+##
+## Custom
+# init
+snippet init
+	#include <bits/stdc++.h>
+	using namespace std;
+	using ll = long long;
+
+	// endl: line break + buffer flush
+	// '\n': line break
+	// cout << fixed << setprecision(15);
+	// printf("%.15f\n", sqrt(ans));
+	int main() {
+	  cin.tie(nullptr); // Do not flush "cout" when processing "cin".
+	  // ios::sync_with_stdio(false); // Do not use both "cin/cout" and "scanf/printf" at the same time.
+
+	  return 0;
+	}
