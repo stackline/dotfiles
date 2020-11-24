@@ -29,3 +29,5 @@ lspconfig.clangd.setup({
   on_attach = lsp_status.on_attach,
   capabilities = lsp_status.capabilities
 })
+lspconfig.sumneko_lua.setup{}
+lspconfig.vimls.setup{}
