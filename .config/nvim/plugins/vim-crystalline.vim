@@ -8,7 +8,7 @@ function! MeasureTime()
   vsplit
   let start_time = reltime()
   for i in range(TRIALS)
-    call CrystallineLeftContents()
+    redrawstatus
   endfor
   let stop_time = reltime()
   quit
