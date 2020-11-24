@@ -89,6 +89,8 @@ augroup END
 function! CrystallineLeftContents()
   if has_key(g:plugs, 'coc.nvim')
     let items = [coc#status(), b:crystalline_repository_name, b:crystalline_branch_name, b:crystalline_filename]
+  elseif has('nvim-0.5.0')
+    let items = [LspStatus(), b:crystalline_repository_name, b:crystalline_branch_name, b:crystalline_filename]
   else
     let items = [b:crystalline_repository_name, b:crystalline_branch_name, b:crystalline_filename]
   endif
