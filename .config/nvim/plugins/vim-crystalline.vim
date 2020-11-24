@@ -19,6 +19,22 @@ function! MeasureTime()
   echom string(trunc(elapsed_time * 1000) / TRIALS) . ' msec by time'
 endfunction
 
+function! ProfileFunc()
+  vsplit
+  profile start profile.log
+  profile func *
+  profile file *
+
+  for i in range(1000)
+    redrawstatus
+    " call feedkeys('i')
+    " call feedkeys("\<Esc>")
+  endfor
+
+  quit
+  profile stop
+endfunction
+
 function! CrystallineRepositoryName()
   let root = fnamemodify(get(b:, 'git_dir'), ':h')
   if root != ''
