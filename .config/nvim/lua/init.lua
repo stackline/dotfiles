@@ -21,6 +21,7 @@ lsp_status.config({
 local lspconfig = require('lspconfig')
 
 lspconfig.clangd.setup({
+  cmd = { 'clangd', '--background-index', '-header-insertion=never' },
   handlers = lsp_status.extensions.clangd.setup(),
   init_options = {
     -- ref. https://clangd.llvm.org/extensions.html#file-status
