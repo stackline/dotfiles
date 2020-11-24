@@ -18,8 +18,8 @@ Plug 'tpope/vim-fugitive'      " git wrapper
 
 " Neovim 5.0 and above
 if has('nvim-0.5.0')
-  Plug 'neovim/nvim-lspconfig'           " for Neovim built-in LSP
-  Plug 'nvim-lua/completion-nvim'        " for Neovim built-in LSP
+  Plug 'neovim/nvim-lspconfig'           " for Neovim built-in LSP client
+  Plug 'nvim-lua/completion-nvim'        " for Neovim built-in LSP client
   Plug 'nvim-treesitter/nvim-treesitter' " Tree-sitter based highlighting
   Plug 'Shougo/neosnippet.vim'
 else
