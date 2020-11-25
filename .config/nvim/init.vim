@@ -114,6 +114,7 @@ set expandtab
 set shiftwidth=2
 set shortmess+=I " Do not display the intro message when starting Vim.
 set tabstop=2
+set foldlevelstart=99 " [edit] Start editing with no folds closed.
 
 filetype plugin on
 filetype indent on
