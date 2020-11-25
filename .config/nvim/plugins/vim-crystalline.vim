@@ -76,11 +76,15 @@ endfunction
 let s:crystalline_right_mode_sep = ''
 let s:crystalline_right_sep = ''
 let s:crystalline_left_sep = ''
+let s:crystalline_tab_sep = ''
+let s:crystalline_current_tab_sep = ''
 
 function! CrystallineCacheSeparators()
   let s:crystalline_right_mode_sep = crystalline#right_mode_sep('')
   let s:crystalline_right_sep = crystalline#right_sep('', 'Fill')
   let s:crystalline_left_sep = crystalline#left_sep('', 'Fill')
+  let s:crystalline_tab_sep = crystalline#sep('', '', '', '')
+  let s:crystalline_current_tab_sep = '%#Crystalline' . g:crystalline_mode_hi_groups['n'] . '#'
 endfunction
 
 function! CrystallineCacheBufferItems()
@@ -121,3 +125,43 @@ let g:crystalline_enable_sep = 0
 let g:crystalline_statusline_fn = 'StatusLine'
 let g:crystalline_theme = 'default'
 set laststatus=2
+
+function CrystallineTabLabel(n)
+  let buflist = tabpagebuflist(a:n)
+  let winnr = tabpagewinnr(a:n)
+  let bufname = bufname(buflist[winnr - 1])
+  let filename = (bufname == '') ? '[No Name]' : fnamemodify(bufname, ':t')
+  return a:n . ':' . filename
+endfunction
+
+function! CrystallineTabLine()
+  let last_tabpagenr = tabpagenr('$')
+  let current_tabpagenr = tabpagenr()
+
+  let s = ''
+  for i in range(last_tabpagenr)
+    let index_tabpagenr = i + 1
+
+    " select the highlighting
+    if index_tabpagenr == current_tabpagenr
+      let s .= s:crystalline_current_tab_sep
+    else
+      let s .= s:crystalline_tab_sep
+    endif
+
+    " the label is made by CrystallineTabLabel()
+    let s .= ' ' . CrystallineTabLabel(index_tabpagenr) . ' '
+  endfor
+
+  " after the last tab fill with TabLineFill
+  let s .= '%#TabLineFill#'
+
+  " TODO: Consider the contents to display on the right side of the tabline.
+  " right-align the repository name and the branch name
+  " let s .= '%=' . s:crystalline_tab_sep . ' ' . b:crystalline_repository_name . ' | ' . b:crystalline_branch_name . ' '
+
+  return s
+endfunction
+
+set showtabline=2
+set tabline=%!CrystallineTabLine()
