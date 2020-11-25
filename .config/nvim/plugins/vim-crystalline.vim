@@ -114,7 +114,7 @@ endfunction
 function! StatusLine(...)
   return CrystallineModeWrapper() . s:crystalline_right_mode_sep
         \ . ' %{CrystallineLeftContents()} %h%w%m%r ' . s:crystalline_right_sep . '%='
-        \ . s:crystalline_left_sep . ' %{&ft}[%{&fenc!=#""?&fenc:&enc}][%{&ff}] %l/%L %c%V %P '
+        \ . s:crystalline_left_sep . ' %{&ft!=#""?&ft:"no ft"}[%{&fenc!=#""?&fenc:&enc}][%{&ff}] %3l:%-3v '
 endfunction
 
 let g:crystalline_enable_sep = 0
