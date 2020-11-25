@@ -35,6 +35,18 @@ function! ProfileFunc()
   profile stop
 endfunction
 
+function! CrystallineModeWrapper()
+  let raw_mode = mode()
+
+  if exists('w:crystalline_raw_mode') && raw_mode == w:crystalline_raw_mode
+    return w:crystalline_mode
+  else
+    let w:crystalline_raw_mode = raw_mode
+    let w:crystalline_mode = crystalline#mode()
+    return w:crystalline_mode
+  endif
+endfunction
+
 function! CrystallineRepositoryName()
   let root = fnamemodify(get(b:, 'git_dir'), ':h')
   if root != ''
@@ -100,7 +112,7 @@ endfunction
 
 " ref. https://github.com/rbong/vim-crystalline#adding-powerline-style-separators-between-sections
 function! StatusLine(...)
-  return crystalline#mode() . s:crystalline_right_mode_sep
+  return CrystallineModeWrapper() . s:crystalline_right_mode_sep
         \ . ' %{CrystallineLeftContents()} %h%w%m%r ' . s:crystalline_right_sep . '%='
         \ . s:crystalline_left_sep . ' %{&ft}[%{&fenc!=#""?&fenc:&enc}][%{&ff}] %l/%L %c%V %P '
 endfunction
