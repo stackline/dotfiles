@@ -8,8 +8,8 @@ Plug 'dense-analysis/ale'      " linter
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'        " Incremental file and code search
+Plug 'itchyny/lightline.vim'   " Statusline and tabline
 Plug 'lifepillar/vim-gruvbox8' " Color scheme
-Plug 'rbong/vim-crystalline'   " statusline
 " vim-themis is a testing framework for vim script.
 " Do not load the plugin with vim-plug, use only as a command line tool.
 Plug 'thinca/vim-themis', { 'on': [], 'do': 'ln -fsv `pwd`/bin/themis /usr/local/bin/themis' }
@@ -115,6 +115,7 @@ set shiftwidth=2
 set shortmess+=I " Do not display the intro message when starting Vim.
 set tabstop=2
 set foldlevelstart=99 " [edit] Start editing with no folds closed.
+set showtabline=2     " [view] Always show tab line.
 
 filetype plugin on
 filetype indent on

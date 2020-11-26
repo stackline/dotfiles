@@ -80,3 +80,38 @@ function! GitHubURL()
   echo l:url
 endfunction
 command! GitHubURL call GitHubURL()
+
+" Performance measuring
+function! MeasureTime()
+  const TRIALS = 1000
+
+  vsplit
+  let start_time = reltime()
+  for i in range(TRIALS)
+    redrawstatus
+  endfor
+  let stop_time = reltime()
+  quit
+
+  let elapsed_time = str2float(reltimestr(stop_time)) - str2float(reltimestr(start_time))
+  echom string(elapsed_time) . ' sec / ' . TRIALS . ' times'
+  echom string(elapsed_time * 1000) . ' msec / ' . TRIALS . ' times'
+  echom string(trunc(elapsed_time * 1000) / TRIALS) . ' msec by time'
+endfunction
+
+" Performance measuring
+function! ProfileFunc()
+  vsplit
+  profile start profile.log
+  profile func *
+  profile file *
+
+  for i in range(1000)
+    redrawstatus
+    " call feedkeys('i')
+    " call feedkeys("\<Esc>")
+  endfor
+
+  quit
+  profile stop
+endfunction
