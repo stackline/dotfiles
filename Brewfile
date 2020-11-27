@@ -51,7 +51,14 @@ brew 'gcc@9'
 brew 'llvm' if /darwin/ =~ RUBY_PLATFORM
 
 ### Manager
-brew 'goenv', args: %w[HEAD] # Go (Add --HEAD option because stable version is old)
+# NOTE: Use multiple Go versions with Homebrew.
+#
+# * After adding goenv path to $PATH, exporting to $PATH is sometimes slow.
+# * Fix Go version of Homebrew with "$ brew pin".
+# * Install multiple Go versions by referring to the following articles.
+#   * ref. https://golang.org/doc/manage-install#installing-multiple
+#
+brew 'go'
 brew 'nodenv'    # Node version manager
 brew 'pyenv'     # Python version manager
 brew 'pipenv'    # Python development workflow
