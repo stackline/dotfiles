@@ -8,7 +8,8 @@ if command -v rbenv > /dev/null 2>&1; then
   function rbenv() {
     unset rbenv # remove function itself
     eval "$(rbenv init -)"
-    remove_duplicate_path_entries
+    PATH=$(dietpath)
+    export PATH
     rbenv "$@"
   }
 fi

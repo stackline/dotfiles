@@ -8,7 +8,8 @@ if command -v pyenv > /dev/null 2>&1; then
   function pyenv() {
     unset pyenv # remove function itself
     eval "$(pyenv init -)"
-    remove_duplicate_path_entries
+    PATH=$(dietpath)
+    export PATH
 
     # When the following situation is, it errors installing python with pyenv.
     #

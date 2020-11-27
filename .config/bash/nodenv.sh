@@ -8,7 +8,8 @@ if command -v nodenv > /dev/null 2>&1; then
   function nodenv() {
     unset nodenv # remove function itself
     eval "$(nodenv init -)"
-    remove_duplicate_path_entries
+    PATH=$(dietpath)
+    export PATH
     nodenv "$@"
   }
 fi

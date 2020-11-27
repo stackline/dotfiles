@@ -284,13 +284,16 @@ function man() {
   command man "$@"
 }
 
-# Delete PATH dupulication
-# ref. https://qiita.com/b4b4r07/items/45d34a434f05aa896d69
 alias check-path='echo $PATH | perl -pe "s/:/\n/g"'
-
-_p=$(echo "$PATH" | tr ':' '\n' | awk '!a[$0]++' | awk 'NF' | tr '\n' ':' | sed -e s/:$//)
-PATH=$_p
-unset _p
+# Optimize duplicate path entries.
+#
+# How to build
+#
+# ```sh
+# $ go build -o /usr/local/bin/dietpath ./tools/dietpath/main.go
+# ```
+PATH=$(dietpath)
+export PATH
 
 readonly script_end_time=$("$HOME"/go/bin/mydate)
 readonly bashrc_execution_msec=$(echo "($script_end_time - $script_start_time) * 1000" | bc | xargs printf "%.0f")
