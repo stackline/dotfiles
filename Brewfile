@@ -62,17 +62,6 @@ brew 'go'
 brew 'nodenv'    # Node version manager
 brew 'pyenv'     # Python version manager
 brew 'pipenv'    # Python development workflow
-# Build development environments with Docker containers
-# because build error occurs when installing Ruby 2.3 or less.
-#
-# * Ruby 2.3 does not support openssl 1.1
-# * ref. https://github.com/rbenv/ruby-build/issues/1207#issuecomment-399744332
-# * ref. https://github.com/rbenv/ruby-build/issues/1353
-#
-# Build error occurs when installing OpenSSL 1.0 with the following formula.
-#
-# * https://github.com/rbenv/homebrew-tap
-#
 brew 'rbenv'     # Ruby version manager
 brew 'tfenv'     # Terraform version manager
 # NOTE: There is no SDKMAN Homebrew formula, so install it manually.
@@ -108,9 +97,6 @@ brew 'git'
 # imagemagick has many dependencies.
 # brew 'imagemagick'
 brew 'jq' # Command-line JSON processor
-# gem command error
-# ref. https://github.com/Homebrew/homebrew-core/issues/11636
-brew 'libyaml'
 brew 'neovim'
 brew 'nkf'
 brew 'nmap'
@@ -142,11 +128,8 @@ brew 'jpeg'
 brew 'libffi'
 
 # [Ruby] pg gem
-#
 # NOTE: You need to specify the path to the 'pg_config' in the '.env' file.
 #       ref. https://bitbucket.org/ged/ruby-pg/wiki/Home
-#
-brew 'postgresql@9.5' # pg_config for PostgreSQL 9.5
 brew 'libpq'          # pg_config for PostgreSQL 12.x
 
 if RUBY_PLATFORM.include?('linux')
@@ -166,11 +149,6 @@ end
 
 # Mac OS only install below packages.
 return unless /darwin/ =~ RUBY_PLATFORM
-
-# Linuxbrew can not install mysql@5.6 on linux
-# because pidof that is depended from mysql@5.6 can not be installed on linux
-# Linuxbrew can not install mariadb@10.3 on linux
-brew 'mysql@5.7'
 
 # Mac App Store command line interface
 brew 'mas'

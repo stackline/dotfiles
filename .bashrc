@@ -50,7 +50,6 @@ fi
 
 # Prevent the display of multibyte characters from being garbled on neovim's terminal
 export LANG=C
-export PATH="$HOMEBREW_PREFIX/opt/mysql@5.7/bin:$PATH"
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
 if is_mac; then
@@ -79,7 +78,7 @@ if is_linux; then
   #
   # - tput: relocation error: /usr/lib64/libc.so.6: symbol _dl_starting_up, version GLIBC_PRIVATE not defined in file ld-linux-x86-64.so.2 with link time reference
   #
-  # sexport LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib64"
+  # export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib64"
 fi
 
 # --------------------------------------
