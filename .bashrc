@@ -14,30 +14,6 @@
 # --------------------------------------
 readonly script_start_time=$(mydate)
 
-# Normalize process name for login shell and non-login shell.
-#
-# * A process name of a login shell has a hyphen at the beginning. (ex. -bash,-zsh)
-#
-# > A login shell is one whose first character of argument zero is a -,
-# > or one started with the --login option.
-# >
-# > bash manual
-#
-# * basename -- "$0"
-#   * basename interprets "basename -bash" as "basename -b ash", and treats "-b" as a illegal option.
-#   * "--" is a delimiter of options and string.
-#     * Example: $ basename -s .sh -- -bash.sh
-#       * basename interprets "-s .sh" as option part and "-bash.sh" as string part.
-#       * basename writes "-bash" to stdout.
-#
-if [ "$0" = "-bash" ] || [ "$0" = "bash" ] || [ "$(basename -- "$0")" = "bash" ]; then
-  CURRENT_SHELL='bash'
-elif [ "$0" = "-zsh" ] || [ "$0" = "zsh" ] || [ "$(basename -- "$0")" = "zsh" ]; then
-  CURRENT_SHELL='zsh'
-else
-  CURRENT_SHELL=$0
-fi
-
 # --------------------------------------
 # XDG Base Directory
 # ref. https://wiki.archlinux.org/index.php/XDG_Base_Directory
@@ -271,9 +247,7 @@ function select-command-from-history() {
   READLINE_LINE="$selected_command"
   READLINE_POINT=${#selected_command}
 }
-if [ "$CURRENT_SHELL" = 'bash' ]; then
-  bind -x '"\C-r": select-command-from-history'
-fi
+bind -x '"\C-r": select-command-from-history'
 
 function docker-container-login() {
   local container_name
