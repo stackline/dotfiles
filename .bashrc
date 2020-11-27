@@ -8,11 +8,12 @@
 # ref. https://www.golinuxcloud.com/get-script-execution-time-command-bash-script/
 #
 # Use my own tool because the BSD date command cannot display nanoseconds.
-# Setup:
-#   1. go get github.com/stackline/mydate
-#   2. ln -s $GOPATH/bin/mydate /usr/local/bin/mydate
+#
+# ```sh
+# $ go get github.com/stackline/mydate
+# ```
 # --------------------------------------
-readonly script_start_time=$(mydate)
+readonly script_start_time=$("$HOME"/go/bin/mydate)
 
 # --------------------------------------
 # XDG Base Directory
@@ -291,7 +292,7 @@ _p=$(echo "$PATH" | tr ':' '\n' | awk '!a[$0]++' | awk 'NF' | tr '\n' ':' | sed 
 PATH=$_p
 unset _p
 
-readonly script_end_time=$(mydate)
+readonly script_end_time=$("$HOME"/go/bin/mydate)
 readonly bashrc_execution_msec=$(echo "($script_end_time - $script_start_time) * 1000" | bc | xargs printf "%.0f")
 readonly bashrc_execution_sec=$(echo "($script_end_time - $script_start_time)" | bc | xargs printf "%.3f")
 echo "Script execution Time: $bashrc_execution_msec msec ($bashrc_execution_sec sec)"
