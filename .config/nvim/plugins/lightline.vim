@@ -9,6 +9,9 @@ endif
 " NOTE: Display LSP status and the file name as much as possible
 " with the "%<" symbol.
 " ref. https://github.com/itchyny/lightline.vim#how-can-i-truncate-the-components-from-the-right-in-narrow-windows
+"
+" NOTE: BufEnter event does not occurs when opening the filer.
+" Use 'get' function to avoid variable undeclared errors.
 let g:lightline = {
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
@@ -18,9 +21,9 @@ let g:lightline = {
     \   'right': [ [ 'repository', 'branch' ] ]
     \ },
     \ 'component': {
-    \   'repository': '%{b:statusline_repository_name}',
-    \   'branch': '%{b:statusline_branch_name}',
-    \   'file': '%{b:statusline_file_name}%<'
+    \   'repository': '%{get(b:, "statusline_repository_name", "")}',
+    \   'branch': '%{get(b:, "statusline_branch_name", "")}',
+    \   'file': '%{get(b:, "statusline_file_name", "")}%<'
     \ },
     \ 'component_function': {
     \   'lspstatus': 'StatusLineLspStatus'
