@@ -171,7 +171,7 @@ cask 'tableplus' # SQL client
 
 ### Communication tool
 cask 'slack'
-cask 'zoomus'
+cask 'zoom'
 
 ### Editor
 cask 'visual-studio-code'
