@@ -83,6 +83,7 @@ call plug#end()
 runtime! plugins/*.vim
 if has('nvim-0.5.0')
   lua require('init')
+  lua require('lsp-status-wrapper')
 endif
 
 " --------------------------------------
