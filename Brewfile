@@ -41,7 +41,7 @@ brew 'gcc' if RUBY_PLATFORM.include?('linux')
 brew 'gcc@9'
 
 # [macOS]
-# Use clangd with coc.nvim + coc-clangd.
+# Use clangd with LSP service.
 # Put below compile_flags.txt to the repository root directory, if you need to include "bits/stdc++.h".
 #
 # ```

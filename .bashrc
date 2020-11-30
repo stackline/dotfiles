@@ -53,7 +53,7 @@ export LANG=C
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
 if is_mac; then
-  # coc.nvim + coc-clangd uses clangd as language server.
+  # Use clangd with LSP service.
   export PATH="/usr/local/opt/llvm/bin:$PATH"
 fi
 if is_linux; then
@@ -144,11 +144,6 @@ function update-various-packages() {
     touch "$vim_plug_update_log"
   fi
 
-  local readonly vim_coc_update_sync_log='/tmp/vim-coc-update-sync.log'
-  if [ -f "$vim_coc_update_sync_log" ]; then
-    touch "$vim_coc_update_sync_log"
-  fi
-
   # --headless
   #   Do not switch screen from shell to vim.
   # set modifiable
@@ -158,17 +153,9 @@ function update-various-packages() {
   #   %w means write all lines to a file.
   nvim --headless -c 'PlugUpdate' -c 'set modifiable' -c "%w $vim_plug_update_log" -c 'qa'
   echo ''
-  # sleep
-  #   Since the update is performed asynchronously, if we do not wait with sleep,
-  #   the status during the update will be written to the log file.
-  nvim --headless -c 'CocUpdateSync|sleep 3' -c 'set modifiable' -c "%w $vim_coc_update_sync_log" -c 'qa'
-  echo ''
 
   echo -e '\n### update vim plugins\n'
   cat "$vim_plug_update_log"
-
-  echo -e '\n### update coc.nvim extensions\n'
-  cat "$vim_coc_update_sync_log"
 
   echo -e '\n### update homebrew formulas and casks\n'
   brew-maintenance
