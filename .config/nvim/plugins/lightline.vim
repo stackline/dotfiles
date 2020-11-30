@@ -81,8 +81,7 @@ endfunction
 function! StatusLineLspStatus()
   if has_key(g:plugs, 'lsp-status.nvim')
     return LspStatus()
-  elseif has_key(g:plugs, 'coc.nvim')
-    return coc#status()
+  else
+    return ''
   endif
-  return ''
 endfunction
