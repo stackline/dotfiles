@@ -140,7 +140,7 @@ alias brew-remove-all-installed-packages='brew list | xargs brew remove --force 
 
 function update-various-packages() {
   local readonly vim_plug_update_log='/tmp/vim-plug-update.log'
-  if [ -f "$vim_plug_update_log" ]; then
+  if [ ! -e "$vim_plug_update_log" ]; then
     touch "$vim_plug_update_log"
   fi
 
