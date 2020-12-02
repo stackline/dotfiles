@@ -28,6 +28,9 @@ Plug 'dense-analysis/ale'              " linter
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'                " Incremental file and code search
+" vim-plug is loaded from the one of the default runtime path.
+" If necessary, only upgrade vim-plug itself.
+Plug 'junegunn/vim-plug', { 'on': [], 'do': ':PlugUpgrade' }
 Plug 'itchyny/lightline.vim'           " Statusline and tabline
 Plug 'lifepillar/vim-gruvbox8'         " Color scheme
 Plug 'mhinz/vim-signify'               " Show diff to sign column
