@@ -3,8 +3,8 @@ if has_key(g:plugs, 'nvim-treesitter')
   lua <<EOF
   require'nvim-treesitter.configs'.setup {
     highlight = {
-      enable = true,              -- false will disable the whole extension
-      disable = { "c", "rust" },  -- list of language that will be disabled
+      enable = true, -- false will disable the whole extension
+      disable = {},  -- list of language that will be disabled
     },
   }
 EOF
