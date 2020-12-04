@@ -37,7 +37,7 @@ Plug 'mhinz/vim-signify'               " Show diff to sign column
 Plug 'neovim/nvim-lspconfig'           " for Neovim built-in LSP client
 Plug 'nvim-lua/completion-nvim'        " for Neovim built-in LSP client
 Plug 'nvim-lua/lsp-status.nvim'        " for Neovim built-in LSP cleint
-Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " Highlighting
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate maintained' } " Highlighting
 Plug 'Shougo/neosnippet.vim'
 " vim-themis is a testing framework for vim script.
 " Do not load the plugin with vim-plug, use only as a command line tool.
