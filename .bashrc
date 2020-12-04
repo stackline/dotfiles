@@ -50,7 +50,10 @@ fi
 
 # Prevent the display of multibyte characters from being garbled on neovim's terminal
 export LANG=C
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+# --no-unicode
+#   Prevent layout collapse on Vim due to the display of East Asian
+#   Ambiguous Width characters.
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --no-unicode'
 
 if is_mac; then
   # Use clangd with LSP service.
