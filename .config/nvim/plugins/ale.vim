@@ -8,18 +8,15 @@ let g:ale_disable_lsp = 1
 " Check code with LSP diagnostic.
 "
 " * cpp: clangd
-" * go:  gopls
 "
 let g:ale_linters = {
     \ 'cpp': [],
-    \ 'go': []
     \ }
 
 " Fix code when they are saved
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
   \ 'cpp': ['clang-format'],
-  \ 'go': ['gofmt']
   \ }
 
 " --------------------
@@ -42,6 +39,13 @@ let g:ale_cpp_cc_options    = '-std=gnu++17 -Wall -Wextra'
 "   AtCoder clang++ compile option
 "   ref. https://atcoder.jp/contests/language-test-202001
 let g:ale_cpp_clangcheck_options = '-- -x c++ -I/usr/local/include -std=c++17 -stdlib=libc++ -Wall'
+
+" ----------------------------------------------------------
+" go
+" ----------------------------------------------------------
+let g:ale_fixers['go']  = ['gofmt', 'goimports']
+" $ go get -u golang.org/x/lint/golint
+let g:ale_linters['go'] = ['golint', 'govet']
 
 " --------------------
 " Ruby
