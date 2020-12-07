@@ -2,6 +2,10 @@
 " ale
 " --------------------------------------
 
+" Initialize
+let g:ale_fixers = {}
+let g:ale_linters = {}
+
 " Do not use LSP because other plugin use LSP
 let g:ale_disable_lsp = 1
 
