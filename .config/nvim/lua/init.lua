@@ -1,3 +1,8 @@
+-- Uncomment the following when debugging
+-- ref. https://neovim.io/doc/user/lsp.html#vim.lsp.set_log_level()
+--
+-- vim.lsp.set_log_level('debug')
+
 -- nvim-lspconfig
 --   ref. https://github.com/neovim/nvim-lspconfig#usage
 -- lsp-status.nvim
