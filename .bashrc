@@ -104,8 +104,7 @@ alias ll='ls -al'
 alias rg='rg -i'
 # INFO: Need to install libpq with Homebrew
 alias psql12='$HOMEBREW_PREFIX/opt/libpq/bin/psql'
-alias shfmt='shfmt -i 2 -ci' # Google Style Guides
-if type 'nvim' > /dev/null; then
+if type 'nvim' >/dev/null; then
   alias vi='nvim'
   alias vim='nvim'
 fi
@@ -169,7 +168,7 @@ function update-various-packages() {
 # Avoid pyenv warnings when executing brew doctor
 # ref. https://github.com/pyenv/pyenv/issues/106#issuecomment-190418988
 function brew() {
-  if command -v pyenv > /dev/null 2>&1; then
+  if command -v pyenv >/dev/null 2>&1; then
     PATH="${PATH//$(pyenv root)\/shims:/}" command brew "$@"
   else
     command brew "$@"
@@ -265,12 +264,12 @@ function check-trailing-character-hexdump() {
 # ref. https://wiki.archlinux.org/index.php/Color_output_in_console#man
 function man() {
   LESS_TERMCAP_md=$'\e[01;31m' \
-  LESS_TERMCAP_me=$'\e[0m' \
-  LESS_TERMCAP_se=$'\e[0m' \
-  LESS_TERMCAP_so=$'\e[01;44;33m' \
-  LESS_TERMCAP_ue=$'\e[0m' \
-  LESS_TERMCAP_us=$'\e[01;32m' \
-  command man "$@"
+    LESS_TERMCAP_me=$'\e[0m' \
+    LESS_TERMCAP_se=$'\e[0m' \
+    LESS_TERMCAP_so=$'\e[01;44;33m' \
+    LESS_TERMCAP_ue=$'\e[0m' \
+    LESS_TERMCAP_us=$'\e[01;32m' \
+    command man "$@"
 }
 
 alias check-path='echo $PATH | perl -pe "s/:/\n/g"'
