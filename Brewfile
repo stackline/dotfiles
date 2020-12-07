@@ -79,6 +79,9 @@ brew 'hadolint'   # Linter
 brew 'shellcheck' # Linter
 brew 'shfmt'      # Formatter
 
+# Vim script
+brew 'vint'       # Linter
+
 ### Bash completion
 brew 'bash-completion@2'
 brew 'gem-completion'

@@ -60,3 +60,8 @@ let g:ale_linters['sh'] = ['shell', 'shellcheck']
 " -i 2 : indent two spaces.
 " -ci  : indent the next line of the case statement.
 let g:ale_sh_shfmt_options = '-i 2 -ci'
+
+" ----------------------------------------------------------
+" vim
+" ----------------------------------------------------------
+let g:ale_linters['vim'] = ['vint']
