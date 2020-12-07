@@ -188,10 +188,6 @@ cask 'kindle' # Kindle books Viewer
 ### Development environment
 cask 'android-studio'
 cask 'docker'
-cask 'vagrant'
-# MEMO: Need to allow applications downloaded from Oracle
-# ref. https://qiita.com/nemui-fujiu/items/231971609762a6562af3
-cask 'virtualbox'
 
 ### Utility
 cask 'dropbox'
