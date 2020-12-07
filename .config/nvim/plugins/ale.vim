@@ -5,23 +5,14 @@
 " Do not use LSP because other plugin use LSP
 let g:ale_disable_lsp = 1
 
-" Check code with LSP diagnostic.
-"
-" * cpp: clangd
-"
-let g:ale_linters = {
-    \ 'cpp': [],
-    \ }
-
 " Fix code when they are saved
 let g:ale_fix_on_save = 1
-let g:ale_fixers = {
-  \ 'cpp': ['clang-format'],
-  \ }
 
-" --------------------
-" C++
-" --------------------
+" ----------------------------------------------------------
+" cpp
+" ----------------------------------------------------------
+let g:ale_fixers['cpp']  = ['clang-format']
+let g:ale_linters['cpp'] = [] " check with LSP (clangd)
 let g:ale_cpp_cc_executable = 'g++-9'
 let g:ale_cpp_cc_options    = '-std=gnu++17 -Wall -Wextra'
 " --
