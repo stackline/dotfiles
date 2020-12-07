@@ -72,12 +72,12 @@ brew 'tfenv'     # Terraform version manager
 #
 # brew 'sdkman'
 
-### Linter
 # Dockerfile
-brew 'hadolint'
+brew 'hadolint'   # Linter
+
 # Shell script
-brew 'shellcheck'
-brew 'shfmt'
+brew 'shellcheck' # Linter
+brew 'shfmt'      # Formatter
 
 ### Bash completion
 brew 'bash-completion@2'

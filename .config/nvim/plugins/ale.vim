@@ -49,3 +49,14 @@ let g:ale_cpp_clangcheck_options = '-- -x c++ -I/usr/local/include -std=c++17 -s
 " Change rubocop execution command from 'rubocop' to 'bundle exec rubocop'
 " ref. help ale-ruby-rubocop
 let g:ale_ruby_rubocop_executable = 'bundle'
+
+" ----------------------------------------------------------
+" sh
+" ----------------------------------------------------------
+let g:ale_fixers['sh']  = ['shfmt']
+let g:ale_linters['sh'] = ['shell', 'shellcheck']
+" A style similar to Google's shell style
+"
+" -i 2 : indent two spaces.
+" -ci  : indent the next line of the case statement.
+let g:ale_sh_shfmt_options = '-i 2 -ci'

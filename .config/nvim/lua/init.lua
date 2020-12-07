@@ -20,6 +20,8 @@ lsp_status.config({
 
 local lspconfig = require('lspconfig')
 
+-- $ npm install -g bash-language-server
+lspconfig.bashls.setup{}
 lspconfig.clangd.setup({
   cmd = { 'clangd', '--background-index', '-header-insertion=never' },
   handlers = lsp_status.extensions.clangd.setup(),
