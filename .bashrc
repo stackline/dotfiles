@@ -273,14 +273,7 @@ function man() {
 }
 
 alias check-path='echo $PATH | perl -pe "s/:/\n/g"'
-# Optimize duplicate path entries.
-#
-# How to build
-#
-# ```sh
-# $ go build -o /usr/local/bin/dietpath ./tools/dietpath/main.go
-# ```
-PATH=$(dietpath)
+PATH=$(dietpath_wrapper)
 export PATH
 
 readonly script_end_time=$("$HOME"/go/bin/mydate)
