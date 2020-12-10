@@ -48,8 +48,6 @@ fi
 # export
 # --------------------------------------
 
-# Prevent the display of multibyte characters from being garbled on neovim's terminal
-export LANG=C
 # --no-unicode
 #   Prevent layout collapse on Vim due to the display of East Asian
 #   Ambiguous Width characters.
