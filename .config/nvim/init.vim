@@ -44,14 +44,6 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'thinca/vim-themis', { 'on': [], 'do': 'ln -fsv `pwd`/bin/themis /usr/local/bin/themis' }
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'      " git wrapper
-
-" --------------------------------------
-" Language specific settings
-" --------------------------------------
-" php
-" Plug 'joonty/vdebug', {  'for': 'php', 'rev': 'v1.5.2' }
-
-" ruby
 " Plug 'prabirshrestha/async.vim', { 'for': 'ruby' }
 " Plug 'stackline/vim-asynctags', { 'for': 'ruby' } " Async ctag generator
 
@@ -91,9 +83,6 @@ nnoremap <silent> tp :tabprevious<CR>
 set termguicolors " Enable true color (24-bit color) in the TUI.
 set background=dark
 colorscheme gruvbox8
-" Unify to monokai line number font color
-" https://github.com/crusoexia/vim-monokai/blob/master/colors/monokai.vim
-highlight Comment ctermfg=243 guifg=#8F908A
 
 set number
 set list
@@ -150,8 +139,7 @@ augroup init_bufnewfile_bufreadpost_event
 
   " Use Ruby syntax highlight on Brewfile
   " ref. http://vim-jp.org/vimdoc-ja/filetype.html#ftdetect
-  autocmd BufNewFile,BufReadPost Brewfile,.Brewfile setfiletype ruby
-  autocmd BufNewFile,BufReadPost *.php set tags+=~/.cache/ctags/php.tags
+  autocmd BufNewFile,BufReadPost Brewfile setfiletype ruby
 augroup END
 
 augroup init_bufreadpost_event
