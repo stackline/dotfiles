@@ -1,4 +1,3 @@
-ansible==2.3.1.0; python_version < '3.0'
-ansible-lint; python_version < '3.0'
+ansible-lint
 pip
 vim-vint
