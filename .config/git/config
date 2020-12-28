@@ -30,3 +30,6 @@
 [diff]
   # Highlight whitespace
   wsErrorHighlight = all
+[ghq]
+  root = ~/go/src
+  root = ~/ghq
