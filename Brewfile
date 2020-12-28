@@ -72,6 +72,8 @@ brew 'tfenv'     # Terraform version manager
 #
 # brew 'sdkman'
 
+brew 'golangci-lint' # Go linter
+
 # Dockerfile
 brew 'hadolint'   # Linter
 

@@ -39,8 +39,7 @@ let g:ale_cpp_clangcheck_options = '-- -x c++ -I/usr/local/include -std=c++17 -s
 " go
 " ----------------------------------------------------------
 let g:ale_fixers['go']  = ['gofmt', 'goimports']
-" $ go get -u golang.org/x/lint/golint
-let g:ale_linters['go'] = ['golint', 'govet']
+let g:ale_linters['go'] = ['golangci-lint']
 
 " --------------------
 " Ruby
