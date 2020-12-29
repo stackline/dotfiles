@@ -37,8 +37,6 @@ if has_key(g:plugs, 'nvim-lspconfig')
     if len(diagnostics) >= 1
       " Specify T flag in the shortmess option to shorten the message.
       echomsg diagnostics[0]['message']
-    else
-      echo ''
     endif
   endfunction
 endif
