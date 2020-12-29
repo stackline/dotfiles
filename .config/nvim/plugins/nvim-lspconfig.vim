@@ -33,7 +33,7 @@ if has_key(g:plugs, 'nvim-lspconfig')
 
   function! s:DisplayDiagnosticMessage(timer)
     let s:timer_count = s:timer_count - 1
-    let diagnostics = luaeval("vim.lsp.diagnostic.get_line_diagnostics()")
+    let diagnostics = luaeval('vim.lsp.diagnostic.get_line_diagnostics()')
     if len(diagnostics) >= 1
       " Specify T flag in the shortmess option to shorten the message.
       echomsg diagnostics[0]['message']
