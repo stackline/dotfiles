@@ -17,8 +17,6 @@ let g:ale_fix_on_save = 1
 " ----------------------------------------------------------
 let g:ale_fixers['cpp']  = ['clang-format']
 let g:ale_linters['cpp'] = [] " check with LSP (clangd)
-let g:ale_cpp_cc_executable = 'g++-9'
-let g:ale_cpp_cc_options    = '-std=gnu++17 -Wall -Wextra'
 " --
 "   Since being able to pass options to clang with --extra-arg option, use --.
 " -x c++
