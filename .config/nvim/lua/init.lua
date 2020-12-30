@@ -59,6 +59,7 @@ lspconfig.vimls.setup{}
 -- ```
 --
 local lsp = vim.lsp
+local util = vim.lsp.util
 local M = vim.lsp.handlers
 
 M["textDocument/publishDiagnostics"] = lsp.with(
@@ -71,3 +72,39 @@ M["textDocument/publishDiagnostics"] = lsp.with(
     },
   }
 )
+
+--
+-- NOTE: Do not display blank line separator in a popup window.
+--
+-- Neovim built-in LSP uses Box-drawing character (Unicode U+2500) as blank line separator.
+-- Box-drawing characters have the characteristic of being *ambiguous*.
+-- Do not display blank line separator because the indent is off.
+--
+--   Ref. blank line separator inserting
+--   https://github.com/neovim/neovim/blob/1e5913483469528c7e8d1f927b28c0185eb94941/runtime/lua/vim/lsp/util.lua#L852-L864
+--
+-- Copy the built-in implementation and add the "separator = false" option.
+--
+--   Ref. textDocument/hover handler
+--   https://github.com/neovim/neovim/blob/1e5913483469528c7e8d1f927b28c0185eb94941/runtime/lua/vim/lsp/handlers.lua#L179-L197
+--
+M['textDocument/hover'] = function(_, method, result)
+  util.focusable_float(method, function()
+    if not (result and result.contents) then
+      -- return { 'No information available' }
+      return
+    end
+    local markdown_lines = util.convert_input_to_markdown_lines(result.contents)
+    markdown_lines = util.trim_empty_lines(markdown_lines)
+    if vim.tbl_isempty(markdown_lines) then
+      -- return { 'No information available' }
+      return
+    end
+    local bufnr, winnr = util.fancy_floating_markdown(markdown_lines, {
+      pad_left = 1; pad_right = 1;
+      separator = false;
+    })
+    util.close_preview_autocmd({"CursorMoved", "BufHidden", "InsertCharPre"}, winnr)
+    return bufnr, winnr
+  end)
+end
