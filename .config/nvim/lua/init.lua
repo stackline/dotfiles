@@ -58,11 +58,12 @@ lspconfig.vimls.setup{}
 -- vim.lsp.callbacks["textDocument/publishDiagnostics"] = function() end
 -- ```
 --
-local vim_lsp = vim.lsp
+local lsp = vim.lsp
+local M = vim.lsp.handlers
 
-vim_lsp.handlers["textDocument/publishDiagnostics"] = vim_lsp.with(
+M["textDocument/publishDiagnostics"] = lsp.with(
   -- ref. :h vim.lsp.diagnostic.on_publish_diagnostics
-  vim_lsp.diagnostic.on_publish_diagnostics, {
+  lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = {
       -- NOTE: Default prefix may be an East Asian Width.
       -- It shifts the text when displaying virtual text with default prefix.
