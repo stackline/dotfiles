@@ -15,12 +15,16 @@ endif
 let g:lightline = {
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'lspstatus', 'readonly', 'file', 'modified' ] ]
+    \             [ 'lspstatus', 'readonly', 'file', 'modified' ] ],
+    \   'right': [ [ 'lineinfo-with-virtual-column-number' ],
+    \              [ 'percent' ],
+    \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
     \ },
     \ 'tabline': {
     \   'right': [ [ 'repository', 'branch' ] ]
     \ },
     \ 'component': {
+    \   'lineinfo-with-virtual-column-number': '%3l:%-2v',
     \   'repository': '%{get(b:, "statusline_repository_name", "")}',
     \   'branch': '%{get(b:, "statusline_branch_name", "")}',
     \   'file': '%{get(b:, "statusline_file_name", "")}%<'
