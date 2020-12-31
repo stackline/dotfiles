@@ -16,7 +16,8 @@ let g:ale_fix_on_save = 1
 " cpp
 " ----------------------------------------------------------
 let g:ale_fixers['cpp']  = ['clang-format']
-let g:ale_linters['cpp'] = [] " check with LSP (clangd)
+" Check with clangd (LSP) using the compile options of compile_flags.txt.
+let g:ale_linters['cpp'] = []
 " --
 "   Since being able to pass options to clang with --extra-arg option, use --.
 " -x c++
