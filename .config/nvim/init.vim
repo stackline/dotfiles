@@ -52,7 +52,6 @@ call plug#end()
 " When [!] is included, all found files are sourced.
 runtime! plugins/*.vim
 lua require('init')
-lua require('lsp-status-wrapper')
 
 " --------------------------------------
 " ctags

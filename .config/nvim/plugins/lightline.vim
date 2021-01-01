@@ -84,7 +84,9 @@ endfunction
 
 function! StatusLineLspStatus()
   if has_key(g:plugs, 'lsp-status.nvim')
-    return LspStatus()
+    " The value that the status function return includes half-width space on
+    " the right side. Trim the extra right space off.
+    return trim(luaeval("require('lsp-status').status()"))
   else
     return ''
   endif
