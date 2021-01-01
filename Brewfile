@@ -132,11 +132,6 @@ brew 'jpeg'
 # [Ruby] ffi
 brew 'libffi'
 
-# [Ruby] pg gem
-# NOTE: You need to specify the path to the 'pg_config' in the '.env' file.
-#       ref. https://bitbucket.org/ged/ruby-pg/wiki/Home
-brew 'libpq'          # pg_config for PostgreSQL 12.x
-
 if RUBY_PLATFORM.include?('linux')
   # If you do not have this package when installing ruby via rbenv,
   # the following error will occur.

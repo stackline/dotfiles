@@ -100,8 +100,6 @@ alias grep='grep --color=auto' # colorize the output
 alias less='less -R'
 alias ll='ls -al'
 alias rg='rg -i'
-# INFO: Need to install libpq with Homebrew
-alias psql12='$HOMEBREW_PREFIX/opt/libpq/bin/psql'
 if type 'nvim' >/dev/null; then
   alias vi='nvim'
   alias vim='nvim'
