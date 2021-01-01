@@ -179,31 +179,6 @@ function brew-maintenance() {
   brew doctor
 }
 
-function git-show-pull-request() {
-  if [ -z "$GIT_SHOW_PULL_REQUEST_URL" ]; then
-    echo 'Set environment variable "GIT_SHOW_PULL_REQUEST_URL"'
-    return 1
-  fi
-
-  declare -r URL_TEMPLATE=$GIT_SHOW_PULL_REQUEST_URL
-  declare -r REGEXP="Merge pull request #([0-9]+)"
-  local commit_hash
-  local commit_message
-  local repository_name
-  local pull_request_number
-
-  commit_hash=$1
-  commit_message=$(git log --merges --oneline --ancestry-path "$commit_hash"...master | grep 'Merge pull request #' | tail -n 1)
-
-  if [[ $commit_message =~ $REGEXP ]]; then
-    repository_name=$(git rev-parse --show-toplevel | xargs basename)
-    pull_request_number=${BASH_REMATCH[1]}
-    echo "$commit_message"
-    tmp="${URL_TEMPLATE/__REPOSITORY_NAME__/$repository_name}"
-    echo "${tmp/__PULL_REQUEST_NUMBER__/$pull_request_number}"
-  fi
-}
-
 # Show dependencies for installed formulaes
 # ref. https://zanshin.net/2014/02/03/how-to-list-brew-dependencies/
 function brew-dependencies() {
