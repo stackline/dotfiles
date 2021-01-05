@@ -1,0 +1,9 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": ["javascript"],
+  "clangd.arguments": ["-header-insertion=never"],
+  "clangd.disableDiagnostics": true,
+  "clangd.disableSnippetCompletion": true,
+  "javascript.validate.enable": false,
+  "solargraph.checkGemVersion": false,
+  "typescript.validate.enable": false
+}

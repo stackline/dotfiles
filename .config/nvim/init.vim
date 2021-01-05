@@ -34,9 +34,6 @@ Plug 'junegunn/vim-plug', { 'on': [], 'do': ':PlugUpgrade' }
 Plug 'itchyny/lightline.vim'           " Statusline and tabline
 Plug 'lifepillar/vim-gruvbox8'         " Color scheme
 Plug 'mhinz/vim-signify'               " Show diff to sign column
-Plug 'neovim/nvim-lspconfig'           " for Neovim built-in LSP client
-Plug 'nvim-lua/completion-nvim'        " for Neovim built-in LSP client
-Plug 'nvim-lua/lsp-status.nvim'        " for Neovim built-in LSP cleint
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate maintained' } " Highlighting
 Plug 'Shougo/neosnippet.vim'
 " vim-themis is a testing framework for vim script.
@@ -47,11 +44,44 @@ Plug 'tpope/vim-fugitive'      " git wrapper
 " Plug 'prabirshrestha/async.vim', { 'for': 'ruby' }
 " Plug 'stackline/vim-asynctags', { 'for': 'ruby' } " Async ctag generator
 
+" --------------------------------------
+" LSP
+" --------------------------------------
+" 1: Neovim built-in LSP
+" 2: coc.nvim
+let lsp_type = 1
+
+if lsp_type == 1
+  Plug 'neovim/nvim-lspconfig'           " for Neovim built-in LSP client
+  Plug 'nvim-lua/completion-nvim'        " for Neovim built-in LSP client
+  Plug 'nvim-lua/lsp-status.nvim'        " for Neovim built-in LSP cleint
+elseif lsp_type == 2
+  Plug 'neoclide/coc.nvim'
+  let s:exts = []
+  let s:exts = add(s:exts, 'coc-clangd')     " for c/c++/objective-c, use clangd
+  let s:exts = add(s:exts, 'coc-css')        " for css, scss and less
+  let s:exts = add(s:exts, 'coc-go')         " for go, use gopls
+  let s:exts = add(s:exts, 'coc-json')       " for json
+  " The default settings for coc-pairs do not work with smartindent or cindent.
+  " When adding settings of following issue, an invalid expression occurred.
+  " ref. https://github.com/neoclide/coc-pairs/issues/13
+  "
+  " let s:exts = add(s:exts, 'coc-pairs')      " auto pair
+  let s:exts = add(s:exts, 'coc-snippets')   " snippets
+  let s:exts = add(s:exts, 'coc-solargraph') " for ruby, use solargraph
+  let s:exts = add(s:exts, 'coc-tsserver')   " for javascript and typescript
+  let s:exts = add(s:exts, 'coc-vimlsp')     " for vim script
+  let g:coc_global_extensions = s:exts
+  Plug 'neoclide/jsonc.vim'
+endif
+
 call plug#end()
 
 " When [!] is included, all found files are sourced.
 runtime! plugins/*.vim
-lua require('init')
+if has_key(g:plugs, 'nvim-lspconfig')
+  lua require('init')
+endif
 
 " --------------------------------------
 " ctags
