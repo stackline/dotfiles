@@ -40,12 +40,17 @@ let g:ale_cpp_clangcheck_options = '-- -x c++ -I/usr/local/include -std=c++17 -s
 let g:ale_fixers['go']  = ['gofmt', 'goimports']
 let g:ale_linters['go'] = ['golangci-lint']
 
-" --------------------
-" Ruby
-" --------------------
-" Change rubocop execution command from 'rubocop' to 'bundle exec rubocop'
-" ref. help ale-ruby-rubocop
-let g:ale_ruby_rubocop_executable = 'bundle'
+" ----------------------------------------------------------
+" ruby
+" ----------------------------------------------------------
+" NOTE: Use Rubocop as the basic format.
+"
+" * rubocop:  single-quoted
+" * standard: double-quoted
+" * rufo:     double-quoted
+"
+let g:ale_fixers['ruby']  = ['rubocop']
+let g:ale_linters['ruby'] = ['rubocop']
 
 " ----------------------------------------------------------
 " sh
