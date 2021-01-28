@@ -8,4 +8,11 @@ if has_key(g:plugs, 'vim-signify')
   " ref. :h sigh-priority
   "
   let g:signify_priority = 9
+
+  " The following error occurs on the 3rd line of sy#highlight#line_disable,
+  " so change the setting temporarily.
+  "
+  "   E239: Invalid sign text: !‾
+  "
+  let g:signify_sign_change_delete = '!'
 endif
