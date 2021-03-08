@@ -2,7 +2,7 @@ if !has_key(g:plugs, 'coc.nvim')
   finish
 endif
 
-set signcolumn=number
+set signcolumn=yes
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
