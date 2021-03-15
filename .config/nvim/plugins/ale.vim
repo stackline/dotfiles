@@ -50,7 +50,7 @@ let g:ale_linters['go'] = ['golangci-lint']
 " * rufo:     double-quoted
 "
 let g:ale_fixers['ruby']  = ['rubocop']
-let g:ale_linters['ruby'] = ['rubocop']
+let g:ale_linters['ruby'] = ['brakeman', 'rails_best_practices', 'reek', 'rubocop', 'ruby']
 
 " ----------------------------------------------------------
 " sh
