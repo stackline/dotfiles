@@ -72,6 +72,7 @@ elseif lsp_type == 2
   let s:exts = add(s:exts, 'coc-snippets')   " snippets
   let s:exts = add(s:exts, 'coc-solargraph') " for ruby, use solargraph
   let s:exts = add(s:exts, 'coc-tsserver')   " for javascript and typescript
+  let s:exts = add(s:exts, 'coc-vetur')      " for vue, use vetur
   let s:exts = add(s:exts, 'coc-vimlsp')     " for vim script
   let g:coc_global_extensions = s:exts
   Plug 'neoclide/jsonc.vim'
