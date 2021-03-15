@@ -34,7 +34,6 @@ Plug 'junegunn/vim-plug', { 'on': [], 'do': ':PlugUpgrade' }
 Plug 'itchyny/lightline.vim'           " Statusline and tabline
 Plug 'lifepillar/vim-gruvbox8'         " Color scheme
 Plug 'mhinz/vim-signify'               " Show diff to sign column
-Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate maintained' } " Highlighting
 Plug 'Shougo/neosnippet.vim'
 " vim-themis is a testing framework for vim script.
 " Do not load the plugin with vim-plug, use only as a command line tool.
@@ -55,6 +54,9 @@ if lsp_type == 1
   Plug 'neovim/nvim-lspconfig'           " for Neovim built-in LSP client
   Plug 'nvim-lua/completion-nvim'        " for Neovim built-in LSP client
   Plug 'nvim-lua/lsp-status.nvim'        " for Neovim built-in LSP cleint
+  " MEMO: vim-endwise does not work with nvim-treesitter.
+  " ref. https://github.com/nvim-treesitter/nvim-treesitter/issues/703
+  Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate maintained' } " Highlighting
 elseif lsp_type == 2
   Plug 'neoclide/coc.nvim'
   let s:exts = []
