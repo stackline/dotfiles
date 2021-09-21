@@ -87,16 +87,14 @@ fi
 # --------------------------------------
 # git aliases (prefix: g)
 alias ga='git add'
-alias gb='git branch'
-alias gbv='git branch -v'
-alias gc='git checkout'
+alias gb='git branch -v'
 alias gcm='git commit -m'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gg='cd `git rev-parse --show-toplevel`' # move to top-level directory
 alias gl='git log'
 alias glp='git log -p'
-alias gpp='git pull -p'
+alias gp='git pull -p'
 alias gs='git status'
 
 alias grep='grep --color=auto' # colorize the output
