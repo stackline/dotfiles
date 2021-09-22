@@ -58,7 +58,7 @@ if lsp_type == 1
   " ref. https://github.com/nvim-treesitter/nvim-treesitter/issues/703
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate maintained' } " Highlighting
 elseif lsp_type == 2
-  Plug 'neoclide/coc.nvim'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   let s:exts = []
   let s:exts = add(s:exts, 'coc-clangd')     " for c/c++/objective-c, use clangd
   let s:exts = add(s:exts, 'coc-css')        " for css, scss and less
