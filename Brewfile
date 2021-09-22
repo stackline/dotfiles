@@ -84,6 +84,9 @@ brew 'shfmt'      # Formatter
 # Vim script
 brew 'vint'       # Linter
 
+# Yaml
+brew 'yamllint'   # Linter
+
 ### Bash completion
 brew 'bash-completion@2'
 brew 'gem-completion'
