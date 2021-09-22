@@ -131,7 +131,8 @@ brew 'redis'
 # ref. https://github.com/tjko/jpegoptim#readme
 brew 'jpeg'
 
-# [Ruby] ffi
+### Ruby gems
+# for ffi gem
 brew 'libffi'
 # for pg gem
 brew 'libpq'
