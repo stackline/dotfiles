@@ -133,6 +133,8 @@ brew 'jpeg'
 
 # [Ruby] ffi
 brew 'libffi'
+# for pg gem
+brew 'libpq'
 
 if RUBY_PLATFORM.include?('linux')
   # If you do not have this package when installing ruby via rbenv,
