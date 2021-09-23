@@ -72,7 +72,12 @@ brew 'tfenv'     # Terraform version manager
 #
 # brew 'sdkman'
 
-brew 'golangci-lint' # Go linter
+# Go
+### package
+# $ go install github.com/rhysd/vim-startuptime@latest
+# $ go install github.com/stackline/mydate
+# $ go install golang.org/x/tools/gopls@latest
+brew 'golangci-lint' # Linter
 
 # Dockerfile
 brew 'hadolint'   # Linter
