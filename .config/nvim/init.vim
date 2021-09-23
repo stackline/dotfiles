@@ -24,16 +24,17 @@ let g:loaded_2html_plugin       = 1
 " --------------------------------------
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'dense-analysis/ale'              " linter
+Plug 'alvan/vim-closetag'      " auto close html tags (used in vue files)
+Plug 'dense-analysis/ale'      " linter
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'                " Incremental file and code search
+Plug 'junegunn/fzf.vim'        " incremental file and code search
 " vim-plug is loaded from the one of the default runtime path.
 " If necessary, only upgrade vim-plug itself.
 Plug 'junegunn/vim-plug', { 'on': [], 'do': ':PlugUpgrade' }
-Plug 'itchyny/lightline.vim'           " Statusline and tabline
-Plug 'lifepillar/vim-gruvbox8'         " Color scheme
-Plug 'mhinz/vim-signify'               " Show diff to sign column
+Plug 'itchyny/lightline.vim'   " statusline and tabline
+Plug 'lifepillar/vim-gruvbox8' " color scheme
+Plug 'mhinz/vim-signify'       " show diff to sign column
 " vim-themis is a testing framework for vim script.
 " Do not load the plugin with vim-plug, use only as a command line tool.
 Plug 'thinca/vim-themis', { 'on': [], 'do': 'ln -fsv `pwd`/bin/themis /usr/local/bin/themis' }
