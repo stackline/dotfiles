@@ -38,16 +38,6 @@ lspconfig.clangd.setup({
   capabilities = lsp_status.capabilities
 })
 lspconfig.gopls.setup{}
-lspconfig.sumneko_lua.setup({
-  settings = {
-    Lua = {
-      diagnostics = {
-        -- Avoid detection of undefined global vim.
-        globals = { 'vim' }
-      }
-    }
-  }
-})
 lspconfig.vimls.setup{}
 
 --
