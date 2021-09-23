@@ -34,7 +34,6 @@ Plug 'junegunn/vim-plug', { 'on': [], 'do': ':PlugUpgrade' }
 Plug 'itchyny/lightline.vim'           " Statusline and tabline
 Plug 'lifepillar/vim-gruvbox8'         " Color scheme
 Plug 'mhinz/vim-signify'               " Show diff to sign column
-Plug 'Shougo/neosnippet.vim'
 " vim-themis is a testing framework for vim script.
 " Do not load the plugin with vim-plug, use only as a command line tool.
 Plug 'thinca/vim-themis', { 'on': [], 'do': 'ln -fsv `pwd`/bin/themis /usr/local/bin/themis' }
@@ -51,8 +50,14 @@ Plug 'tpope/vim-fugitive'      " git wrapper
 let lsp_type = 1
 
 if lsp_type == 1
-  Plug 'neovim/nvim-lspconfig'           " for Neovim built-in LSP client
-  Plug 'nvim-lua/completion-nvim'        " for Neovim built-in LSP client
+  Plug 'neovim/nvim-lspconfig'    " Collection of configurations for built-in LSP client
+  " NOTE: when using nvim-cmp and neosnippet together, an error occurs.
+  Plug 'hrsh7th/nvim-cmp'         " Autocompletion plugin
+  Plug 'hrsh7th/cmp-nvim-lsp'     " nvim-cmp source for neovim builtin LSP client
+  Plug 'hrsh7th/cmp-buffer'       " nvim-cmp source for buffer words
+  Plug 'hrsh7th/cmp-path'         " nvim-cmp source for path
+  Plug 'saadparwaiz1/cmp_luasnip' " nvim-cmp source for luasnip
+  Plug 'L3MON4D3/LuaSnip'         " Snippets plugin
   Plug 'nvim-lua/lsp-status.nvim'        " for Neovim built-in LSP cleint
   " MEMO: vim-endwise does not work with nvim-treesitter.
   " ref. https://github.com/nvim-treesitter/nvim-treesitter/issues/703
@@ -84,6 +89,8 @@ call plug#end()
 runtime! plugins/*.vim
 if has_key(g:plugs, 'nvim-lspconfig')
   lua require('init')
+  lua require('nvim-cmp-config')
+  lua require('luasnip-config')
 endif
 
 " --------------------------------------
