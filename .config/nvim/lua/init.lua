@@ -71,6 +71,8 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 --
 -- bashls
 --   $ npm install -g bash-language-server
+-- vimls
+--   $ npm install -g vim-language-server
 --
 local servers = { "bashls", "gopls", "solargraph", "vimls", "vuels" }
 for _, lsp in ipairs(servers) do
