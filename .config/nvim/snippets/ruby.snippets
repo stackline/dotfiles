@@ -1,0 +1,22 @@
+##
+## Magic comment
+# frozen
+snippet frozen
+	# frozen_string_literal: true
+##
+## Template
+# rspec
+snippet rspec
+	require 'rails_helper'
+
+	RSpec.describe ClassName, type: :type_name do
+	  describe '#hoge' do
+	    context 'hoge' do
+	      let(:name) { create(:model) }
+
+	      it 'hoge' do
+	        expect(action).to eq 'expected result'
+	      end
+	    end
+	  end
+	end
