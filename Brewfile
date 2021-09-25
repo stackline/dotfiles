@@ -178,6 +178,7 @@ cask 'google-chrome'
 cask 'cyberduck' # FTP client
 cask 'insomnia'  # API client for REST and GraphQL
 cask 'tableplus' # SQL client
+cask 'beekeeper-studio' # SQL client
 
 ### Communication tool
 cask 'slack'
@@ -193,6 +194,7 @@ cask 'google-japanese-ime'
 cask 'iterm2'
 
 ### Viewer
+cask 'adobe-acrobat-reader' # PDF viewer
 cask 'kindle' # Kindle books Viewer
 
 ### Development environment
