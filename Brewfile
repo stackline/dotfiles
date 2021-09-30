@@ -202,8 +202,8 @@ cask 'android-studio'
 cask 'docker'
 
 ### Utility
+cask 'alt-tab'
 cask 'dropbox'
-cask 'hyperswitch'
 cask 'imageoptim'
 cask 'skitch'
 
