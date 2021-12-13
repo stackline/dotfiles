@@ -202,7 +202,7 @@ cask 'android-studio'
 cask 'docker'
 
 ### Utility
-cask 'alt-tab'
+cask 'alttab'
 cask 'imageoptim'
 cask 'skitch'
 
