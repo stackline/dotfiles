@@ -203,7 +203,6 @@ cask 'docker'
 
 ### Utility
 cask 'alt-tab'
-cask 'dropbox'
 cask 'imageoptim'
 cask 'skitch'
 
