@@ -80,17 +80,17 @@ brew 'tfenv'     # Terraform version manager
 brew 'golangci-lint' # Linter
 
 # Dockerfile
-brew 'hadolint'   # Linter
+brew 'hadolint' # Linter
 
 # Shell script
 brew 'shellcheck' # Linter
 brew 'shfmt'      # Formatter
 
 # Vim script
-brew 'vint'       # Linter
+brew 'vint' # Linter
 
 # Yaml
-brew 'yamllint'   # Linter
+brew 'yamllint' # Linter
 
 ### Bash completion
 brew 'bash-completion@2'
