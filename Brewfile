@@ -186,6 +186,7 @@ cask 'zoom'
 
 ### Editor
 cask 'visual-studio-code'
+cask 'eclipse-java'
 
 ### Input method
 cask 'google-japanese-ime'
