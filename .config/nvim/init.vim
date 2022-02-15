@@ -46,43 +46,18 @@ Plug 'tpope/vim-fugitive'      " git wrapper
 " --------------------------------------
 " LSP
 " --------------------------------------
-" 1: Neovim built-in LSP
-" 2: coc.nvim
-let lsp_type = 1
-
-if lsp_type == 1
-  Plug 'neovim/nvim-lspconfig'    " Collection of configurations for built-in LSP client
-  " NOTE: when using nvim-cmp and neosnippet together, an error occurs.
-  Plug 'hrsh7th/nvim-cmp'         " Autocompletion plugin
-  Plug 'hrsh7th/cmp-nvim-lsp'     " nvim-cmp source for neovim builtin LSP client
-  Plug 'hrsh7th/cmp-buffer'       " nvim-cmp source for buffer words
-  Plug 'hrsh7th/cmp-path'         " nvim-cmp source for path
-  Plug 'saadparwaiz1/cmp_luasnip' " nvim-cmp source for luasnip
-  Plug 'L3MON4D3/LuaSnip'         " Snippets plugin
-  Plug 'nvim-lua/lsp-status.nvim'        " for Neovim built-in LSP cleint
-  " MEMO: vim-endwise does not work with nvim-treesitter.
-  " ref. https://github.com/nvim-treesitter/nvim-treesitter/issues/703
-  Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate maintained' } " Highlighting
-elseif lsp_type == 2
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  let s:exts = []
-  let s:exts = add(s:exts, 'coc-clangd')     " for c/c++/objective-c, use clangd
-  let s:exts = add(s:exts, 'coc-css')        " for css, scss and less
-  let s:exts = add(s:exts, 'coc-go')         " for go, use gopls
-  let s:exts = add(s:exts, 'coc-json')       " for json
-  " The default settings for coc-pairs do not work with smartindent or cindent.
-  " When adding settings of following issue, an invalid expression occurred.
-  " ref. https://github.com/neoclide/coc-pairs/issues/13
-  "
-  " let s:exts = add(s:exts, 'coc-pairs')      " auto pair
-  let s:exts = add(s:exts, 'coc-snippets')   " snippets
-  let s:exts = add(s:exts, 'coc-solargraph') " for ruby, use solargraph
-  let s:exts = add(s:exts, 'coc-tsserver')   " for javascript and typescript
-  let s:exts = add(s:exts, 'coc-vetur')      " for vue, use vetur
-  let s:exts = add(s:exts, 'coc-vimlsp')     " for vim script
-  let g:coc_global_extensions = s:exts
-  Plug 'neoclide/jsonc.vim'
-endif
+Plug 'neovim/nvim-lspconfig'    " Collection of configurations for built-in LSP client
+" NOTE: when using nvim-cmp and neosnippet together, an error occurs.
+Plug 'hrsh7th/nvim-cmp'         " Autocompletion plugin
+Plug 'hrsh7th/cmp-nvim-lsp'     " nvim-cmp source for neovim builtin LSP client
+Plug 'hrsh7th/cmp-buffer'       " nvim-cmp source for buffer words
+Plug 'hrsh7th/cmp-path'         " nvim-cmp source for path
+Plug 'saadparwaiz1/cmp_luasnip' " nvim-cmp source for luasnip
+Plug 'L3MON4D3/LuaSnip'         " Snippets plugin
+Plug 'nvim-lua/lsp-status.nvim'        " for Neovim built-in LSP cleint
+" MEMO: vim-endwise does not work with nvim-treesitter.
+" ref. https://github.com/nvim-treesitter/nvim-treesitter/issues/703
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate maintained' } " Highlighting
 
 call plug#end()
 
