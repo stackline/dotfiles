@@ -82,6 +82,9 @@ brew 'golangci-lint' # Linter
 # Dockerfile
 brew 'hadolint' # Linter
 
+# Lua
+brew 'lua-language-server' # LSP server
+
 # Shell script
 brew 'shellcheck' # Linter
 brew 'shfmt'      # Formatter

@@ -98,6 +98,23 @@ require('lspconfig').clangd.setup({
   capabilities = lsp_status.capabilities
 })
 
+-- Lua
+require('lspconfig').sumneko_lua.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = {
+      debounce_text_changes = 150,
+    },
+    settings = {
+      Lua = {
+        diagnostics = {
+          -- Prevent the warning "Undefined global vim"
+         globals = {'vim'},
+        }
+      }
+    }
+})
+
 --
 -- TODO: Enable underlining where errors are detected.
 -- MEMO: How to disable Neovim built-in LSP diagnostics globally
