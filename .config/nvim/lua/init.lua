@@ -76,7 +76,7 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 -- vimls
 --   $ npm install -g vim-language-server
 --
-local servers = { "bashls", "gopls", "solargraph", "tsserver", "vimls", "vuels" }
+local servers = { "bashls", "gopls", "solargraph", "tsserver", "vimls" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,

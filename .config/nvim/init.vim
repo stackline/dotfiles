@@ -24,7 +24,6 @@ let g:loaded_2html_plugin       = 1
 " --------------------------------------
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'alvan/vim-closetag'      " auto close html tags (used in vue files)
 Plug 'dense-analysis/ale'      " linter
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
