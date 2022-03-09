@@ -72,28 +72,19 @@ brew 'tfenv'     # Terraform version manager
 #
 # brew 'sdkman'
 
-# Go
-### package
+### Go package
 # $ go install github.com/rhysd/vim-startuptime@latest
 # $ go install github.com/stackline/mydate
 # $ go install golang.org/x/tools/gopls@latest
-brew 'golangci-lint' # Linter
 
-# Dockerfile
-brew 'hadolint' # Linter
-
-# Lua
-brew 'lua-language-server' # LSP server
-
-# Shell script
-brew 'shellcheck' # Linter
-brew 'shfmt'      # Formatter
-
-# Vim script
-brew 'vint' # Linter
-
-# Yaml
-brew 'yamllint' # Linter
+### Development tools
+brew 'hadolint'            # Dockerfile: Linter
+brew 'golangci-lint'       # Go: Linter
+brew 'lua-language-server' # Lua: LSP server
+brew 'shellcheck'          # Shell script: Linter
+brew 'shfmt'               # Shell script: Formatter
+brew 'vint'                # Vim script: Linter
+brew 'yamllint'            # Yaml: Linter
 
 ### Bash completion
 brew 'bash-completion@2'
@@ -140,10 +131,8 @@ brew 'redis'
 brew 'jpeg'
 
 ### Ruby gems
-# for ffi gem
-brew 'libffi'
-# for pg gem
-brew 'libpq'
+brew 'libffi' # required by ffi gem
+brew 'libpq'  # required by pg gem
 
 if RUBY_PLATFORM.include?('linux')
   # If you do not have this package when installing ruby via rbenv,
