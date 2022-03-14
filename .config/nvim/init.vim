@@ -92,6 +92,10 @@ nnoremap <silent> tp :tabprevious<CR>
 " --------------------------------------
 " common
 " --------------------------------------
+" Since space is used as prefix in nvim-lspconfig, nothing is done with space alone.
+" ref. https://github.com/neovim/nvim-lspconfig#suggested-configuration
+nnoremap <Space> <Nop>
+
 " NOTE: Gruvbox8 requires to define "termguicolors = 1" and "background = dark"
 " before loading the color scheme.
 set termguicolors " Enable true color (24-bit color) in the TUI.
