@@ -132,6 +132,8 @@ augroup init_filetype_event
   autocmd FileType php        setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
   autocmd FileType ruby       setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
   autocmd FileType sh         setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+  " Avoid highlighting underscores in markdown text
+  autocmd FileType markdown   highlight link markdownError NONE
 
   " Enable tag jump to methods with ! or ?
   " ref. https://www.reddit.com/r/vim/comments/60el1r/question_jumping_to_tags/
