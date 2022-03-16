@@ -186,15 +186,9 @@ function PrintDiagnostics(opts, bufnr, line_nr)
   local line_diagnostics = vim.diagnostic.get(bufnr, opts)
   if vim.tbl_isempty(line_diagnostics) then return end
 
-  local diagnostic_message = ""
-  for i, diagnostic in ipairs(line_diagnostics) do
-    diagnostic_message = diagnostic_message .. string.format("%d: %s", i, diagnostic.message or "")
-    print(diagnostic_message)
-    if i ~= #line_diagnostics then
-      diagnostic_message = diagnostic_message .. "\n"
-    end
-  end
-  vim.api.nvim_echo({{diagnostic_message, "Normal"}}, false, {})
+  -- Avoid displaying hit-enter prompt.
+  -- Display same content as error/warning displayed in virtual text.
+  print(line_diagnostics[#line_diagnostics]['message'])
 end
 
 vim.cmd [[ autocmd! CursorHold * lua PrintDiagnostics() ]]
