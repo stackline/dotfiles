@@ -60,8 +60,6 @@ Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate maintained' } " Highl
 
 call plug#end()
 
-" When [!] is included, all found files are sourced.
-runtime! plugins/*.vim
 if has_key(g:plugs, 'nvim-lspconfig')
   lua require('init')
   lua require('nvim-cmp-config')
