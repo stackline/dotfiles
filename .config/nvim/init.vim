@@ -62,8 +62,6 @@ call plug#end()
 
 if has_key(g:plugs, 'nvim-lspconfig')
   lua require('init')
-  lua require('nvim-cmp-config')
-  lua require('luasnip-config')
 endif
 
 " --------------------------------------
