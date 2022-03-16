@@ -123,6 +123,7 @@ set shortmess+=I " Do not display the intro message when starting Vim.
 set tabstop=2
 set foldlevelstart=99 " [edit] Start editing with no folds closed.
 set showtabline=2     " [view] Always show tab line.
+set signcolumn=yes
 
 filetype plugin on
 filetype indent on
