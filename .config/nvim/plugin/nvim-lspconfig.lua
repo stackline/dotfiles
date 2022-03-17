@@ -1,75 +1,69 @@
--- Uncomment the following when debugging
--- ref. https://neovim.io/doc/user/lsp.html#vim.lsp.set_log_level()
---
--- vim.lsp.set_log_level('debug')
+if vim.api.nvim_get_var('plugs')["nvim-lspconfig"] == nil then
+  return
+end
 
--- nvim-lspconfig
---   ref. https://github.com/neovim/nvim-lspconfig#usage
-
--- Keybindings and completion
--- ref. https://github.com/neovim/nvim-lspconfig#keybindings-and-completion
-local nvim_lsp = require('lspconfig')
+-- -------------------------------------
+-- Suggested configuration
+-- ref. https://github.com/neovim/nvim-lspconfig#suggested-configuration
+-- -------------------------------------
+-- Mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+local opts = { noremap=true, silent=true }
+vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
   -- Enable completion triggered by <c-x><c-o>
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
-  local opts = { noremap=true, silent=true }
-
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
--- cmp-nvim-lsp setup
--- ref. https://github.com/hrsh7th/cmp-nvim-lsp#setup
---
--- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers.
+
+-- -------------------------------------
+-- nvim-cmp autocompletion
+-- ref. https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion#nvim-cmp
+-- -------------------------------------
+-- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
+local lspconfig = require('lspconfig')
+
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
---
--- bashls
---   $ npm install -g bash-language-server
--- tsserver
---   $ npm install -g typescript typescript-language-server
--- vimls
---   $ npm install -g vim-language-server
---
-local servers = { "bashls", "gopls", "solargraph", "tsserver", "vimls" }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
+local servers = { 'bashls', 'gopls', 'solargraph', 'tsserver', 'vimls' }
+for _, lsp in pairs(servers) do
+  lspconfig[lsp].setup {
     on_attach = on_attach,
+    -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
     capabilities = capabilities,
     flags = {
+      -- This will be the default in neovim 0.7+
       debounce_text_changes = 150,
     }
   }
 end
 
+-- C++
 local lsp_status = require('lsp-status')
 require('lspconfig').clangd.setup({
   cmd = { 'clangd', '--background-index', '-header-insertion=never' },
@@ -79,26 +73,33 @@ require('lspconfig').clangd.setup({
     clangdFileStatus = true
   },
   on_attach = lsp_status.on_attach,
-  capabilities = lsp_status.capabilities
+  capabilities = lsp_status.capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
 })
 
 -- Lua
-require('lspconfig').sumneko_lua.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-      debounce_text_changes = 150,
-    },
-    settings = {
-      Lua = {
-        diagnostics = {
-          -- Prevent the warning "Undefined global vim"
-         globals = {'vim'},
-        }
+lspconfig.sumneko_lua.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  settings = {
+    Lua = {
+      diagnostics = {
+        -- Prevent the warning "Undefined global vim"
+        globals = {'vim'},
       }
     }
-})
+  }
+}
 
+
+-- -------------------------------------
+-- Custom settings
+-- -------------------------------------
 --
 -- TODO: Enable underlining where errors are detected.
 -- MEMO: How to disable Neovim built-in LSP diagnostics globally
