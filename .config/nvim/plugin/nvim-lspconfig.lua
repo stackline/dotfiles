@@ -100,19 +100,8 @@ lspconfig.sumneko_lua.setup {
 -- -------------------------------------
 -- Custom settings
 -- -------------------------------------
---
--- TODO: Enable underlining where errors are detected.
--- MEMO: How to disable Neovim built-in LSP diagnostics globally
---
--- ```lua
--- vim.lsp.callbacks["textDocument/publishDiagnostics"] = function() end
--- ```
---
-
---
 -- Print diagnostics to message area
 -- ref. https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#print-diagnostics-to-message-area
---
 function PrintDiagnostics(opts, bufnr, line_nr)
   bufnr = bufnr or 0
   line_nr = line_nr or (vim.api.nvim_win_get_cursor(0)[1] - 1)
@@ -128,10 +117,8 @@ end
 
 vim.cmd [[ autocmd! CursorHold * lua PrintDiagnostics() ]]
 
---
 -- Change prefix/character preceding the diagnostics' virtual text
 -- ref. https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#change-prefixcharacter-preceding-the-diagnostics-virtual-text
---
 vim.diagnostic.config({
   virtual_text = {
     prefix = '-',
