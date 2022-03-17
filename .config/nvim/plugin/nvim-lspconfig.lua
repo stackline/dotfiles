@@ -108,20 +108,6 @@ lspconfig.sumneko_lua.setup {
 -- vim.lsp.callbacks["textDocument/publishDiagnostics"] = function() end
 -- ```
 --
-local lsp = vim.lsp
-local util = vim.lsp.util
-local M = vim.lsp.handlers
-
-M["textDocument/publishDiagnostics"] = lsp.with(
-  -- ref. :h vim.lsp.diagnostic.on_publish_diagnostics
-  lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = {
-      -- NOTE: Default prefix may be an East Asian Width.
-      -- It shifts the text when displaying virtual text with default prefix.
-      prefix = "-",
-    },
-  }
-)
 
 --
 -- NOTE: Do not display blank line separator in a popup window.
@@ -138,7 +124,10 @@ M["textDocument/publishDiagnostics"] = lsp.with(
 --   Ref. textDocument/hover handler
 --   https://github.com/neovim/neovim/blob/1e5913483469528c7e8d1f927b28c0185eb94941/runtime/lua/vim/lsp/handlers.lua#L179-L197
 --
+local M = vim.lsp.handlers
 M['textDocument/hover'] = function(_, method, result)
+  local util = vim.lsp.util
+
   util.focusable_float(method, function()
     if not (result and result.contents) then
       -- return { 'No information available' }
@@ -177,3 +166,13 @@ function PrintDiagnostics(opts, bufnr, line_nr)
 end
 
 vim.cmd [[ autocmd! CursorHold * lua PrintDiagnostics() ]]
+
+--
+-- Change prefix/character preceding the diagnostics' virtual text
+-- ref. https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#change-prefixcharacter-preceding-the-diagnostics-virtual-text
+--
+vim.diagnostic.config({
+  virtual_text = {
+    prefix = '-',
+  }
+})
