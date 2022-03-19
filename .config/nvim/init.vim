@@ -17,7 +17,7 @@ let g:did_install_default_menus = 1
 let g:skip_loading_mswin        = 1
 let g:did_install_syntax_menu   = 1
 let g:loaded_2html_plugin       = 1
-" let loaded_matchparen           = 1
+" let g:loaded_matchparen         = 1
 
 " --------------------------------------
 " vim-plug
