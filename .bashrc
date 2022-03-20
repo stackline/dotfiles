@@ -19,6 +19,7 @@ readonly script_start_time=$("$HOME"/go/bin/mydate)
 # XDG Base Directory
 # ref. https://wiki.archlinux.org/index.php/XDG_Base_Directory
 # --------------------------------------
+export XDG_CACHE_HOME="${HOME}/.cache"
 export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_DATA_HOME="${HOME}/.local/share"
 export BUNDLE_USER_HOME="${XDG_CONFIG_HOME}/bundle"
@@ -143,6 +144,10 @@ function update-various-packages() {
     touch "$vim_plug_update_log"
   fi
 
+  echo '' # spacer
+
+  echo '### update vim plugins'
+  echo '' # spacer
   # --headless
   #   Do not switch screen from shell to vim.
   # set modifiable
@@ -151,12 +156,20 @@ function update-various-packages() {
   #   % means all lines for range.
   #   %w means write all lines to a file.
   nvim --headless -c 'PlugUpdate' -c 'set modifiable' -c "%w $vim_plug_update_log" -c 'qa'
-  echo '' # spacer
-
-  echo -e '\n### update vim plugins\n'
   cat "$vim_plug_update_log"
 
-  echo -e '\n### update homebrew formulas and casks\n'
+  echo '' # spacer
+
+  echo '### execute LuaCacheClear command for impatient.nvim plugin'
+  echo '' # spacer
+  nvim --headless -c 'LuaCacheClear' -c 'qa'
+  echo "=> delete $XDG_CACHE_HOME/nvim/luacache_chunks"
+  echo "=> delete $XDG_CACHE_HOME/nvim/luacache_modpaths"
+
+  echo '' # spacer
+
+  echo '### update homebrew formulas and casks'
+  echo '' # spacer
   brew-maintenance
 }
 

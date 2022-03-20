@@ -66,8 +66,13 @@ Plug 'nvim-lua/lsp-status.nvim'        " for Neovim built-in LSP cleint
 " MEMO: vim-endwise does not work with nvim-treesitter.
 " ref. https://github.com/nvim-treesitter/nvim-treesitter/issues/703
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate maintained' } " Highlighting
+Plug 'lewis6991/impatient.nvim' " Speed up loading Lua modules.
 
 call plug#end()
+
+if has_key(g:plugs, 'impatient.nvim')
+  lua require('impatient')
+endif
 
 " --------------------------------------
 " ctags
