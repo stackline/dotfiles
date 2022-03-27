@@ -1,6 +1,6 @@
-" --------------------------------------
-" ale
-" --------------------------------------
+if !has_key(g:plugs, 'ale')
+  finish
+endif
 
 " Initialize
 let g:ale_fixers = {}
