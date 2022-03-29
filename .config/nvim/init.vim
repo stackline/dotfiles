@@ -67,6 +67,7 @@ Plug 'nvim-lua/lsp-status.nvim'        " for Neovim built-in LSP cleint
 " ref. https://github.com/nvim-treesitter/nvim-treesitter/issues/703
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate maintained' } " Highlighting
 Plug 'lewis6991/impatient.nvim' " Speed up loading Lua modules.
+Plug 'mfussenegger/nvim-lint'   " Linter (asynchronous)
 
 call plug#end()
 

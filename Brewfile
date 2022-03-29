@@ -79,7 +79,6 @@ brew 'tfenv'     # Terraform version manager
 
 ### Development tools
 brew 'hadolint'            # Dockerfile: Linter
-brew 'golangci-lint'       # Go: Linter
 brew 'lua-language-server' # Lua: LSP server
 brew 'shellcheck'          # Shell script: Linter
 brew 'shfmt'               # Shell script: Formatter

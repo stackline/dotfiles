@@ -35,6 +35,10 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+  -- Do formatting with ALE, so disable LSP formatting
+  client.resolved_capabilities.document_formatting = false
+  client.resolved_capabilities.document_range_formatting = false
 end
 
 
@@ -50,7 +54,7 @@ local lspconfig = require('lspconfig')
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'bashls', 'gopls', 'solargraph', 'tsserver', 'vimls' }
+local servers = { 'bashls', 'tsserver', 'vimls' }
 for _, lsp in pairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
@@ -79,6 +83,21 @@ require('lspconfig').clangd.setup({
   },
 })
 
+-- Go
+-- ref. https://github.com/golang/tools/blob/master/gopls/doc/vim.md#custom-configuration
+lspconfig.gopls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  settings = {
+    gopls = {
+      staticcheck = false,
+    }
+  }
+}
+
 -- Lua
 lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
@@ -96,6 +115,19 @@ lspconfig.sumneko_lua.setup {
   }
 }
 
+-- Ruby
+lspconfig.solargraph.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  settings = {
+    solargraph = {
+      diagnostics = false
+    }
+  }
+}
 
 -- -------------------------------------
 -- Custom settings
@@ -124,3 +156,5 @@ vim.diagnostic.config({
     prefix = '-',
   }
 })
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
