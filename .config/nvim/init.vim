@@ -142,15 +142,11 @@ filetype indent on
 " --------------------------------------
 " Autocommands
 " --------------------------------------
-augroup init_bufwritepre_event
+augroup init_vim_autocommands
   autocmd!
 
   " Delete unnecessary trailing spaces
   autocmd BufWritePre * :%s/\s\+$//ge
-augroup END
-
-augroup init_bufreadpost_event
-  autocmd!
 
   " When editing a file, always jump to the last cursor position
   autocmd BufReadPost *
