@@ -142,38 +142,11 @@ filetype indent on
 " --------------------------------------
 " Autocommands
 " --------------------------------------
-augroup init_filetype_event
-  autocmd!
-
-  autocmd FileType go         setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4
-  autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
-  autocmd FileType php        setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
-  autocmd FileType ruby       setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
-  autocmd FileType sh         setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
-  " Avoid highlighting underscores in markdown text
-  autocmd FileType markdown   highlight link markdownError NONE
-
-  " Enable tag jump to methods with ! or ?
-  " ref. https://www.reddit.com/r/vim/comments/60el1r/question_jumping_to_tags/
-  autocmd FileType ruby setlocal iskeyword+=!,?
-
-  " json with comments
-  autocmd FileType json set filetype=jsonc
-augroup END
-
 augroup init_bufwritepre_event
   autocmd!
 
   " Delete unnecessary trailing spaces
   autocmd BufWritePre * :%s/\s\+$//ge
-augroup END
-
-augroup init_bufnewfile_bufreadpost_event
-  autocmd!
-
-  " Use Ruby syntax highlight on Brewfile
-  " ref. http://vim-jp.org/vimdoc-ja/filetype.html#ftdetect
-  autocmd BufNewFile,BufReadPost Brewfile setfiletype ruby
 augroup END
 
 augroup init_bufreadpost_event
