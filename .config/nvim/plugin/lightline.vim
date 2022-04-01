@@ -32,6 +32,7 @@ let g:lightline = {
     \ 'component_function': {
     \   'lspstatus': 'StatusLineLspStatus'
     \ },
+    \ 'colorscheme': 'sonokai',
     \ }
 
 augroup statusline_cache_items

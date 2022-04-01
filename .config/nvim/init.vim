@@ -41,8 +41,8 @@ Plug 'junegunn/fzf.vim'        " incremental file and code search
 " If necessary, only upgrade vim-plug itself.
 Plug 'junegunn/vim-plug', { 'on': [], 'do': ':PlugUpgrade' }
 Plug 'itchyny/lightline.vim'   " statusline and tabline
-Plug 'lifepillar/vim-gruvbox8' " color scheme
 Plug 'mhinz/vim-signify'       " show diff to sign column
+Plug 'sainnhe/sonokai'         " Color scheme (Tree-sitter support)
 " vim-themis is a testing framework for vim script.
 " Do not load the plugin with vim-plug, use only as a command line tool.
 Plug 'thinca/vim-themis', { 'on': [], 'do': 'ln -fsv `pwd`/bin/themis /usr/local/bin/themis' }
@@ -70,6 +70,18 @@ Plug 'lewis6991/impatient.nvim' " Speed up loading Lua modules.
 Plug 'mfussenegger/nvim-lint'   " Linter (asynchronous)
 
 call plug#end()
+
+if has_key(g:plugs, 'sonokai')
+  if has('termguicolors')
+    " Enable true color (24-bit color) in the TUI.
+    set termguicolors
+  endif
+
+  " The configuration options should be placed before `colorscheme sonokai`.
+  let g:sonokai_better_performance = 1
+
+  colorscheme sonokai
+endif
 
 if has_key(g:plugs, 'impatient.nvim')
   lua require('impatient')
@@ -102,12 +114,6 @@ nnoremap <silent> tp :tabprevious<CR>
 " Since space is used as prefix in nvim-lspconfig, nothing is done with space alone.
 " ref. https://github.com/neovim/nvim-lspconfig#suggested-configuration
 nnoremap <Space> <Nop>
-
-" NOTE: Gruvbox8 requires to define "termguicolors = 1" and "background = dark"
-" before loading the color scheme.
-set termguicolors " Enable true color (24-bit color) in the TUI.
-set background=dark
-colorscheme gruvbox8
 
 set number
 set list
