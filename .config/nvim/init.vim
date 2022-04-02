@@ -72,7 +72,23 @@ Plug 'mfussenegger/nvim-lint'   " Linter (asynchronous)
 
 call plug#end()
 
-if has_key(g:plugs, 'sonokai')
+function! PlugIsRegistered (plugin_name) abort
+  if has_key(g:plugs, a:plugin_name)
+    return v:true
+  else
+    return v:false
+  endif
+endfunction
+
+function! PlugIsNotRegistered(plugin_name) abort
+  if has_key(g:plugs, a:plugin_name)
+    return v:false
+  else
+    return v:true
+  endif
+endfunction
+
+if PlugIsRegistered('sonokai')
   if has('termguicolors')
     " Enable true color (24-bit color) in the TUI.
     set termguicolors
@@ -84,7 +100,7 @@ if has_key(g:plugs, 'sonokai')
   colorscheme sonokai
 endif
 
-if has_key(g:plugs, 'impatient.nvim')
+if PlugIsRegistered('impatient.nvim')
   lua require('impatient')
 endif
 

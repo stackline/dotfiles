@@ -1,7 +1,6 @@
-" --------------------------------------
-" fzf.vim
-" https://github.com/junegunn/fzf.vim
-" --------------------------------------
+if PlugIsNotRegistered('fzf.vim')
+  finish
+endif
 
 nnoremap <C-p> :GFiles<cr>
 nnoremap <expr> <C-j> ':Rg ' . expand('<cword>') . '<cr>'

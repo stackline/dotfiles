@@ -1,4 +1,4 @@
-if !has_key(g:plugs, 'ale')
+if PlugIsNotRegistered('ale')
   finish
 endif
 

@@ -1,4 +1,4 @@
-if vim.api.nvim_get_var('plugs')["nvim-lspconfig"] == nil then
+if vim.fn['PlugIsNotRegistered']('nvim-lspconfig') then
   return
 end
 

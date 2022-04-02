@@ -1,8 +1,4 @@
-" ----------------------------------------------------------
-" lightline.vim
-" ----------------------------------------------------------
-
-if !has_key(g:plugs, 'lightline.vim')
+if PlugIsNotRegistered('lightline.vim')
   finish
 endif
 

@@ -1,3 +1,7 @@
+if vim.fn['PlugIsNotRegistered']('lsp-status.nvim') then
+  return
+end
+
 local ls = require("luasnip")
 -- some shorthands...
 local s = ls.snippet
