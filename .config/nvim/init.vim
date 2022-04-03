@@ -47,7 +47,6 @@ Plug 'sainnhe/sonokai'         " Color scheme (Tree-sitter support)
 " vim-themis is a testing framework for vim script.
 " Do not load the plugin with vim-plug, use only as a command line tool.
 Plug 'thinca/vim-themis', { 'on': [], 'do': 'ln -fsv `pwd`/bin/themis /usr/local/bin/themis' }
-Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'      " git wrapper
 " Plug 'prabirshrestha/async.vim', { 'for': 'ruby' }
 " Plug 'stackline/vim-asynctags', { 'for': 'ruby' } " Async ctag generator
@@ -64,11 +63,30 @@ Plug 'hrsh7th/cmp-path'         " nvim-cmp source for path
 Plug 'saadparwaiz1/cmp_luasnip' " nvim-cmp source for luasnip
 Plug 'L3MON4D3/LuaSnip'         " Snippets plugin
 Plug 'nvim-lua/lsp-status.nvim'        " for Neovim built-in LSP cleint
-" MEMO: vim-endwise does not work with nvim-treesitter.
-" ref. https://github.com/nvim-treesitter/nvim-treesitter/issues/703
-Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate maintained' } " Highlighting
 Plug 'lewis6991/impatient.nvim' " Speed up loading Lua modules.
 Plug 'mfussenegger/nvim-lint'   " Linter (asynchronous)
+
+" NOTE: About some highlighting and endwise combinations
+"
+" (a) nvim-treesitter + nvim-treesitter-endwise
+"
+"   * Endwise does not complete 'end' keyword if I enter a line break
+"     after entering 'def' keyword.
+"
+" (b) nvim-treesitter + vim-endwise
+"
+"   * Set additional_vim_regex_highlighting option of nvim-treesitter to true.
+"   * Endwise completes 'end' keyword if I enter a line break after entering
+"     'def' keyword.
+"   * Using additional_vim_regex_highlighting option may slow down my editor.
+"
+" (c) traditional highlighting + vim-endwise
+"
+"   * May not be as highlighted as nvim-treesitter.
+"
+" ref. https://github.com/nvim-treesitter/nvim-treesitter/issues/703
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate maintained' } " Highlighting
+Plug 'tpope/vim-endwise'
 
 call plug#end()
 
