@@ -132,9 +132,6 @@ alias dpsa='docker ps -a'
 # Utilities
 # --------------------------------------
 
-# Remove all packages
-alias pip2-uninstall-all-packages='pip2 freeze | xargs pip2 uninstall -y'
-alias pip3-uninstall-all-packages='pip3 freeze | xargs pip3 uninstall -y'
 # ref. https://darryldias.me/12/remove-all-installed-homebrew-packages/
 alias brew-remove-all-installed-packages='brew list | xargs brew remove --force --ignore-dependencies'
 
