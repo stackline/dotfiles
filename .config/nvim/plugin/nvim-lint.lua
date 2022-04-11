@@ -62,7 +62,7 @@ vim.cmd("augroup END")
 -- ### Phenomenon
 --
 -- * Specify Ruby as linter for Ruby files.
--- * Set autocmd to run nvim-lint's try_lint on BufReadPost.
+-- * Set autocmd to run nvim-lint's try_lint on BufWinEnter.
 -- * Open the Ruby file.
 -- * Linter is executed, but the check result is not reflected on the screen.
 -- * On the other hand, if I execute try_lint on BufWritePost,
