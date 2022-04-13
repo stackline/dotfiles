@@ -85,7 +85,7 @@ Plug 'mfussenegger/nvim-lint'   " Linter (asynchronous)
 "   * May not be as highlighted as nvim-treesitter.
 "
 " ref. https://github.com/nvim-treesitter/nvim-treesitter/issues/703
-Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate maintained' } " Highlighting
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " Highlighting
 Plug 'tpope/vim-endwise'
 
 call plug#end()
