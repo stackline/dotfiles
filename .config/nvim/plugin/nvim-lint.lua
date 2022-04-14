@@ -38,10 +38,6 @@ lint.linters.rubocop = {
   end
 }
 
--- Customize built-in linter parameters
-local staticcheck = require('lint.linters.staticcheck')
-staticcheck.stdin = false
-
 -- Mapping of filetype and linters
 lint.linters_by_ft = {
   go = { 'staticcheck' },
