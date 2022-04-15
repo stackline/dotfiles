@@ -48,8 +48,6 @@ Plug 'sainnhe/sonokai'         " Color scheme (Tree-sitter support)
 " Do not load the plugin with vim-plug, use only as a command line tool.
 Plug 'thinca/vim-themis', { 'on': [], 'do': 'ln -fsv `pwd`/bin/themis /usr/local/bin/themis' }
 Plug 'tpope/vim-fugitive'      " git wrapper
-" Plug 'prabirshrestha/async.vim', { 'for': 'ruby' }
-" Plug 'stackline/vim-asynctags', { 'for': 'ruby' } " Async ctag generator
 
 " --------------------------------------
 " LSP
