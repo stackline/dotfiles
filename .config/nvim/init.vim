@@ -31,7 +31,7 @@ let g:skip_loading_mswin        = 1
 " --------------------------------------
 " vim-plug
 " --------------------------------------
-call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin() " Specify default plugin directory: stdpath('data') . '/plugged'
 
 Plug 'dense-analysis/ale'      " linter
 Plug 'jiangmiao/auto-pairs'
