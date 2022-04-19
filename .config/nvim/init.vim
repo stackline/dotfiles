@@ -86,7 +86,7 @@ Plug 'mfussenegger/nvim-lint'   " Linter (asynchronous)
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " Highlighting
 Plug 'tpope/vim-endwise'
 
-call plug#end()
+call plug#end() " Automatically executes `filetype plugin indent on`
 
 function! PlugIsRegistered (plugin_name) abort
   if has_key(g:plugs, a:plugin_name)
@@ -174,9 +174,6 @@ set tabstop=2
 set foldlevelstart=99 " [edit] Start editing with no folds closed.
 set showtabline=2     " [view] Always show tab line.
 set signcolumn=yes
-
-filetype plugin on
-filetype indent on
 
 " --------------------------------------
 " Autocommands
