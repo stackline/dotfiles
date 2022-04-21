@@ -98,6 +98,7 @@ brew 'bat' # alternative to cat
 brew 'bats-core' # Testing framework for Bash
 brew 'fd'
 brew 'fzf'
+brew 'gh'
 brew 'ghq'
 brew 'git'
 # imagemagick has many dependencies.

@@ -7,6 +7,9 @@
 # Git
 /.config/git/config_local
 
+# GitHub CLI
+/.config/gh/hosts.yml
+
 # npm
 /node_modules
 
