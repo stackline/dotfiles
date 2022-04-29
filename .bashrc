@@ -89,6 +89,7 @@ fi
 # git aliases (prefix: g)
 alias ga='fzf_git_add'
 alias gb='git branch -v'
+alias gc='git clean -df'
 alias gcm='git commit -m'
 alias gd='git diff'
 alias gdc='git diff --cached'
