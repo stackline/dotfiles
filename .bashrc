@@ -137,15 +137,14 @@ alias dpsa='docker ps -a'
 alias brew-remove-all-installed-packages='brew list | xargs brew remove --force --ignore-dependencies'
 
 function update-various-packages() {
+  echo '' # spacer
+  echo '### update vim plugins'
+  echo '' # spacer
+
   local readonly vim_plug_update_log='/tmp/vim-plug-update.log'
   if [ ! -e "$vim_plug_update_log" ]; then
     touch "$vim_plug_update_log"
   fi
-
-  echo '' # spacer
-
-  echo '### update vim plugins'
-  echo '' # spacer
   # --headless
   #   Do not switch screen from shell to vim.
   # set modifiable
@@ -158,17 +157,29 @@ function update-various-packages() {
   cat "$vim_plug_update_log"
 
   echo '' # spacer
+  echo '### examine changes from previous update'
+  echo '' # spacer
 
+  local readonly vim_plug_diff_log='/tmp/vim-plug-diff.log'
+  if [ ! -e "$vim_plug_diff_log" ]; then
+    touch "$vim_plug_diff_log"
+  fi
+  nvim --headless -c 'PlugDiff' -c 'set modifiable' -c "silent %w $vim_plug_diff_log" -c 'qa'
+  echo '' # line break
+  cat "$vim_plug_diff_log"
+
+  echo '' # spacer
   echo '### execute LuaCacheClear command for impatient.nvim plugin'
   echo '' # spacer
+
   nvim --headless -c 'LuaCacheClear' -c 'qa'
   echo "=> delete $XDG_CACHE_HOME/nvim/luacache_chunks"
   echo "=> delete $XDG_CACHE_HOME/nvim/luacache_modpaths"
 
   echo '' # spacer
-
   echo '### update homebrew formulas and casks'
   echo '' # spacer
+
   brew-maintenance
 }
 
