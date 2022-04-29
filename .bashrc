@@ -154,6 +154,7 @@ function update-various-packages() {
   #   % means all lines for range.
   #   %w means write all lines to a file.
   nvim --headless -c 'PlugUpdate' -c 'set modifiable' -c "silent %w $vim_plug_update_log" -c 'qa'
+  echo '' # line break
   cat "$vim_plug_update_log"
 
   echo '' # spacer
