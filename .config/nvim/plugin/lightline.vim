@@ -62,7 +62,7 @@ function! StatusLineBranchName()
     return ''
   endif
 
-  return fugitive#head()
+  return FugitiveHead()
 endfunction
 
 " require: vim-fugitive plugin
