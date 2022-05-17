@@ -11,31 +11,6 @@
 # or application execution.
 brew 'gcc' if RUBY_PLATFORM.include?('linux')
 
-# [Linux]
-# NOTE: Using gcc@9 to build sassc gem ad hoc.
-#
-# ### Background
-#
-# The version of Linuxbrew's gcc package is 5.5.0.
-# Error when building sassc gem 2.2.1 with GCC 5.5.0.
-# Need to build sassc 2.2.1 with more recent version of GCC.
-#
-# * https://github.com/sass/sassc-ruby/issues/149#issuecomment-552517260
-#
-# ### How to build ad hoc
-#
-# ```
-# $ brew install gcc
-# $ bundle install # with gcc 5.5 (Sassc build fails at this point)
-#
-# $ brew unlink gcc
-# $ brew install gcc@9
-# $ bundle install # with gcc 9.2 (Sassc build success)
-#
-# $ brew link gcc # If unlinked, "cannot open shared object file" error occurs when executing rails s.
-# $ bin/rails s
-# ```
-#
 # [macOS]
 # Use with AtCoder.
 brew 'gcc@9'
@@ -44,9 +19,7 @@ brew 'gcc@9'
 # Use clangd with LSP service.
 # Put below compile_flags.txt to the repository root directory, if you need to include "bits/stdc++.h".
 #
-# ```
-# $ echo "-I/usr/local/include" > compile_flags.txt
-# ```
+#   $ echo "-I/usr/local/include" > compile_flags.txt
 #
 brew 'llvm' if /darwin/ =~ RUBY_PLATFORM
 
@@ -121,19 +94,6 @@ tap 'universal-ctags/universal-ctags'
 brew 'universal-ctags', args: %w[without-xml HEAD]
 brew 'wget'
 
-### Database
-# Using redis-cli
-brew 'redis'
-
-### required for installation
-# [Node] jpegoptim requires libjpeg version 6b or later.
-# ref. https://github.com/tjko/jpegoptim#readme
-brew 'jpeg'
-
-### Ruby gems
-brew 'libffi' # required by ffi gem
-brew 'libpq'  # required by pg gem
-
 if RUBY_PLATFORM.include?('linux')
   # If you do not have this package when installing ruby via rbenv,
   # the following error will occur.
@@ -141,19 +101,10 @@ if RUBY_PLATFORM.include?('linux')
   #   configure: error: gettimeofday() must exist
   #
   brew 'linux-headers'
-
-  # docker formula do not have two files for systemd.
-  # So, we use a yum package.
-  # ref. http://docs.docker.jp/engine/articles/systemd.html#systemd
-  # brew 'docker'
-  brew 'docker-compose'
 end
 
 # Mac OS only install below packages.
 return unless /darwin/ =~ RUBY_PLATFORM
-
-# Mac App Store command line interface
-brew 'mas'
 
 # --------------------------------------
 # Homebrew-Cask packages
@@ -198,9 +149,3 @@ cask 'docker'
 cask 'alttab'
 cask 'imageoptim'
 cask 'skitch'
-
-# --------------------------------------
-# Mac App Store
-# --------------------------------------
-# To use the iOS simulator
-mas 'Xcode', id: 497_799_835
