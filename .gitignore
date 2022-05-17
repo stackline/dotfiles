@@ -10,6 +10,9 @@
 # GitHub CLI
 /.config/gh/hosts.yml
 
+# irb (Interactive Ruby)
+/.config/irb/irb_history
+
 # npm
 /node_modules
 
