@@ -86,7 +86,7 @@ fi
 # --------------------------------------
 # alias
 # --------------------------------------
-# git aliases (prefix: g)
+# Git (prefix: g)
 alias ga='fzf_git_add'
 alias gb='git branch -v'
 alias gc='git clean -df'
@@ -97,6 +97,8 @@ alias gg='cd `git rev-parse --show-toplevel`' # move to top-level directory
 alias gl='git log'
 alias glp='git log -p'
 alias gp='git pull -p'
+alias gr='git restore'
+alias grs='git restore --staged'
 alias gs='git status'
 
 alias grep='grep --color=auto' # colorize the output
