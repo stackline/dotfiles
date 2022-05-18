@@ -134,7 +134,8 @@ cask 'eclipse-java'
 cask 'google-japanese-ime'
 
 ### Terminal emulator
-cask 'iterm2'
+tap 'wez/wezterm'
+cask 'wezterm'
 
 ### Viewer
 cask 'adobe-acrobat-reader' # PDF viewer
