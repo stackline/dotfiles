@@ -110,7 +110,6 @@ return unless /darwin/ =~ RUBY_PLATFORM
 # Homebrew-Cask packages
 # --------------------------------------
 ### Taps
-tap 'buo/cask-upgrade'
 tap 'homebrew/cask'
 
 ### Browser

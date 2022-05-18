@@ -196,8 +196,14 @@ function brew() {
 }
 
 function brew-maintenance() {
-  brew upgrade # includes formula updating and cache deletion
-  is_mac && brew cu -a
+  brew update
+  # Upgrade
+  #   outdated, unpinned formulae
+  #   outdated casks
+  #   outdated casks with auto_updates true (ex. google-chrome)
+  # Do not upgrade
+  #   outdated casks with version :latest (ex. google-japanese-ime)
+  brew upgrade --greedy-auto-updates
   brew doctor
 }
 
