@@ -40,6 +40,7 @@ lint.linters.rubocop = {
 
 -- Mapping of filetype and linters
 lint.linters_by_ft = {
+  dockerfile = { 'hadolint' },
   go = { 'staticcheck' },
   ruby = { 'ruby', 'rubocop' },
 }

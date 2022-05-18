@@ -23,6 +23,7 @@ let g:ale_fixers = {
 " ruby: nvim-lint
 let g:ale_linters = {
 \  'cpp': [],
+\  'dockerfile': [],
 \  'go': [],
 \  'ruby': [],
 \  'sh': ['shell', 'shellcheck'],
