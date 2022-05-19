@@ -21,9 +21,13 @@ function prompt::check_dependencies() {
 
 function prompt::initialize_git_prompt {
   source "$(prompt::build_git_prompt_file_path)"
-  export GIT_PS1_SHOWDIRTYSTATE=1
-  export GIT_PS1_SHOWSTASHSTATE=1
-  export GIT_PS1_SHOWUNTRACKEDFILES=1
+  # NOTE: If I enable GIT_PS1_SHOWDIRTYSTATE and GIT_PS1_SHOWUNTRACKEDFILES,
+  # __git_ps1 command is sometimes slow, so disable them.
+  # Since it doesn't refer to GIT_PS1_SHOWSTASHSTATE very much, it is also disabled.
+  #
+  # export GIT_PS1_SHOWDIRTYSTATE=1
+  # export GIT_PS1_SHOWUNTRACKEDFILES=1
+  # export GIT_PS1_SHOWSTASHSTATE=1
   export GIT_PS1_SHOWUPSTREAM=1
 }
 
