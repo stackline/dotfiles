@@ -51,12 +51,13 @@ brew 'tfenv'     # Terraform version manager
 # $ go install golang.org/x/tools/gopls@latest
 
 ### Development tools
-brew 'hadolint'            # Dockerfile: Linter
-brew 'lua-language-server' # Lua: LSP server
-brew 'shellcheck'          # Shell script: Linter
-brew 'shfmt'               # Shell script: Formatter
-brew 'vint'                # Vim script: Linter
-brew 'yamllint'            # Yaml: Linter
+brew 'hadolint'             # Dockerfile: Linter
+brew 'lua-language-server'  # Lua: LSP server
+brew 'shellcheck'           # Shell script: Linter
+brew 'shfmt'                # Shell script: Formatter
+brew 'vint'                 # Vim script: Linter
+brew 'yaml-language-server' # Yaml: LSP server
+brew 'yamllint'             # Yaml: Linter
 
 ### Bash completion
 brew 'bash-completion@2'
