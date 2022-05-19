@@ -110,18 +110,6 @@ function! PlugIsNotRegistered(plugin_name) abort
   endif
 endfunction
 
-if PlugIsRegistered('sonokai')
-  if has('termguicolors')
-    " Enable true color (24-bit color) in the TUI.
-    set termguicolors
-  endif
-
-  " The configuration options should be placed before `colorscheme sonokai`.
-  let g:sonokai_better_performance = 1
-
-  colorscheme sonokai
-endif
-
 if PlugIsRegistered('impatient.nvim')
   lua require('impatient')
 endif
