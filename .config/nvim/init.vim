@@ -33,6 +33,12 @@ let g:skip_loading_mswin        = 1
 " --------------------------------------
 call plug#begin() " Specify default plugin directory: stdpath('data') . '/plugged'
 
+" Color scheme
+" ref. https://github.com/termstandard/colors#truecolor-detection
+if $COLORTERM ==# 'truecolor'
+  Plug 'sainnhe/sonokai' " Tree-sitter support
+endif
+
 Plug 'dense-analysis/ale'      " linter
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
@@ -43,7 +49,6 @@ Plug 'junegunn/vim-plug', { 'on': [], 'do': ':PlugUpgrade' }
 Plug 'itchyny/lightline.vim'   " statusline and tabline
 Plug 'mhinz/vim-signify'       " show diff to sign column
 Plug 'mhinz/vim-startify'      " Start screen (especially use MRU (Most Recently Used))
-Plug 'sainnhe/sonokai'         " Color scheme (Tree-sitter support)
 Plug 'segeljakt/vim-silicon', { 'on': 'Silicon' } " Source code image generator
 " vim-themis is a testing framework for vim script.
 " Do not load the plugin with vim-plug, use only as a command line tool.
