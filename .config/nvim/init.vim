@@ -36,7 +36,10 @@ call plug#begin() " Specify default plugin directory: stdpath('data') . '/plugge
 " Color scheme
 " ref. https://github.com/termstandard/colors#truecolor-detection
 if $COLORTERM ==# 'truecolor'
-  Plug 'sainnhe/sonokai' " Tree-sitter support
+  " Plug 'sainnhe/sonokai'
+  " NOTE: The startup time when loading nightfox.nvim is 5 msec slower on
+  " average than when loading sonokai.
+  Plug 'EdenEast/nightfox.nvim'
 endif
 
 Plug 'dense-analysis/ale'      " linter
