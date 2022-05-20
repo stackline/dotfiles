@@ -52,6 +52,7 @@ brew 'tfenv'     # Terraform version manager
 
 ### Development tools
 brew 'hadolint'             # Dockerfile: Linter
+brew 'staticcheck'          # Go: Linter
 brew 'lua-language-server'  # Lua: LSP server
 brew 'shellcheck'           # Shell script: Linter
 brew 'shfmt'                # Shell script: Formatter
@@ -81,6 +82,7 @@ brew 'jq' # Command-line JSON processor
 brew 'neovim'
 brew 'nkf'
 brew 'nmap'
+brew 'silicon'
 brew 'ripgrep'
 # TODO: See if I can use Zellij instead of tmux as a terminal multiplexer.
 # brew 'zellij'
@@ -127,9 +129,10 @@ cask 'beekeeper-studio' # SQL client
 cask 'slack'
 cask 'zoom'
 
-### Editor
+### Editor, IDE
 cask 'visual-studio-code'
 cask 'eclipse-java'
+cask 'processing'
 
 ### Input method
 cask 'google-japanese-ime'
@@ -149,4 +152,5 @@ cask 'docker'
 ### Utility
 cask 'alttab'
 cask 'imageoptim'
+cask 'notion'
 cask 'skitch'
