@@ -82,8 +82,8 @@ brew 'neovim'
 brew 'nkf'
 brew 'nmap'
 brew 'ripgrep'
-# Be careful when using tmux with Terminal.app
-# ref. https://attonblog.blogspot.com/2017/11/tmux-pull-request.html
+# TODO: See if I can use Zellij instead of tmux as a terminal multiplexer.
+# brew 'zellij'
 brew 'tmux'
 brew 'tree'
 tap 'universal-ctags/universal-ctags'
