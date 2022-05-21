@@ -33,3 +33,38 @@ $ brew link openssl@1.1 --force
   * about:config
   * accessibility.typeaheadfind.enablesound
   * switch the value from true to false
+
+## May disable Spotlight indexing
+
+Check before work.
+
+```sh
+$ mdutil -as
+/:
+        Indexing enabled.
+/System/Volumes/Data:
+        Indexing enabled.
+```
+
+Turn indexing off.
+
+```sh
+$ sudo mdutil -a -i off
+Password:
+/:
+2022-01-01 00:00:00.000 mdutil[20452:2561496] mdutil disabling Spotlight: / -> kMDConfigSearchLevelFSSearchOnly
+        Indexing disabled.
+/System/Volumes/Data:
+2022-01-01 00:00:00.000 mdutil[20452:2561496] mdutil disabling Spotlight: /System/Volumes/Data -> kMDConfigSearchLevelFSSearchOnly
+        Indexing disabled.
+```
+
+Check after work.
+
+```sh
+$ mdutil -as
+/:
+        Indexing disabled.
+/System/Volumes/Data:
+        Indexing disabled.
+```
