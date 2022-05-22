@@ -132,7 +132,6 @@ cask 'processing'
 cask 'google-japanese-ime'
 
 ### Terminal emulator
-tap 'wez/wezterm'
 cask 'wezterm'
 
 ### Viewer
