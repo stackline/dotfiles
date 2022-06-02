@@ -28,6 +28,12 @@ let g:loaded_zip                = 1
 let g:loaded_zipPlugin          = 1
 let g:skip_loading_mswin        = 1
 
+" Disable unused providers
+let g:loaded_python3_provider   = 0
+let g:loaded_ruby_provider      = 0
+let g:loaded_node_provider      = 0
+let g:loaded_perl_provider      = 0
+
 " --------------------------------------
 " vim-plug
 " --------------------------------------
