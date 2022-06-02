@@ -17,7 +17,6 @@ create_symbolic_links() {
   ln -fsv "${dotfiles_root_dir}"/.ansible-lint ~/.ansible-lint
   ln -fsv "${dotfiles_root_dir}"/.bash_profile ~/.bash_profile
   ln -fsv "${dotfiles_root_dir}"/.bashrc ~/.bashrc
-  ln -fsv "${dotfiles_root_dir}"/.gemrc ~/.gemrc
   # TODO: Consider adding an include path to gcc and llvm
   # Make the directory "/usr/local/include/bits" as needed.
   ln -fsv "${dotfiles_root_dir}"/include/bits/stdc++.h /usr/local/include/bits/stdc++.h
