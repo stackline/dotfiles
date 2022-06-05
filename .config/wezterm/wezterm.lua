@@ -14,6 +14,9 @@ return {
   -- Similar to tmux prefix key.
   leader = { key="t", mods="CTRL", timeout_milliseconds=1000 },
   keys = {
+    -- Select to rectangle.
+    --   option + mouse move
+
     -- Split current pane.
     { key="%",  mods="LEADER", action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}}},
     { key="\"", mods="LEADER", action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}}},
