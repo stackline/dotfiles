@@ -11,6 +11,14 @@ lint.linters_by_ft = {
   ruby = { 'ruby', 'rubocop' },
 }
 
+local rubocop = require('lint.linters.rubocop')
+rubocop.args = {
+  '--format',
+  'json',
+  '--force-exclusion',
+  '--display-cop-names', -- Additional parameter
+}
+
 -- Trigger of linting
 vim.cmd("augroup nvim_lint_trigger_of_linting")
 vim.cmd("  autocmd!")
