@@ -192,4 +192,26 @@ augroup init_vim_autocommands
         \ if line("'\"") > 0 && line ("'\"") <= line("$") |
         \   exe "normal! g'\"" |
         \ endif
+
+  " Open tab pages for each argument.
+  "
+  " example:
+  "   $ vi a.txt b.txt
+  "
+  "   :tabs
+  "   Tab page 1
+  "   >   a.txt
+  "   Tab page 2
+  "   #   b.txt
+  "
+  " NOTE: Check the number of arguments to avoid an error.
+  "
+  " * Do not check the number of arguments in the if statement.
+  " * Open a file with Neovim and quit immediately.
+  " * Confirm that autocmd sometimes fails in the following cases.
+  "
+  autocmd VimEnter *
+        \ if len(argv()) >= 2 |
+        \   tab all |
+        \ endif
 augroup END
