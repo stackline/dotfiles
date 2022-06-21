@@ -147,3 +147,4 @@ cask 'alttab'
 cask 'imageoptim'
 cask 'notion'
 cask 'skitch'
+cask '1password' # Password manager
