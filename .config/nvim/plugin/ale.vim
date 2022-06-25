@@ -26,7 +26,7 @@ let g:ale_linters = {
 \  'dockerfile': [],
 \  'go': [],
 \  'ruby': [],
-\  'sh': ['shell', 'shellcheck'],
+\  'sh': [],
 \  'vim': ['vint'],
 \}
 
