@@ -32,16 +32,6 @@ create_symbolic_links() {
 # Install packages
 # --------------------------------------
 
-# Manage python packages with requirements.txt
-# Specify "--upgrade" option to upgrade pip of Python2
-install_python2_packages() {
-  pip2 install --upgrade -r requirements.txt
-}
-
-install_python3_packages() {
-  pip3 install --upgrade -r requirements.txt
-}
-
 readonly PROCNAME=${0##*/}
 
 execute() {
@@ -51,35 +41,4 @@ execute() {
   echo "$(date '+%Y-%m-%dT%H:%M:%S') $PROCNAME $function_name end"
 }
 
-execute_all() {
-  execute create_symbolic_links
-  execute install_python2_packages
-  execute install_python3_packages
-}
-
-usage() {
-  cat <<EOF
-usage: sh installer.sh <option>
-option:
-  a:  execute all
-  p2: install Python2 packages
-  p3: install Python3 packages
-  s:  create symbolic links
-EOF
-}
-
-### main
-eval "$(cat ~/.env)"
-
-case $1 in
-  a) execute execute_all ;;
-  p2) execute install_python2_packages ;;
-  p3) execute install_python3_packages ;;
-  s) execute create_symbolic_links ;;
-  *)
-    if [ -n "$1" ]; then
-      printf "warning: Do not support '%s' option\\n\\n" "$1"
-    fi
-    usage
-    ;;
-esac
+execute create_symbolic_links

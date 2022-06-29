@@ -1,3 +1,0 @@
-ansible-lint
-pip
-vim-vint

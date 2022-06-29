@@ -51,6 +51,7 @@ brew 'tfenv'     # Terraform version manager
 # $ go install golang.org/x/tools/gopls@latest
 
 ### Development tools
+brew 'ansible-lint'         # Ansible: Linter
 brew 'hadolint'             # Dockerfile: Linter
 brew 'staticcheck'          # Go: Linter
 brew 'lua-language-server'  # Lua: LSP server
