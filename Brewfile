@@ -52,6 +52,7 @@ brew 'tfenv'     # Terraform version manager
 
 ### Development tools
 brew 'ansible-lint'         # Ansible: Linter
+brew 'bash-language-server' # Bash: LSP server
 brew 'hadolint'             # Dockerfile: Linter
 brew 'staticcheck'          # Go: Linter
 brew 'lua-language-server'  # Lua: LSP server
