@@ -3,4 +3,3 @@ if vim.fn['PlugIsNotInstalled']('nightfox.nvim') then
 end
 
 vim.cmd("colorscheme nightfox")
--- vim.cmd("colorscheme nordfox")
