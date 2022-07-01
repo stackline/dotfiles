@@ -58,6 +58,8 @@ brew 'staticcheck'          # Go: Linter
 brew 'lua-language-server'  # Lua: LSP server
 brew 'shellcheck'           # Shell script: Linter
 brew 'shfmt'                # Shell script: Formatter
+# TODO: Consider how to manage npm packages.
+# npm install -g vim-language-server Vim Script: LSP server
 brew 'vint'                 # Vim script: Linter
 brew 'yaml-language-server' # Yaml: LSP server
 brew 'yamllint'             # Yaml: Linter
