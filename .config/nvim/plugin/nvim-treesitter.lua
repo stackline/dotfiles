@@ -1,4 +1,4 @@
-if vim.fn['PlugIsNotRegistered']('nvim-treesitter') then
+if vim.fn['PlugIsNotInstalled']('nvim-treesitter') then
   return
 end
 

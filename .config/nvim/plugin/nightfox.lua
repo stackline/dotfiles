@@ -1,4 +1,4 @@
-if vim.fn['PlugIsNotRegistered']('nightfox.nvim') then
+if vim.fn['PlugIsNotInstalled']('nightfox.nvim') then
   return
 end
 

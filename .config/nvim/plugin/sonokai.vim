@@ -1,4 +1,4 @@
-if PlugIsNotRegistered('sonokai')
+if PlugIsNotInstalled('sonokai')
   finish
 endif
 

@@ -1,4 +1,4 @@
-if vim.fn['PlugIsNotRegistered']('nvim-cmp') then
+if vim.fn['PlugIsNotInstalled']('nvim-cmp') then
   return
 end
 

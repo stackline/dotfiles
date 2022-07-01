@@ -103,23 +103,26 @@ Plug 'tpope/vim-endwise'
 
 call plug#end() " Automatically executes `filetype plugin indent on`
 
-function! PlugIsRegistered (plugin_name) abort
-  if has_key(g:plugs, a:plugin_name)
-    return v:true
-  else
-    return v:false
-  endif
-endfunction
-
-function! PlugIsNotRegistered(plugin_name) abort
-  if has_key(g:plugs, a:plugin_name)
-    return v:false
-  else
+function! PlugIsInstalled (plugin_name) abort
+  if has_key(g:plugs, a:plugin_name) && isdirectory(g:plugs[a:plugin_name]['dir'])
     return v:true
   endif
+
+  return v:false
 endfunction
 
-if PlugIsRegistered('impatient.nvim')
+function! PlugIsNotInstalled(plugin_name) abort
+  if ! has_key(g:plugs, a:plugin_name)
+    return v:true
+  endif
+  if ! isdirectory(g:plugs[a:plugin_name]['dir'])
+    return v:true
+  endif
+
+  return v:false
+endfunction
+
+if PlugIsInstalled('impatient.nvim')
   lua require('impatient')
 endif
 

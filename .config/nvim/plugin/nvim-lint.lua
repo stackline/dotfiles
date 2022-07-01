@@ -1,4 +1,4 @@
-if vim.fn['PlugIsNotRegistered']('nvim-lint') then
+if vim.fn['PlugIsNotInstalled']('nvim-lint') then
   return
 end
 

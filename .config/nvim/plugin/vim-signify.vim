@@ -1,4 +1,4 @@
-if PlugIsNotRegistered('vim-signify')
+if PlugIsNotInstalled('vim-signify')
   finish
 endif
 

@@ -1,4 +1,4 @@
-if PlugIsNotRegistered('lightline.vim')
+if PlugIsNotInstalled('lightline.vim')
   finish
 endif
 

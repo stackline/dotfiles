@@ -1,4 +1,4 @@
-if PlugIsNotRegistered('ale')
+if PlugIsNotInstalled('ale')
   finish
 endif
 
