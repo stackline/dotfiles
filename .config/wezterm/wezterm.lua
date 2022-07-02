@@ -2,6 +2,8 @@ local wezterm = require 'wezterm'
 
 return {
   color_scheme = "Tomorrow Night",
+  -- Stop blinking cursor to reduce battery consumption.
+  cursor_blink_rate = 0,
   font = wezterm.font("Source Han Code JP"),
   font_size = 13.0,
   hide_tab_bar_if_only_one_tab = true,
