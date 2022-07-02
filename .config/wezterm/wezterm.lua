@@ -5,11 +5,6 @@ return {
   font = wezterm.font("Source Han Code JP"),
   font_size = 13.0,
   hide_tab_bar_if_only_one_tab = true,
-  -- Make it clearer which is the active pane.
-  inactive_pane_hsb = {
-    saturation = 0.5,
-    brightness = 0.5,
-  },
   treat_east_asian_ambiguous_width_as_wide = true,
 
   -- Similar to tmux prefix key.
