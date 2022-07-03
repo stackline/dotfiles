@@ -2,6 +2,16 @@ local wezterm = require 'wezterm'
 
 return {
   color_scheme = "Tomorrow Night",
+  -- NOTE: I want to display only the cursor in the active pane. However,
+  -- when I click the leader key, the cursors for all panes are displayed.
+  --
+  -- The compose_cursor option changes the cursor color when inputting with IME
+  -- in addition to clicking the leader key.
+  --
+  --   colors = {
+  --       compose_cursor = "black",
+  --   },
+  --
   -- Stop blinking cursor to reduce battery consumption.
   cursor_blink_rate = 0,
   -- NOTE: Use "Illusion N" font when displaying characters with
