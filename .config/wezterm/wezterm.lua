@@ -4,10 +4,15 @@ return {
   color_scheme = "Tomorrow Night",
   -- Stop blinking cursor to reduce battery consumption.
   cursor_blink_rate = 0,
+  -- NOTE: Use "Illusion N" font when displaying characters with
+  -- the East Asian Ambiguous Width characteristic.
+  --
+  --   font = wezterm.font("Illusion N"),
+  --
   font = wezterm.font("Source Han Code JP"),
   font_size = 13.0,
   hide_tab_bar_if_only_one_tab = true,
-  treat_east_asian_ambiguous_width_as_wide = true,
+  treat_east_asian_ambiguous_width_as_wide = false,
 
   -- Similar to tmux prefix key.
   -- leader = { key="t", mods="CTRL", timeout_milliseconds=1000 },

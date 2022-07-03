@@ -164,13 +164,7 @@ set splitbelow " open splited window to below
 set splitright " open splited window to right
 set noswapfile " do not make .swp swap file
 set nobackup   " do not make tilda "~" backup file
-
-" NOTE: Neovim LSP separates the contents of documentation window with
-" box-drawing characters.
-" If ambiwidth is not set to single, the display of separate lines will be corrupted.
-" Temporarily, display the separate line with a half-width hyphen.
-" ref. https://github.com/neovim/neovim/blob/v0.6.1/runtime/lua/vim/lsp/util.lua#L1205
-set ambiwidth=double " Show two byte character collectory on Mac Termianl"
+set ambiwidth=single    " Display East Asian Ambiguous Width characters in 1 byte.
 set formatoptions=tcrqj " Default `tcqj`. Add `r` option (complete comment sign automatically when breaking line)
 set tagcase=match " Search a tag file by case match
 set expandtab
