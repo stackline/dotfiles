@@ -25,7 +25,7 @@ create_symbolic_links() {
   ln -fnsv "${dotfiles_root_dir}"/.config ~/.config
 
   ### Homebrew's install path
-  ln -fsv "$(brew --prefix)"/opt/git/share/git-core/contrib/diff-highlight/diff-highlight "$(brew --prefix)"/bin
+  ln -fsv "${HOMEBREW_PREFIX}"/opt/git/share/git-core/contrib/diff-highlight/diff-highlight "${HOMEBREW_PREFIX}"/bin
 }
 
 # --------------------------------------
