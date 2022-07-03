@@ -59,9 +59,6 @@ Plug 'itchyny/lightline.vim'   " statusline and tabline
 Plug 'mhinz/vim-signify'       " show diff to sign column
 Plug 'mhinz/vim-startify'      " Start screen (especially use MRU (Most Recently Used))
 Plug 'segeljakt/vim-silicon', { 'on': 'Silicon' } " Source code image generator
-" vim-themis is a testing framework for vim script.
-" Do not load the plugin with vim-plug, use only as a command line tool.
-Plug 'thinca/vim-themis', { 'on': [], 'do': 'ln -fsv `pwd`/bin/themis /usr/local/bin/themis' }
 Plug 'tpope/vim-fugitive'      " git wrapper
 
 " --------------------------------------
