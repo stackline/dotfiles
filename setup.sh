@@ -18,8 +18,8 @@ create_symbolic_links() {
   ln -fsv "${dotfiles_root_dir}"/.bash_profile ~/.bash_profile
   ln -fsv "${dotfiles_root_dir}"/.bashrc ~/.bashrc
   # TODO: Consider adding an include path to gcc and llvm
-  # Make the directory "/usr/local/include/bits" as needed.
-  ln -fsv "${dotfiles_root_dir}"/include/bits/stdc++.h /usr/local/include/bits/stdc++.h
+  # Make the directory "${HOMEBREW_PREFIX}/include/bits" as needed.
+  ln -fsv "${dotfiles_root_dir}"/include/bits/stdc++.h "${HOMEBREW_PREFIX}"/include/bits/stdc++.h
 
   ### Directories
   ln -fnsv "${dotfiles_root_dir}"/.config ~/.config

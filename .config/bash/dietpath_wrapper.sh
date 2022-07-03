@@ -7,7 +7,7 @@ function dietpath_wrapper() {
   else
     cat <<EOS >&2
 [warning] Compile dietpath package in dotfiles repository.
-=> go build -o /usr/local/bin/dietpath ./tools/dietpath/main.go
+=> go build -o "${HOMEBREW_PREFIX}"/bin/dietpath ./tools/dietpath/main.go
 EOS
     echo "$PATH"
   fi

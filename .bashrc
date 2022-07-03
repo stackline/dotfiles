@@ -56,7 +56,7 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --no-unicode'
 
 if is_mac; then
   # Use clangd with LSP service.
-  export PATH="/usr/local/opt/llvm/bin:$PATH"
+  export PATH="${HOMEBREW_PREFIX}/opt/llvm/bin:$PATH"
 fi
 if is_linux; then
   # Correspondence of garbled characters when displaying Japanese with less

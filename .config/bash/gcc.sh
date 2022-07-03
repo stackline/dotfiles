@@ -26,7 +26,7 @@ function g++run() {
   #
   # ref. https://atcoder.jp/contests/language-test-202001
   #
-  /usr/local/bin/g++-9 -std=gnu++17 -Wall -Wextra -O2 -DONLINE_JUDGE -o "$output_file" "$input_file"
+  "${HOMEBREW_PREFIX}"/bin/g++-9 -std=gnu++17 -Wall -Wextra -O2 -DONLINE_JUDGE -o "$output_file" "$input_file"
 
   echo "### output"
   if ! "$output_file"; then

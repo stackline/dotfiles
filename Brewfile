@@ -19,7 +19,7 @@ brew 'gcc@9'
 # Use clangd with LSP service.
 # Put below compile_flags.txt to the repository root directory, if you need to include "bits/stdc++.h".
 #
-#   $ echo "-I/usr/local/include" > compile_flags.txt
+#   $ echo "-I${HOMEBREW_PREFIX}/include" > compile_flags.txt
 #
 brew 'llvm' if /darwin/ =~ RUBY_PLATFORM
 
@@ -70,8 +70,8 @@ brew 'gem-completion'
 
 ### Utility
 # [macOS]
-# $ echo '/usr/local/bin/bash' | sudo tee -a /etc/shells
-# $ chsh -s /usr/local/bin/bash
+# $ echo "${HOMEBREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells
+# $ chsh -s "${HOMEBREW_PREFIX}/bin/bash"
 brew 'bash'
 brew 'bat' # alternative to cat
 brew 'bats-core' # Testing framework for Bash
