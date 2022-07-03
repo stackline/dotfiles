@@ -10,7 +10,7 @@ return {
   --   font = wezterm.font("Illusion N"),
   --
   font = wezterm.font("Source Han Code JP"),
-  font_size = 13.0,
+  font_size = 12.0,
   hide_tab_bar_if_only_one_tab = true,
   treat_east_asian_ambiguous_width_as_wide = false,
 
