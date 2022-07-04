@@ -19,7 +19,15 @@ readonly installed=$?
 
 if [ "$installed" == 0 ]; then
   echo "[commit-msg hook] do commitlint"
-  npx commitlint --edit --config "$HOME/.config/commitlint/commitlint.config.js"
+  # Use "--extends" option in order to avoid the following error.
+  #
+  #   Error: Cannot find module "@commitlint/config-conventional"
+  #
+  # ref. https://github.com/conventional-changelog/commitlint/issues/613#issuecomment-1061807137
+  commitlint_config="$HOME/.config/commitlint/commitlint.config.js"
+  commitlint_config_to_extend="$(npm root -g)/@commitlint/config-conventional"
+
+  npx commitlint --edit --config "$commitlint_config" --extends "$commitlint_config_to_extend"
 else
   echo "[commit-msg hook] skip commitlint (because it is not installed)"
 fi
