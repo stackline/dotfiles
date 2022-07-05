@@ -26,6 +26,9 @@ export BUNDLE_USER_HOME="${XDG_CONFIG_HOME}/bundle"
 export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
 export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}"/npm/npmrc
 
+# Initialize Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Load utilities first
 source ~/.config/bash/debug.sh
 
@@ -33,7 +36,6 @@ for file in ~/.config/bash/*; do
   source "$file"
 done
 
-homebrew::initialize
 prompt::initialize
 
 # --------------------------------------
