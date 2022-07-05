@@ -15,6 +15,10 @@ function echo::green() {
   echo "$GREEN$*$RESET"
 }
 
+function echo::yellow() {
+  echo "$YELLOW$*$RESET"
+}
+
 function echo::bold() {
   echo "$BOLD$*$RESET"
 }

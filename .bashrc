@@ -8,10 +8,6 @@
 # ref. https://www.golinuxcloud.com/get-script-execution-time-command-bash-script/
 #
 # Use my own tool because the BSD date command cannot display nanoseconds.
-#
-# ```sh
-# $ go install github.com/stackline/mydate@latest
-# ```
 # --------------------------------------
 script_start_time=$("$HOME"/go/bin/mydate)
 
@@ -265,7 +261,14 @@ alias check-path='echo $PATH | perl -pe "s/:/\n/g"'
 PATH=$(dietpath_wrapper)
 export PATH
 
-script_end_time=$("$HOME"/go/bin/mydate)
-bashrc_execution_msec=$(echo "($script_end_time - $script_start_time) * 1000" | bc | xargs printf "%.0f")
-bashrc_execution_sec=$(echo "($script_end_time - $script_start_time)" | bc | xargs printf "%.3f")
-echo "Script execution Time: $bashrc_execution_msec msec ($bashrc_execution_sec sec)"
+if command -v "$HOME/go/bin/mydate" 1>/dev/null 2>/dev/null; then
+  script_end_time=$("$HOME"/go/bin/mydate)
+  bashrc_execution_msec=$(echo "($script_end_time - $script_start_time) * 1000" | bc | xargs printf "%.0f")
+  bashrc_execution_sec=$(echo "($script_end_time - $script_start_time)" | bc | xargs printf "%.3f")
+  echo "Script execution Time: $bashrc_execution_msec msec ($bashrc_execution_sec sec)"
+else
+  echo::yellow '[hint] Install mydate command to measure .bashrc execution time.'
+  echo::yellow '[hint]'
+  echo::yellow '[hint]   $ go install github.com/stackline/mydate@latest'
+  echo::yellow '[hint]'
+fi
