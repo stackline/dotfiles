@@ -13,7 +13,7 @@
 # $ go install github.com/stackline/mydate@latest
 # ```
 # --------------------------------------
-readonly script_start_time=$("$HOME"/go/bin/mydate)
+script_start_time=$("$HOME"/go/bin/mydate)
 
 # --------------------------------------
 # XDG Base Directory
@@ -265,7 +265,7 @@ alias check-path='echo $PATH | perl -pe "s/:/\n/g"'
 PATH=$(dietpath_wrapper)
 export PATH
 
-readonly script_end_time=$("$HOME"/go/bin/mydate)
-readonly bashrc_execution_msec=$(echo "($script_end_time - $script_start_time) * 1000" | bc | xargs printf "%.0f")
-readonly bashrc_execution_sec=$(echo "($script_end_time - $script_start_time)" | bc | xargs printf "%.3f")
+script_end_time=$("$HOME"/go/bin/mydate)
+bashrc_execution_msec=$(echo "($script_end_time - $script_start_time) * 1000" | bc | xargs printf "%.0f")
+bashrc_execution_sec=$(echo "($script_end_time - $script_start_time)" | bc | xargs printf "%.3f")
 echo "Script execution Time: $bashrc_execution_msec msec ($bashrc_execution_sec sec)"
