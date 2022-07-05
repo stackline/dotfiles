@@ -10,7 +10,7 @@
 # Use my own tool because the BSD date command cannot display nanoseconds.
 #
 # ```sh
-# $ go get github.com/stackline/mydate
+# $ go install github.com/stackline/mydate@latest
 # ```
 # --------------------------------------
 readonly script_start_time=$("$HOME"/go/bin/mydate)
