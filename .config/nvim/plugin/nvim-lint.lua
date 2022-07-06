@@ -2,6 +2,9 @@ if vim.fn['PlugIsNotInstalled']('nvim-lint') then
   return
 end
 
+------------------------------------------------------------
+-- Linter custom configurations
+------------------------------------------------------------
 local lint = require('lint')
 
 -- Mapping of filetype and linters
@@ -32,11 +35,28 @@ shellcheck.parser = function(output)
   return diagnostics
 end
 
--- Trigger of linting
+------------------------------------------------------------
+-- Triggers of linting
+------------------------------------------------------------
+-- Avoid getting a hit-enter prompt by displaying
+-- both nvim-lint run error and autocmd run error.
+function try_lint_silently(print_error)
+  vim.api.nvim_exec(
+    "silent! lua require('lint').try_lint()",
+    false -- Return empty string if output is false.
+  )
+
+  errmsg = vim.api.nvim_get_vvar('errmsg')
+  if print_error == true and errmsg ~= '' then
+    print(errmsg)
+    vim.api.nvim_set_vvar('errmsg', '')
+  end
+end
+
 vim.cmd("augroup nvim_lint_trigger_of_linting")
 vim.cmd("  autocmd!")
 -- After writing
-vim.cmd("  autocmd BufWritePost * lua require('lint').try_lint()")
+vim.cmd("  autocmd BufWritePost * lua try_lint_silently(false)")
 -- After displaying the selected file with ctrl-p
-vim.cmd("  autocmd BufWinEnter * lua require('lint').try_lint()")
+vim.cmd("  autocmd BufWinEnter * lua try_lint_silently(true)")
 vim.cmd("augroup END")
