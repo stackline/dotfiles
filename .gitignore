@@ -16,8 +16,5 @@
 # npm
 /node_modules
 
-# tmux
-/.config/tmux/plugins/
-
 # Vim
 /.config/nvim/.netrwhist
