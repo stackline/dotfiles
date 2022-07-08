@@ -85,6 +85,7 @@ alias cp='cp -i'               # Interactively
 alias grep='grep --color=auto' # Colorize output
 alias less='less -R'
 alias ll='ls -al'
+alias ls='ls --color=auto'     # NOTE: GNU coreutils ls "-G" option is not Colorized.
 alias mv='mv -i'               # Interactively
 alias rg='rg -i'
 alias rm='rm -i'               # Interactively
@@ -107,13 +108,6 @@ alias gs='git status'
 if type 'nvim' >/dev/null; then
   alias vi='nvim'
   alias vim='nvim'
-fi
-
-if is_mac; then
-  alias ls='ls -G'
-fi
-if is_linux; then
-  alias ls='ls --color=auto'
 fi
 
 # function aliases
