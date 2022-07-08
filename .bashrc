@@ -80,6 +80,15 @@ fi
 # --------------------------------------
 # alias
 # --------------------------------------
+# General command aliases
+alias cp='cp -i'               # Interactively
+alias grep='grep --color=auto' # Colorize output
+alias less='less -R'
+alias ll='ls -al'
+alias mv='mv -i'               # Interactively
+alias rg='rg -i'
+alias rm='rm -i'               # Interactively
+
 # Git (prefix: g)
 alias ga='fzf_git_add'
 alias gb='git branch -v'
@@ -95,18 +104,10 @@ alias gr='git restore'
 alias grs='git restore --staged'
 alias gs='git status'
 
-alias grep='grep --color=auto' # colorize the output
-alias less='less -R'
-alias ll='ls -al'
-alias rg='rg -i'
 if type 'nvim' >/dev/null; then
   alias vi='nvim'
   alias vim='nvim'
 fi
-### execute command interactively
-alias cp='cp -i'
-alias mv='mv -i'
-alias rm='rm -i'
 
 if is_mac; then
   alias ls='ls -G'
@@ -122,6 +123,7 @@ alias g='go_to_repository'
 alias j='jump-to-directory'
 alias dcl='docker-container-login'
 alias drm='docker-container-remove'
+alias check-path='echo $PATH | perl -pe "s/:/\n/g"'
 
 # --------------------------------------
 # Utilities
@@ -255,7 +257,6 @@ function check-trailing-character-hexdump() {
   tail -c 1 "$1" | xxd -p
 }
 
-alias check-path='echo $PATH | perl -pe "s/:/\n/g"'
 PATH=$(dietpath_wrapper)
 export PATH
 
