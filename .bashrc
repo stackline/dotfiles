@@ -122,8 +122,6 @@ alias g='go_to_repository'
 alias j='jump-to-directory'
 alias dcl='docker-container-login'
 alias drm='docker-container-remove'
-alias dps='docker ps'
-alias dpsa='docker ps -a'
 
 # --------------------------------------
 # Utilities
