@@ -261,8 +261,8 @@ if command -v "$HOME/go/bin/mydate" 1>/dev/null 2>/dev/null; then
   bashrc_execution_sec=$(echo "($script_end_time - $script_start_time)" | bc | xargs printf "%.3f")
   echo "Script execution Time: $bashrc_execution_msec msec ($bashrc_execution_sec sec)"
 else
-  echo::yellow '[hint] Install mydate command to measure .bashrc execution time.'
-  echo::yellow '[hint]'
-  echo::yellow '[hint]   $ go install github.com/stackline/mydate@latest'
-  echo::yellow '[hint]'
+  echo::yellow 'hint: Install mydate command to measure .bashrc execution time.'
+  echo::yellow 'hint:'
+  echo::yellow 'hint:   $ go install github.com/stackline/mydate@latest'
+  echo::yellow 'hint:'
 fi
