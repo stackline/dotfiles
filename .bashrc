@@ -113,6 +113,7 @@ fi
 # function aliases
 alias b='g++run'
 alias c='cbcopy'
+alias d='docker compose'
 alias g='go_to_repository'
 alias j='jump-to-directory'
 alias dcl='docker-container-login'
