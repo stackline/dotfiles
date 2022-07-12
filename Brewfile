@@ -95,6 +95,7 @@ brew 'tmux'
 brew 'tree'
 brew 'universal-ctags'
 brew 'wget'
+brew 'xdg-ninja'
 
 if RUBY_PLATFORM.include?('linux')
   # If you do not have this package when installing ruby via rbenv,
