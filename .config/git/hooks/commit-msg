@@ -14,10 +14,10 @@
 #     * $ cat "$1" | commitlint
 #
 
-commitlint -v > /dev/null 2>&1
-readonly installed=$?
+command -v commitlint 1>/dev/null 2>/dev/null
+readonly command_is_found=$?
 
-if [ "$installed" == 0 ]; then
+if [ "$command_is_found" == 0 ]; then
   echo "[commit-msg hook] do commitlint"
   # Use "--extends" option in order to avoid the following error.
   #
