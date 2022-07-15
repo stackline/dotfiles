@@ -201,6 +201,7 @@ function brew-maintenance() {
   # Do not upgrade
   #   outdated casks with version :latest (ex. google-japanese-ime)
   brew upgrade --greedy-auto-updates
+  brew autoremove # Uninstall formulae that are no longer needed.
   brew doctor
 }
 
