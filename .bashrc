@@ -114,11 +114,16 @@ fi
 alias b='g++run'
 alias c='cbcopy'
 alias d='docker compose'
-alias g='go_to_repository'
-alias j='jump-to-directory'
-alias dcl='docker-container-login'
-alias drm='docker-container-remove'
+alias g='fzf_cd_repository'
+alias j='fzf_cd_directory'
+alias dcl='fzf_docker_container_login'
+alias drm='fzf_docker_container_remove'
 alias check-path='echo $PATH | perl -pe "s/:/\n/g"'
+
+# --------------------------------------
+# Key bindings
+# --------------------------------------
+bind -x '"\C-r": fzf_history_search'
 
 # --------------------------------------
 # Utilities
@@ -215,44 +220,6 @@ function brew-dependencies() {
     brew deps "$formula" | awk '{printf(" %s ", $0)}'
     echo ''
   done
-}
-
-function jump-to-directory() {
-  local selected_dir
-  selected_dir=$(fd --no-ignore --type d | fzf --reverse)
-
-  if [ "$selected_dir" ]; then
-    cd "$selected_dir" || return
-  fi
-}
-
-# Select a command from history interactively
-# ref. https://qiita.com/comuttun/items/f54e755f22508a6c7d78
-function select-command-from-history() {
-  local selected_command
-  selected_command=$(history | sort -k1,1nr | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | fzf --reverse --query "$READLINE_LINE")
-
-  READLINE_LINE="$selected_command"
-  READLINE_POINT=${#selected_command}
-}
-bind -x '"\C-r": select-command-from-history'
-
-function docker-container-login() {
-  local container_name
-  container_name=$(docker ps --format "{{.Names}}" | fzf -1 -q "$1")
-
-  if [ -n "$container_name" ]; then
-    docker exec -it "$container_name" /bin/bash
-  fi
-}
-
-function docker-container-remove() {
-  local container_name
-  container_name=$(docker ps -a --format "{{.Names}}" | fzf -q "$1")
-
-  if [ -n "$container_name" ]; then
-    docker rm "$container_name"
-  fi
 }
 
 function check-trailing-character-hexdump() {
