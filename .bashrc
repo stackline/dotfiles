@@ -122,10 +122,6 @@ bind -x '"\C-r": fzf_history_search'
 # --------------------------------------
 # Utilities
 # --------------------------------------
-
-# ref. https://darryldias.me/12/remove-all-installed-homebrew-packages/
-alias brew-remove-all-installed-packages='brew list | xargs brew remove --force --ignore-dependencies'
-
 function update-various-packages() {
   echo '' # spacer
   echo::bold '### update vim plugins'
