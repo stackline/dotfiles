@@ -204,18 +204,6 @@ function brew-maintenance() {
   brew doctor
 }
 
-# Show dependencies for installed formulaes
-# ref. https://zanshin.net/2014/02/03/how-to-list-brew-dependencies/
-function brew-dependencies() {
-  local formula
-
-  brew list | while read -r formula; do
-    echo -en "\\e[1;34m$formula ->\\e[0m"
-    brew deps "$formula" | awk '{printf(" %s ", $0)}'
-    echo ''
-  done
-}
-
 function check-trailing-character-hexdump() {
   tail -c 1 "$1" | xxd -p
 }
