@@ -177,10 +177,6 @@ function update-various-packages() {
   echo::bold '### update homebrew formulas and casks'
   echo '' # spacer
 
-  brew-maintenance
-}
-
-function brew-maintenance() {
   brew update
   # Upgrade
   #   outdated, unpinned formulae
