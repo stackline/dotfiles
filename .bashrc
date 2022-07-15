@@ -180,18 +180,6 @@ function update-various-packages() {
   brew-maintenance
 }
 
-# Homebrew
-
-# Avoid pyenv warnings when executing brew doctor
-# ref. https://github.com/pyenv/pyenv/issues/106#issuecomment-190418988
-function brew() {
-  if command -v pyenv >/dev/null 2>&1; then
-    PATH="${PATH//$(pyenv root)\/shims:/}" command brew "$@"
-  else
-    command brew "$@"
-  fi
-}
-
 function brew-maintenance() {
   brew update
   # Upgrade
