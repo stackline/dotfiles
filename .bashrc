@@ -107,7 +107,8 @@ fi
 # function aliases
 alias b='g++run'
 alias c='cbcopy'
-alias d='docker compose'
+alias d='docker'
+alias dc='docker compose'
 alias g='fzf_cd_repository'
 alias j='fzf_cd_directory'
 alias dcl='fzf_docker_container_login'
