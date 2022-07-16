@@ -114,6 +114,7 @@ alias j='fzf_cd_directory'
 alias dcl='fzf_docker_container_login'
 alias drm='fzf_docker_container_remove'
 alias check-path='echo $PATH | perl -pe "s/:/\n/g"'
+alias gem-uninstall-all-gems-except-default='gem uninstall -a -x --user-install --force'
 
 # --------------------------------------
 # Key bindings
