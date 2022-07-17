@@ -9,6 +9,7 @@ local function file_exists(filename)
 end
 
 -- ref. https://code.visualstudio.com/docs/editor/workspaces#_workspace-settings
+-- TODO: Check if git rev-parse command is executable.
 local function load_repo_setting()
   local handle = io.popen("git rev-parse --show-toplevel")
   local result = handle:read("a")
