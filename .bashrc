@@ -165,13 +165,6 @@ function update-various-packages() {
   echo "=> delete $XDG_CACHE_HOME/nvim/luacache_modpaths"
 
   echo '' # spacer
-  # shellcheck disable=SC2016
-  echo::bold '### xdg-ninja: check $HOME'
-  echo '' # spacer
-
-  xdg-ninja
-
-  echo '' # spacer
   echo::bold '### update homebrew formulas and casks'
   echo '' # spacer
 
