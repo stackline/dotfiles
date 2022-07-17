@@ -15,15 +15,6 @@ lint.linters_by_ft = {
   sh = { 'shellcheck' },
 }
 
--- rubocop: Display code in message
-local rubocop = require('lint.linters.rubocop')
-rubocop.args = {
-  '--format',
-  'json',
-  '--force-exclusion',
-  '--display-cop-names', -- Additional parameter
-}
-
 -- staticcheck: Display code in message
 local shellcheck = require('lint.linters.shellcheck')
 local shellcheck_builtin_parser = shellcheck.parser
