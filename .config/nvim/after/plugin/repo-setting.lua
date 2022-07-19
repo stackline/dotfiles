@@ -1,49 +1,50 @@
-local function git_rev_parse_is_executable()
-  local exit_status = os.execute("git rev-parse")
-  if exit_status == 0 then
-    return true
-  else
-    return false
-  end
-end
-
-local function build_repo_setting_file_path()
-  local handle = io.popen("git rev-parse --show-toplevel")
-  local result = handle:read("a")
-  handle:close()
-
-  local repo_toplevel_dir = result:gsub("\n*", "")
-  local repo_setting_file_path = repo_toplevel_dir .. "/.nvim/init.lua"
-
-  return repo_setting_file_path
-end
-
-local function file_exists(filename)
-  local handle = io.open(filename, "r")
-  if handle ~= nil then
-    handle.close()
-    return true
-  else
-    return false
-  end
-end
-
--- TODO: Add display control for verbose messages.
+-- NOTE: Limited to repository, not workspace.
 -- ref. https://code.visualstudio.com/docs/editor/workspaces#_workspace-settings
+
+-- Make a rough judgement by referring to the judgement of the git command.
+-- ref. https://github.com/git/git/blob/v2.37.1/setup.c#L330-L341
+local function is_git_dir(dir)
+  local objects_dir_exists = vim.fn.isdirectory(dir .. '/.git/objects')
+  local refs_dir_exists = vim.fn.isdirectory(dir .. '/.git/refs')
+  local head_file_exists = vim.fn.filereadable(dir .. '/.git/HEAD')
+
+  if (objects_dir_exists ~= 0 and refs_dir_exists ~= 0 and head_file_exists ~= 0) then
+    return true
+  else
+    return false
+  end
+end
+
+local function find_git_top_level_dir(target_dir)
+  if target_dir == nil then
+    return ''
+  end
+
+  if is_git_dir(target_dir) then
+    return target_dir
+  else
+    local above_dir = string.match(target_dir, "([^\n]+)/.+")
+    return find_git_top_level_dir(above_dir)
+  end
+end
+
 local function load_repo_setting_file()
-  if git_rev_parse_is_executable() == false then
-    -- print("repo-setting: git rev-parse is not executable.")
+  local cwd = vim.fn.getcwd()
+
+  local git_top_level_dir = find_git_top_level_dir(cwd)
+  if git_top_level_dir == '' then
+    -- TODO: Add display control for verbose messages.
+    -- print("repo-setting: not a git repository")
     return
   end
 
-  local repo_setting_file_path = build_repo_setting_file_path()
-
-  if file_exists(repo_setting_file_path) == false then
-    -- print("repo-setting: Setting file does not exist.")
+  local setting_file_path = git_top_level_dir .. '/.nvim/init.lua'
+  if vim.fn.filereadable(setting_file_path) == 0 then
+    -- print("repo-setting: Setting file does not exist")
     return
   end
 
-  dofile(repo_setting_file_path)
+  dofile(setting_file_path)
 end
 
 load_repo_setting_file()
