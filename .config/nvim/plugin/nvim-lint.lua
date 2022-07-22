@@ -32,6 +32,12 @@ end
 -- Avoid getting a hit-enter prompt by displaying
 -- both nvim-lint run error and autocmd run error.
 function try_lint_silently(print_error)
+  -- Do not run linter before creating a new file.
+  local file_name = vim.api.nvim_buf_get_name(0)
+  if vim.fn.filereadable(file_name) == 0 then
+    return
+  end
+
   vim.api.nvim_exec(
     "silent! lua require('lint').try_lint()",
     false -- Return empty string if output is false.
