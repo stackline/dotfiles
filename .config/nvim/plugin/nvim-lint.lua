@@ -29,6 +29,18 @@ end
 ------------------------------------------------------------
 -- Triggers of linting
 ------------------------------------------------------------
+-- TODO: Since the processing of function is complicated, simplify it once.
+--       If there is no problem, remove the unused try_lint_silently function.
+function try_lint_wrapper()
+  -- Do not run linter before creating a new file.
+  local file_name = vim.api.nvim_buf_get_name(0)
+  if vim.fn.filereadable(file_name) == 0 then
+    return
+  end
+
+  lint.try_lint()
+end
+
 -- Avoid getting a hit-enter prompt by displaying
 -- both nvim-lint run error and autocmd run error.
 function try_lint_silently(print_error)
@@ -53,7 +65,9 @@ end
 vim.cmd("augroup nvim_lint_trigger_of_linting")
 vim.cmd("  autocmd!")
 -- After writing
-vim.cmd("  autocmd BufWritePost * lua try_lint_silently(false)")
+-- vim.cmd("  autocmd BufWritePost * lua try_lint_silently(false)")
+vim.cmd("  autocmd BufWritePost * lua try_lint_wrapper()")
 -- After displaying the selected file with ctrl-p
-vim.cmd("  autocmd BufWinEnter * lua try_lint_silently(true)")
+-- vim.cmd("  autocmd BufWinEnter * lua try_lint_silently(true)")
+vim.cmd("  autocmd BufWinEnter * lua try_lint_wrapper()")
 vim.cmd("augroup END")
