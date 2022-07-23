@@ -11,7 +11,7 @@ local lint = require('lint')
 lint.linters_by_ft = {
   dockerfile = { 'hadolint' },
   go = { 'staticcheck' },
-  ruby = { 'ruby', 'rubocop' },
+  ruby = { 'rubocop' },
   sh = { 'shellcheck' },
 }
 
