@@ -110,7 +110,12 @@ lspconfig.sumneko_lua.setup {
       diagnostics = {
         -- Prevent the warning "Undefined global vim"
         globals = {'vim'},
-      }
+      },
+      -- Disable telemetry.
+      -- ref. https://github.com/sumneko/lua-language-server/wiki/Privacy-Policy#disabling-telemetry
+      telemetry = {
+        enable = false,
+      },
     }
   }
 }
