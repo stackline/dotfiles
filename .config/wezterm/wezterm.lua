@@ -24,6 +24,12 @@ return {
   hide_tab_bar_if_only_one_tab = true,
   treat_east_asian_ambiguous_width_as_wide = false,
 
+  keys = {
+    -- Disable the default action "CloseCurrentTab" to avoid terminating wezterm
+    -- with one click.
+    { key = "w", mods = "CMD", action = wezterm.action.DisableDefaultAssignment },
+  }
+
   -- Similar to tmux prefix key.
   -- leader = { key="t", mods="CTRL", timeout_milliseconds=1000 },
   -- keys = {
