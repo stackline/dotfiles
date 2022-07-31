@@ -1,6 +1,8 @@
 [include]
   # User local settings
   path = ~/.config/git/config_local
+[commit]
+  template = ~/.config/git/gitmessage
 [core]
   hooksPath = ~/.config/git/hooks
 [pager]
