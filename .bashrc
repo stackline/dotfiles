@@ -87,8 +87,8 @@ alias rm='rm -i'               # Interactively
 # Git (prefix: g)
 alias ga='fzf_git_add'
 alias gb='git branch -v'
-alias gc='git clean -df'
-alias gcm='git commit -m'
+alias gc='git commit'
+alias gcdf='git clean -df'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gg='cd `git rev-parse --show-toplevel`' # move to top-level directory
