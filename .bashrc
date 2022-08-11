@@ -178,6 +178,16 @@ function update-various-packages() {
   brew upgrade --greedy-auto-updates
   brew autoremove # Uninstall formulae that are no longer needed.
   brew doctor
+
+  if command -v npm 1>/dev/null 2>/dev/null; then
+    echo '' # spacer
+    echo::bold '### update npm packages installed globally'
+    echo '' # spacer
+
+    npm outdated -g
+    # TODO: Update only if outdated packages exist.
+    # npm update -g
+  fi
 }
 
 function check-trailing-character-hexdump() {
