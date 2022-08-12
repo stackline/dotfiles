@@ -5,6 +5,21 @@ if not ok then
 end
 
 configs.setup {
+  -- NOTE: It takes time to install all parsers, so be limited.
+  ensure_installed = {
+    'bash',
+    'go',
+    'graphql',
+    'javascript',
+    'json',
+    'lua',
+    'ruby',
+    'tsx',
+    'typescript',
+    'vim',
+    'yaml',
+  },
+
   highlight = {
     enable = true, -- false will disable the whole extension
     disable = {},  -- list of language that will be disabled
