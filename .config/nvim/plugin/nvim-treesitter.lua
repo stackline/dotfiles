@@ -1,9 +1,10 @@
-if vim.fn['PlugIsNotInstalled']('nvim-treesitter') then
+local ok, configs = pcall(require, 'nvim-treesitter.configs')
+if not ok then
+  print('nvim-treesitter is not loaded.')
   return
 end
 
--- ref. https://github.com/nvim-treesitter/nvim-treesitter#setup
-require'nvim-treesitter.configs'.setup {
+configs.setup {
   highlight = {
     enable = true, -- false will disable the whole extension
     disable = {},  -- list of language that will be disabled

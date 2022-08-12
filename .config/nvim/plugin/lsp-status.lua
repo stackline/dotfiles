@@ -1,8 +1,8 @@
-if vim.fn['PlugIsNotInstalled']('lsp-status.nvim') then
+local ok, lsp_status = pcall(require, 'lsp-status')
+if not ok then
+  print('lsp-status.nvim is not loaded.')
   return
 end
-
-local lsp_status = require('lsp-status')
 
 lsp_status.register_progress()
 

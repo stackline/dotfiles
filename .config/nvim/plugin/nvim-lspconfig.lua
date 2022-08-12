@@ -1,4 +1,6 @@
-if vim.fn['PlugIsNotInstalled']('nvim-lspconfig') then
+local ok, lspconfig = pcall(require, 'lspconfig')
+if not ok then
+  print('nvim-lspconfig is not loaded.')
   return
 end
 
@@ -41,7 +43,6 @@ local on_attach = function(client, bufnr)
   client.resolved_capabilities.document_range_formatting = false
 end
 
-
 -- -------------------------------------
 -- nvim-cmp autocompletion
 -- ref. https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion#nvim-cmp
@@ -49,8 +50,6 @@ end
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
-local lspconfig = require('lspconfig')
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
@@ -69,7 +68,7 @@ end
 
 -- C++
 local lsp_status = require('lsp-status')
-require('lspconfig').clangd.setup({
+lspconfig.clangd.setup({
   cmd = { 'clangd', '--background-index', '-header-insertion=never' },
   handlers = lsp_status.extensions.clangd.setup(),
   init_options = {

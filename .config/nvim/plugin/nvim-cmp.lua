@@ -1,4 +1,6 @@
-if vim.fn['PlugIsNotInstalled']('nvim-cmp') then
+local ok, cmp = pcall(require, 'cmp')
+if not ok then
+  print('nvim-cmp is not loaded.')
   return
 end
 
@@ -15,7 +17,6 @@ local luasnip = require 'luasnip'
 -- * mapping
 --   * <C-p>, <C-n>, <Tab>, <S-Tab>
 --
-local cmp = require 'cmp'
 cmp.setup {
   completion = {
     completeopt = 'menuone,noinsert'

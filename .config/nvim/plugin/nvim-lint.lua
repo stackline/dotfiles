@@ -1,12 +1,12 @@
-if vim.fn['PlugIsNotInstalled']('nvim-lint') then
+local ok, lint = pcall(require, 'lint')
+if not ok then
+  print('nvim-lint is not loaded.')
   return
 end
 
 ------------------------------------------------------------
 -- Linter custom configurations
 ------------------------------------------------------------
-local lint = require('lint')
-
 -- Mapping of filetype and linters
 lint.linters_by_ft = {
   dockerfile = { 'hadolint' },

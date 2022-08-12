@@ -1,8 +1,9 @@
-if vim.fn['PlugIsNotInstalled']('lsp-status.nvim') then
+local ok, ls = pcall(require, 'luasnip')
+if not ok then
+  print('LuaSnip is not loaded.')
   return
 end
 
-local ls = require("luasnip")
 -- some shorthands...
 local s = ls.snippet
 local sn = ls.snippet_node
