@@ -157,14 +157,6 @@ function update-various-packages() {
   cat "$vim_plug_diff_log"
 
   echo '' # spacer
-  echo::bold '### execute LuaCacheClear command for impatient.nvim plugin'
-  echo '' # spacer
-
-  nvim --headless -c 'LuaCacheClear' -c 'qa'
-  echo "=> delete $XDG_CACHE_HOME/nvim/luacache_chunks"
-  echo "=> delete $XDG_CACHE_HOME/nvim/luacache_modpaths"
-
-  echo '' # spacer
   echo::bold '### update homebrew formulas and casks'
   echo '' # spacer
 

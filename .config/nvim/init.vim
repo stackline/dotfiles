@@ -73,7 +73,6 @@ Plug 'hrsh7th/cmp-path'         " nvim-cmp source for path
 Plug 'saadparwaiz1/cmp_luasnip' " nvim-cmp source for luasnip
 Plug 'L3MON4D3/LuaSnip'         " Snippets plugin
 Plug 'nvim-lua/lsp-status.nvim'        " for Neovim built-in LSP cleint
-Plug 'lewis6991/impatient.nvim' " Speed up loading Lua modules.
 Plug 'mfussenegger/nvim-lint'   " Linter (asynchronous)
 
 " NOTE: About some highlighting and endwise combinations
@@ -100,14 +99,6 @@ Plug 'tpope/vim-endwise'
 
 call plug#end() " Automatically executes `filetype plugin indent on`
 
-function! PlugIsInstalled (plugin_name) abort
-  if has_key(g:plugs, a:plugin_name) && isdirectory(g:plugs[a:plugin_name]['dir'])
-    return v:true
-  endif
-
-  return v:false
-endfunction
-
 function! PlugIsNotInstalled(plugin_name) abort
   if ! has_key(g:plugs, a:plugin_name)
     return v:true
@@ -118,10 +109,6 @@ function! PlugIsNotInstalled(plugin_name) abort
 
   return v:false
 endfunction
-
-if PlugIsInstalled('impatient.nvim')
-  lua require('impatient')
-endif
 
 " --------------------------------------
 " ctags
