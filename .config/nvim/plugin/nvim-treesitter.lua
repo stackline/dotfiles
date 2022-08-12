@@ -30,4 +30,9 @@ configs.setup {
   endwise = {
     enable = true,
   },
+
+  -- nvim-ts-autotag
+  autotag = {
+    enable = true,
+  },
 }

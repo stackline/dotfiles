@@ -97,6 +97,7 @@ Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " Highlighting
 " ref. https://github.com/nvim-treesitter/nvim-treesitter/issues/703
 "
 Plug 'RRethy/nvim-treesitter-endwise' " Wisely add 'end' in Ruby, Vimscript, Lua, etc.
+Plug 'windwp/nvim-ts-autotag'   " Use treesitter to auto close and auto rename html tag
 
 call plug#end() " Automatically executes `filetype plugin indent on`
 
