@@ -74,28 +74,29 @@ Plug 'saadparwaiz1/cmp_luasnip' " nvim-cmp source for luasnip
 Plug 'L3MON4D3/LuaSnip'         " Snippets plugin
 Plug 'nvim-lua/lsp-status.nvim'        " for Neovim built-in LSP cleint
 Plug 'mfussenegger/nvim-lint'   " Linter (asynchronous)
-
-" NOTE: About some highlighting and endwise combinations
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " Highlighting
 "
-" (a) nvim-treesitter + nvim-treesitter-endwise
+" NOTE: Difference in behavior between nvim-treesitter-endwise and vim-endwise
 "
-"   * Endwise does not complete 'end' keyword if I enter a line break
-"     after entering 'def' keyword.
+" ### nvim-treesitter-endwise
 "
-" (b) nvim-treesitter + vim-endwise
+" `end` keyword is added if I enter a class name or method name.
 "
-"   * Set additional_vim_regex_highlighting option of nvim-treesitter to true.
-"   * Endwise completes 'end' keyword if I enter a line break after entering
-"     'def' keyword.
-"   * Using additional_vim_regex_highlighting option may slow down my editor.
+"   class Foo
+"            ^-- send newline
+"   end <-- added
 "
-" (c) traditional highlighting + vim-endwise
+" ### vim-endwise
 "
-"   * May not be as highlighted as nvim-treesitter.
+" `end` keyword is added even if I don't enter the class name or method name.
+"
+"   class
+"        ^-- send newline
+"   end <-- added
 "
 " ref. https://github.com/nvim-treesitter/nvim-treesitter/issues/703
-Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " Highlighting
-Plug 'tpope/vim-endwise'
+"
+Plug 'RRethy/nvim-treesitter-endwise' " Wisely add 'end' in Ruby, Vimscript, Lua, etc.
 
 call plug#end() " Automatically executes `filetype plugin indent on`
 

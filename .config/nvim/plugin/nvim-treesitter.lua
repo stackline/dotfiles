@@ -23,6 +23,11 @@ configs.setup {
   highlight = {
     enable = true, -- false will disable the whole extension
     disable = {},  -- list of language that will be disabled
-    additional_vim_regex_highlighting = true, -- make vim-endwise work fine
+    additional_vim_regex_highlighting = false, -- NOTE: Must be true when using vim-endwise
+  },
+
+  -- nvim-treesitter-endwise
+  endwise = {
+    enable = true,
   },
 }
