@@ -169,6 +169,7 @@ set tabstop=2
 set foldlevelstart=99 " [edit] Start editing with no folds closed.
 set showtabline=2     " [view] Always show tab line.
 set signcolumn=yes
+set laststatus=3      " [view] Have a global statusline at the bottom instead of one for each window.
 
 " --------------------------------------
 " Autocommands
