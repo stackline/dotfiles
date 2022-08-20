@@ -2,6 +2,12 @@ if PlugIsNotInstalled('fzf.vim')
   finish
 endif
 
+" Don't show line number in the preview window.
+" Change bat style option from '--style=numbers' to '--style=plain'.
+"
+" ref. https://github.com/junegunn/fzf.vim/blob/0452b71830b1a219b8cdc68141ee58ec288ea711/bin/preview.sh#L63
+let $BAT_STYLE = 'plain'
+
 " --cached
 "   Show cached files in the output (default)
 "
