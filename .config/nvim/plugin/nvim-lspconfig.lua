@@ -76,17 +76,12 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-local servers = { 'bashls', 'tsserver', 'vimls', 'yamlls' }
-for _, lsp in pairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-    capabilities = capabilities,
-    flags = lsp_flags,
-  }
-end
+-- Bash
+lspconfig.bashls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = lsp_flags
+}
 
 -- C++
 local lsp_status = require('lsp-status')
@@ -145,4 +140,25 @@ lspconfig.solargraph.setup {
       diagnostics = false
     }
   }
+}
+
+-- TypeScript
+lspconfig.tsserver.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = lsp_flags
+}
+
+-- Vim script
+lspconfig.vimls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = lsp_flags
+}
+
+-- YAML
+lspconfig.yamlls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = lsp_flags
 }
