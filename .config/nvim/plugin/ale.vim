@@ -2,8 +2,10 @@ if PlugIsNotInstalled('ale')
   finish
 endif
 
-" Do not use LSP because other plugin use LSP
+" Disable ALE's LSP because it uses Neovim built-in LSP.
 let g:ale_disable_lsp = 1
+" Disable ALE's linter because it uses nvim-lint plugin.
+let g:ale_linters_explicit = 1
 
 " Fix code when they are saved
 let g:ale_fix_on_save = 1
@@ -14,20 +16,6 @@ let g:ale_fixers = {
 \  'go': ['goimports'],
 \  'ruby': ['rubocop'],
 \  'sh': ['shfmt'],
-\}
-
-" Mapping of filetype and linters
-"
-" cpp: Check with clangd (LSP) using the compile options of compile_flags.txt.
-" go: nvim-lint
-" ruby: nvim-lint
-let g:ale_linters = {
-\  'cpp': [],
-\  'dockerfile': [],
-\  'go': [],
-\  'ruby': [],
-\  'sh': [],
-\  'vim': ['vint'],
 \}
 
 " A style similar to Google's shell style
