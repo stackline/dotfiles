@@ -48,7 +48,8 @@ if $COLORTERM ==# 'truecolor'
   Plug 'EdenEast/nightfox.nvim'
 endif
 
-Plug 'dense-analysis/ale'      " linter
+" TODO: Stop using ALE plugin if there is no problem with LSP formatting.
+" Plug 'dense-analysis/ale'      " linter
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'        " incremental file and code search

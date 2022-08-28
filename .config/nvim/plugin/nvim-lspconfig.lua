@@ -57,11 +57,14 @@ local on_attach = function(client, bufnr)
       vim.diagnostic.open_float(nil, floatopts)
     end
   })
-
-  -- Do formatting with ALE, so disable LSP formatting
-  client.resolved_capabilities.document_formatting = false
-  client.resolved_capabilities.document_range_formatting = false
 end
+
+-- Formatting on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+  callback = function ()
+    vim.lsp.buf.formatting_seq_sync()
+  end,
+})
 
 -- -------------------------------------
 -- nvim-cmp autocompletion
