@@ -41,6 +41,23 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 
+  -- Show line diagnostics automatically in hover window
+  -- ref. https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#show-line-diagnostics-automatically-in-hover-window
+  vim.api.nvim_create_autocmd("CursorHold", {
+    buffer = bufnr,
+    callback = function()
+      local floatopts = {
+        focusable = false,
+        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+        border = 'single',  -- instead of 'rounded'
+        source = 'if_many', -- instead of 'always'
+        prefix = ' ',
+        scope = 'line',     -- instead of 'cursor'
+      }
+      vim.diagnostic.open_float(nil, floatopts)
+    end
+  })
+
   -- Do formatting with ALE, so disable LSP formatting
   client.resolved_capabilities.document_formatting = false
   client.resolved_capabilities.document_range_formatting = false
@@ -129,33 +146,3 @@ lspconfig.solargraph.setup {
     }
   }
 }
-
--- -------------------------------------
--- Custom settings
--- -------------------------------------
--- Print diagnostics to message area
--- ref. https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#print-diagnostics-to-message-area
-function PrintDiagnostics(opts, bufnr, line_nr)
-  bufnr = bufnr or 0
-  line_nr = line_nr or (vim.api.nvim_win_get_cursor(0)[1] - 1)
-  opts = opts or {['lnum'] = line_nr}
-
-  local line_diagnostics = vim.diagnostic.get(bufnr, opts)
-  if vim.tbl_isempty(line_diagnostics) then return end
-
-  -- Avoid displaying hit-enter prompt.
-  -- Display same content as error/warning displayed in virtual text.
-  print(line_diagnostics[#line_diagnostics]['message'])
-end
-
-vim.cmd [[ autocmd! CursorHold * lua PrintDiagnostics() ]]
-
--- Change prefix/character preceding the diagnostics' virtual text
--- ref. https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#change-prefixcharacter-preceding-the-diagnostics-virtual-text
-vim.diagnostic.config({
-  virtual_text = {
-    prefix = '-',
-  }
-})
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
