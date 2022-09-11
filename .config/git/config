@@ -14,9 +14,9 @@
   # Use diff-highlight with "git add --patch"
   diffFilter = (diff-highlight 2>/dev/null || cat)
 [color "diff"]
-  meta = 11
-  frag = magenta bold
-  commit = yellow bold
+  # List of color.diff.<slot>
+  # ref. https://git-scm.com/docs/git-config#Documentation/git-config.txt-colordiffltslotgt
+  meta = magenta bold
   old = red bold
   new = green bold
   whitespace = red reverse
