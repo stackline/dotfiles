@@ -9,6 +9,7 @@ endif
 " NOTE: BufEnter event does not occurs when opening the filer.
 " Use 'get' function to avoid variable undeclared errors.
 let g:lightline = {
+    \ 'colorscheme': 'nightfox',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'lspstatus', 'readonly', 'file', 'modified' ] ],
