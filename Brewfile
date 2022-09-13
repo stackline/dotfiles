@@ -89,6 +89,7 @@ brew 'nkf'
 brew 'nmap'
 brew 'silicon'
 brew 'ripgrep'
+brew 'macos-trash' # Move files to the trash
 # TODO: See if I can use Zellij instead of tmux as a terminal multiplexer.
 # brew 'zellij'
 brew 'tmux'
