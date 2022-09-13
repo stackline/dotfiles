@@ -31,6 +31,16 @@ let g:lightline = {
     \ },
     \ }
 
+" NOTE: Prevent the display positon of tabs from shifting when moving to
+" another tab.
+"
+" left:  Separator sign of selected tabs of left part
+" right: Unknown
+let lightline.tabline_separator = { 'left': ' ', 'right': ' ' }
+" left:  Separator sign of unselected tabs of left part
+" right: Separator sign of repository name and branch name of right part
+let lightline.tabline_subseparator = { 'left': '|', 'right': '|' }
+
 augroup statusline_cache_items
   autocmd!
   " NOTE: vim-fugitive sets `b:git_dir` variable at BufReadPost event.
