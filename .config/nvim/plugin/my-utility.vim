@@ -1,5 +1,20 @@
 " TODO: Consider whether to make it a vim plugin
 
+function DeleteUnusedBuffers() abort
+  let bufinfo_list = getbufinfo()
+  for bufinfo in bufinfo_list
+    let is_listed = (bufinfo['listed'] == v:true)
+    let is_hidden = (bufinfo['hidden'] == v:true)
+    let is_not_modified = (bufinfo['changed'] == v:false)
+
+    " Target buffers that is not visible in any window.
+    if is_listed && is_hidden && is_not_modified
+      let bufnr = bufinfo['bufnr']
+      execute "bwipeout " . bufnr
+    endif
+  endfor
+endfunction
+
 " Utility
 function! GetURLComponents()
   let l:remote_url = system('git remote get-url origin | tr -d "\n"')

@@ -208,4 +208,7 @@ augroup init_vim_autocommands
         \ if len(argv()) >= 2 |
         \   tab all |
         \ endif
+
+  " Free up memory frequently.
+  autocmd BufEnter * call DeleteUnusedBuffers()
 augroup END
