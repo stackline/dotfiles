@@ -10,7 +10,7 @@ end
 -- -------------------------------------
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
+local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
@@ -24,7 +24,7 @@ local on_attach = function(client, bufnr)
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
@@ -49,10 +49,10 @@ local on_attach = function(client, bufnr)
       local floatopts = {
         focusable = false,
         close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-        border = 'single',  -- instead of 'rounded'
+        border = 'single', -- instead of 'rounded'
         source = 'if_many', -- instead of 'always'
         prefix = ' ',
-        scope = 'line',     -- instead of 'cursor'
+        scope = 'line', -- instead of 'cursor'
       }
       vim.diagnostic.open_float(nil, floatopts)
     end
@@ -61,7 +61,7 @@ end
 
 -- Formatting on save
 vim.api.nvim_create_autocmd("BufWritePre", {
-  callback = function ()
+  callback = function()
     vim.lsp.buf.formatting_seq_sync()
   end,
 })
@@ -120,7 +120,7 @@ lspconfig.sumneko_lua.setup {
     Lua = {
       diagnostics = {
         -- Prevent the warning "Undefined global vim"
-        globals = {'vim'},
+        globals = { 'vim' },
       },
       -- Disable telemetry.
       -- ref. https://github.com/sumneko/lua-language-server/wiki/Privacy-Policy#disabling-telemetry
