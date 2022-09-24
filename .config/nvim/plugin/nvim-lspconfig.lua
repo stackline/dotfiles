@@ -87,16 +87,14 @@ lspconfig.bashls.setup {
 }
 
 -- C++
-local lsp_status = require('lsp-status')
 lspconfig.clangd.setup({
   cmd = { 'clangd', '--background-index', '-header-insertion=never' },
-  handlers = lsp_status.extensions.clangd.setup(),
   init_options = {
     -- ref. https://clangd.llvm.org/extensions.html#file-status
     clangdFileStatus = true
   },
-  on_attach = lsp_status.on_attach,
-  capabilities = lsp_status.capabilities,
+  on_attach = on_attach,
+  capabilities = capabilities,
   flags = lsp_flags,
 })
 

@@ -73,7 +73,6 @@ Plug 'hrsh7th/cmp-buffer'       " nvim-cmp source for buffer words
 Plug 'hrsh7th/cmp-path'         " nvim-cmp source for path
 Plug 'saadparwaiz1/cmp_luasnip' " nvim-cmp source for luasnip
 Plug 'L3MON4D3/LuaSnip'         " Snippets plugin
-Plug 'nvim-lua/lsp-status.nvim'        " for Neovim built-in LSP cleint
 Plug 'mfussenegger/nvim-lint'   " Linter (asynchronous)
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " Highlighting
 "
@@ -99,6 +98,7 @@ Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " Highlighting
 "
 Plug 'RRethy/nvim-treesitter-endwise' " Wisely add 'end' in Ruby, Vimscript, Lua, etc.
 Plug 'windwp/nvim-ts-autotag'   " Use treesitter to auto close and auto rename html tag
+Plug 'j-hui/fidget.nvim'         " Standalone UI for nvim-lsp progress
 
 call plug#end() " Automatically executes `filetype plugin indent on`
 

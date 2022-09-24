@@ -12,7 +12,7 @@ let g:lightline = {
     \ 'colorscheme': 'nightfox',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'lspstatus', 'readonly', 'file', 'modified' ] ],
+    \             [ 'readonly', 'file', 'modified' ] ],
     \   'right': [ [ 'lineinfo-with-virtual-column-number' ],
     \              [ 'percent' ],
     \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
@@ -24,9 +24,6 @@ let g:lightline = {
     \   'lineinfo-with-virtual-column-number': '%3l:%-2v',
     \   'git_info': '%{get(b:, "statusline_git_info", "")}',
     \   'file': '%{get(b:, "statusline_file_name", "")}%<'
-    \ },
-    \ 'component_function': {
-    \   'lspstatus': 'StatusLineLspStatus'
     \ },
     \ }
 
@@ -49,16 +46,6 @@ augroup END
 function! StatusLineCacheItems()
   let b:statusline_git_info = luaeval('StatusLineGitInfo()')
   let b:statusline_file_name = luaeval('StatusLineFileName()')
-endfunction
-
-function! StatusLineLspStatus()
-  if has_key(g:plugs, 'lsp-status.nvim')
-    " The value that the status function return includes half-width space on
-    " the right side. Trim the extra right space off.
-    return trim(luaeval("require('lsp-status').status()"))
-  else
-    return ''
-  endif
 endfunction
 
 lua << EOF
