@@ -74,16 +74,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-local lsp_flags = {
-  -- This is the default in Nvim 0.7+
-  debounce_text_changes = 150,
-}
-
 -- Bash
 lspconfig.bashls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  flags = lsp_flags
 }
 
 -- C++
@@ -95,7 +89,6 @@ lspconfig.clangd.setup({
   },
   on_attach = on_attach,
   capabilities = capabilities,
-  flags = lsp_flags,
 })
 
 -- Go
@@ -103,7 +96,6 @@ lspconfig.clangd.setup({
 lspconfig.gopls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  flags = lsp_flags,
   settings = {
     gopls = {
       staticcheck = false,
@@ -115,7 +107,6 @@ lspconfig.gopls.setup {
 lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  flags = lsp_flags,
   settings = {
     Lua = {
       diagnostics = {
@@ -135,7 +126,6 @@ lspconfig.sumneko_lua.setup {
 lspconfig.solargraph.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  flags = lsp_flags,
   settings = {
     solargraph = {
       diagnostics = false
@@ -147,19 +137,16 @@ lspconfig.solargraph.setup {
 lspconfig.tsserver.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  flags = lsp_flags
 }
 
 -- Vim script
 lspconfig.vimls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  flags = lsp_flags
 }
 
 -- YAML
 lspconfig.yamlls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  flags = lsp_flags
 }
