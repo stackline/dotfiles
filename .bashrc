@@ -133,14 +133,17 @@ function update-various-packages() {
   if [ ! -e "$vim_plug_update_log" ]; then
     touch "$vim_plug_update_log"
   fi
+  #
   # --headless
   #   Do not switch screen from shell to vim.
   # set modifiable
   #   Enable to modify buffer.
-  # %w
-  #   % means all lines for range.
-  #   %w means write all lines to a file.
-  nvim --headless -c 'PlugUpdate' -c 'set modifiable' -c "silent %w $vim_plug_update_log" -c 'qa'
+  # %w!
+  #   %  ... means all lines for range.
+  #   %w ... means write all lines to a file.
+  #   !  ... avoid the following error. "E13: File exists (add ! to override)"
+  #
+  nvim --headless -c 'PlugUpdate' -c 'set modifiable' -c "silent %w! $vim_plug_update_log" -c 'qa'
   echo '' # line break
   cat "$vim_plug_update_log"
 
@@ -152,7 +155,7 @@ function update-various-packages() {
   if [ ! -e "$vim_plug_diff_log" ]; then
     touch "$vim_plug_diff_log"
   fi
-  nvim --headless -c 'PlugDiff' -c 'set modifiable' -c "silent %w $vim_plug_diff_log" -c 'qa'
+  nvim --headless -c 'PlugDiff' -c 'set modifiable' -c "silent %w! $vim_plug_diff_log" -c 'qa'
   echo '' # line break
   cat "$vim_plug_diff_log"
 
