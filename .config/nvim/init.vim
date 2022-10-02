@@ -151,16 +151,6 @@ set splitbelow " open splited window to below
 set splitright " open splited window to right
 set noswapfile " do not make .swp swap file
 set nobackup   " do not make tilda "~" backup file
-set ambiwidth=single    " Display East Asian Ambiguous Width characters in 1 byte.
-
-if exists("*setcellwidths")
-  echo 'HINT: Add settings if `setcellwidths` is available.'
-  echo 'HINT:'
-  echo 'HINT:   " ex. Set the character width of black star to 2'
-  echo 'HINT:   call setcellwidths([[0x2605, 0x2605, 2]])'
-  echo 'HINT:'
-endif
-
 set formatoptions=tcrqj " Default `tcqj`. Add `r` option (complete comment sign automatically when breaking line)
 set tagcase=match " Search a tag file by case match
 set expandtab
@@ -172,6 +162,12 @@ set showtabline=2     " [view] Always show tab line.
 set signcolumn=yes
 set laststatus=3      " [view] Have a global statusline at the bottom instead of one for each window.
 set mouse=            " [edit] Ignore mouse completely
+set ambiwidth=single  " [view] Display East Asian Ambiguous Width characters in 1 byte.
+
+" Set the character width of black star to 2
+call setcellwidths([
+  \ [0x2605, 0x2605, 2]
+  \ ])
 
 " --------------------------------------
 " Autocommands
