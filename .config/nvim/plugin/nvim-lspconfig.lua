@@ -52,7 +52,7 @@ local on_attach = function(_, bufnr)
         border = 'single', -- instead of 'rounded'
         source = 'if_many', -- instead of 'always'
         prefix = ' ',
-        scope = 'line', -- instead of 'cursor'
+        scope = 'cursor',
       }
       vim.diagnostic.open_float(nil, floatopts)
     end
