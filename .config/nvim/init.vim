@@ -56,7 +56,6 @@ Plug 'junegunn/fzf.vim'        " incremental file and code search
 " vim-plug is loaded from the one of the default runtime path.
 " If necessary, only upgrade vim-plug itself.
 Plug 'junegunn/vim-plug', { 'on': [], 'do': ':PlugUpgrade' }
-Plug 'itchyny/lightline.vim'   " statusline and tabline
 Plug 'mhinz/vim-signify'       " show diff to sign column
 Plug 'mhinz/vim-startify'      " Start screen (especially use MRU (Most Recently Used))
 Plug 'segeljakt/vim-silicon', { 'on': 'Silicon' } " Source code image generator
@@ -98,6 +97,7 @@ Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " Highlighting
 "
 Plug 'RRethy/nvim-treesitter-endwise' " Wisely add 'end' in Ruby, Vimscript, Lua, etc.
 Plug 'windwp/nvim-ts-autotag'   " Use treesitter to auto close and auto rename html tag
+Plug 'nvim-lualine/lualine.nvim' " Statusline and tabline
 Plug 'j-hui/fidget.nvim'         " Standalone UI for nvim-lsp progress
 
 call plug#end() " Automatically executes `filetype plugin indent on`

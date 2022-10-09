@@ -16,6 +16,10 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
+local on_init = function()
+  vim.b.lsp_mode = 'LSP'
+end
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(_, bufnr)
@@ -76,26 +80,35 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- Bash
 lspconfig.bashls.setup {
+  -- Common settings
+  on_init = on_init,
   on_attach = on_attach,
   capabilities = capabilities,
+  -- Server-specific settings
 }
 
 -- C++
 lspconfig.clangd.setup({
+  -- Common settings
+  on_init = on_init,
+  on_attach = on_attach,
+  capabilities = capabilities,
+  -- Server-specific settings
   cmd = { 'clangd', '--background-index', '-header-insertion=never' },
   init_options = {
     -- ref. https://clangd.llvm.org/extensions.html#file-status
     clangdFileStatus = true
   },
-  on_attach = on_attach,
-  capabilities = capabilities,
 })
 
 -- Go
 -- ref. https://github.com/golang/tools/blob/master/gopls/doc/vim.md#custom-configuration
 lspconfig.gopls.setup {
+  -- Common settings
+  on_init = on_init,
   on_attach = on_attach,
   capabilities = capabilities,
+  -- Server-specific settings
   settings = {
     gopls = {
       staticcheck = false,
@@ -105,8 +118,11 @@ lspconfig.gopls.setup {
 
 -- Lua
 lspconfig.sumneko_lua.setup {
+  -- Common settings
+  on_init = on_init,
   on_attach = on_attach,
   capabilities = capabilities,
+  -- Server-specific settings
   settings = {
     Lua = {
       diagnostics = {
@@ -124,8 +140,11 @@ lspconfig.sumneko_lua.setup {
 
 -- Ruby
 lspconfig.solargraph.setup {
+  -- Common settings
+  on_init = on_init,
   on_attach = on_attach,
   capabilities = capabilities,
+  -- Server-specific settings
   settings = {
     solargraph = {
       diagnostics = false
@@ -135,18 +154,27 @@ lspconfig.solargraph.setup {
 
 -- TypeScript
 lspconfig.tsserver.setup {
+  -- Common settings
+  on_init = on_init,
   on_attach = on_attach,
   capabilities = capabilities,
+  -- Server-specific settings
 }
 
 -- Vim script
 lspconfig.vimls.setup {
+  -- Common settings
+  on_init = on_init,
   on_attach = on_attach,
   capabilities = capabilities,
+  -- Server-specific settings
 }
 
 -- YAML
 lspconfig.yamlls.setup {
+  -- Common settings
+  on_init = on_init,
   on_attach = on_attach,
   capabilities = capabilities,
+  -- Server-specific settings
 }
