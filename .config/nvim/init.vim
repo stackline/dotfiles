@@ -73,7 +73,7 @@ Plug 'hrsh7th/cmp-path'         " nvim-cmp source for path
 Plug 'saadparwaiz1/cmp_luasnip' " nvim-cmp source for luasnip
 Plug 'L3MON4D3/LuaSnip'         " Snippets plugin
 Plug 'mfussenegger/nvim-lint'   " Linter (asynchronous)
-Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " Highlighting
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdateSync' } " Highlighting
 "
 " NOTE: Difference in behavior between nvim-treesitter-endwise and vim-endwise
 "
