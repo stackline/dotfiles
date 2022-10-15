@@ -74,9 +74,9 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 -- nvim-cmp autocompletion
 -- ref. https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion#nvim-cmp
 -- -------------------------------------
--- Add additional capabilities supported by nvim-cmp
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
+-- ref. https://github.com/hrsh7th/cmp-nvim-lsp#setup
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Bash
 lspconfig.bashls.setup {
