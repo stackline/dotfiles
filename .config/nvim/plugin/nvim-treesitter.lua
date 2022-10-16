@@ -22,8 +22,15 @@ configs.setup {
 
   highlight = {
     enable = true, -- false will disable the whole extension
-    disable = {},  -- list of language that will be disabled
+    disable = {}, -- list of language that will be disabled
     additional_vim_regex_highlighting = false, -- NOTE: Must be true when using vim-endwise
+  },
+
+  indent = {
+    -- NOTE: If indent option is disabled, auto indentation of .tsx files
+    -- doesn't work properly.
+    enable = true,
+    disable = {},
   },
 
   -- nvim-treesitter-endwise
