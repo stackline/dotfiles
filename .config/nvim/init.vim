@@ -56,7 +56,6 @@ Plug 'junegunn/fzf.vim'        " incremental file and code search
 " vim-plug is loaded from the one of the default runtime path.
 " If necessary, only upgrade vim-plug itself.
 Plug 'junegunn/vim-plug', { 'on': [], 'do': ':PlugUpgrade' }
-Plug 'mhinz/vim-signify'       " show diff to sign column
 Plug 'mhinz/vim-startify'      " Start screen (especially use MRU (Most Recently Used))
 Plug 'segeljakt/vim-silicon', { 'on': 'Silicon' } " Source code image generator
 Plug 'tpope/vim-fugitive'      " git wrapper
@@ -99,6 +98,7 @@ Plug 'RRethy/nvim-treesitter-endwise' " Wisely add 'end' in Ruby, Vimscript, Lua
 Plug 'windwp/nvim-ts-autotag'   " Use treesitter to auto close and auto rename html tag
 Plug 'nvim-lualine/lualine.nvim' " Statusline and tabline
 Plug 'j-hui/fidget.nvim'         " Standalone UI for nvim-lsp progress
+Plug 'lewis6991/gitsigns.nvim'   " Show git diff signs to the signcolumn
 
 call plug#end() " Automatically executes `filetype plugin indent on`
 
@@ -163,6 +163,9 @@ set signcolumn=yes
 set laststatus=3      " [view] Have a global statusline at the bottom instead of one for each window.
 set mouse=            " [edit] Ignore mouse completely
 set ambiwidth=single  " [view] Display East Asian Ambiguous Width characters in 1 byte.
+" NOTE: Default value of "updatetime" is 4000 ms. It is slow to show
+" diagnostic message to floating window with nvim-lspconfig.
+set updatetime=300    " Time until CursorHold event of autocommand fires.
 
 " Set the character width of black star to 2
 call setcellwidths([
