@@ -63,6 +63,16 @@ local on_attach = function(_, bufnr)
   })
 end
 
+-- Override handler's config.
+-- ref. https://neovim.io/doc/user/lsp.html#lsp-handlers
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover,
+  {
+    -- Use a sharp border with `FloatBorder` highlights
+    border = "single"
+  }
+)
+
 -- Formatting on save
 vim.api.nvim_create_autocmd("BufWritePre", {
   callback = function()
