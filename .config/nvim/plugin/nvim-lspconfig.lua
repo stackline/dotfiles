@@ -73,6 +73,14 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
   }
 )
 
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics,
+  {
+    -- Show the list of diagnostics with trouble.nvim plugin
+    virtual_text = false
+  }
+)
+
 -- Formatting on save
 vim.api.nvim_create_autocmd("BufWritePre", {
   callback = function()
