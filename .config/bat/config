@@ -1,0 +1,13 @@
+# Specify desired highlighting theme (e.g. "TwoDark"). Run `bat --list-themes`
+# for a list of all available themes
+
+# NOTE: Reason for changing theme.
+#
+# By the following pr, when the appearance of macos is light mode,
+# the default theme of bat is "Monokai Extended Light".
+#
+#   https://github.com/sharkdp/bat/pull/2197
+#
+# If the background color of the terminal is black,
+# "Monokai Extended Light" theme makes the font color difficult to see.
+--theme="Visual Studio Dark+"
