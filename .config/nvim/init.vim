@@ -168,8 +168,13 @@ set ambiwidth=single  " [view] Display East Asian Ambiguous Width characters in 
 " diagnostic message to floating window with nvim-lspconfig.
 set updatetime=300    " Time until CursorHold event of autocommand fires.
 
-" Set the character width of black star to 2
+" Set the character width to 2
+"
+" 2192 Rightwards arrow
+" 2605 Black star
+"
 call setcellwidths([
+  \ [0x2192, 0x2192, 2],
   \ [0x2605, 0x2605, 2]
   \ ])
 
