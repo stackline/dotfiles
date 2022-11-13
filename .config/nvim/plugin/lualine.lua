@@ -160,9 +160,23 @@ lualine.setup {
     lualine_b = { 'b:buf_repository', 'b:buf_branch', 'diff', 'b:lsp_mode', 'diagnostics' },
   },
   tabline = {
-    -- NOTE: Override "max_length" option to avoid omitting the file name of
-    -- tab component.
-    lualine_a = { { 'tabs', max_length = vim.o.columns, mode = 2 } },
+    lualine_a = {
+      {
+        'tabs',
+        -- NOTE: Override "max_length" option to avoid omitting the file name of
+        -- tab component.
+        max_length = vim.o.columns,
+        mode = 2,
+        -- NOTE: Perhaps the tabline color scheme changed in the commit below,
+        -- so I specified a color close to the color before the commit.
+        --
+        -- ref. https://github.com/EdenEast/nightfox.nvim/commit/9df01a3fb3d41e1e388ded7a34fe97a19146a283
+        tabs_color = {
+          active   = { fg = '#131a24', bg = '#719cd6' },
+          inactive = { fg = '#131a24', bg = '#71839b' },
+        },
+      },
+    },
     lualine_b = {},
     lualine_c = {},
     lualine_x = { 'b:buf_filename' },
