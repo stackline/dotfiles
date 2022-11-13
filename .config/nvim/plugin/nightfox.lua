@@ -17,4 +17,12 @@ local groups = {
 }
 nightfox.setup({ groups = groups })
 
+nightfox.override.palettes({
+  nightfox = {
+    -- Make comments easier to read.
+    -- ref. https://www.colorhexa.com/738091
+    comment = "#9ea7b3", -- default: #738091
+  }
+})
+
 vim.cmd("colorscheme nightfox")
