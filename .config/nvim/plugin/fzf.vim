@@ -2,6 +2,15 @@ if PlugIsNotInstalled('fzf.vim')
   finish
 endif
 
+" NOTE: The default key binding for 'tab split' is 'ctrl-t'. But 'ctrl-t'
+" is treated as prefix of tmux. Therefore, I change the key binding for
+" 'tab split'.
+"
+" ref. https://github.com/junegunn/fzf/blob/master/README-VIM.md#examples
+let g:fzf_action = {
+      \ 'ctrl-v': 'tab split'
+      \ }
+
 " Don't show line number in the preview window.
 " Change bat style option from '--style=numbers' to '--style=plain'.
 "
