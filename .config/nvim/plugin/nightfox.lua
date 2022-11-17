@@ -4,6 +4,14 @@ if not ok then
   return
 end
 
+local palettes = {
+  nightfox = {
+    -- Make comments easier to read.
+    -- ref. https://www.colorhexa.com/738091
+    comment = "#9ea7b3", -- default: #738091
+  },
+}
+
 -- ref. https://github.com/EdenEast/nightfox.nvim#customize-palettes-and-groups
 local groups = {
   all = {
@@ -15,14 +23,7 @@ local groups = {
     FloatBorder = { bg = 'palette.bg0' },
   },
 }
-nightfox.setup({ groups = groups })
 
-nightfox.override.palettes({
-  nightfox = {
-    -- Make comments easier to read.
-    -- ref. https://www.colorhexa.com/738091
-    comment = "#9ea7b3", -- default: #738091
-  }
-})
+nightfox.setup({ palettes = palettes, groups = groups })
 
 vim.cmd("colorscheme nightfox")
