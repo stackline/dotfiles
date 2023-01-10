@@ -22,7 +22,11 @@ function share_history {
   history -c # clear history list
   history -r # history file --> history list
 }
-PROMPT_COMMAND='share_history'
+
+# NOTE: It's inconvenient not being able to look up commands backwards in the
+# history list, so stop sharing history.
+#
+# PROMPT_COMMAND='share_history'
 
 # -s
 #
