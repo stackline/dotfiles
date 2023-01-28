@@ -7,6 +7,7 @@ end
 -- ref. https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion#nvim-cmp
 -- luasnip setup
 local luasnip = require 'luasnip'
+local lspkind = require 'lspkind'
 
 -- nvim-cmp setup
 --
@@ -53,4 +54,18 @@ cmp.setup {
     { name = 'buffer' },
     { name = 'path' },
   },
+  -- Display the icon and the source of completion to completion-menu.
+  -- ref. https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#basic-customisations
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = "symbol_text",
+      menu = ({
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        luasnip = "[LuaSnip]",
+        nvim_lua = "[Lua]",
+        latex_symbols = "[Latex]",
+      })
+    }),
+  }
 }
