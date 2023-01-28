@@ -13,6 +13,7 @@ configs.setup {
     'javascript',
     'json',
     'lua',
+    'markdown',
     'ruby',
     'tsx',
     'typescript',
