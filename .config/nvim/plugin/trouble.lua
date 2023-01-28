@@ -7,3 +7,5 @@ end
 module.setup {
   icons = false,
 }
+
+vim.keymap.set("n", "tt", "<cmd>TroubleToggle<cr>")
