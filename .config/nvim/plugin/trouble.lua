@@ -4,8 +4,6 @@ if not ok then
   return
 end
 
-module.setup {
-  icons = false,
-}
+module.setup {}
 
 vim.keymap.set("n", "tt", "<cmd>TroubleToggle<cr>")
