@@ -23,7 +23,13 @@ export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
 export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}"/npm/npmrc
 
 # Initialize Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [ "$(uname -m)" == "arm64" ]; then
+  # Apple M1
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+  # Apple Intel
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
 
 # Load utilities first
 source ~/.config/bash/debug.sh
