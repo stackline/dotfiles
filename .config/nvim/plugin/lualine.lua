@@ -152,6 +152,8 @@ vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
   end
 })
 
+local nvim_web_devicons = require 'nvim-web-devicons'
+
 -- ref. Default configuration
 -- https://github.com/nvim-lualine/lualine.nvim#default-configuration
 lualine.setup {
@@ -175,6 +177,22 @@ lualine.setup {
           active   = { fg = '#131a24', bg = '#719cd6' },
           inactive = { fg = '#131a24', bg = '#71839b' },
         },
+
+        -- ref. https://github.com/nvim-lualine/lualine.nvim#tabs-component-options
+        fmt = function(name, context)
+          -- Show the icon if an icon exists for the given file.
+          -- NOTE: The third argument is a setting to return the default icon
+          -- if there is no matching icon.
+          local icon = nvim_web_devicons.get_icon(name, nil, { default = true })
+
+          -- Show + if buffer is modified in tab.
+          local buflist = vim.fn.tabpagebuflist(context.tabnr)
+          local winnr = vim.fn.tabpagewinnr(context.tabnr)
+          local bufnr = buflist[winnr]
+          local mod = vim.fn.getbufvar(bufnr, '&mod')
+
+          return icon .. ' ' .. name .. (mod == 1 and ' +' or '')
+        end
       },
     },
     lualine_b = {},
