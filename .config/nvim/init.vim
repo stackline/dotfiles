@@ -99,6 +99,24 @@ Plug 'lewis6991/gitsigns.nvim'   " Show git diff signs to the signcolumn
 Plug 'nvim-tree/nvim-web-devicons' " (required by lualine.nvim, trouble.nvim)
 Plug 'onsails/lspkind.nvim'        " (required by nvim-cmp)
 Plug 'folke/trouble.nvim'        " Pretty list of diagnostics
+" NOTE: Reason for not formatting with "vim.lsp.buf.format({ async = true })"
+"
+" The following settings always execute formatting after writing.
+"
+" ```
+" vim.api.nvim_create_autocmd("BufWritePre", {
+"   callback = function()
+"     vim.lsp.buf.format({ async = true })
+"   end,
+" })
+" ```
+"
+" The buffer status is modified even if the format did not change the buffer.
+" As a result, when I quit, the following error occurs and I cannot exit with quit.
+"
+"   No write since last change for buffer
+"
+Plug 'lukas-reineke/lsp-format.nvim' " A wrapper around Neovims native LSP formatting
 
 call plug#end() " Automatically executes `filetype plugin indent on`
 
