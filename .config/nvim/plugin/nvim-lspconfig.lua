@@ -158,20 +158,6 @@ lspconfig.sumneko_lua.setup {
   }
 }
 
--- Ruby
-lspconfig.solargraph.setup {
-  -- Common settings
-  on_init = on_init,
-  on_attach = on_attach,
-  capabilities = capabilities,
-  -- Server-specific settings
-  settings = {
-    solargraph = {
-      diagnostics = false
-    }
-  }
-}
-
 -- TypeScript
 lspconfig.tsserver.setup {
   -- Common settings
