@@ -137,7 +137,7 @@ lspconfig.gopls.setup {
 }
 
 -- Lua
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
   -- Common settings
   on_init = on_init,
   on_attach = on_attach,
@@ -150,7 +150,7 @@ lspconfig.sumneko_lua.setup {
         globals = { 'vim' },
       },
       -- Disable telemetry.
-      -- ref. https://github.com/sumneko/lua-language-server/wiki/Privacy-Policy#disabling-telemetry
+      -- ref. https://github.com/LuaLS/lua-language-server/wiki/Privacy#disabling-telemetry
       telemetry = {
         enable = false,
       },
