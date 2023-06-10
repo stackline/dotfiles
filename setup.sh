@@ -14,7 +14,6 @@ create_symbolic_links() {
   echo current directory is "${dotfiles_root_dir}"
 
   ### Files
-  ln -fsv "${dotfiles_root_dir}"/.ansible-lint ~/.ansible-lint
   ln -fsv "${dotfiles_root_dir}"/.bash_profile ~/.bash_profile
   ln -fsv "${dotfiles_root_dir}"/.bashrc ~/.bashrc
   # TODO: Consider adding an include path to gcc and llvm
