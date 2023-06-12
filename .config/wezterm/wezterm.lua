@@ -1,7 +1,7 @@
 local wezterm = require 'wezterm'
 
 return {
-  color_scheme = "Tomorrow Night",
+  -- color_scheme = 'GruvboxDark',
   -- NOTE: I want to display only the cursor in the active pane. However,
   -- when I click the leader key, the cursors for all panes are displayed.
   --
