@@ -4,6 +4,11 @@
 # Bundler
 /.config/bundle/cache/
 
+# Docker
+/.config/docker/.buildNodeID
+/.config/docker/.token_seed
+/.config/docker/.token_seed.lock
+
 # Git
 /.config/git/config_local
 
