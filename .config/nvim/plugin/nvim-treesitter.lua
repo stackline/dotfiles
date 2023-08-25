@@ -10,6 +10,7 @@ configs.setup {
     'bash',
     'go',
     'graphql',
+    'hcl',
     'javascript',
     'json',
     'lua',
