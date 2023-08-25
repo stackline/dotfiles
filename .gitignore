@@ -10,6 +10,12 @@
 /.config/docker/.token_seed.lock
 /.config/docker/buildx/
 
+# gcloud
+/.config/gcloud/
+
+# gh
+/.config/gh/hosts.yml
+
 # Git
 /.config/git/config_local
 
@@ -21,6 +27,9 @@
 
 # npm
 /node_modules
+
+# 1Password
+/.config/op/
 
 # Vim
 /.config/nvim/.netrwhist
