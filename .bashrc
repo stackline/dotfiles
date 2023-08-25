@@ -104,6 +104,7 @@ alias gp='git pull -p'
 alias gr='git restore'
 alias grs='git restore --staged'
 alias gs='git status'
+alias git-switch='git branch | fzf | xargs git switch'
 
 if type 'nvim' >/dev/null; then
   alias vi='nvim'
@@ -121,6 +122,7 @@ alias dcl='fzf_docker_container_login'
 alias drm='fzf_docker_container_remove'
 alias check-path='echo $PATH | perl -pe "s/:/\n/g"'
 alias gem-uninstall-all-gems-except-default='gem uninstall -a -x --user-install --force'
+alias ssh-add-apple-use-keychanin='ssh-add --apple-use-keychain'
 
 # --------------------------------------
 # Key bindings
