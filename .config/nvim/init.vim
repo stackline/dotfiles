@@ -94,7 +94,7 @@ Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdateSync' } " Highlighting
 Plug 'RRethy/nvim-treesitter-endwise' " Wisely add 'end' in Ruby, Vimscript, Lua, etc.
 Plug 'windwp/nvim-ts-autotag'   " Use treesitter to auto close and auto rename html tag
 Plug 'nvim-lualine/lualine.nvim' " Statusline and tabline
-Plug 'j-hui/fidget.nvim'         " Standalone UI for nvim-lsp progress
+Plug 'j-hui/fidget.nvim', { 'tag': 'legacy' } " Standalone UI for nvim-lsp progress
 Plug 'lewis6991/gitsigns.nvim'   " Show git diff signs to the signcolumn
 Plug 'nvim-tree/nvim-web-devicons' " (required by lualine.nvim, trouble.nvim)
 Plug 'onsails/lspkind.nvim'        " (required by nvim-cmp)
