@@ -8,12 +8,12 @@ end
 -- Linter custom configurations
 ------------------------------------------------------------
 -- Mapping of filetype and linters
-lint.linters_by_ft = {
-  dockerfile = { 'hadolint' },
-  go = { 'staticcheck' },
-  ruby = { 'rubocop' },
-  sh = { 'shellcheck' },
-}
+-- lint.linters_by_ft = {
+--   dockerfile = { 'hadolint' },
+--   go = { 'staticcheck' },
+--   ruby = { 'rubocop' },
+--   sh = { 'shellcheck' },
+-- }
 
 -- staticcheck: Display code in message
 local shellcheck = require('lint.linters.shellcheck')
