@@ -17,6 +17,7 @@ configs.setup {
     'markdown',
     'ruby',
     'tsx',
+    'terraform',
     'typescript',
     'vim',
     'yaml',
