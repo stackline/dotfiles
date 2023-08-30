@@ -9,6 +9,7 @@
 /.config/docker/.token_seed
 /.config/docker/.token_seed.lock
 /.config/docker/buildx/
+/.config/docker/cli-plugins/
 
 # gcloud
 /.config/gcloud/
