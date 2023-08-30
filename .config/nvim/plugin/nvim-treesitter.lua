@@ -24,8 +24,8 @@ configs.setup {
   },
 
   highlight = {
-    enable = true, -- false will disable the whole extension
-    disable = {}, -- list of language that will be disabled
+    enable = true,                             -- false will disable the whole extension
+    disable = {},                              -- list of language that will be disabled
     additional_vim_regex_highlighting = false, -- NOTE: Must be true when using vim-endwise
   },
 
