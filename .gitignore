@@ -8,6 +8,8 @@
 /.config/docker/.buildNodeID
 /.config/docker/.token_seed
 /.config/docker/.token_seed.lock
+/.config/docker/canary.json
+/.config/docker/features.json
 /.config/docker/buildx/
 /.config/docker/cli-plugins/
 
