@@ -53,6 +53,7 @@ brew 'staticcheck'          # Go: Linter
 brew 'lua-language-server'  # Lua: LSP server
 brew 'shellcheck'           # Shell script: Linter
 brew 'shfmt'                # Shell script: Formatter
+brew 'terraform-ls'         # Terraform: LSP server
 # TODO: Consider how to manage npm packages.
 # npm install -g vim-language-server Vim Script: LSP server
 brew 'vint'                 # Vim script: Linter
