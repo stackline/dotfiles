@@ -5,9 +5,12 @@ if not ok then
 end
 
 local palettes = {
+  -- Make comments easier to read.
+  -- ref. https://www.colorhexa.com/738091
   nightfox = {
-    -- Make comments easier to read.
-    -- ref. https://www.colorhexa.com/738091
+    comment = "#9ea7b3", -- default: #738091
+  },
+  carbonfox = {
     comment = "#9ea7b3", -- default: #738091
   },
 }
@@ -26,4 +29,4 @@ local groups = {
 
 nightfox.setup({ palettes = palettes, groups = groups })
 
-vim.cmd("colorscheme nightfox")
+vim.cmd("colorscheme carbonfox")
