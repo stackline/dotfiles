@@ -144,6 +144,7 @@ cask 'kindle' # Kindle books Viewer
 cask 'android-studio'
 cask 'docker'
 brew 'docker-compose'
+brew 'google-cloud-sdk'
 
 ### Utility
 cask 'alttab'
