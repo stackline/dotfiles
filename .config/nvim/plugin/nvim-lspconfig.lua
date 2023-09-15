@@ -158,6 +158,15 @@ lspconfig.lua_ls.setup {
   }
 }
 
+-- Terraform
+lspconfig.terraformls.setup {
+  -- Common settings
+  on_init = on_init,
+  on_attach = on_attach,
+  capabilities = capabilities,
+  -- Server-specific settings
+}
+
 -- TypeScript
 lspconfig.tsserver.setup {
   -- Common settings
