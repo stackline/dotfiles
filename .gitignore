@@ -4,6 +4,9 @@
 # Bundler
 /.config/bundle/cache/
 
+# configstore
+/.config/configstore/
+
 # Docker
 /.config/docker/.buildNodeID
 /.config/docker/.token_seed
