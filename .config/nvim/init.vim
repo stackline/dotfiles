@@ -117,6 +117,7 @@ Plug 'folke/trouble.nvim'        " Pretty list of diagnostics
 "   No write since last change for buffer
 "
 Plug 'lukas-reineke/lsp-format.nvim' " A wrapper around Neovims native LSP formatting
+Plug 'stevearc/conform.nvim' " formatter
 
 call plug#end() " Automatically executes `filetype plugin indent on`
 
