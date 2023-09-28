@@ -168,12 +168,28 @@ lspconfig.terraformls.setup {
 }
 
 -- TypeScript
-lspconfig.tsserver.setup {
-  -- Common settings
+-- lspconfig.tsserver.setup {
+--   -- Common settings
+--   on_init = on_init,
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   -- Server-specific settings
+-- }
+
+require("typescript-tools").setup {
   on_init = on_init,
   on_attach = on_attach,
   capabilities = capabilities,
-  -- Server-specific settings
+  settings = {
+    tsserver_file_preferences = {
+      includeInlayParameterNameHints = "all",
+      includeInlayEnumMemberValueHints = true,
+      includeInlayFunctionLikeReturnTypeHints = true,
+      includeInlayFunctionParameterTypeHints = true,
+      includeInlayPropertyDeclarationTypeHints = true,
+      includeInlayVariableTypeHints = true
+    },
+  }
 }
 
 -- Vim script
