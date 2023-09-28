@@ -120,6 +120,7 @@ Plug 'lukas-reineke/lsp-format.nvim' " A wrapper around Neovims native LSP forma
 Plug 'stevearc/conform.nvim' " formatter
 Plug 'pmizio/typescript-tools.nvim' " TypeScript integration Neovim deserves
 Plug 'nvim-lua/plenary.nvim' " depended by typescript-tools.nvim
+Plug 'ray-x/lsp_signature.nvim'
 
 call plug#end() " Automatically executes `filetype plugin indent on`
 
