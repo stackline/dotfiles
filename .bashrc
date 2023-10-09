@@ -103,7 +103,7 @@ alias gp='git pull -p'
 alias gr='git restore'
 alias grs='git restore --staged'
 alias gs='git status'
-alias git-switch='git branch | fzf | xargs git switch'
+alias gss='git branch | fzf | xargs git switch'
 
 if type 'nvim' >/dev/null; then
   alias vi='nvim'
