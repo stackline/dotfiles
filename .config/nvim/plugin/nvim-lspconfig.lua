@@ -4,12 +4,6 @@ if not ok then
   return
 end
 
-local ok2, lsp_format = pcall(require, 'lsp-format')
-if not ok2 then
-  print('lsp-format is not loaded.')
-  return
-end
-
 -- -------------------------------------
 -- Suggested configuration
 -- ref. https://github.com/neovim/nvim-lspconfig#suggested-configuration
@@ -28,7 +22,7 @@ end
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -67,9 +61,6 @@ local on_attach = function(client, bufnr)
       vim.diagnostic.open_float(nil, floatopts)
     end
   })
-
-  -- Format on save.
-  lsp_format.on_attach(client)
 end
 
 -- Override handler's config.
