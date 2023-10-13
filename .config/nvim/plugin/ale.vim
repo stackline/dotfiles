@@ -1,6 +1,5 @@
-if PlugIsNotInstalled('ale')
-  finish
-endif
+" TODO: Save settings somewhere.
+finish
 
 " Disable ALE's LSP because it uses Neovim built-in LSP.
 let g:ale_disable_lsp = 1

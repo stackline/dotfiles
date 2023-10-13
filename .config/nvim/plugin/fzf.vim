@@ -1,7 +1,3 @@
-if PlugIsNotInstalled('fzf.vim')
-  finish
-endif
-
 " NOTE: The default key binding for 'tab split' is 'ctrl-t'. But 'ctrl-t'
 " is treated as prefix of tmux. Therefore, I change the key binding for
 " 'tab split'.
