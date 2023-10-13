@@ -55,7 +55,6 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
   -- Vim script plugins
-  { "jiangmiao/auto-pairs" },
   { "junegunn/fzf" },
   { "junegunn/fzf.vim" }, -- fuzzy finder
   { "mhinz/vim-startify" }, -- start screen
@@ -116,6 +115,11 @@ local plugins = {
       "L3MON4D3/LuaSnip",         -- snippet engine
       "onsails/lspkind.nvim",     -- pictograms for completion items
     }
+  },
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    opts = {}
   },
   {
     "nvim-lualine/lualine.nvim", -- statusline and tabline
