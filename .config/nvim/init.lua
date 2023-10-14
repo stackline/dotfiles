@@ -57,7 +57,6 @@ local plugins = {
   -- Vim script plugins
   { "junegunn/fzf" },
   { "junegunn/fzf.vim" }, -- fuzzy finder
-  { "mhinz/vim-startify" }, -- start screen
   { "segeljakt/vim-silicon", cmd = "Silicon" },
   { "tpope/vim-fugitive", cmd = "Git" }, -- git wrapper
 
@@ -115,6 +114,15 @@ local plugins = {
       "L3MON4D3/LuaSnip",         -- snippet engine
       "onsails/lspkind.nvim",     -- pictograms for completion items
     }
+  },
+  {
+    'goolord/alpha-nvim', -- start screen
+    dependencies = {
+      'nvim-tree/nvim-web-devicons'
+    },
+    config = function ()
+      require'alpha'.setup(require'alpha.themes.startify'.config)
+    end
   },
   {
     "windwp/nvim-autopairs",
