@@ -27,6 +27,10 @@ cmp.setup {
       luasnip.lsp_expand(args.body)
     end,
   },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
   mapping = {
     -- <C-p>, <C-n>: Do not insert text when selecting completion candidates,
     -- just like when clicking <Down> key.
