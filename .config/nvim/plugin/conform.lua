@@ -10,6 +10,8 @@ conform.setup({
     javascript = { "prettier" },
     typescript = { "prettier" },
   },
+  -- NOTE: Hit-enter prompt occurs when an error is notified, so disable notifying.
+  notify_on_error = false,
 })
 
 -- format on save
