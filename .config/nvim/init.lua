@@ -124,6 +124,7 @@ local plugins = {
       "hrsh7th/cmp-nvim-lsp",     -- completion source for neovim builtin LSP client
       "hrsh7th/cmp-buffer",       -- completion source for buffer words
       "hrsh7th/cmp-path",         -- completion source for path
+      "hrsh7th/cmp-cmdline",      -- completion source for vim's cmdline
       "saadparwaiz1/cmp_luasnip", -- completion source for luasnip
       "L3MON4D3/LuaSnip",         -- snippet engine
       "onsails/lspkind.nvim",     -- pictograms for completion items

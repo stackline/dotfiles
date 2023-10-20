@@ -73,3 +73,32 @@ cmp.setup {
     }),
   }
 }
+
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline({ '/', '?' }, {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+local custom_mapping = cmp.mapping.preset.cmdline()
+custom_mapping['<Tab>'] = cmp.mapping.confirm()
+
+cmp.setup.cmdline(':', {
+  -- mapping = cmp.mapping.preset.cmdline(),
+  mapping = custom_mapping,
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  }),
+  -- ref. https://github.com/hrsh7th/nvim-cmp/wiki/Advanced-techniques#disabling-cmdline-completion-for-certain-commands-such-as-increname
+  enabled = function()
+    -- Disable completion for specific commands.
+    local cmd = vim.fn.getcmdline()
+    return (cmd:match("w") == nil and cmd:match("q") == nil)
+  end
+})
+
