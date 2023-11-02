@@ -55,6 +55,8 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
   -- Vim script plugins
+  { "junegunn/fzf" },
+  { "junegunn/fzf.vim" }, -- fuzzy finder
   { "segeljakt/vim-silicon", cmd = "Silicon" },
   { "tpope/vim-fugitive", cmd = "Git" }, -- git wrapper
 
@@ -146,13 +148,6 @@ local plugins = {
     "nvim-lualine/lualine.nvim", -- statusline and tabline
     dependencies = {
       "nvim-tree/nvim-web-devicons"
-    }
-  },
-  {
-    "nvim-telescope/telescope.nvim",
-    tag = "0.1.4",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
     }
   },
   {
