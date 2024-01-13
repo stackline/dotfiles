@@ -117,12 +117,24 @@ local function buf_get_branch_name(self)
   file_handle:close()
 
   -- Parse git HEAD.
-  local head_parts = split(head_info, ":")
-  local head_ref = head_parts[2]
-  local head_ref_parts = split(head_ref, "/")
-  local branch_name = head_ref_parts[#head_ref_parts]
+  --
+  -- ### Format of HEAD file
+  --
+  -- HEAD refers to a specific branch => ref: refs/heads/any_branch_name
+  -- HEAD refers to a specific commit => any_commit_hash
+  --
+  local refer_to_branch = (head_info:match("^ref: ") ~= nil)
 
-  return branch_name
+  if refer_to_branch then
+    local head_parts = split(head_info, ":")
+    local head_ref = head_parts[2]
+    local head_ref_parts = split(head_ref, "/")
+    local branch_name = head_ref_parts[#head_ref_parts]
+    return branch_name
+  else
+    local commit_hash = head_info:sub(1,7)
+    return commit_hash
+  end
 end
 
 local function init(buf_filename)
