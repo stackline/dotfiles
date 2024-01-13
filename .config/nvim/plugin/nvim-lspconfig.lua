@@ -30,7 +30,16 @@ local on_attach = function(_, bufnr)
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+
+  -- If typescript-tools' go to source definition command can be used, give priority to it.
+  --
+  -- 2: full match with a command
+  if vim.fn.exists(":TSToolsGoToSourceDefinition") == 2 then
+    vim.keymap.set('n', 'gd', '<cmd>TSToolsGoToSourceDefinition<CR>', bufopts)
+  else
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  end
+
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
