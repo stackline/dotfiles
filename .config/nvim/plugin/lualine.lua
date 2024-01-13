@@ -209,8 +209,14 @@ lualine.setup {
     },
     lualine_b = {},
     lualine_c = {},
-    lualine_x = { 'b:buf_filename' },
+    lualine_x = {},
     lualine_y = {},
     lualine_z = {},
+  },
+  winbar = {
+    lualine_a = { 'b:buf_filename' },
+  },
+  inactive_winbar = {
+    lualine_a = { 'b:buf_filename' },
   },
 }
