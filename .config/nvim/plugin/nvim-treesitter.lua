@@ -13,6 +13,7 @@ configs.setup {
     'hcl',
     'javascript',
     'json',
+    'json5',
     'lua',
     'markdown',
     'prisma',
