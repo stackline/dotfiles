@@ -19,7 +19,7 @@ end
 local shellcheck = require('lint.linters.shellcheck')
 local shellcheck_builtin_parser = shellcheck.parser
 shellcheck.parser = function(output)
-  diagnostics = shellcheck_builtin_parser(output)
+  local diagnostics = shellcheck_builtin_parser(output)
   for i, value in ipairs(diagnostics) do
     diagnostics[i].message = 'SC' .. diagnostics[i].code .. ': ' .. diagnostics[i].message
   end
