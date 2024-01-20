@@ -69,9 +69,11 @@ local plugins = {
     cond = (vim.env.COLORTERM == 'truecolor'),
   },
   {
+    -- Quickstart configs for Nvim LSP
     "neovim/nvim-lspconfig",
     dependencies = {
-      { "j-hui/fidget.nvim", tag = 'legacy' }, -- ui for nvim-lsp progress
+      -- Extensible UI for Neovim notifications and LSP progress messages.
+      { "j-hui/fidget.nvim", tag = 'legacy' },
     }
   },
   {
