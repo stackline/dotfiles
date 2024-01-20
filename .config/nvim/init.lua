@@ -73,7 +73,8 @@ local plugins = {
     "neovim/nvim-lspconfig",
     dependencies = {
       -- Extensible UI for Neovim notifications and LSP progress messages.
-      { "j-hui/fidget.nvim", tag = 'legacy' },
+      -- NOTE: `opts = {}` will automatically call `require("fidget").setup(opts)`
+      { "j-hui/fidget.nvim", tag = 'legacy', opts = {} },
     }
   },
   {
