@@ -8,12 +8,7 @@ end
 -- Linter custom configurations
 ------------------------------------------------------------
 -- Mapping of filetype and linters
--- lint.linters_by_ft = {
---   dockerfile = { 'hadolint' },
---   go = { 'staticcheck' },
---   ruby = { 'rubocop' },
---   sh = { 'shellcheck' },
--- }
+lint.linters_by_ft = {}
 
 -- staticcheck: Display code in message
 local shellcheck = require('lint.linters.shellcheck')
@@ -62,12 +57,14 @@ function try_lint_silently(print_error)
   end
 end
 
-vim.cmd("augroup nvim_lint_trigger_of_linting")
-vim.cmd("  autocmd!")
--- After writing
--- vim.cmd("  autocmd BufWritePost * lua try_lint_silently(false)")
-vim.cmd("  autocmd BufWritePost * lua try_lint_wrapper()")
--- After displaying the selected file with ctrl-p
--- vim.cmd("  autocmd BufWinEnter * lua try_lint_silently(true)")
-vim.cmd("  autocmd BufWinEnter * lua try_lint_wrapper()")
-vim.cmd("augroup END")
+-- TODO: Consider whether to use linter via LSP.
+--
+-- vim.cmd("augroup nvim_lint_trigger_of_linting")
+-- vim.cmd("  autocmd!")
+-- -- After writing
+-- -- vim.cmd("  autocmd BufWritePost * lua try_lint_silently(false)")
+-- vim.cmd("  autocmd BufWritePost * lua try_lint_wrapper()")
+-- -- After displaying the selected file with ctrl-p
+-- -- vim.cmd("  autocmd BufWinEnter * lua try_lint_silently(true)")
+-- vim.cmd("  autocmd BufWinEnter * lua try_lint_wrapper()")
+-- vim.cmd("augroup END")
