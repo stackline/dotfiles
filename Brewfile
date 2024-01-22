@@ -46,18 +46,11 @@ brew 'sdkman-cli' # Java SDK manager
 # $ go install golang.org/x/tools/gopls@latest
 
 ### Development tools
-brew 'bash-language-server' # Bash: LSP server
 brew 'hadolint'             # Dockerfile: Linter
-brew 'gopls'                # Go: LSP server
 brew 'staticcheck'          # Go: Linter
-brew 'lua-language-server'  # Lua: LSP server
 brew 'shellcheck'           # Shell script: Linter
 brew 'shfmt'                # Shell script: Formatter
-brew 'terraform-ls'         # Terraform: LSP server
-# TODO: Consider how to manage npm packages.
-# npm install -g vim-language-server Vim Script: LSP server
 brew 'vint'                 # Vim script: Linter
-brew 'yaml-language-server' # Yaml: LSP server
 brew 'yamllint'             # Yaml: Linter
 
 ### Bash completion

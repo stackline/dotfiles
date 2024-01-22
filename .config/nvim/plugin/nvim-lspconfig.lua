@@ -92,6 +92,10 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   }
 )
 
+-- NOTE: Make sure to set up neodev before lspconfig
+-- ref. https://github.com/folke/neodev.nvim?tab=readme-ov-file#-setup
+require('neodev').setup()
+
 -- -------------------------------------
 -- nvim-cmp autocompletion
 -- ref. https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion#nvim-cmp
@@ -100,13 +104,54 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 -- ref. https://github.com/hrsh7th/cmp-nvim-lsp#setup
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
--- Bash
-lspconfig.bashls.setup {
-  -- Common settings
-  on_init = on_init,
-  on_attach = on_attach,
-  capabilities = capabilities,
-  -- Server-specific settings
+-- ref. https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#setup
+require('mason').setup()
+require('mason-lspconfig').setup()
+
+local servers = {
+  bashls = {},                 -- bash:      (npm) bash-language-server
+  gopls = {                    -- go:        (golang) gopls
+    -- ref. https://github.com/golang/tools/blob/master/gopls/doc/vim.md#custom-configuration
+    gopls = {
+      staticcheck = false,
+    }
+  },
+  graphql = {},                -- graphql:   (npm) graphql-language-service-cli
+  jsonls = {},                 -- json:      (npm) vscode-langservers-extracted
+  kotlin_language_server = {}, -- kotlin:    (github(kotlin)) kotlin-language-server
+  lua_ls = {                   -- lua:       (github(lua)) lua-language-server
+    Lua = {
+      -- ref. https://github.com/LuaLS/lua-language-server/wiki/Privacy#disabling-telemetry
+      telemetry = {
+        enable = false,
+      }
+    }
+  },
+  prismals = {},               -- prisma:    (npm) @prisma/language-server
+  -- NOTE: The ruby-lsp process doesn't end even after neovim ends, and the CPU usage rate becomes 100%.
+  -- ruby_ls = {},                -- ruby:      (gem) ruby-lsp
+  terraformls = {},            -- terraform: (generic(go)) terraform-ls
+  vimls = {},                  -- vim:       (npm) vim-language-server
+  yamlls = {},                 -- yaml:      (npm) yaml-language-server
+}
+
+-- Ensure the servers above are installed
+local mason_lspconfig = require 'mason-lspconfig'
+
+mason_lspconfig.setup {
+  ensure_installed = vim.tbl_keys(servers),
+}
+
+mason_lspconfig.setup_handlers {
+  function(server_name)
+    require('lspconfig')[server_name].setup {
+      capabilities = capabilities,
+      on_init = on_init,
+      on_attach = on_attach,
+      settings = servers[server_name],
+      filetypes = (servers[server_name] or {}).filetypes,
+    }
+  end,
 }
 
 -- C++
@@ -123,61 +168,7 @@ lspconfig.clangd.setup({
   },
 })
 
--- Go
--- ref. https://github.com/golang/tools/blob/master/gopls/doc/vim.md#custom-configuration
-lspconfig.gopls.setup {
-  -- Common settings
-  on_init = on_init,
-  on_attach = on_attach,
-  capabilities = capabilities,
-  -- Server-specific settings
-  settings = {
-    gopls = {
-      staticcheck = false,
-    }
-  }
-}
-
--- Lua
-lspconfig.lua_ls.setup {
-  -- Common settings
-  on_init = on_init,
-  on_attach = on_attach,
-  capabilities = capabilities,
-  -- Server-specific settings
-  settings = {
-    Lua = {
-      diagnostics = {
-        -- Prevent the warning "Undefined global vim"
-        globals = { 'vim' },
-      },
-      -- Disable telemetry.
-      -- ref. https://github.com/LuaLS/lua-language-server/wiki/Privacy#disabling-telemetry
-      telemetry = {
-        enable = false,
-      },
-    }
-  }
-}
-
--- Terraform
-lspconfig.terraformls.setup {
-  -- Common settings
-  on_init = on_init,
-  on_attach = on_attach,
-  capabilities = capabilities,
-  -- Server-specific settings
-}
-
 -- TypeScript
--- lspconfig.tsserver.setup {
---   -- Common settings
---   on_init = on_init,
---   on_attach = on_attach,
---   capabilities = capabilities,
---   -- Server-specific settings
--- }
-
 require("typescript-tools").setup {
   on_init = on_init,
   on_attach = on_attach,
@@ -192,22 +183,4 @@ require("typescript-tools").setup {
       includeInlayVariableTypeHints = true
     },
   }
-}
-
--- Vim script
-lspconfig.vimls.setup {
-  -- Common settings
-  on_init = on_init,
-  on_attach = on_attach,
-  capabilities = capabilities,
-  -- Server-specific settings
-}
-
--- YAML
-lspconfig.yamlls.setup {
-  -- Common settings
-  on_init = on_init,
-  on_attach = on_attach,
-  capabilities = capabilities,
-  -- Server-specific settings
 }

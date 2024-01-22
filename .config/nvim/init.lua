@@ -69,12 +69,18 @@ local plugins = {
     cond = (vim.env.COLORTERM == 'truecolor'),
   },
   {
-    -- Quickstart configs for Nvim LSP
+    -- Configs for Neovim LSP
     "neovim/nvim-lspconfig",
     dependencies = {
-      -- Extensible UI for Neovim notifications and LSP progress messages.
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+
+      -- UI for Neovim notifications and LSP progress messages
       -- NOTE: `opts = {}` will automatically call `require("fidget").setup(opts)`
       { "j-hui/fidget.nvim", tag = 'legacy', opts = {} },
+
+      -- Settings to enable lua-language-server to support Neovim lua API
+      "folke/neodev.nvim",
     }
   },
   {
