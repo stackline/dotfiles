@@ -134,9 +134,8 @@ local plugins = {
       "hrsh7th/cmp-buffer",       -- completion source for buffer words
       "hrsh7th/cmp-path",         -- completion source for path
       "hrsh7th/cmp-cmdline",      -- completion source for vim's cmdline
-      -- TODO: I'm not good at using snippet, so I'll remove it for now.
-      -- "saadparwaiz1/cmp_luasnip", -- completion source for luasnip
-      -- "L3MON4D3/LuaSnip",         -- snippet engine
+      "saadparwaiz1/cmp_luasnip", -- completion source for luasnip
+      "L3MON4D3/LuaSnip",         -- snippet engine
       "onsails/lspkind.nvim",     -- pictograms for completion items
     }
   },
