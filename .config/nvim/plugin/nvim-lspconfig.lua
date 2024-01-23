@@ -124,7 +124,9 @@ local servers = {
       -- ref. https://github.com/LuaLS/lua-language-server/wiki/Privacy#disabling-telemetry
       telemetry = {
         enable = false,
-      }
+      },
+      -- Ignore missing-fields warnings.
+      diagnostics = { disable = { 'missing-fields' } },
     }
   },
   prismals = {},               -- prisma:    (npm) @prisma/language-server
