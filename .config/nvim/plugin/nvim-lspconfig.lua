@@ -16,9 +16,22 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
-local on_init = function()
-  vim.b.lsp_mode = 'LSP'
-end
+vim.api.nvim_create_autocmd("LspAttach", {
+  -- After an LSP client attaches to a buffer, display LSP client names on lualine.
+  -- ref. https://neovim.io/doc/user/lsp.html#lsp-events
+  --
+  -- NOTE: Instead of retrieving all clients each time, it may be possible to
+  -- retrieve only the attached client using vim.lsp.get_client_by_id.
+  callback = function(args)
+    local client_names = {}
+    for _, client in ipairs(vim.lsp.get_active_clients { bufnr = 0 }) do
+      table.insert(client_names, client.name)
+    end
+    local comma_separated_client_names = table.concat(client_names, ', ')
+    local bufnr = args.buf
+    vim.b[bufnr].lsp_mode = 'LSP:'..comma_separated_client_names
+  end,
+})
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -148,7 +161,6 @@ mason_lspconfig.setup_handlers {
   function(server_name)
     require('lspconfig')[server_name].setup {
       capabilities = capabilities,
-      on_init = on_init,
       on_attach = on_attach,
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
@@ -159,7 +171,6 @@ mason_lspconfig.setup_handlers {
 -- C++
 lspconfig.clangd.setup({
   -- Common settings
-  on_init = on_init,
   on_attach = on_attach,
   capabilities = capabilities,
   -- Server-specific settings
@@ -172,7 +183,6 @@ lspconfig.clangd.setup({
 
 -- TypeScript
 require("typescript-tools").setup {
-  on_init = on_init,
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
