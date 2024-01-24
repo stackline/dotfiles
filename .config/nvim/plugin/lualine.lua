@@ -156,11 +156,12 @@ vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
   pattern = { "*" },
   callback = function()
     local m = M.init(vim.api.nvim_buf_get_name(0))
+    local bufnr = vim.api.nvim_get_current_buf()
     -- NOTE: Passing an extra argument "self" by using the colon operator.
     -- ref. https://www.lua.org/pil/16.html
-    vim.b.buf_filename = m:buf_get_filename()
-    vim.b.buf_repository = m:buf_get_repository_name()
-    vim.b.buf_branch = m:buf_get_branch_name()
+    vim.b[bufnr].buf_filename = m:buf_get_filename()
+    vim.b[bufnr].buf_repository = m:buf_get_repository_name()
+    vim.b[bufnr].buf_branch = m:buf_get_branch_name()
   end
 })
 
