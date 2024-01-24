@@ -20,6 +20,7 @@ local groups = {
   all = {
     -- Make the color of the window separator line easier to see.
     WinSeparator = { fg = 'palette.blue' },
+    FloatBorder = { fg = 'fg0' }, -- default: fg = 'fg3'
   },
 }
 
