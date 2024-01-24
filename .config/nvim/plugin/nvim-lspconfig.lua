@@ -134,7 +134,10 @@ local servers = {
       staticcheck = false,
     }
   },
-  graphql = {},                -- graphql:   (npm) graphql-language-service-cli
+  graphql = {                  -- graphql:   (npm) graphql-language-service-cli
+    -- Exclude typescriptreact, javascriptreact
+    filetypes = { 'graphql' },
+  },
   jsonls = {},                 -- json:      (npm) vscode-langservers-extracted
   kotlin_language_server = {}, -- kotlin:    (github(kotlin)) kotlin-language-server
   lua_ls = {                   -- lua:       (github(lua)) lua-language-server
