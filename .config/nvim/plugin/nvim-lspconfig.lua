@@ -8,84 +8,89 @@ end
 -- Suggested configuration
 -- ref. https://github.com/neovim/nvim-lspconfig#suggested-configuration
 -- -------------------------------------
--- Mappings.
+-- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap = true, silent = true }
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
-vim.api.nvim_create_autocmd("LspAttach", {
-  -- After an LSP client attaches to a buffer, display LSP client names on lualine.
-  -- ref. https://neovim.io/doc/user/lsp.html#lsp-events
-  --
-  -- NOTE: Instead of retrieving all clients each time, it may be possible to
-  -- retrieve only the attached client using vim.lsp.get_client_by_id.
-  callback = function(args)
+-- Use LspAttach autocommand to only map the following keys
+-- after the language server attaches to the current buffer
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+
+    -- If typescript-tools' go to source definition command can be used, give priority to it.
+    -- 2: full match with a command
+    --
+    -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    if vim.fn.exists(":TSToolsGoToSourceDefinition") == 2 then
+      vim.keymap.set('n', 'gd', '<cmd>TSToolsGoToSourceDefinition<CR>', opts)
+    else
+      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    end
+
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wl', function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, opts)
+    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+
+    -- Run rename and code_action via Lspsaga.
+    --
+    -- vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+    -- vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', '<space>rn', '<cmd>Lspsaga rename<CR>', opts)
+    vim.keymap.set({ 'n', 'v' }, '<space>ca', '<cmd>Lspsaga code_action<CR>', opts)
+
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<space>f', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+
+    -- Show line diagnostics automatically in hover window
+    -- ref. https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#show-line-diagnostics-automatically-in-hover-window
+    vim.api.nvim_create_autocmd("CursorHold", {
+      buffer = ev.buf,
+      callback = function()
+        local floatopts = {
+          focusable = false,
+          close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+          border = 'single',  -- instead of 'rounded'
+          source = 'if_many', -- instead of 'always'
+          prefix = ' ',
+          scope = 'cursor',
+        }
+        vim.diagnostic.open_float(nil, floatopts)
+      end
+    })
+
+    -- After an LSP client attaches to a buffer, display LSP client names on lualine.
+    -- ref. https://neovim.io/doc/user/lsp.html#lsp-events
+    --
+    -- NOTE: Instead of retrieving all clients each time, it may be possible to
+    -- retrieve only the attached client using vim.lsp.get_client_by_id.
     local client_names = {}
     for _, client in ipairs(vim.lsp.get_active_clients { bufnr = 0 }) do
       table.insert(client_names, client.name)
     end
     local comma_separated_client_names = table.concat(client_names, ', ')
-    local bufnr = args.buf
+    local bufnr = ev.buf
     vim.b[bufnr].lsp_mode = 'LSP:'..comma_separated_client_names
   end,
 })
-
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(_, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-
-  -- If typescript-tools' go to source definition command can be used, give priority to it.
-  --
-  -- 2: full match with a command
-  if vim.fn.exists(":TSToolsGoToSourceDefinition") == 2 then
-    vim.keymap.set('n', 'gd', '<cmd>TSToolsGoToSourceDefinition<CR>', bufopts)
-  else
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  end
-
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufopts)
-  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-  -- vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-  -- vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', '<space>rn', '<cmd>Lspsaga rename<CR>', bufopts)
-  vim.keymap.set('n', '<space>ca', '<cmd>Lspsaga code_action<CR>', bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
-
-  -- Show line diagnostics automatically in hover window
-  -- ref. https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#show-line-diagnostics-automatically-in-hover-window
-  vim.api.nvim_create_autocmd("CursorHold", {
-    buffer = bufnr,
-    callback = function()
-      local floatopts = {
-        focusable = false,
-        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-        border = 'single',  -- instead of 'rounded'
-        source = 'if_many', -- instead of 'always'
-        prefix = ' ',
-        scope = 'cursor',
-      }
-      vim.diagnostic.open_float(nil, floatopts)
-    end
-  })
-end
 
 -- Override handler's config.
 -- ref. https://neovim.io/doc/user/lsp.html#lsp-handlers
@@ -161,7 +166,6 @@ mason_lspconfig.setup_handlers {
   function(server_name)
     require('lspconfig')[server_name].setup {
       capabilities = capabilities,
-      on_attach = on_attach,
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
     }
@@ -171,7 +175,6 @@ mason_lspconfig.setup_handlers {
 -- C++
 lspconfig.clangd.setup({
   -- Common settings
-  on_attach = on_attach,
   capabilities = capabilities,
   -- Server-specific settings
   cmd = { 'clangd', '--background-index', '-header-insertion=never' },
@@ -183,7 +186,6 @@ lspconfig.clangd.setup({
 
 -- TypeScript
 require("typescript-tools").setup {
-  on_attach = on_attach,
   capabilities = capabilities,
   settings = {
     tsserver_file_preferences = {
