@@ -172,12 +172,12 @@ local plugins = {
       "neovim/nvim-lspconfig"
     }
   },
-  {
-    "ray-x/lsp_signature.nvim",
-    event = "VeryLazy",
-    config = function(_, opts) require'lsp_signature'.setup(opts) end
-  },
-  { "mfussenegger/nvim-lint" }, -- linter
+  -- {
+  --   "ray-x/lsp_signature.nvim",
+  --   event = "VeryLazy",
+  --   config = function(_, opts) require'lsp_signature'.setup(opts) end
+  -- },
+  -- { "mfussenegger/nvim-lint" }, -- linter
   { "stevearc/conform.nvim" }, -- formatter
   { "lewis6991/gitsigns.nvim" }, -- display git diff signs
 }

@@ -1,26 +1,26 @@
-local ok, lint = pcall(require, 'lint')
-if not ok then
-  print('nvim-lint is not loaded.')
-  return
-end
-
-------------------------------------------------------------
--- Linter custom configurations
-------------------------------------------------------------
--- Mapping of filetype and linters
-lint.linters_by_ft = {}
-
--- staticcheck: Display code in message
-local shellcheck = require('lint.linters.shellcheck')
-local shellcheck_builtin_parser = shellcheck.parser
-shellcheck.parser = function(output)
-  local diagnostics = shellcheck_builtin_parser(output)
-  for i, _ in ipairs(diagnostics) do
-    diagnostics[i].message = 'SC' .. diagnostics[i].code .. ': ' .. diagnostics[i].message
-  end
-  return diagnostics
-end
-
+-- local ok, lint = pcall(require, 'lint')
+-- if not ok then
+--   print('nvim-lint is not loaded.')
+--   return
+-- end
+--
+-- ------------------------------------------------------------
+-- -- Linter custom configurations
+-- ------------------------------------------------------------
+-- -- Mapping of filetype and linters
+-- lint.linters_by_ft = {}
+--
+-- -- staticcheck: Display code in message
+-- local shellcheck = require('lint.linters.shellcheck')
+-- local shellcheck_builtin_parser = shellcheck.parser
+-- shellcheck.parser = function(output)
+--   local diagnostics = shellcheck_builtin_parser(output)
+--   for i, _ in ipairs(diagnostics) do
+--     diagnostics[i].message = 'SC' .. diagnostics[i].code .. ': ' .. diagnostics[i].message
+--   end
+--   return diagnostics
+-- end
+--
 -- ------------------------------------------------------------
 -- -- Triggers of linting
 -- ------------------------------------------------------------
