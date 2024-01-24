@@ -148,6 +148,7 @@ local servers = {
     }
   },
   prismals = {},               -- prisma:    (npm) @prisma/language-server
+  pyright = {},                -- python:    (npm) pyright
   -- NOTE: The ruby-lsp process doesn't end even after neovim ends, and the CPU usage rate becomes 100%.
   -- ruby_ls = {},                -- ruby:      (gem) ruby-lsp
   terraformls = {},            -- terraform: (generic(go)) terraform-ls
