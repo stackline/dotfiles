@@ -21,9 +21,9 @@ local groups = {
     -- Make the color of the window separator line easier to see.
     WinSeparator = { fg = 'palette.blue' },
     FloatBorder = { fg = 'fg0' }, -- default: fg = 'fg3'
-    -- This setting makes the background color of the funciton signature
-    -- displayed in lsp_signature.nvim the same as the background color of the editor.
-    -- NormalFloat = { bg = 'bg1' }, -- default: bg = 'bg0'
+    -- Make the background color of hover information in a floating window
+    -- the same as editor background color.
+    NormalFloat = { bg = 'bg1' }, -- default: bg = 'bg0'
   },
 }
 
