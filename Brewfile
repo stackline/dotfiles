@@ -110,7 +110,7 @@ cask 'google-chrome'
 
 ### Client
 cask 'cyberduck' # FTP client
-cask 'insomnia'  # API client for REST and GraphQL
+cask 'altair-graphql-client' # GraphQL Client
 cask 'tableplus' # SQL client
 cask 'beekeeper-studio' # SQL client
 
