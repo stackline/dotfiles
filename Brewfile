@@ -64,6 +64,7 @@ brew 'gem-completion'
 brew 'bash'
 brew 'bat' # alternative to cat
 brew 'bats-core' # Testing framework for Bash
+brew 'direnv'
 brew 'fd'
 brew 'fzf'
 brew 'gh'
