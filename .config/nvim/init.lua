@@ -182,7 +182,12 @@ local plugins = {
   { "lewis6991/gitsigns.nvim" }, -- display git diff signs
 }
 
-local opts = {}
+local opts = {
+  ui = {
+    -- Display single border on the UI window.
+    border = "single",
+  }
+}
 
 vim.g.mapleader = " "
 require("lazy").setup(plugins, opts)
