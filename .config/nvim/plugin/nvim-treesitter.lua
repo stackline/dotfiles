@@ -16,6 +16,7 @@ configs.setup {
     'json5',
     'lua',
     'markdown',
+    'markdown_inline', -- Used by Lspsaga
     'prisma',
     'ruby',
     'tsx',
