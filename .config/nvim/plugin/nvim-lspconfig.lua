@@ -126,21 +126,33 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 require('mason').setup()
 require('mason-lspconfig').setup()
 
+-- bash      bashls                 (npm)      bash-language-server
+-- go        gopls                  (golang)   gopls
+-- graphql   graphql                (npm)      graphql-language-service-cli
+-- json      jsonls                 (npm)      vscode-langservers-extracted
+-- kotlin    kotlin_language_server (github)   kotlin-language-server
+-- lua       lua_ls                 (github)   lua-language-server
+-- prisma    prismals               (npm)      @prisma/language-server
+-- python    pyright                (npm)      pyright
+-- ruby      ryy_ls                 (gem)      ruby-lsp
+-- terraform terraformls            (homebrew) terraform-ls
+-- vim       vimls                  (npm)      vim-language-server
+-- yaml      yamlls                 (npm)      yaml-language-server
 local servers = {
-  bashls = {},                 -- bash:      (npm) bash-language-server
-  gopls = {                    -- go:        (golang) gopls
+  bashls = {},
+  gopls = {
     -- ref. https://github.com/golang/tools/blob/master/gopls/doc/vim.md#custom-configuration
     gopls = {
       staticcheck = false,
     }
   },
-  graphql = {                  -- graphql:   (npm) graphql-language-service-cli
+  graphql = {
     -- Exclude typescriptreact, javascriptreact
     filetypes = { 'graphql' },
   },
-  jsonls = {},                 -- json:      (npm) vscode-langservers-extracted
-  kotlin_language_server = {}, -- kotlin:    (github(kotlin)) kotlin-language-server
-  lua_ls = {                   -- lua:       (github(lua)) lua-language-server
+  jsonls = {},
+  kotlin_language_server = {},
+  lua_ls = {
     Lua = {
       -- ref. https://github.com/LuaLS/lua-language-server/wiki/Privacy#disabling-telemetry
       telemetry = {
@@ -150,13 +162,13 @@ local servers = {
       diagnostics = { disable = { 'missing-fields' } },
     }
   },
-  prismals = {},               -- prisma:    (npm) @prisma/language-server
-  pyright = {},                -- python:    (npm) pyright
+  prismals = {},
+  pyright = {},
   -- NOTE: The ruby-lsp process doesn't end even after neovim ends, and the CPU usage rate becomes 100%.
-  -- ruby_ls = {},                -- ruby:      (gem) ruby-lsp
-  terraformls = {},            -- terraform: (generic(go)) terraform-ls
-  vimls = {},                  -- vim:       (npm) vim-language-server
-  yamlls = {},                 -- yaml:      (npm) yaml-language-server
+  -- ruby_ls = {},
+  terraformls = {},
+  vimls = {},
+  yamlls = {},
 }
 
 -- Ensure the servers above are installed
