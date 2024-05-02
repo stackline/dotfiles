@@ -160,7 +160,8 @@ vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
     -- NOTE: Passing an extra argument "self" by using the colon operator.
     -- ref. https://www.lua.org/pil/16.html
     vim.b[bufnr].buf_filename = m:buf_get_filename()
-    vim.b[bufnr].buf_repository = m:buf_get_repository_name()
+    -- NOTE: If I want to display the repository name, uncomment this line.
+    -- vim.b[bufnr].buf_repository = m:buf_get_repository_name()
     vim.b[bufnr].buf_branch = m:buf_get_branch_name()
   end
 })
@@ -172,7 +173,7 @@ local nvim_web_devicons = require 'nvim-web-devicons'
 lualine.setup {
   sections = {
     -- Default: lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_b = { 'b:buf_repository', 'b:buf_branch', 'diff', 'b:lsp_mode', 'diagnostics' },
+    lualine_b = { 'b:buf_branch', 'b:lsp_mode', 'diagnostics' },
     lualine_c = { 'b:buf_filename' },
   },
   tabline = {
