@@ -151,7 +151,7 @@ local M = { init = init }
 
 -- Run once after reading a file to a buffer.
 local group_id = vim.api.nvim_create_augroup('MyLuaLineGroup', {})
-vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
+vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufReadPost' }, {
   group = group_id,
   pattern = { "*" },
   callback = function()
