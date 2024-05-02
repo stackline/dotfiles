@@ -126,20 +126,22 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 require('mason').setup()
 require('mason-lspconfig').setup()
 
--- bash      bashls                 (npm)      bash-language-server
--- go        gopls                  (golang)   gopls
--- graphql   graphql                (npm)      graphql-language-service-cli
--- json      jsonls                 (npm)      vscode-langservers-extracted
--- kotlin    kotlin_language_server (github)   kotlin-language-server
--- lua       lua_ls                 (github)   lua-language-server
--- prisma    prismals               (npm)      @prisma/language-server
--- python    pyright                (npm)      pyright
--- ruby      ryy_ls                 (gem)      ruby-lsp
--- terraform terraformls            (homebrew) terraform-ls
--- vim       vimls                  (npm)      vim-language-server
--- yaml      yamlls                 (npm)      yaml-language-server
+-- bash      bashls                          (npm)      bash-language-server
+-- compose   docker_compose_language_service (npm)      @microsoft/compose-language-service
+-- go        gopls                           (golang)   gopls
+-- graphql   graphql                         (npm)      graphql-language-service-cli
+-- json      jsonls                          (npm)      vscode-langservers-extracted
+-- kotlin    kotlin_language_server          (github)   kotlin-language-server
+-- lua       lua_ls                          (github)   lua-language-server
+-- prisma    prismals                        (npm)      @prisma/language-server
+-- python    pyright                         (npm)      pyright
+-- ruby      ryy_ls                          (gem)      ruby-lsp
+-- terraform terraformls                     (homebrew) terraform-ls
+-- vim       vimls                           (npm)      vim-language-server
+-- yaml      yamlls                          (npm)      yaml-language-server
 local servers = {
   bashls = {},
+  docker_compose_language_service = {},
   gopls = {
     -- ref. https://github.com/golang/tools/blob/master/gopls/doc/vim.md#custom-configuration
     gopls = {
