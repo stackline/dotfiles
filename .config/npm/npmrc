@@ -1,4 +1,11 @@
 # ref. https://docs.npmjs.com/misc/config#update-notifier
 update-notifier=false
 # Pin version when saving dependencies
-save-exact=true
+#
+#   true:  Add dependencies without caret range(^).
+#          ex) "package name": "X.Y.Z"
+#
+#   false: Add dependencies with caret range (^). This is default.
+#          ex) "package name": "^X.Y.Z"
+#
+save-exact=false
