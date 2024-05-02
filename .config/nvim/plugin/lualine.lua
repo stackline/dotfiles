@@ -173,6 +173,7 @@ lualine.setup {
   sections = {
     -- Default: lualine_b = {'branch', 'diff', 'diagnostics'},
     lualine_b = { 'b:buf_repository', 'b:buf_branch', 'diff', 'b:lsp_mode', 'diagnostics' },
+    lualine_c = { 'b:buf_filename' },
   },
   tabline = {
     lualine_a = {
@@ -214,10 +215,14 @@ lualine.setup {
     lualine_y = {},
     lualine_z = {},
   },
-  winbar = {
-    lualine_a = { 'b:buf_filename' },
-  },
-  inactive_winbar = {
-    lualine_a = { 'b:buf_filename' },
-  },
+  -- winbar = {},
+  -- inactive_winbar = {},
 }
+
+-- lspsaga.nvim displays breadcrumbs on the winbar,
+-- so lualine doesn't display anything on the winbar.
+-- ref: https://github.com/nvim-lualine/lualine.nvim?tab=readme-ov-file#disabling-lualine
+lualine.hide({
+  place = {'winbar'},
+  unhide = false,
+})

@@ -89,7 +89,7 @@ local plugins = {
     config = function()
       require('lspsaga').setup({
         lightbulb = { enable = false },
-        symbol_in_winbar = { enable = false },
+        symbol_in_winbar = { enable = true },
       })
     end,
     dependencies = {
@@ -266,6 +266,7 @@ vim.opt.laststatus = 3        -- Have a global statusline at the bottom instead 
 vim.opt.mouse = ""            -- Disable mouse support
 vim.opt.ambiwidth = "single"  -- Display East Asian Ambiguous Width characters in 1 byte
 vim.opt.updatetime = 300      -- Fire CursorHold event immediately and display diagnostic message
+vim.opt.winbar = " "          -- Display the winbar in advance to display breadcrumbs.
 
 
 ------------------------------------------------------------
