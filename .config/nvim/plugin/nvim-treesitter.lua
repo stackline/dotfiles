@@ -8,12 +8,14 @@ configs.setup {
   -- NOTE: It takes time to install all parsers, so be limited.
   ensure_installed = {
     'bash',
+    'cue',
     'go',
     'graphql',
     'hcl',
     'javascript',
     'json',
     'json5',
+    'kotlin',
     'lua',
     'markdown',
     'markdown_inline', -- Used by Lspsaga
