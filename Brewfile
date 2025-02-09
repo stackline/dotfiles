@@ -128,7 +128,7 @@ cask 'processing'
 cask 'google-japanese-ime'
 
 ### Terminal emulator
-cask 'wezterm'
+cask 'ghostty'
 
 ### Viewer
 cask 'adobe-acrobat-reader' # PDF viewer

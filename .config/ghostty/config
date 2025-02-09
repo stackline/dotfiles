@@ -1,0 +1,5 @@
+# To generally disable most ligatures, use `-calt, -liga, -dlig`.
+# https://ghostty.org/docs/config/reference#font-feature
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
