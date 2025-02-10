@@ -13,4 +13,5 @@ export PATH=$PATH:$HOME/.docker/bin
 # (a) Manually create a symbolic link.
 # (b) Specify the docker socket path in DOCKER_HOST.
 #
-export DOCKER_HOST=unix://$HOME/.docker/run/docker.sock
+# If you use Docker Desktop for Mac and choose (b), specify DOCKER_HOST as follows:
+# export DOCKER_HOST=unix://$HOME/.docker/run/docker.sock
