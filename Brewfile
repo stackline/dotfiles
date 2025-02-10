@@ -110,8 +110,8 @@ cask 'firefox'
 cask 'google-chrome'
 
 ### Client
+# GraphiQL is good enough as a GraphQL client.
 cask 'cyberduck' # FTP client
-cask 'altair-graphql-client' # GraphQL Client
 cask 'tableplus' # SQL client
 cask 'beekeeper-studio' # SQL client
 
