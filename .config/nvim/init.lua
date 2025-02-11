@@ -164,7 +164,15 @@ local plugins = {
     dependencies = {
       "nvim-tree/nvim-web-devicons"
     },
+    opts = {},
     cmd = "Trouble",
+    keys = {
+      {
+        "tt",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+    },
   },
   {
     "pmizio/typescript-tools.nvim", -- typescript integration
