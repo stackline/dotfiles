@@ -77,7 +77,7 @@ local plugins = {
 
       -- UI for Neovim notifications and LSP progress messages
       -- NOTE: `opts = {}` will automatically call `require("fidget").setup(opts)`
-      { "j-hui/fidget.nvim", tag = 'legacy', opts = {} },
+      { "j-hui/fidget.nvim", opts = {} },
 
       -- Settings to enable lua-language-server to support Neovim lua API
       "folke/neodev.nvim",
