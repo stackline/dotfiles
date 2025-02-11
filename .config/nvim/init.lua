@@ -163,7 +163,8 @@ local plugins = {
     "folke/trouble.nvim", -- pretty list for showing diagnostics
     dependencies = {
       "nvim-tree/nvim-web-devicons"
-    }
+    },
+    cmd = "Trouble",
   },
   {
     "pmizio/typescript-tools.nvim", -- typescript integration
