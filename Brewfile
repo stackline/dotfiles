@@ -5,23 +5,15 @@
 # --------------------------------------
 
 ### Compiler
-# [Linux]
-# GCC and glibc are used in the basic part of linuxbrew.
-# If it is deleted, an error occurs during package installation
-# or application execution.
-brew 'gcc' if RUBY_PLATFORM.include?('linux')
-
-# [macOS]
 # Use with AtCoder.
 brew 'gcc@9'
 
-# [macOS]
 # Use clangd with LSP service.
 # Put below compile_flags.txt to the repository root directory, if you need to include "bits/stdc++.h".
 #
 #   $ echo "-I${HOMEBREW_PREFIX}/include" > compile_flags.txt
 #
-brew 'llvm' if /darwin/ =~ RUBY_PLATFORM
+brew 'llvm'
 
 ### Manager
 # NOTE: Use multiple Go versions with Homebrew.
@@ -60,7 +52,6 @@ brew 'bash-completion@2'
 brew 'gem-completion'
 
 ### Utility
-# [macOS]
 # $ echo "${HOMEBREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells
 # $ chsh -s "${HOMEBREW_PREFIX}/bin/bash"
 brew 'bash'
@@ -88,18 +79,6 @@ brew 'tree'
 brew 'universal-ctags'
 brew 'wget'
 brew 'xdg-ninja'
-
-if RUBY_PLATFORM.include?('linux')
-  # If you do not have this package when installing ruby via rbenv,
-  # the following error will occur.
-  #
-  #   configure: error: gettimeofday() must exist
-  #
-  brew 'linux-headers'
-end
-
-# Mac OS only install below packages.
-return unless /darwin/ =~ RUBY_PLATFORM
 
 # --------------------------------------
 # Homebrew Cask packages
