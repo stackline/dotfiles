@@ -52,6 +52,8 @@ brew 'shellcheck'           # Shell script: Linter
 brew 'shfmt'                # Shell script: Formatter
 brew 'vint'                 # Vim script: Linter
 brew 'yamllint'             # Yaml: Linter
+brew 'docker-compose'
+brew 'google-cloud-sdk'
 
 ### Bash completion
 brew 'bash-completion@2'
@@ -100,44 +102,35 @@ end
 return unless /darwin/ =~ RUBY_PLATFORM
 
 # --------------------------------------
-# Homebrew-Cask packages
+# Homebrew Cask packages
 # --------------------------------------
-### Taps
+### taps
 tap 'homebrew/cask'
 
-### Browser
-cask 'firefox'
-cask 'google-chrome'
+### browsers
+cask 'firefox'              # web browser
+cask 'google-chrome'        # web browser
+cask 'adobe-acrobat-reader' # pdf viewer
+cask 'kindle'               # kindle books viewer
 
-### Client
-# GraphiQL is good enough as a GraphQL client.
-cask 'cyberduck' # FTP client
-cask 'tableplus' # SQL client
-cask 'beekeeper-studio' # SQL client
-
-### Communication tool
+### collaboration tools
+cask 'notion'
 cask 'slack'
 cask 'zoom'
 
-### Editor, IDE
-cask 'cursor'
-cask 'visual-studio-code'
+### development tools
+# GraphiQL is good enough as a graphql client.
+cask 'ghostty'            # terminal emulator
+cask 'cursor'             # code editor
+cask 'visual-studio-code' # code editor
+cask 'android-stuido'     # android app IDE
+cask 'beekeeper-studio'   # sql client
+cask 'tableplus'          # sql client
+cask 'cyberduck'          # ftp client
+cask 'docker'             # container management tool
+cask 'rancher'            # container management tool
 
-### Terminal emulator
-cask 'ghostty'
-
-### Viewer
-cask 'adobe-acrobat-reader' # PDF viewer
-cask 'kindle' # Kindle books Viewer
-
-### Development environment
-cask 'android-studio'
-cask 'docker'
-brew 'docker-compose'
-brew 'google-cloud-sdk'
-
-### Utility
-cask 'alttab'
-cask 'imageoptim'
-cask 'notion'
-cask '1password' # Password manager
+### utilities
+cask 'alttab'     # windows-like alt tab
+cask 'imageoptim' # image compressor
+cask '1password'  # password manager
