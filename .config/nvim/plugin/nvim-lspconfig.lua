@@ -166,8 +166,7 @@ local servers = {
   },
   prismals = {},
   pyright = {},
-  -- NOTE: The ruby-lsp process doesn't end even after neovim ends, and the CPU usage rate becomes 100%.
-  -- ruby_ls = {},
+  -- ruby_lsp = {},
   terraformls = {},
   vimls = {},
   yamlls = {},
