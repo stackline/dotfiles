@@ -16,14 +16,7 @@ brew 'gcc@9'
 brew 'llvm'
 
 ### Manager
-# NOTE: Use multiple Go versions with Homebrew.
-#
-# * After adding goenv path to $PATH, exporting to $PATH is sometimes slow.
-# * Fix Go version of Homebrew with "$ brew pin".
-# * Install multiple Go versions by referring to the following articles.
-#   * ref. https://golang.org/doc/manage-install#installing-multiple
-#
-brew 'go'
+brew 'goenv'     # Go version manager
 brew 'nodenv'    # Node version manager
 brew 'pyenv'     # Python version manager
 brew 'pipenv'    # Python development workflow
