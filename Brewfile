@@ -95,7 +95,7 @@ cask 'zoom'
 cask 'ghostty'            # terminal emulator
 cask 'cursor'             # code editor
 cask 'visual-studio-code' # code editor
-cask 'android-stuido'     # android app IDE
+cask 'android-studio'     # android app IDE
 cask 'beekeeper-studio'   # sql client
 cask 'tableplus'          # sql client
 cask 'cyberduck'          # ftp client
