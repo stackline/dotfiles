@@ -121,11 +121,6 @@ cask 'zoom'
 
 ### Editor, IDE
 cask 'visual-studio-code'
-cask 'eclipse-java'
-cask 'processing'
-
-### Input method
-cask 'google-japanese-ime'
 
 ### Terminal emulator
 cask 'ghostty'
