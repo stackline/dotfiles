@@ -6,10 +6,9 @@ end
 
 module.setup {
   -- NOTE: Make it easy to see git signs by making the vertical line text to thick.
-  -- ref. https://github.com/lewis6991/gitsigns.nvim#usage
   signs = {
-    add    = { hl = 'GitSignsAdd', text = '▌', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
-    change = { hl = 'GitSignsChange', text = '▌', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
+    add    = { text = '▌' },
+    change = { text = '▌' },
   },
 
   -- Keymaps
