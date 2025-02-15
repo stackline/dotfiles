@@ -120,6 +120,7 @@ cask 'slack'
 cask 'zoom'
 
 ### Editor, IDE
+cask 'cursor'
 cask 'visual-studio-code'
 
 ### Terminal emulator
