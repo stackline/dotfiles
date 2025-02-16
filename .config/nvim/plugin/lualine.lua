@@ -211,7 +211,7 @@ lualine.setup {
     },
     lualine_b = {},
     lualine_c = {},
-    lualine_x = {},
+    lualine_x = { 'b:buf_filename' },
     lualine_y = {},
     lualine_z = {},
   },
