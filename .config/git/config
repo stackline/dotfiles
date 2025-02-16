@@ -9,9 +9,11 @@
   hooksPath = ~/.config/git/hooks
 [pager]
   # ref. https://github.com/git/git/tree/master/contrib/diff-highlight
-  log  = (diff-highlight 2>/dev/null || cat) | less
-  show = (diff-highlight 2>/dev/null || cat) | less
-  diff = (diff-highlight 2>/dev/null || cat) | less
+  # --tabs=n,...
+  #   When displaying the diff of go file, specify the tab width as 4 spaces.
+  log  = (diff-highlight 2>/dev/null || cat) | less --tabs=1,5,9,13,17
+  show = (diff-highlight 2>/dev/null || cat) | less --tabs=1,5,9,13,17
+  diff = (diff-highlight 2>/dev/null || cat) | less --tabs=1,5,9,13,17
 [interactive]
   # Use diff-highlight with "git add --patch"
   diffFilter = (diff-highlight 2>/dev/null || cat)
