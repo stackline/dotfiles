@@ -127,61 +127,40 @@ bind -x '"\C-r": fzf_history_search'
 # Utilities
 # --------------------------------------
 function update-various-packages() {
-  echo '' # spacer
-  echo::bold '### update vim plugins'
-  echo '' # spacer
-
-  local readonly vim_plug_update_log='/tmp/vim-plug-update.log'
-  if [ ! -e "$vim_plug_update_log" ]; then
-    touch "$vim_plug_update_log"
-  fi
-  #
-  # --headless
-  #   Do not switch screen from shell to vim.
-  # set modifiable
-  #   Enable to modify buffer.
-  # %w!
-  #   %  ... means all lines for range.
-  #   %w ... means write all lines to a file.
-  #   !  ... avoid the following error. "E13: File exists (add ! to override)"
-  #
-  nvim --headless -c 'PlugUpdate' -c 'set modifiable' -c "silent %w! $vim_plug_update_log" -c 'qa'
-  echo '' # line break
-  cat "$vim_plug_update_log"
+  echo::bold '[neovim: lazy check]'
+  nvim --headless "+Lazy! check" +qa
 
   echo '' # spacer
-  echo::bold '### examine changes from previous update'
-  echo '' # spacer
 
-  local readonly vim_plug_diff_log='/tmp/vim-plug-diff.log'
-  if [ ! -e "$vim_plug_diff_log" ]; then
-    touch "$vim_plug_diff_log"
-  fi
-  nvim --headless -c 'PlugDiff' -c 'set modifiable' -c "silent %w! $vim_plug_diff_log" -c 'qa'
-  echo '' # line break
-  cat "$vim_plug_diff_log"
+  echo::bold '[neovim: lazy sync]'
+  nvim --headless "+Lazy! sync" +qa
 
   echo '' # spacer
-  echo::bold '### update homebrew formulas and casks'
-  echo '' # spacer
 
+  echo::bold '[homebrew: brew update]'
   brew update
-  # Upgrade
-  #   outdated, unpinned formulae
-  #   outdated casks
-  #   outdated casks with auto_updates true (ex. google-chrome)
-  # Do not upgrade
-  #   outdated casks with version :latest (ex. google-japanese-ime)
+
+  echo '' # spacer
+
+  echo::bold '[homebrew: brew upgrade --greedy-auto-updates]'
   brew upgrade --greedy-auto-updates
+
+  echo '' # spacer
+
+  echo::bold '[homebrew: brew autoremove]'
   brew autoremove # Uninstall formulae that are no longer needed.
+
+  echo '' # spacer
+
+  echo::bold '[homebrew: brew doctor]'
   brew doctor
 
-  if command -v npm 1>/dev/null 2>/dev/null; then
-    echo '' # spacer
-    echo::bold '### update npm packages installed globally'
-    echo '' # spacer
+  echo '' # spacer
 
+  if command -v npm 1>/dev/null 2>/dev/null; then
+    echo::bold '[npm: npm outdated -g]'
     npm outdated -g
+
     # TODO: Update only if outdated packages exist.
     # npm update -g
   fi
