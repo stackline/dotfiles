@@ -195,7 +195,19 @@ local opts = {
   ui = {
     -- Display single border on the UI window.
     border = "single",
-  }
+  },
+  -- Output options for headless mode
+  headless = {
+    -- show the output from process commands like git (default: true)
+    -- note: If true, line break is unstable on output. If false, line break is guaranteed.
+    process = false,
+    -- show log messages
+    log = true,
+    -- show task start/end (default: true)
+    task = false,
+    -- use ansi colors
+    colors = true,
+  },
 }
 
 vim.g.mapleader = " "
