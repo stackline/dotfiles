@@ -265,7 +265,7 @@ vim.keymap.set('n', 'tp', ':tabprevious<CR>', { silent = true })
 vim.keymap.set('n', '<Space>', '<Nop>', {})
 
 vim.opt.number = true
-vim.opt.list = true
+vim.opt.list = false          -- Don't display tab as character
 vim.opt.wrap = false
 vim.opt.fixeol = false
 vim.opt.incsearch = true
