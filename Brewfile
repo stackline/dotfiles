@@ -37,7 +37,7 @@ brew 'shellcheck'           # Shell script: Linter
 brew 'shfmt'                # Shell script: Formatter
 brew 'vint'                 # Vim script: Linter
 brew 'yamllint'             # Yaml: Linter
-brew 'docker-compose'
+brew 'docker-compose'       # required to use "docker compose" command with rancher
 brew 'google-cloud-sdk'
 
 ### Bash completion
