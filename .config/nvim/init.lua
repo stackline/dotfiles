@@ -99,7 +99,9 @@ local plugins = {
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    -- build = { vim.cmd('TSUpdateSync') },
+    -- Update installed parsers synchronously when updating package.
+    -- ref. https://github.com/nvim-treesitter/nvim-treesitter/wiki/Installation#lazynvim
+    build = ":TSUpdateSync",
     dependencies = {
       --
       -- NOTE: Difference in behavior between nvim-treesitter-endwise and vim-endwise
