@@ -10,12 +10,6 @@ if command -v goenv >/dev/null 2>&1; then
     eval "$(goenv init -)"
     PATH=$(dietpath_wrapper)
     export PATH
-
-    # goenv manages GOPATH and GOROOT (recommended)
-    # ref: https://github.com/go-nv/goenv/blob/master/INSTALL.md
-    export PATH="$GOROOT/bin:$PATH"
-    export PATH="$PATH:$GOPATH/bin"
-
     goenv "$@"
   }
 fi
