@@ -210,6 +210,10 @@ local opts = {
     -- use ansi colors
     colors = true,
   },
+  -- no plugins require luarocks, so disable luarocks support.
+  rocks = {
+    enabled = false,
+  }
 }
 
 vim.g.mapleader = " "
