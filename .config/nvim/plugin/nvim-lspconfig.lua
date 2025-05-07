@@ -122,10 +122,6 @@ require('neodev').setup()
 -- ref. https://github.com/hrsh7th/cmp-nvim-lsp#setup
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
--- ref. https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#setup
-require('mason').setup()
-require('mason-lspconfig').setup()
-
 -- bash      bashls                          (npm)      bash-language-server
 -- compose   docker_compose_language_service (npm)      @microsoft/compose-language-service
 -- go        gopls                           (golang)   gopls
@@ -172,22 +168,11 @@ local servers = {
   yamlls = {},
 }
 
--- Ensure the servers above are installed
-local mason_lspconfig = require 'mason-lspconfig'
-
-mason_lspconfig.setup {
+require('mason').setup()
+require('mason-lspconfig').setup({
+  -- Ensure the servers above are installed
   ensure_installed = vim.tbl_keys(servers),
-}
-
-mason_lspconfig.setup_handlers {
-  function(server_name)
-    require('lspconfig')[server_name].setup {
-      capabilities = capabilities,
-      settings = servers[server_name],
-      filetypes = (servers[server_name] or {}).filetypes,
-    }
-  end,
-}
+})
 
 -- C++
 lspconfig.clangd.setup({
