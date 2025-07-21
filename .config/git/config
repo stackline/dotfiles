@@ -5,8 +5,6 @@
   defaultBranch = main
 [commit]
   template = ~/.config/git/gitmessage
-[core]
-  hooksPath = ~/.config/git/hooks
 [pager]
   # ref. https://github.com/git/git/tree/master/contrib/diff-highlight
   # --tabs=n,...
