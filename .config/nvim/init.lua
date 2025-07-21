@@ -187,7 +187,7 @@ local plugins = {
   --   config = function(_, opts) require'lsp_signature'.setup(opts) end
   -- },
   -- { "mfussenegger/nvim-lint" }, -- linter
-  { "stevearc/conform.nvim" }, -- formatter
+  -- { "stevearc/conform.nvim" }, -- formatter
   { "lewis6991/gitsigns.nvim" }, -- display git diff signs
 }
 
