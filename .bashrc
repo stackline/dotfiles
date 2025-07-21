@@ -118,9 +118,21 @@ alias gem-uninstall-all-gems-except-default='gem uninstall -a -x --user-install 
 alias ssh-add-apple-use-keychanin='ssh-add --apple-use-keychain'
 
 # --------------------------------------
+# Helper functions
+# --------------------------------------
+function is_interactive() {
+  local shell_option_flags="$-"
+  [[ "${shell_option_flags}" == *i* ]]
+}
+
+# --------------------------------------
 # Key bindings
 # --------------------------------------
-bind -x '"\C-r": fzf_history_search'
+# Set key bindings only for interactive shells. The `bind` command will issue a
+# warning if the shell is not interactive.
+if is_interactive; then
+  bind -x '"\C-r": fzf_history_search'
+fi
 
 # --------------------------------------
 # Utilities
