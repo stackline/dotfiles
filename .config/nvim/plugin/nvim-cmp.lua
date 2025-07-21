@@ -5,8 +5,6 @@ if not ok then
 end
 
 -- ref. https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion#nvim-cmp
--- luasnip setup
-local luasnip = require 'luasnip'
 local lspkind = require 'lspkind'
 
 -- nvim-cmp setup
@@ -21,11 +19,6 @@ local lspkind = require 'lspkind'
 cmp.setup {
   completion = {
     completeopt = 'menuone,noinsert'
-  },
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
   },
   window = {
     completion = cmp.config.window.bordered(),
@@ -53,7 +46,6 @@ cmp.setup {
   },
   sources = {
     { name = 'nvim_lsp' },
-    { name = 'luasnip' },
     -- add sources
     { name = 'buffer' },
     { name = 'path' },
@@ -66,7 +58,6 @@ cmp.setup {
       menu = ({
         buffer = "[Buffer]",
         nvim_lsp = "[LSP]",
-        luasnip = "[LuaSnip]",
         nvim_lua = "[Lua]",
         latex_symbols = "[Latex]",
       })
