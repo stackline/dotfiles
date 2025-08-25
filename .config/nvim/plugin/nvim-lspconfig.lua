@@ -187,16 +187,4 @@ lspconfig.clangd.setup({
 })
 
 -- TypeScript
-require("typescript-tools").setup {
-  capabilities = capabilities,
-  settings = {
-    tsserver_file_preferences = {
-      includeInlayParameterNameHints = "all",
-      includeInlayEnumMemberValueHints = true,
-      includeInlayFunctionLikeReturnTypeHints = true,
-      includeInlayFunctionParameterTypeHints = true,
-      includeInlayPropertyDeclarationTypeHints = true,
-      includeInlayVariableTypeHints = true
-    },
-  }
-}
+vim.lsp.enable('tsgo')

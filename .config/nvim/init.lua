@@ -174,13 +174,6 @@ local plugins = {
       },
     },
   },
-  {
-    "pmizio/typescript-tools.nvim", -- typescript integration
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "neovim/nvim-lspconfig"
-    }
-  },
   -- {
   --   "ray-x/lsp_signature.nvim",
   --   event = "VeryLazy",
