@@ -3,12 +3,5 @@
     "ctrl-p ctrl-q is the default key to detach from the docker container.",
     "Therefore, evne if ctrl-p is pressed in the container, the previous command is not displayed."
   ],
-  "detachKeys": "ctrl-\\",
-
-  "// comment of cliPluginsExtraDirs property": [
-    "For Docker to find the compose plugin"
-  ],
-  "cliPluginsExtraDirs": [
-    "/opt/homebrew/lib/docker/cli-plugins"
-  ]
+  "detachKeys": "ctrl-\\"
 }

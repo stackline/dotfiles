@@ -37,7 +37,6 @@ brew 'shellcheck'           # Shell script: Linter
 brew 'shfmt'                # Shell script: Formatter
 brew 'vint'                 # Vim script: Linter
 brew 'yamllint'             # Yaml: Linter
-brew 'docker-compose'       # required to use "docker compose" command with rancher
 brew 'google-cloud-sdk'
 
 ### Bash completion
@@ -100,7 +99,7 @@ cask 'beekeeper-studio'   # sql client
 cask 'tableplus'          # sql client
 cask 'cyberduck'          # ftp client
 cask 'docker'             # container management tool
-cask 'rancher'            # container management tool
+cask 'rancher'            # container management tool (cli plugins is installed in "~/.docker/cli-plugins".)
 
 ### utilities
 cask 'alttab'     # windows-like alt tab
