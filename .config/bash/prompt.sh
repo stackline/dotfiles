@@ -46,7 +46,7 @@ function prompt::customize_bash_ps1() {
   blue="\[$(tput setaf 12)\]"
   reset="\[$(tput sgr0)\]"
 
-  PS1="${lime}${USER_NAME}@${HOST_NAME}${blue}:${DIRECTORY}${red}\$(__git_ps1)\n${reset}\$ "
+  PS1="${lime}${USER_NAME}:${blue}${DIRECTORY}${red}\$(__git_ps1)\n${reset}\$ "
 }
 
 function prompt::initialize() {
