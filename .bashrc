@@ -74,7 +74,7 @@ fi
 # --------------------------------------
 # General command aliases
 alias cp='cp -i'               # Interactively
-alias diffh='git diff --no-index' # Show colored diff of two files.
+alias difff='git diff --no-index' # Show colored diff of two files.
 alias grep='grep --color=auto' # Colorize output
 alias less='less -R'
 alias ll='ls -al'
