@@ -1,6 +1,8 @@
 [include]
   # User local settings
   path = ~/.config/git/config_local
+[alias]
+  amend = commit --amend --no-edit
 [init]
   defaultBranch = main
 [commit]
