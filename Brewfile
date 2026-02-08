@@ -103,6 +103,6 @@ cask 'docker'             # container management tool
 cask 'rancher'            # container management tool (cli plugins is installed in "~/.docker/cli-plugins".)
 
 ### utilities
-cask 'alttab'     # windows-like alt tab
+cask 'contexts'   # window switcher
 cask 'imageoptim' # image compressor
 cask '1password'  # password manager
