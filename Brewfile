@@ -92,6 +92,7 @@ cask 'zoom'
 ### development tools
 # GraphiQL is good enough as a graphql client.
 cask 'ghostty'            # terminal emulator
+caks 'claude-code'        # ai coding assistant
 cask 'cursor'             # code editor
 cask 'visual-studio-code' # code editor
 cask 'android-studio'     # android app IDE
