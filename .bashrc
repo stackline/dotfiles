@@ -20,8 +20,14 @@ export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_DATA_HOME="${HOME}/.local/share"
 export BUNDLE_USER_HOME="${XDG_CONFIG_HOME}/bundle"
 
-# Initialize Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# Initialize Homebrew (cached; clear with: rm "$XDG_CACHE_HOME/homebrew/shellenv.sh")
+_brew_cache="${XDG_CACHE_HOME}/homebrew/shellenv.sh"
+if [[ ! -f "$_brew_cache" ]]; then
+  mkdir -p "${XDG_CACHE_HOME}/homebrew"
+  /opt/homebrew/bin/brew shellenv > "$_brew_cache"
+fi
+source "$_brew_cache"
+unset _brew_cache
 
 # Load utilities first
 source ~/.config/bash/debug.sh
