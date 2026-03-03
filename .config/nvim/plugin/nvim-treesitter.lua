@@ -21,6 +21,7 @@ configs.setup {
     'markdown_inline', -- Used by Lspsaga
     'prisma',
     'ruby',
+    'sql',
     'tsx',
     'terraform',
     'typescript',
