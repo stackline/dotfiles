@@ -46,34 +46,6 @@ if [ -f ~/.env ]; then
 fi
 
 # --------------------------------------
-# export
-# --------------------------------------
-if is_linux; then
-  # Correspondence of garbled characters when displaying Japanese with less
-  export LESSCHARSET=utf-8
-  # Avoid error when starting tmux
-  # ref. https://astropengu.in/blog/12/
-  #      https://github.com/Linuxbrew/legacy-linuxbrew/issues/46#issuecomment-120759893
-  export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/share/pkgconfig
-  # Node pngquant package references libpng12.so.0.
-  #
-  # - Install yum libpng package
-  # - Add "/usr/lib64" to LD_LIBRARY_PATH
-  #
-  # Without LD_LIBRARY_PATH environment variable below, the following error occurs at execution.
-  #
-  # - Error: node_modules/pngquant-bin/vendor/pngquant: error while loading shared libraries: libpng12.so.0: cannot open shared object file: No such file or directory
-  #
-  # Also, homebrew's libpng package is version 1.6.
-  #
-  # The following error occurs in CentOS7.
-  #
-  # - tput: relocation error: /usr/lib64/libc.so.6: symbol _dl_starting_up, version GLIBC_PRIVATE not defined in file ld-linux-x86-64.so.2 with link time reference
-  #
-  # export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib64"
-fi
-
-# --------------------------------------
 # alias
 # --------------------------------------
 # General command aliases

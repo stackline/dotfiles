@@ -16,23 +16,6 @@ setup() {
   [ "${status}" -eq 0 ]
 }
 
-@test "When OS is Mac, is_linux return failure" {
-  if [ $os_name != "Darwin" ]; then
-    skip "This test only on Mac"
-  fi
-
-  run is_linux
-  [ "${status}" -eq 1 ]
-}
-
-@test "When OS is Linux, is_linux return success" {
-  if [ $os_name != "Linux" ]; then
-    skip "This test only on Mac"
-  fi
-
-  run is_linux
-  [ "${status}" -eq 0 ]
-}
 
 @test "When OS is Linux, is_mac return failure" {
   if [ $os_name != "Linux" ]; then

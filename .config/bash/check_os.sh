@@ -10,10 +10,3 @@ function is_mac() {
   fi
 }
 
-function is_linux() {
-  if [ "$(uname)" = "Linux" ]; then
-    return 0
-  else
-    return 1
-  fi
-}
