@@ -5,11 +5,13 @@
 # $ echo::green "$(echo::bold 'set foreground color as green bold and execute echo.')"
 #
 
-RED=$(tput setaf 1)
-GREEN=$(tput setaf 2)
-YELLOW=$(tput setaf 3)
-BOLD=$(tput bold)
-RESET=$(tput sgr0)
+# Use ANSI escape codes directly instead of tput to avoid spawning external
+# processes on every shell startup, which reduces .bashrc execution time.
+RED=$'\e[31m'
+GREEN=$'\e[32m'
+YELLOW=$'\e[33m'
+BOLD=$'\e[1m'
+RESET=$'\e[0m'
 
 function echo::green() {
   echo "$GREEN$*$RESET"
