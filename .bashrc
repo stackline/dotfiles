@@ -4,12 +4,12 @@
 # User specific aliases and functions
 
 # --------------------------------------
-# Time measurement
-# ref. https://www.golinuxcloud.com/get-script-execution-time-command-bash-script/
-#
-# Use my own tool because the BSD date command cannot display nanoseconds.
+# Time measurement (bash 5.0+ only)
+# $EPOCHREALTIME is a bash 5.0+ builtin variable, no external process needed.
 # --------------------------------------
-script_start_time=$("$HOME"/go/bin/mydate)
+if (( ${BASH_VERSINFO[0]} >= 5 )); then
+  _bashrc_start=$EPOCHREALTIME
+fi
 
 # --------------------------------------
 # XDG Base Directory
@@ -178,14 +178,7 @@ function check-trailing-character-hexdump() {
 PATH=$(dietpath_wrapper)
 export PATH
 
-if command -v "$HOME/go/bin/mydate" 1>/dev/null 2>/dev/null; then
-  script_end_time=$("$HOME"/go/bin/mydate)
-  bashrc_execution_msec=$(echo "($script_end_time - $script_start_time) * 1000" | bc | xargs printf "%.0f")
-  bashrc_execution_sec=$(echo "($script_end_time - $script_start_time)" | bc | xargs printf "%.3f")
-  echo "Script execution Time: $bashrc_execution_msec msec ($bashrc_execution_sec sec)"
-else
-  echo::yellow 'hint: Install mydate command to measure .bashrc execution time.'
-  echo::yellow 'hint:'
-  echo::yellow 'hint:   $ go install github.com/stackline/mydate@latest'
-  echo::yellow 'hint:'
+if (( ${BASH_VERSINFO[0]} >= 5 )); then
+  _bashrc_end=$EPOCHREALTIME
+  awk "BEGIN { d = $_bashrc_end - $_bashrc_start; printf \"Script execution Time: %.0f msec (%.3f sec)\n\", d*1000, d }"
 fi
