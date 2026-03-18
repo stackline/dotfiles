@@ -41,7 +41,7 @@ prompt::initialize
 # --------------------------------------
 if [ -f ~/.env ]; then
   set -a
-  eval "$(cat ~/.env)"
+  source ~/.env
   set +a
 fi
 
