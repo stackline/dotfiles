@@ -2,17 +2,14 @@
 #
 # Initialize shell prompt.
 
-function prompt::build_git_prompt_file_path() {
-  echo "$HOMEBREW_PREFIX/etc/bash_completion.d/git-prompt.sh"
-}
-
 function prompt::check_dependencies() {
+  local git_prompt_file="$1"
   local exit_status=0
   if [ -z "$HOMEBREW_PREFIX" ]; then
     echo 'warning: HOMEBREW_PREFIX variable is empty. Please check Homebrew config.'
     exit_status=1
   fi
-  if [ ! -f "$(prompt::build_git_prompt_file_path)" ]; then
+  if [ ! -f "$git_prompt_file" ]; then
     echo 'warning: git-prompt.sh does not exist. Please install git with Homebrew.'
     exit_status=1
   fi
@@ -20,7 +17,8 @@ function prompt::check_dependencies() {
 }
 
 function prompt::initialize_git_prompt {
-  source "$(prompt::build_git_prompt_file_path)"
+  local git_prompt_file="$1"
+  source "$git_prompt_file"
   # NOTE: If I enable GIT_PS1_SHOWDIRTYSTATE and GIT_PS1_SHOWUNTRACKEDFILES,
   # __git_ps1 command is sometimes slow, so disable them.
   # Since it doesn't refer to GIT_PS1_SHOWSTASHSTATE very much, it is also disabled.
@@ -47,9 +45,10 @@ function prompt::customize_bash_ps1() {
 }
 
 function prompt::initialize() {
-  if ! prompt::check_dependencies; then
+  local git_prompt_file="${HOMEBREW_PREFIX}/etc/bash_completion.d/git-prompt.sh"
+  if ! prompt::check_dependencies "$git_prompt_file"; then
     return 1
   fi
-  prompt::initialize_git_prompt
+  prompt::initialize_git_prompt "$git_prompt_file"
   prompt::customize_bash_ps1
 }
