@@ -35,16 +35,13 @@ function prompt::customize_bash_ps1() {
   local -r USER_NAME='\u'
   local -r HOST_NAME='\h'
   local -r DIRECTORY='\w'
-  local red
-  local lime
-  local blue
-  local reset
-
+  # Use ANSI escape codes directly instead of tput to avoid spawning external
+  # processes on every shell startup, which reduces .bashrc execution time.
   # ref. Xterm Number https://jonasjacek.github.io/colors/
-  red="\[$(tput setaf 9)\]"
-  lime="\[$(tput setaf 10)\]"
-  blue="\[$(tput setaf 12)\]"
-  reset="\[$(tput sgr0)\]"
+  local red=$'\[\e[91m\]'
+  local lime=$'\[\e[92m\]'
+  local blue=$'\[\e[94m\]'
+  local reset=$'\[\e[0m\]'
 
   PS1="${lime}${USER_NAME}:${blue}${DIRECTORY}${red}\$(__git_ps1)\n${reset}\$ "
 }
