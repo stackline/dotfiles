@@ -126,6 +126,22 @@ alias ssh-add-apple-use-keychanin='ssh-add --apple-use-keychain'
 # --------------------------------------
 function clip() { pbcopy < "$1"; }
 
+# glow: default -w 120 -p; override width with explicit -w flag
+function glow() {
+  local has_w=false
+  for arg in "$@"; do
+    if [[ "$arg" == -w* ]]; then
+      has_w=true
+      break
+    fi
+  done
+  if $has_w; then
+    command glow -p "$@"
+  else
+    command glow -w 120 -p "$@"
+  fi
+}
+
 function is_interactive() {
   local shell_option_flags="$-"
   [[ "${shell_option_flags}" == *i* ]]
