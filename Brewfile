@@ -55,6 +55,7 @@ brew 'fzf'
 brew 'gh'
 brew 'ghq'
 brew 'git'
+brew 'glow' # terminal-based markdown reader
 # imagemagick has many dependencies.
 # brew 'imagemagick'
 brew 'jq' # Command-line JSON processor
