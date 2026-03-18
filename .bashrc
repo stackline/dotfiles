@@ -124,6 +124,8 @@ alias ssh-add-apple-use-keychanin='ssh-add --apple-use-keychain'
 # --------------------------------------
 # Helper functions
 # --------------------------------------
+function clip() { pbcopy < "$1"; }
+
 function is_interactive() {
   local shell_option_flags="$-"
   [[ "${shell_option_flags}" == *i* ]]
