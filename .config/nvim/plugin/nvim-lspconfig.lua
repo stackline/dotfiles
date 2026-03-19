@@ -82,16 +82,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
--- Override handler's config.
--- ref. https://neovim.io/doc/user/lsp.html#lsp-handlers
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-  vim.lsp.handlers.hover,
-  {
-    -- Use a sharp border with `FloatBorder` highlights
-    border = "single"
-  }
-)
-
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics,
   {
