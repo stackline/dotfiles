@@ -1,9 +1,3 @@
-local ok, lspconfig = pcall(require, 'lspconfig')
-if not ok then
-  print('nvim-lspconfig is not loaded.')
-  return
-end
-
 -- -------------------------------------
 -- Suggested configuration
 -- ref. https://github.com/neovim/nvim-lspconfig#suggested-configuration
