@@ -149,7 +149,7 @@ require('mason-lspconfig').setup({
 })
 
 -- C++
-lspconfig.clangd.setup({
+vim.lsp.config('clangd', {
   -- Common settings
   capabilities = capabilities,
   -- Server-specific settings
@@ -159,6 +159,7 @@ lspconfig.clangd.setup({
     clangdFileStatus = true
   },
 })
+vim.lsp.enable('clangd')
 
 -- TypeScript
 vim.lsp.enable('tsgo')
