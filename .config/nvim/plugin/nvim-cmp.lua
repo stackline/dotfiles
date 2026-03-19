@@ -1,10 +1,4 @@
-local ok, cmp = pcall(require, 'cmp')
-if not ok then
-  print('nvim-cmp is not loaded.')
-  return
-end
-
--- ref. https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion#nvim-cmp
+local cmp = require 'cmp'
 local lspkind = require 'lspkind'
 
 -- nvim-cmp setup

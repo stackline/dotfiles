@@ -130,7 +130,6 @@ local plugins = {
   },
   {
     "hrsh7th/nvim-cmp", -- completion engine
-    event = "InsertEnter",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",     -- completion source for neovim builtin LSP client
       "hrsh7th/cmp-buffer",       -- completion source for buffer words
