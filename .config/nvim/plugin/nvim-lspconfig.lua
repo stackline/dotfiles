@@ -76,13 +76,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics,
-  {
-    -- Show the list of diagnostics with trouble.nvim plugin
-    virtual_text = false
-  }
-)
+vim.diagnostic.config({
+  -- Override default (false): sort multiple diagnostics by severity (error > warn > info > hint)
+  severity_sort = true,
+})
 
 -- NOTE: Make sure to set up neodev before lspconfig
 -- ref. https://github.com/folke/neodev.nvim?tab=readme-ov-file#-setup
