@@ -30,7 +30,7 @@ source "$_brew_cache"
 unset _brew_cache
 
 # Load utilities first
-for file in ~/.config/bash/*; do
+for file in ~/.config/bash/*.sh; do
   source "$file"
 done
 
