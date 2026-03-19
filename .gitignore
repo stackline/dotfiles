@@ -14,6 +14,7 @@
 /.config/docker/canary.json
 /.config/docker/features.json
 /.config/docker/buildx/
+/.config/docker/contexts/
 
 # gcloud
 /.config/gcloud/
