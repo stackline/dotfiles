@@ -174,3 +174,21 @@ vim.lsp.config('lua_ls', {
   }
 })
 vim.lsp.enable('lua_ls')
+
+-- Yaml
+-- Suppress diagnostic code 513 (PropertyExpected, 0x201 in vscode-json-languageservice),
+-- which is a false positive triggered by the "config" property in certain YAML files.
+vim.lsp.config('yamlls', {
+  on_attach = function(_, _)
+    local original_handler = vim.lsp.handlers["textDocument/publishDiagnostics"]
+    vim.lsp.handlers["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
+      if result and result.diagnostics then
+        result.diagnostics = vim.tbl_filter(function(diagnostic)
+          return diagnostic.code ~= 513
+        end, result.diagnostics)
+      end
+      original_handler(err, result, ctx, config)
+    end
+  end,
+})
+vim.lsp.enable('yamlls')
