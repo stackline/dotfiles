@@ -73,7 +73,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- NOTE: Instead of retrieving all clients each time, it may be possible to
     -- retrieve only the attached client using vim.lsp.get_client_by_id.
     local client_names = {}
-    for _, client in ipairs(vim.lsp.get_active_clients { bufnr = 0 }) do
+    for _, client in ipairs(vim.lsp.get_clients { bufnr = 0 }) do
       table.insert(client_names, client.name)
     end
     local comma_separated_client_names = table.concat(client_names, ', ')
