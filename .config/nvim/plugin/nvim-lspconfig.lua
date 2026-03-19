@@ -27,17 +27,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = ev.buf }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-
-    -- If typescript-tools' go to source definition command can be used, give priority to it.
-    -- 2: full match with a command
-    --
-    -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    if vim.fn.exists(":TSToolsGoToSourceDefinition") == 2 then
-      vim.keymap.set('n', 'gd', '<cmd>TSToolsGoToSourceDefinition<CR>', opts)
-    else
-      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    end
-
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
