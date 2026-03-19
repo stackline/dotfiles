@@ -123,16 +123,7 @@ local servers = {
   },
   jsonls = {},
   kotlin_language_server = {},
-  lua_ls = {
-    Lua = {
-      -- ref. https://github.com/LuaLS/lua-language-server/wiki/Privacy#disabling-telemetry
-      telemetry = {
-        enable = false,
-      },
-      -- Ignore missing-fields warnings.
-      diagnostics = { disable = { 'missing-fields' } },
-    }
-  },
+  lua_ls = {},
   prismals = {},
   pyright = {},
   -- ruby_lsp = {},
@@ -168,3 +159,18 @@ vim.lsp.config('tsgo', {
   root_markers = { 'tsconfig.json', 'jsconfig.json', 'package.json', '.git' },
 })
 vim.lsp.enable('tsgo')
+
+vim.lsp.config('lua_ls', {
+  settings = {
+    Lua = {
+      telemetry = {
+        enable = false,
+      },
+      diagnostics = {
+        disable = { 'missing-fields' },
+        globals = { 'vim' },
+      },
+    }
+  }
+})
+vim.lsp.enable('lua_ls')
