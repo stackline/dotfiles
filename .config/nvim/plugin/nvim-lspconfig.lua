@@ -118,6 +118,8 @@ local servers = {
       staticcheck = false,
     }
   },
+  -- note: require a graphql config file.
+  -- https://github.com/graphql/graphiql/blob/main/packages/graphql-language-service-server/README.md#graphql-configuration-file
   graphql = {
     -- Exclude typescriptreact, javascriptreact
     filetypes = { 'graphql' },
