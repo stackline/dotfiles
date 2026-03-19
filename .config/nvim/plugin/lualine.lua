@@ -173,7 +173,8 @@ lualine.setup {
   sections = {
     -- Default: lualine_b = {'branch', 'diff', 'diagnostics'},
     lualine_b = { 'b:buf_repository', 'b:buf_branch', 'b:lsp_mode', 'diagnostics' },
-    lualine_c = { 'b:buf_filename' },
+    -- Default: lualine_c = {'filename'},
+    lualine_c = { '' },
   },
   tabline = {
     lualine_a = {
