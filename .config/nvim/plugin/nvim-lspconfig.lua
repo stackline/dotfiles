@@ -109,18 +109,16 @@ vim.lsp.config('gopls', {
   }
 })
 
-vim.lsp.enable({
-  'bashls',                          -- bash-language-server
-  'docker_compose_language_service', -- docker-compose-language-service
-  'gopls',                           -- gopls
-  'graphql',                         -- graphql-language-service-cli
-  'jsonls',                          -- json-lsp
-  'kotlin_language_server',          -- kotlin-language-server
-  'prismals',                        -- prisma-language-server
-  'pyright',                         -- pyright
-  'terraformls',                     -- terraform-ls
-  'vimls',                           -- vim-language-server
-})
+vim.lsp.enable('bashls')                          -- bash-language-server
+vim.lsp.enable('docker_compose_language_service') -- docker-compose-language-service
+vim.lsp.enable('gopls')                           -- gopls
+vim.lsp.enable('graphql')                         -- graphql-language-service-cli
+vim.lsp.enable('jsonls')                          -- json-lsp
+vim.lsp.enable('kotlin_language_server')          -- kotlin-language-server
+vim.lsp.enable('prismals')                        -- prisma-language-server
+vim.lsp.enable('pyright')                         -- pyright
+vim.lsp.enable('terraformls')                     -- terraform-ls
+vim.lsp.enable('vimls')                           -- vim-language-server
 
 -- C++
 vim.lsp.config('clangd', {
