@@ -89,59 +89,41 @@ require('neodev').setup()
 -- nvim-cmp autocompletion
 -- ref. https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion#nvim-cmp
 -- -------------------------------------
--- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
+-- Apply cmp_nvim_lsp capabilities to all LSP servers globally.
 -- ref. https://github.com/hrsh7th/cmp-nvim-lsp#setup
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+vim.lsp.config('*', { capabilities = require('cmp_nvim_lsp').default_capabilities() })
 
--- bash      bashls                          (npm)      bash-language-server
--- compose   docker_compose_language_service (npm)      @microsoft/compose-language-service
--- go        gopls                           (golang)   gopls
--- graphql   graphql                         (npm)      graphql-language-service-cli
--- json      jsonls                          (npm)      vscode-langservers-extracted
--- kotlin    kotlin_language_server          (github)   kotlin-language-server
--- lua       lua_ls                          (github)   lua-language-server
--- prisma    prismals                        (npm)      @prisma/language-server
--- python    pyright                         (npm)      pyright
--- ruby      ryy_ls                          (gem)      ruby-lsp
--- terraform terraformls                     (homebrew) terraform-ls
--- vim       vimls                           (npm)      vim-language-server
--- yaml      yamlls                          (npm)      yaml-language-server
-local servers = {
-  bashls = {},
-  docker_compose_language_service = {},
-  gopls = {
-    -- ref. https://github.com/golang/tools/blob/master/gopls/doc/vim.md#custom-configuration
+-- GraphQL: restrict to .graphql files only (exclude typescriptreact, javascriptreact)
+-- note: requires a graphql config file
+-- ref. https://github.com/graphql/graphiql/blob/main/packages/graphql-language-service-server/README.md#graphql-configuration-file
+vim.lsp.config('graphql', {
+  filetypes = { 'graphql' },
+})
+
+-- ref. https://github.com/golang/tools/blob/master/gopls/doc/vim.md#custom-configuration
+vim.lsp.config('gopls', {
+  settings = {
     gopls = {
       staticcheck = false,
     }
-  },
-  -- note: require a graphql config file.
-  -- https://github.com/graphql/graphiql/blob/main/packages/graphql-language-service-server/README.md#graphql-configuration-file
-  graphql = {
-    -- Exclude typescriptreact, javascriptreact
-    filetypes = { 'graphql' },
-  },
-  jsonls = {},
-  kotlin_language_server = {},
-  lua_ls = {},
-  prismals = {},
-  pyright = {},
-  -- ruby_lsp = {},
-  terraformls = {},
-  vimls = {},
-  yamlls = {},
-}
+  }
+})
 
-require('mason').setup()
-require('mason-lspconfig').setup({
-  -- Ensure the servers above are installed
-  ensure_installed = vim.tbl_keys(servers),
+vim.lsp.enable({
+  'bashls',                          -- bash-language-server
+  'docker_compose_language_service', -- docker-compose-language-service
+  'gopls',                           -- gopls
+  'graphql',                         -- graphql-language-service-cli
+  'jsonls',                          -- json-lsp
+  'kotlin_language_server',          -- kotlin-language-server
+  'prismals',                        -- prisma-language-server
+  'pyright',                         -- pyright
+  'terraformls',                     -- terraform-ls
+  'vimls',                           -- vim-language-server
 })
 
 -- C++
 vim.lsp.config('clangd', {
-  -- Common settings
-  capabilities = capabilities,
   -- Server-specific settings
   cmd = { 'clangd', '--background-index', '-header-insertion=never' },
   init_options = {
@@ -153,7 +135,6 @@ vim.lsp.enable('clangd')
 
 -- TypeScript
 vim.lsp.config('tsgo', {
-  capabilities = capabilities,
   cmd = { 'tsgo', '--lsp', '--stdio' },
   filetypes = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' },
   root_markers = { 'tsconfig.json', 'jsconfig.json', 'package.json', '.git' },

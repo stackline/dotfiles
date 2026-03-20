@@ -73,7 +73,6 @@ local plugins = {
     "neovim/nvim-lspconfig",
     dependencies = {
       "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
 
       -- UI for Neovim notifications and LSP progress messages
       -- NOTE: `opts = {}` will automatically call `require("fidget").setup(opts)`
@@ -277,7 +276,6 @@ vim.opt.mouse = ""            -- Disable mouse support
 vim.opt.ambiwidth = "single"  -- Display East Asian Ambiguous Width characters in 1 byte
 vim.opt.updatetime = 300      -- Fire CursorHold event immediately and display diagnostic message
 vim.opt.winbar = " "          -- Display the winbar in advance to display breadcrumbs.
-
 
 ------------------------------------------------------------
 -- Set character widths
