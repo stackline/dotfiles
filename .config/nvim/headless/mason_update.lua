@@ -15,13 +15,27 @@ registry.refresh(vim.schedule_wrap(function()
   end
 
   local completed = 0
-  for _, pkg in ipairs(packages) do
+  local results = {}
+
+  for i, pkg in ipairs(packages) do
     local name = pkg.name
+    local before = pkg:get_installed_version() or "?"
     pkg:install():once("closed", vim.schedule_wrap(function()
+      local after = pkg:get_installed_version() or before
+      if before ~= after then
+        results[i] = ("[%d/%d] %s: %s -> %s\n"):format(i, total, name, before, after)
+      else
+        results[i] = ("[%d/%d] %s: %s (up-to-date)\n"):format(i, total, name, before)
+      end
       completed = completed + 1
-      io.write(("[%d/%d] %s\n"):format(completed, total, name))
+      -- \r returns cursor to line start, overwriting the previous progress text.
+      io.write(("\rProcessing... [%d/%d]"):format(completed, total))
       io.flush()
       if completed >= total then
+        -- \r\27[K: return to line start, then erase to end of line (ANSI ESC [K).
+        io.write("\r\27[K")
+        io.write(table.concat(results))
+        io.flush()
         vim.cmd("qall!")
       end
     end))
