@@ -98,9 +98,9 @@ local plugins = {
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    -- Update installed parsers synchronously when updating package.
-    -- ref. https://github.com/nvim-treesitter/nvim-treesitter/wiki/Installation#lazynvim
-    build = ":TSUpdateSync",
+    branch = "main",
+    lazy = false, -- lazy-loading is not supported on the main branch
+    build = ":TSUpdate",
     dependencies = {
       --
       -- NOTE: Difference in behavior between nvim-treesitter-endwise and vim-endwise
@@ -124,7 +124,12 @@ local plugins = {
       -- ref. https://github.com/nvim-treesitter/nvim-treesitter/issues/703
       --
       'RRethy/nvim-treesitter-endwise', -- alternative to vim-endwise
-      'windwp/nvim-ts-autotag', -- auto close html tag
+      {
+        'windwp/nvim-ts-autotag', -- auto close html tag
+        config = function()
+          require('nvim-ts-autotag').setup()
+        end,
+      },
     }
   },
   {

@@ -60,6 +60,7 @@ brew 'glow' # terminal-based markdown reader
 # brew 'imagemagick'
 brew 'jq' # Command-line JSON processor
 brew 'neovim'
+brew 'tree-sitter-cli' # required by nvim-treesitter main branch to compile parsers
 brew 'nkf'
 brew 'nmap'
 brew 'silicon'
