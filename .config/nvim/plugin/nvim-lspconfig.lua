@@ -5,8 +5,8 @@
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1 }) end)
+vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1 }) end)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
 -- Use LspAttach autocommand to only map the following keys
@@ -80,10 +80,6 @@ vim.diagnostic.config({
   -- Override default (false): sort multiple diagnostics by severity (error > warn > info > hint)
   severity_sort = true,
 })
-
--- NOTE: Make sure to set up neodev before lspconfig
--- ref. https://github.com/folke/neodev.nvim?tab=readme-ov-file#-setup
-require('neodev').setup()
 
 -- -------------------------------------
 -- nvim-cmp autocompletion
