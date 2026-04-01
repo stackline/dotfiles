@@ -298,9 +298,6 @@ vim.cmd([[
 augroup init_vim_autocommands
   autocmd!
 
-  " Delete unnecessary trailing spaces
-  autocmd BufWritePre * :%s/\s\+$//ge
-
   " When editing a file, always jump to the last cursor position
   autocmd BufReadPost *
         \ if line("'\"") > 0 && line ("'\"") <= line("$") |
