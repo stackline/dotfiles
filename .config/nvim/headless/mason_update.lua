@@ -15,16 +15,23 @@ registry.refresh(vim.schedule_wrap(function()
   end
 
   local completed = 0
+  local idx_width = #tostring(total)
+  local max_name = 0
+  for _, pkg in ipairs(packages) do
+    if #pkg.name > max_name then max_name = #pkg.name end
+  end
 
   for i, pkg in ipairs(packages) do
     local name = pkg.name
     local before = pkg:get_installed_version() or "?"
     pkg:install():once("closed", vim.schedule_wrap(function()
       local after = pkg:get_installed_version() or before
+      local idx = string.format("[%0" .. idx_width .. "d/%0" .. idx_width .. "d]", i, total)
+      local padded_name = name .. string.rep(" ", max_name - #name)
       if before ~= after then
-        io.write(("[%d/%d] %s: %s -> %s\n"):format(i, total, name, before, after))
+        io.write(("%s %s %s -> %s\n"):format(idx, padded_name, before, after))
       else
-        io.write(("[%d/%d] %s: %s (up-to-date)\n"):format(i, total, name, before))
+        io.write(("%s %s (up-to-date) %s\n"):format(idx, padded_name, before))
       end
       io.flush()
       completed = completed + 1
