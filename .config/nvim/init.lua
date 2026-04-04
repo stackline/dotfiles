@@ -57,7 +57,6 @@ local plugins = {
   -- Vim script plugins
   { "junegunn/fzf" },
   { "junegunn/fzf.vim" }, -- fuzzy finder
-  { "segeljakt/vim-silicon", cmd = "Silicon" },
   { "tpope/vim-fugitive", cmd = "Git" }, -- git wrapper
 
   -- Lua plugins
