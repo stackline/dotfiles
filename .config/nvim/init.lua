@@ -280,6 +280,7 @@ vim.opt.mouse = ""            -- Disable mouse support
 vim.opt.ambiwidth = "single"  -- Display East Asian Ambiguous Width characters in 1 byte
 vim.opt.updatetime = 300      -- Fire CursorHold event immediately and display diagnostic message
 vim.opt.winbar = " "          -- Display the winbar in advance to display breadcrumbs.
+vim.opt.scrolloff = 5         -- (default 0)
 
 ------------------------------------------------------------
 -- Set character widths
