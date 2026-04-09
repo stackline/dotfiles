@@ -22,7 +22,13 @@ let $BAT_STYLE = 'plain'
 " --exclude-standard
 "   Exclude files according to the settings in the gitignore file
 nnoremap <C-p> :GFiles --cached --others --exclude-standard<cr>
-nnoremap <expr> <C-j> ':Rg ' . expand('<cword>') . '<cr>'
+
+" Search current buffer for word under cursor, recording current position in jump list before jumping.
+function! s:BLinesJump()
+  normal! m'
+  execute 'BLines ' . expand('<cword>')
+endfunction
+nnoremap <C-j> :call <SID>BLinesJump()<CR>
 
 " Incremental search by the word at cursor position.
 "
