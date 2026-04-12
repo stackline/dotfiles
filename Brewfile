@@ -107,5 +107,5 @@ cask 'rancher'            # container management tool (cli plugins is installed 
 ### utilities
 cask 'google-japanese-ime' # input method editor
 cask 'contexts'            # window switcher
-cask 'imageoptim'          # image compressor
+cask 'meetingbar'          # calendar notification
 cask '1password'           # password manager
