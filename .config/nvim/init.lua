@@ -257,25 +257,6 @@ require("lazy").setup(plugins, opts)
 
 
 ------------------------------------------------------------
--- Check a plugin installation
-------------------------------------------------------------
--- TODO: migrate later
---
--- vim.api.nvim_exec([[
---   function! PlugIsNotInstalled(plugin_name) abort
---     if ! has_key(g:plugs, a:plugin_name)
---       return v:true
---     endif
---     if ! isdirectory(g:plugs[a:plugin_name]['dir'])
---       return v:true
---     endif
---
---     return v:false
---   endfunction
--- ]])
-
-
-------------------------------------------------------------
 -- ctags
 ------------------------------------------------------------
 -- TODO: migrate later
