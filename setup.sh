@@ -25,6 +25,27 @@ create_symbolic_links() {
 }
 
 # --------------------------------------
+# Configure Docker
+# --------------------------------------
+configure_docker() {
+  local config_dir="${HOME}/.config/docker"
+  local config_file="${config_dir}/config.json"
+
+  mkdir -p "${config_dir}"
+
+  if [ ! -f "${config_file}" ]; then
+    echo '{}' > "${config_file}"
+  fi
+
+  local tmp
+  tmp=$(mktemp)
+  # Change the detach key from the default ctrl-p,ctrl-q to ctrl-\.
+  # The default conflicts with ctrl-p (previous command history) inside containers.
+  jq '.detachKeys = "ctrl-\\"' "${config_file}" > "${tmp}" && mv "${tmp}" "${config_file}"
+  echo "Docker: detachKeys set to ctrl-\\"
+}
+
+# --------------------------------------
 # Install packages
 # --------------------------------------
 
@@ -38,3 +59,4 @@ execute() {
 }
 
 execute create_symbolic_links
+execute configure_docker

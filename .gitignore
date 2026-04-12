@@ -8,13 +8,9 @@
 /.config/configstore/
 
 # Docker
-/.config/docker/.buildNodeID
-/.config/docker/.token_seed
-/.config/docker/.token_seed.lock
-/.config/docker/canary.json
-/.config/docker/features.json
-/.config/docker/buildx/
-/.config/docker/contexts/
+# config.json mixes environment-specific state (auths, credsStore, credHelpers)
+# with personal preferences (detachKeys). Personal preferences are set via setup.sh.
+/.config/docker/
 
 # gcloud
 /.config/gcloud/
