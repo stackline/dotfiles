@@ -20,7 +20,6 @@ local groups = {
   all = {
     -- Make the color of the window separator line easier to see.
     WinSeparator = { fg = 'palette.blue' },
-    FloatBorder = { fg = 'fg0' }, -- default: fg = 'fg3'
     -- Make the background color of hover information in a floating window
     -- the same as editor background color.
     NormalFloat = { bg = 'bg1' }, -- default: bg = 'bg0'
