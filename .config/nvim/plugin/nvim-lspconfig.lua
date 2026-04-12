@@ -52,7 +52,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
         local floatopts = {
           focusable = false,
           close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-          border = 'single',  -- instead of 'rounded'
           source = 'if_many', -- instead of 'always'
           prefix = ' ',
           scope = 'cursor',

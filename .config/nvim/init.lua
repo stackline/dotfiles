@@ -67,6 +67,7 @@ vim.opt.tabstop = 2
 vim.opt.tagcase = "match"       -- Search a tag file case-sensitively
 vim.opt.updatetime = 300        -- Fire CursorHold event immediately and display diagnostic message
 vim.opt.winbar = " "            -- Display the winbar in advance to display breadcrumbs.
+vim.opt.winborder = 'rounded'   -- (default "") Default border style for floating windows
 vim.opt.wrap = false
 
 
