@@ -1,6 +1,7 @@
 ------------------------------------------------------------
--- Disable unused default plugins
+-- vim.g
 ------------------------------------------------------------
+-- Disable unused default plugins
 -- vim.g.did_indent_on             = 1 -- Loading indent files for file types.
 vim.g.did_install_default_menus = 1
 vim.g.did_install_syntax_menu   = 1
@@ -35,6 +36,56 @@ vim.g.loaded_python3_provider   = 0
 vim.g.loaded_ruby_provider      = 0
 vim.g.loaded_node_provider      = 0
 vim.g.loaded_perl_provider      = 0
+
+vim.g.mapleader = " "
+
+
+------------------------------------------------------------
+-- vim.opt
+------------------------------------------------------------
+vim.opt.ambiwidth = "single"    -- Display East Asian Ambiguous Width characters in 1 byte
+vim.opt.backup = false          -- Don't make a backup file (~[file name])
+vim.opt.expandtab = true
+vim.opt.fixeol = false
+vim.opt.foldlevelstart = 99     -- Don't always fold
+vim.opt.formatoptions = "tcrqj" -- Add `r` option (automatically insert comment leader after hitting <Enter>)
+vim.opt.ignorecase = true
+vim.opt.incsearch = true
+vim.opt.laststatus = 3          -- Have a global statusline at the bottom instead of one for each window
+vim.opt.list = true             -- (default off) Show tabs, trailing spaces, non-breakable space characters
+vim.opt.mouse = ""              -- Disable mouse support
+vim.opt.number = true
+vim.opt.scrolloff = 5           -- (default 0)
+vim.opt.shiftwidth = 2
+vim.opt.shortmess:append("I")   -- Don't display intro message when starting vim
+vim.opt.showtabline = 2         -- Always show tab line
+vim.opt.signcolumn = "yes"
+vim.opt.splitbelow = true       -- Open splited window to below
+vim.opt.splitright = true       -- Open splited window to right
+vim.opt.swapfile = false        -- Don't make a swap file (.swp)
+vim.opt.tabstop = 2
+vim.opt.tagcase = "match"       -- Search a tag file case-sensitively
+vim.opt.updatetime = 300        -- Fire CursorHold event immediately and display diagnostic message
+vim.opt.winbar = " "            -- Display the winbar in advance to display breadcrumbs.
+vim.opt.wrap = false
+
+
+------------------------------------------------------------
+-- vim.keymap
+------------------------------------------------------------
+-- Since space is used as prefix in nvim-lspconfig, nothing is done with space alone.
+-- ref. https://github.com/neovim/nvim-lspconfig#suggested-configuration
+vim.keymap.set('n', '<Space>', '<Nop>', {})
+
+-- Tab jump: jump to the target tab by specify the number (t1, t2, t3...)
+for n = 1, 9 do
+  vim.keymap.set('n', 't'..n, ':<C-u>tabnext' .. n .. '<CR>', { silent = true })
+end
+
+vim.keymap.set('n', 'tc', ':tablast <bar> tabnew<CR>', { silent = true })
+vim.keymap.set('n', 'tx', ':tabclose<CR>', { silent = true })
+vim.keymap.set('n', 'tn', ':tabnext<CR>', { silent = true })
+vim.keymap.set('n', 'tp', ':tabprevious<CR>', { silent = true })
 
 
 ------------------------------------------------------------
@@ -202,7 +253,6 @@ local opts = {
   }
 }
 
-vim.g.mapleader = " "
 require("lazy").setup(plugins, opts)
 
 
@@ -236,62 +286,6 @@ require("lazy").setup(plugins, opts)
 
 
 ------------------------------------------------------------
--- Tab jump
-------------------------------------------------------------
--- jump to the target tab by specify the number (t1, t2, t3...)
-for n = 1, 9 do
-  vim.keymap.set('n', 't'..n, ':<C-u>tabnext' .. n .. '<CR>', { silent = true })
-end
-
-vim.keymap.set('n', 'tc', ':tablast <bar> tabnew<CR>', { silent = true })
-vim.keymap.set('n', 'tx', ':tabclose<CR>', { silent = true })
-vim.keymap.set('n', 'tn', ':tabnext<CR>', { silent = true })
-vim.keymap.set('n', 'tp', ':tabprevious<CR>', { silent = true })
-
-
-------------------------------------------------------------
--- Common
-------------------------------------------------------------
--- Since space is used as prefix in nvim-lspconfig, nothing is done with space alone.
--- ref. https://github.com/neovim/nvim-lspconfig#suggested-configuration
-vim.keymap.set('n', '<Space>', '<Nop>', {})
-
-vim.opt.number = true
-vim.opt.list = true           -- (default off) Show tabs, trailing spaces, non-breakable space characters
-vim.opt.wrap = false
-vim.opt.fixeol = false
-vim.opt.incsearch = true
-vim.opt.ignorecase = true
-vim.opt.splitbelow = true     -- Open splited window to below
-vim.opt.splitright = true     -- Open splited window to right
-vim.opt.swapfile = false      -- Don't make a swap file (.swp)
-vim.opt.backup = false        -- Don't make a backup file (~[file name])
-vim.opt.formatoptions = "tcrqj" -- Add `r` option (automatically insert comment leader after hitting <Enter>)
-vim.opt.tagcase = "match"     -- Search a tag file case-sensitively
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 2
-vim.opt.shortmess:append("I") -- Don't display intro message when starting vim
-vim.opt.tabstop = 2
-vim.opt.foldlevelstart = 99   -- Don't always fold
-vim.opt.showtabline = 2       -- Always show tab line
-vim.opt.signcolumn = "yes"
-vim.opt.laststatus = 3        -- Have a global statusline at the bottom instead of one for each window
-vim.opt.mouse = ""            -- Disable mouse support
-vim.opt.ambiwidth = "single"  -- Display East Asian Ambiguous Width characters in 1 byte
-vim.opt.updatetime = 300      -- Fire CursorHold event immediately and display diagnostic message
-vim.opt.winbar = " "          -- Display the winbar in advance to display breadcrumbs.
-vim.opt.scrolloff = 5         -- (default 0)
--- Sync yank (not delete) to macOS clipboard via pbcopy/pbpaste
--- Note: As d doesn't call external process, it's lighter than clipboard=unnamedplus.
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    if vim.v.event.operator == 'y' then
-      vim.fn.setreg('+', vim.v.event.regcontents, vim.v.event.regtype)
-    end
-  end,
-})
-
-------------------------------------------------------------
 -- Set character widths
 ------------------------------------------------------------
 vim.api.nvim_set_var('cellwidths', {
@@ -303,6 +297,16 @@ vim.api.nvim_set_var('cellwidths', {
 ------------------------------------------------------------
 -- Autocommands
 ------------------------------------------------------------
+-- Sync yank (not delete) to macOS clipboard via pbcopy/pbpaste
+-- Note: As d doesn't call external process, it's lighter than clipboard=unnamedplus.
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    if vim.v.event.operator == 'y' then
+      vim.fn.setreg('+', vim.v.event.regcontents, vim.v.event.regtype)
+    end
+  end,
+})
+
 vim.cmd([[
 augroup init_vim_autocommands
   autocmd!
