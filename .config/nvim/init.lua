@@ -53,6 +53,7 @@ vim.opt.ignorecase = true
 vim.opt.incsearch = true
 vim.opt.laststatus = 3          -- Have a global statusline at the bottom instead of one for each window
 vim.opt.list = true             -- (default off) Show tabs, trailing spaces, non-breakable space characters
+vim.opt.modeline = false        -- (default true)
 vim.opt.mouse = ""              -- Disable mouse support
 vim.opt.number = true
 vim.opt.scrolloff = 5           -- (default 0)
