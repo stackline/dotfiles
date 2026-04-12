@@ -281,6 +281,15 @@ vim.opt.ambiwidth = "single"  -- Display East Asian Ambiguous Width characters i
 vim.opt.updatetime = 300      -- Fire CursorHold event immediately and display diagnostic message
 vim.opt.winbar = " "          -- Display the winbar in advance to display breadcrumbs.
 vim.opt.scrolloff = 5         -- (default 0)
+-- Sync yank (not delete) to macOS clipboard via pbcopy/pbpaste
+-- Note: As d doesn't call external process, it's lighter than clipboard=unnamedplus.
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    if vim.v.event.operator == 'y' then
+      vim.fn.setreg('+', vim.v.event.regcontents, vim.v.event.regtype)
+    end
+  end,
+})
 
 ------------------------------------------------------------
 -- Set character widths
