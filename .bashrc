@@ -164,6 +164,12 @@ function check-trailing-character-hexdump() {
   tail -c 1 "$1" | xxd -p
 }
 
+# --------------------------------------
+# bash-completion
+# --------------------------------------
+readonly BASH_COMPLETION_SH_PATH="$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
+[ -r "$BASH_COMPLETION_SH_PATH" ] && . "$BASH_COMPLETION_SH_PATH"
+
 PATH=$(dietpath_wrapper)
 export PATH
 
