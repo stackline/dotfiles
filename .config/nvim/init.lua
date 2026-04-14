@@ -290,14 +290,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-vim.cmd([[
-augroup init_vim_autocommands
-  autocmd!
+local augroup = vim.api.nvim_create_augroup('init_vim_autocommands', { clear = true })
 
-  " When editing a file, always jump to the last cursor position
-  autocmd BufReadPost *
-        \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-        \   exe "normal! g'\"" |
-        \ endif
-augroup END
-]])
+-- When editing a file, always jump to the last cursor position
+vim.api.nvim_create_autocmd('BufReadPost', {
+  group = augroup,
+  callback = function()
+    local mark = vim.api.nvim_buf_get_mark(0, '"')
+    local lcount = vim.api.nvim_buf_line_count(0)
+    if mark[1] > 0 and mark[1] <= lcount then
+      vim.api.nvim_win_set_cursor(0, mark)
+    end
+  end,
+})
