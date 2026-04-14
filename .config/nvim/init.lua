@@ -176,12 +176,6 @@ local plugins = {
       -- ref. https://github.com/nvim-treesitter/nvim-treesitter/issues/703
       --
       'RRethy/nvim-treesitter-endwise', -- alternative to vim-endwise
-      {
-        'windwp/nvim-ts-autotag', -- auto close html tag
-        config = function()
-          require('nvim-ts-autotag').setup()
-        end,
-      },
     }
   },
   {
