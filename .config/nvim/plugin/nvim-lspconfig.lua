@@ -64,11 +64,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-vim.diagnostic.config({
-  -- Override default (false): sort multiple diagnostics by severity (error > warn > info > hint)
-  severity_sort = true,
-})
-
 -- -------------------------------------
 -- nvim-cmp autocompletion
 -- ref. https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion#nvim-cmp

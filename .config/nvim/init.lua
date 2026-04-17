@@ -90,6 +90,16 @@ vim.keymap.set('n', 'tp', ':tabprevious<CR>', { silent = true })
 
 
 ------------------------------------------------------------
+-- vim.diagnostic
+------------------------------------------------------------
+vim.diagnostic.config({
+  -- Override default (false): sort multiple diagnostics by severity (error > warn > info > hint)
+  severity_sort = true,
+  virtual_text = true,
+})
+
+
+------------------------------------------------------------
 -- Bootstrap lazy.nvim
 ------------------------------------------------------------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
