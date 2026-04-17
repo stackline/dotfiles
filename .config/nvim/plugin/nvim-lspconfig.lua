@@ -1,14 +1,3 @@
--- -------------------------------------
--- Suggested configuration
--- ref. https://github.com/neovim/nvim-lspconfig#suggested-configuration
--- -------------------------------------
--- Global mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1 }) end)
-vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1 }) end)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
-
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd('LspAttach', {

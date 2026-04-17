@@ -75,8 +75,7 @@ vim.opt.wrap = false
 ------------------------------------------------------------
 -- vim.keymap
 ------------------------------------------------------------
--- Since space is used as prefix in nvim-lspconfig, nothing is done with space alone.
--- ref. https://github.com/neovim/nvim-lspconfig#suggested-configuration
+-- Since space is used as leader key, nothing is done with space alone.
 vim.keymap.set('n', '<Space>', '<Nop>', {})
 
 -- Tab jump: jump to the target tab by specify the number (t1, t2, t3...)
