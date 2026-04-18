@@ -4,34 +4,13 @@ if not ok then
   return
 end
 
-local function find_git_root(dir)
-  if dir == nil then
-    return ""
+local function find_git_root(path)
+  local dir = vim.fn.isdirectory(path) ~= 0 and path or vim.fn.fnamemodify(path, ':h')
+  local git_dir = vim.fs.find('.git', { path = dir, upward = true })[1]
+  if git_dir == nil then
+    return ''
   end
-
-  -- NOTE: "isdirectory() ~= 0" means that "isdirectory"" function don't return
-  -- false. In other words, the target path exists and is a directory.
-  if vim.fn.isdirectory(dir .. "/.git") ~= 0 then
-    return dir
-  else
-    -- NOTE: "string.match" return nil if the argument "s" doesn't match the
-    -- argument "pattern".
-    local parent_dir = string.match(dir, "([^\n]+)/.+")
-    return find_git_root(parent_dir)
-  end
-end
-
-local function split(str, sep)
-  local pattern = "%s"
-  if sep ~= nil then
-    pattern = "([^" .. sep .. "]+)"
-  end
-
-  local t = {}
-  for word in string.gmatch(str, pattern) do
-    table.insert(t, word)
-  end
-  return t
+  return vim.fn.fnamemodify(git_dir, ':h')
 end
 
 local function buf_get_filename(self)
@@ -84,7 +63,7 @@ local function buf_get_repository_name(self)
       section = matched
       t[section] = {}
     else
-      local element = split(line, '=')
+      local element = vim.split(line, '=', { plain = true, trimempty = true })
       local name = element[1]:gsub(" ", ""):gsub("\t", "")
       local value = element[2]:gsub(" ", ""):gsub("\t", "")
       t[section][name] = value
@@ -94,9 +73,9 @@ local function buf_get_repository_name(self)
 
   -- Extract repository name.
   local remote_repository_url = t['remote "origin"']['url']
-  local url_parts = split(remote_repository_url, '/')
+  local url_parts = vim.split(remote_repository_url, '/', { plain = true, trimempty = true })
   local end_of_path = url_parts[#url_parts]
-  local path_parts = split(end_of_path, '.')
+  local path_parts = vim.split(end_of_path, '.', { plain = true, trimempty = true })
   local repository_name = path_parts[1]
 
   return repository_name
@@ -126,9 +105,9 @@ local function buf_get_branch_name(self)
   local refer_to_branch = (head_info:match("^ref: ") ~= nil)
 
   if refer_to_branch then
-    local head_parts = split(head_info, ":")
+    local head_parts = vim.split(head_info, ':', { plain = true, trimempty = true })
     local head_ref = head_parts[2]
-    local head_ref_parts = split(head_ref, "/")
+    local head_ref_parts = vim.split(head_ref, '/', { plain = true, trimempty = true })
     local branch_name = head_ref_parts[#head_ref_parts]
     return branch_name
   else
