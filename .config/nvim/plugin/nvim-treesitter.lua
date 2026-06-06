@@ -14,7 +14,6 @@ ts.install({
   'javascript',
   'json',
   'json5',
-  'kotlin',
   'lua',
   'markdown',
   'markdown_inline', -- Used by Lspsaga

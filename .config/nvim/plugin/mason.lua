@@ -13,7 +13,6 @@ local mason_packages = {
   "gopls",
   "graphql-language-service-cli",
   "json-lsp",
-  "kotlin-language-server",
   "lua-language-server",
   "prisma-language-server",
   "pyright",

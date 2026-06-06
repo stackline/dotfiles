@@ -93,7 +93,6 @@ vim.lsp.enable('docker_compose_language_service') -- docker-compose-language-ser
 vim.lsp.enable('gopls')                           -- gopls
 vim.lsp.enable('graphql')                         -- graphql-language-service-cli
 vim.lsp.enable('jsonls')                          -- json-lsp
-vim.lsp.enable('kotlin_language_server')          -- kotlin-language-server
 vim.lsp.enable('prismals')                        -- prisma-language-server
 vim.lsp.enable('pyright')                         -- pyright
 vim.lsp.enable('terraformls')                     -- terraform-ls
