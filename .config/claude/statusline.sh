@@ -21,6 +21,7 @@ done < <(jq -r '
     | gsub(" \\([^)]*\\)"; "")
     | ascii_downcase
     | gsub(" "; "")),
+  (.effort.level // ""),
   (.workspace.current_dir // .cwd // "."),
   (.context_window.context_window_size // 1000000 | tostring),
   (.context_window.current_usage.input_tokens // 0 | tostring),
@@ -34,16 +35,17 @@ done < <(jq -r '
 ' <<< "$input")
 
 model_name="${vals[0]}"
-cwd="${vals[1]}"
-context_window_size="${vals[2]}"
-current_input="${vals[3]}"
-current_output="${vals[4]}"
-current_cache_creation="${vals[5]}"
-current_cache_read="${vals[6]}"
-used_percentage="${vals[7]}"
-cost_usd="${vals[8]}"
-rate_5h="${vals[9]}"
-rate_7d="${vals[10]}"
+effort_level="${vals[1]}"
+cwd="${vals[2]}"
+context_window_size="${vals[3]}"
+current_input="${vals[4]}"
+current_output="${vals[5]}"
+current_cache_creation="${vals[6]}"
+current_cache_read="${vals[7]}"
+used_percentage="${vals[8]}"
+cost_usd="${vals[9]}"
+rate_5h="${vals[10]}"
+rate_7d="${vals[11]}"
 
 repo_name="${cwd##*/}"  # ##*/ strips everything up to and including the last slash
 
@@ -77,6 +79,6 @@ else
 fi
 rate_str=" | 5h:${rate_5h_disp}, 7d:${rate_7d_disp}"
 
-printf "%s @ %s | %s/%s %s | \$%s%s" \
-  "$model_name" "$repo_name" "$current_display" "$window_display" \
+printf "%s:%s @ %s | %s/%s %s | \$%s%s" \
+  "$model_name" "$effort_level" "$repo_name" "$current_display" "$window_display" \
   "$ctx_str" "$cost_usd_disp" "$rate_str"
