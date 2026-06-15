@@ -172,6 +172,8 @@ function check-trailing-character-hexdump() {
 # --------------------------------------
 # bash-completion
 # --------------------------------------
+export BASH_COMPLETION_COMPAT_IGNORE='glow|golangci-lint|minikube|k6|kubectl|kustomize|rg|tbls|tree-sitter'
+
 readonly BASH_COMPLETION_SH_PATH="$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
 [ -r "$BASH_COMPLETION_SH_PATH" ] && . "$BASH_COMPLETION_SH_PATH"
 
