@@ -98,6 +98,11 @@ alias ssh-add-apple-use-keychanin='ssh-add --apple-use-keychain'
 # --------------------------------------
 function clip() { pbcopy < "$1"; }
 
+# Find relative path from home directory.
+function fdh() {
+    fd "$@" --absolute-path | sed "s#$HOME#~#"
+}
+
 function is_interactive() {
   local shell_option_flags="$-"
   [[ "${shell_option_flags}" == *i* ]]
