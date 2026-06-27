@@ -203,7 +203,10 @@ local plugins = {
       'nvim-tree/nvim-web-devicons'
     },
     config = function ()
-      require'alpha'.setup(require'alpha.themes.startify'.config)
+      local startify = require'alpha.themes.startify'
+      -- Replace the default neovim ASCII logo with a simple one-line header.
+      startify.section.header.val = { "alpha-nvim" }
+      require'alpha'.setup(startify.config)
     end
   },
   {
