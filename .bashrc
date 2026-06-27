@@ -103,6 +103,20 @@ function fdh() {
     fd "$@" --absolute-path | sed "s#$HOME#~#"
 }
 
+# Measure neovim end-to-end startup time (open + quit).
+function nvim-bench() {
+  local file="${1:-.config/nvim/init.lua}"
+  local tmpfile
+  tmpfile=$(mktemp)
+  echo "(warmup)"
+  { time nvim "$file" +qa; } 2>"$tmpfile"; grep real "$tmpfile"
+  for i in 1 2 3; do
+    echo "($i/3)"
+    { time nvim "$file" +qa; } 2>"$tmpfile"; grep real "$tmpfile"
+  done
+  command rm "$tmpfile"
+}
+
 function is_interactive() {
   local shell_option_flags="$-"
   [[ "${shell_option_flags}" == *i* ]]
