@@ -42,3 +42,6 @@
   # NOTE: Uncomment if needed
   # root = ~/go/src
   root = ~/ghq
+[core]
+  # Don't escape multibyte characters in pathnames.
+  quotepath = false
