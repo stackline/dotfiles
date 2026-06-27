@@ -135,13 +135,16 @@ local plugins = {
     dependencies = {
       "williamboman/mason.nvim",
 
-      -- UI for Neovim notifications and LSP progress messages
-      -- NOTE: `opts = {}` will automatically call `require("fidget").setup(opts)`
-      { "j-hui/fidget.nvim", opts = {} },
-
       -- Settings to enable lua-language-server to support Neovim lua API
       { "folke/lazydev.nvim", ft = "lua", opts = {} },
     }
+  },
+  {
+    -- UI for Neovim notifications and LSP progress messages.
+    -- NOTE: `opts = {}` will automatically call `require("fidget").setup(opts)`
+    "j-hui/fidget.nvim",
+    event = "LspAttach",
+    opts = {},
   },
   {
     'nvimdev/lspsaga.nvim',
