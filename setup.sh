@@ -46,6 +46,20 @@ configure_docker() {
 }
 
 # --------------------------------------
+# Configure Hammerspoon
+# --------------------------------------
+configure_hammerspoon() {
+  # Hammerspoon ignores XDG_CONFIG_HOME even when it is exported, so the config
+  # path has to be set explicitly through the MJConfigFile user default.
+  # https://github.com/Hammerspoon/hammerspoon/issues/2175
+  #
+  # shellcheck disable=SC2088 # Hammerspoon expands the tilde, so the literal
+  # tilde is intended here. It keeps the user name out of the stored value.
+  defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
+  echo "Hammerspoon: MJConfigFile set to ~/.config/hammerspoon/init.lua"
+}
+
+# --------------------------------------
 # Install packages
 # --------------------------------------
 
@@ -60,3 +74,4 @@ execute() {
 
 execute create_symbolic_links
 execute configure_docker
+execute configure_hammerspoon
