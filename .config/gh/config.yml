@@ -16,3 +16,4 @@ http_unix_socket:
 browser:
 # The current version of the config schema.
 version: "1"
+expiring_credentials: enabled
