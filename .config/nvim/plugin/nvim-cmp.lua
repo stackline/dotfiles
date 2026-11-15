@@ -60,8 +60,14 @@ cmp.setup {
 }
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+--
+-- NOTE: Use `noselect` so that no candidate is highlighted until one is chosen.
+--   Otherwise the first candidate is highlighted as a "preselect" (display only):
+--   <CR> searches the typed text, not the highlighted one, and the first <Tab>
+--   skips to the second candidate.
 cmp.setup.cmdline({ '/', '?' }, {
   mapping = cmp.mapping.preset.cmdline(),
+  completion = { completeopt = 'menu,menuone,noselect' },
   sources = {
     { name = 'buffer' }
   }
