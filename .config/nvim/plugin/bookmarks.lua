@@ -16,7 +16,8 @@
 --   <leader>b   toggle the bookmark on the current file (add / remove)
 --   <leader>h   open the bookmark list (also :Bookmarks; alpha's button)
 --   <leader>1-9 jump directly to bookmark N
--- List window: <CR> or 1-9 to open, dd to delete, q / <Esc> to close.
+-- List (fzf): type to filter, <CR> to open, ctrl-d to delete, ctrl-v (g:fzf_action)
+-- to open in a new tab.
 
 local M = {}
 
@@ -114,85 +115,57 @@ function M.open(index)
   end
 end
 
+-- Pick a bookmark with fzf. The keys in g:fzf_action (e.g. ctrl-v: tab split)
+-- work as in the other fzf lists; ctrl-d deletes the highlighted bookmark and
+-- reopens the refreshed list.
 function M.list()
   local bookmarks = get_list(load())
-
-  local lines = {}
   if #bookmarks == 0 then
-    lines = { "  (no bookmarks)" }
-  else
-    for i, b in ipairs(bookmarks) do
-      lines[i] = string.format(" %d  %s", i, b.path)
-    end
+    vim.notify("Bookmarks: no bookmarks")
+    return
   end
 
-  local width = 40
-  for _, l in ipairs(lines) do
-    width = math.max(width, vim.fn.strdisplaywidth(l) + 2)
-  end
-  local height = #lines
-
-  local buf = vim.api.nvim_create_buf(false, true)
-  vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
-  vim.bo[buf].modifiable = false
-  vim.bo[buf].bufhidden = "wipe"
-
-  local win = vim.api.nvim_open_win(buf, true, {
-    relative = "editor",
-    width = width,
-    height = math.max(height, 1),
-    row = math.floor((vim.o.lines - height) / 2 - 1),
-    col = math.floor((vim.o.columns - width) / 2),
-    style = "minimal",
-    border = "rounded",
-    title = " bookmarks ",
-    title_pos = "center",
-  })
-  vim.wo[win].cursorline = true
-
-  local function close()
-    if vim.api.nvim_win_is_valid(win) then
-      vim.api.nvim_win_close(win, true)
-    end
+  -- Keep the number in each entry so it still matches <leader>N and can be typed
+  -- into the fzf query.
+  local source = {}
+  for i, b in ipairs(bookmarks) do
+    source[i] = string.format("%d  %s", i, b.path)
   end
 
-  local opts = { buffer = buf, nowait = true, silent = true }
+  local actions = vim.g.fzf_action or {}
+  local expect = vim.tbl_keys(actions)
+  table.insert(expect, "ctrl-d")
 
-  vim.keymap.set("n", "<CR>", function()
-    local idx = vim.api.nvim_win_get_cursor(win)[1]
-    if bookmarks[idx] then
-      close()
-      M.open(idx)
-    end
-  end, opts)
-
-  for i = 1, math.min(9, #bookmarks) do
-    vim.keymap.set("n", tostring(i), function()
-      close()
-      M.open(i)
-    end, opts)
-  end
-
-  -- dd: delete the bookmark on the current line, then reopen the refreshed list.
-  vim.keymap.set("n", "dd", function()
-    local idx = vim.api.nvim_win_get_cursor(win)[1]
-    if not bookmarks[idx] then
+  local function on_select(lines)
+    -- With --expect the first line is the pressed key ("" for <CR>) and the
+    -- second is the selected entry; <Esc> / <C-c> leave no entry.
+    local key, entry = lines[1], lines[2]
+    local idx = entry and tonumber(entry:match("^(%d+)"))
+    if not idx then
       return
     end
-    local data = load()
-    table.remove(get_list(data), idx)
-    save(data)
-    close()
-    M.list()
-  end, opts)
+    if key == "ctrl-d" then
+      local data = load()
+      table.remove(get_list(data), idx)
+      save(data)
+      M.list()
+      return
+    end
+    if type(actions[key]) == "string" then
+      vim.cmd(actions[key])
+    end
+    M.open(idx)
+  end
 
-  -- Buffer-local C-n/C-p navigation, overriding the global <C-p> (fzf) mapping
-  -- while this window is focused.
-  vim.keymap.set("n", "<C-n>", "j", opts)
-  vim.keymap.set("n", "<C-p>", "k", opts)
-
-  vim.keymap.set("n", "q", close, opts)
-  vim.keymap.set("n", "<Esc>", close, opts)
+  vim.fn["fzf#run"](vim.fn["fzf#wrap"]("bookmarks", {
+    source = source,
+    ["sink*"] = on_select,
+    options = {
+      "--prompt=Bookmarks> ",
+      "--tiebreak=index",
+      "--expect=" .. table.concat(expect, ","),
+    },
+  }))
 end
 
 ------------------------------------------------------------
