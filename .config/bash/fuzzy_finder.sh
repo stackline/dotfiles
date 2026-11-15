@@ -18,6 +18,15 @@ function fzf_cd_repository() {
   fi
 }
 
+function fzf_cd_organization() {
+  local selected_dir
+  selected_dir=$(ghq list --full-path | sed 's|/[^/]*$||' | sort -u | fzf --reverse)
+
+  if [ -d "$selected_dir" ]; then
+    cd "$selected_dir" || return 1
+  fi
+}
+
 function fzf_docker_container_login() {
   local container_name
   container_name=$(docker ps --format "{{.Names}}" | fzf -1 -q "$1")
