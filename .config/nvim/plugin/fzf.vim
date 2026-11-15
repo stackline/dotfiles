@@ -7,6 +7,14 @@ let g:fzf_action = {
       \ 'ctrl-v': 'tab split'
       \ }
 
+" NOTE: In tmux 3.7 or above, fzf's default layout is a tmux floating pane,
+" which is centered on the whole tmux window and overflows the neovim pane when
+" the window is split. Use a floating window inside neovim to keep fzf within
+" the neovim pane.
+"
+" ref. https://github.com/junegunn/fzf/blob/master/README-VIM.md#fzf_layout
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+
 " Don't show line number in the preview window.
 " Change bat style option from '--style=numbers' to '--style=plain'.
 "
