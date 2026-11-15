@@ -66,6 +66,8 @@ brew 'nkf'
 brew 'nmap'
 brew 'silicon'
 brew 'ripgrep'
+tap 'vjeantet/tap'
+brew 'vjeantet/tap/alerter' # Send macOS alert-style notifications (persistent until dismissed)
 brew 'macos-trash' # Move files to the trash
 # TODO: See if I can use Zellij instead of tmux as a terminal multiplexer.
 # brew 'zellij'
