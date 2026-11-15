@@ -67,7 +67,6 @@ vim.opt.swapfile = false        -- Don't make a swap file (.swp)
 vim.opt.tabstop = 2
 vim.opt.tagcase = "match"       -- Search a tag file case-sensitively
 vim.opt.updatetime = 300        -- Fire CursorHold event immediately and display diagnostic message
-vim.opt.winbar = " "            -- Display the winbar in advance to display breadcrumbs.
 vim.opt.winborder = 'rounded'   -- (default "") Default border style for floating windows
 vim.opt.wrap = false
 
@@ -300,6 +299,20 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 local augroup = vim.api.nvim_create_augroup('init_vim_autocommands', { clear = true })
+
+-- Pre-allocate the winbar row so lspsaga breadcrumbs don't shift the layout when they appear.
+-- Skip sql (dwh-dbt): there are no breadcrumbs there, so the row would be wasted.
+-- Set it per window: an empty local value falls back to a non-empty global one,
+-- so a global " " could not be turned off for sql.
+vim.api.nvim_create_autocmd('FileType', {
+  group = augroup,
+  pattern = '*',
+  callback = function()
+    if vim.bo.filetype ~= 'sql' then
+      vim.wo.winbar = ' '
+    end
+  end,
+})
 
 -- When editing a file, always jump to the last cursor position
 vim.api.nvim_create_autocmd('BufReadPost', {
