@@ -27,6 +27,9 @@ function prompt::initialize_git_prompt {
   # export GIT_PS1_SHOWUNTRACKEDFILES=1
   # export GIT_PS1_SHOWSTASHSTATE=1
   export GIT_PS1_SHOWUPSTREAM=1
+  # Skip the "git config --bool core.sparseCheckout" call on every prompt,
+  # since I don't use sparse checkout.
+  export GIT_PS1_OMITSPARSESTATE=1
 }
 
 function prompt::customize_bash_ps1() {
