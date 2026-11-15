@@ -110,4 +110,3 @@ cask 'google-japanese-ime' # input method editor
 cask 'contexts'            # window switcher
 cask 'meetingbar'          # calendar notification
 cask '1password'           # password manager
-cask 'hammerspoon'         # macOS automation (shows current audio output in the menu bar)
