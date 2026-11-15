@@ -5,6 +5,7 @@
   amend = commit --amend --no-edit
   gone-list = !git for-each-ref --format \"%(refname:short) %(upstream:track)\" refs/heads | awk \"\\$2 ==   \\\"[gone]\\\" {print \\$1}\"
   gone = !git for-each-ref --format \"%(refname:short) %(upstream:track)\" refs/heads | awk \"\\$2 == \\\"[gone]\\\" {print \\$1}\" | xargs git branch -D
+  sync = !echo '[git switch main]' && git switch main && echo && echo '[git pull --prune]' && git pull --prune && echo && echo '[git gone]' && git gone && echo && echo '[git branch]' && git branch
 [init]
   defaultBranch = main
 [commit]
