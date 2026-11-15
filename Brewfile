@@ -32,6 +32,7 @@ brew 'sdkman-cli' # Java SDK manager
 
 ### Development tools
 brew 'hadolint'             # Dockerfile: Linter
+brew 'typescript'           # TypeScript 7 native compiler. `tsc --lsp` is used as LSP server
 brew 'staticcheck'          # Go: Linter
 brew 'shellcheck'           # Shell script: Linter
 brew 'shfmt'                # Shell script: Formatter

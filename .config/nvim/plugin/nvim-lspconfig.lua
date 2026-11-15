@@ -110,12 +110,7 @@ vim.lsp.config('clangd', {
 vim.lsp.enable('clangd')
 
 -- TypeScript
-vim.lsp.config('tsgo', {
-  cmd = { 'tsgo', '--lsp', '--stdio' },
-  filetypes = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' },
-  root_markers = { 'tsconfig.json', 'jsconfig.json', 'package.json', '.git' },
-})
-vim.lsp.enable('tsgo')
+vim.lsp.enable('tsc')
 
 vim.lsp.config('lua_ls', {
   settings = {
