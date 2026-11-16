@@ -30,7 +30,6 @@ done < <(jq -r '
   (.context_window.current_usage.cache_creation_input_tokens // 0 | tostring),
   (.context_window.current_usage.cache_read_input_tokens // 0 | tostring),
   (.context_window.used_percentage // 0 | tostring),
-  (.cost.total_cost_usd // 0 | tostring),
   (.rate_limits.five_hour.used_percentage // "null"),
   (.rate_limits.seven_day.used_percentage // "null"),
   (.session_name // "" | gsub("[\n\r]"; " ")
@@ -49,12 +48,11 @@ current_output="${vals[5]}"
 current_cache_creation="${vals[6]}"
 current_cache_read="${vals[7]}"
 used_percentage="${vals[8]}"
-cost_usd="${vals[9]}"
-rate_5h="${vals[10]}"
-rate_7d="${vals[11]}"
-session_title="${vals[12]}"
-session_title_short="${vals[13]}"
-session_id="${vals[14]}"
+rate_5h="${vals[9]}"
+rate_7d="${vals[10]}"
+session_title="${vals[11]}"
+session_title_short="${vals[12]}"
+session_id="${vals[13]}"
 
 repo_name="${cwd##*/}"  # ##*/ strips everything up to and including the last slash
 
@@ -72,9 +70,6 @@ if (( context_window_size >= 1000000 && context_window_size % 1000000 == 0 )); t
 else
   window_display="$(( context_window_size / 1000 ))k"
 fi
-
-# Cost (USD, 2 decimal places)
-cost_usd_disp=$(awk "BEGIN {printf \"%.2f\", $cost_usd}")
 
 used_int="${used_percentage%%.*}"
 ctx_str="(${used_int}%)"
@@ -118,7 +113,7 @@ if [ "$TMUX_RENAME" = "1" ] && [ -n "$TMUX" ] && [ -n "$TMUX_PANE" ] && [ -n "$s
   fi
 fi
 
-printf "%s%s:%s @ %s | %s/%s %s | \$%s%s" \
+printf "%s%s:%s @ %s | %s/%s %s%s" \
   "$title_str" \
   "$model_name" "$effort_level" "$repo_name" "$current_display" "$window_display" \
-  "$ctx_str" "$cost_usd_disp" "$rate_str"
+  "$ctx_str" "$rate_str"
