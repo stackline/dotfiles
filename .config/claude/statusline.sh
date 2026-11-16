@@ -31,7 +31,9 @@ done < <(jq -r '
   (.context_window.used_percentage // 0 | tostring),
   (.cost.total_cost_usd // 0 | tostring),
   (.rate_limits.five_hour.used_percentage // "null"),
-  (.rate_limits.seven_day.used_percentage // "null")
+  (.rate_limits.seven_day.used_percentage // "null"),
+  (.session_name // "" | gsub("[\n\r]"; " ")
+    | if length > 28 then .[0:28] + "…" else . end)
 ' <<< "$input")
 
 model_name="${vals[0]}"
@@ -46,6 +48,7 @@ used_percentage="${vals[8]}"
 cost_usd="${vals[9]}"
 rate_5h="${vals[10]}"
 rate_7d="${vals[11]}"
+session_title="${vals[12]}"
 
 repo_name="${cwd##*/}"  # ##*/ strips everything up to and including the last slash
 
@@ -79,6 +82,14 @@ else
 fi
 rate_str=" | 5h:${rate_5h_disp}, 7d:${rate_7d_disp}"
 
-printf "%s:%s @ %s | %s/%s %s | \$%s%s" \
+# Session title (empty until Claude generates one, i.e. before the first turn)
+if [ -n "$session_title" ]; then
+  title_str="[${session_title}] "
+else
+  title_str=""
+fi
+
+printf "%s%s:%s @ %s | %s/%s %s | \$%s%s" \
+  "$title_str" \
   "$model_name" "$effort_level" "$repo_name" "$current_display" "$window_display" \
   "$ctx_str" "$cost_usd_disp" "$rate_str"
