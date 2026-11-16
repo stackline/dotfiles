@@ -33,7 +33,10 @@ done < <(jq -r '
   (.rate_limits.five_hour.used_percentage // "null"),
   (.rate_limits.seven_day.used_percentage // "null"),
   (.session_name // "" | gsub("[\n\r]"; " ")
-    | if length > 28 then .[0:28] + "…" else . end)
+    | if length > 28 then .[0:28] + "…" else . end),
+  (.session_name // "" | gsub("[\n\r]"; " ")
+    | if length > 20 then .[0:20] + "…" else . end),
+  (.session_id // "")
 ' <<< "$input")
 
 model_name="${vals[0]}"
@@ -49,6 +52,8 @@ cost_usd="${vals[9]}"
 rate_5h="${vals[10]}"
 rate_7d="${vals[11]}"
 session_title="${vals[12]}"
+session_title_short="${vals[13]}"
+session_id="${vals[14]}"
 
 repo_name="${cwd##*/}"  # ##*/ strips everything up to and including the last slash
 
@@ -87,6 +92,23 @@ if [ -n "$session_title" ]; then
   title_str="[${session_title}] "
 else
   title_str=""
+fi
+
+# Rename the tmux window to the session title, so that a window list of
+# several parallel Claude sessions is distinguishable at a glance.
+# Set TMUX_RENAME=0 to disable. NOTE: rename-window turns off automatic-rename
+# for that window; restore with `tmux set -w automatic-rename on`.
+TMUX_RENAME="${TMUX_RENAME:-1}"
+if [ "$TMUX_RENAME" = "1" ] && [ -n "$TMUX" ] && [ -n "$TMUX_PANE" ] && [ -n "$session_title_short" ]; then
+  # Rename only when the title changed (avoids a tmux subprocess per refresh).
+  # The session id is part of the cached value so that a different session
+  # reusing the same pane id (e.g. after a tmux server restart) still renames.
+  title_cache="${TMPDIR:-/tmp}/claude-tmux-title-${TMUX_PANE#%}"
+  title_state="${session_id}	${session_title_short}"
+  if [ "$(cat "$title_cache" 2>/dev/null)" != "$title_state" ]; then
+    printf '%s' "$title_state" > "$title_cache"
+    tmux rename-window -t "$TMUX_PANE" "$session_title_short" 2>/dev/null
+  fi
 fi
 
 printf "%s%s:%s @ %s | %s/%s %s | \$%s%s" \
