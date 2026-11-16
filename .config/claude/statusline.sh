@@ -4,8 +4,9 @@
 #   chmod +x
 #   chmod 744 ~/.claude/statusline.sh
 
-# Read JSON input from stdin
-input=$(cat)
+# Read JSON input from stdin. The read builtin is used instead of cat
+# because each spawned process costs about 7 ms per refresh.
+IFS= read -r -d "" input
 
 # Debug: dump JSON to file (enable to inspect rate_limits field names etc.)
 # echo "$input" > /tmp/claude_statusline_debug.json
