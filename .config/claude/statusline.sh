@@ -29,7 +29,6 @@ done < <(jq -r '
   (.context_window.current_usage.output_tokens // 0 | tostring),
   (.context_window.current_usage.cache_creation_input_tokens // 0 | tostring),
   (.context_window.current_usage.cache_read_input_tokens // 0 | tostring),
-  (.context_window.used_percentage // 0 | tostring),
   (.rate_limits.five_hour.used_percentage // "null"),
   (.rate_limits.seven_day.used_percentage // "null"),
   (.session_name // "" | gsub("[\n\r]"; " ")
@@ -47,12 +46,11 @@ current_input="${vals[4]}"
 current_output="${vals[5]}"
 current_cache_creation="${vals[6]}"
 current_cache_read="${vals[7]}"
-used_percentage="${vals[8]}"
-rate_5h="${vals[9]}"
-rate_7d="${vals[10]}"
-session_title="${vals[11]}"
-session_title_short="${vals[12]}"
-session_id="${vals[13]}"
+rate_5h="${vals[8]}"
+rate_7d="${vals[9]}"
+session_title="${vals[10]}"
+session_title_short="${vals[11]}"
+session_id="${vals[12]}"
 
 repo_name="${cwd##*/}"  # ##*/ strips everything up to and including the last slash
 
@@ -71,7 +69,13 @@ else
   window_display="$(( context_window_size / 1000 ))k"
 fi
 
-used_int="${used_percentage%%.*}"
+# Percentage of the window filled by input and output together, rounded to the nearest
+# integer. The input-only used_percentage from Claude Code lags by the last response's output.
+if (( context_window_size > 0 )); then
+  used_int=$(( (current_total * 100 + context_window_size / 2) / context_window_size ))
+else
+  used_int=0
+fi
 ctx_str="(${used_int}%)"
 
 # Rate limits (show "?%" if unavailable e.g. startup or API key session)
