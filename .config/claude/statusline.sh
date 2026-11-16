@@ -65,9 +65,13 @@ repo_name="${cwd##*/}"  # ##*/ strips everything up to and including the last sl
 # Context total
 current_total=$((current_input + current_output + current_cache_creation + current_cache_read))
 
-# Format tokens as K (bash integer division, no subprocess)
-current_display="$(( current_total / 1000 ))K"
-window_display="$(( context_window_size / 1000 ))K"
+# Token counts in the notation of Claude Desktop: 332k, 1M (bash integer division, no subprocess)
+current_display="$(( current_total / 1000 ))k"
+if (( context_window_size >= 1000000 && context_window_size % 1000000 == 0 )); then
+  window_display="$(( context_window_size / 1000000 ))M"
+else
+  window_display="$(( context_window_size / 1000 ))k"
+fi
 
 # Cost (USD, 2 decimal places)
 cost_usd_disp=$(awk "BEGIN {printf \"%.2f\", $cost_usd}")
