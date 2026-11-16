@@ -1,0 +1,5 @@
+# Supply chain hardening.
+# Skip versions published within the last 7 days (the unit is minutes).
+minimumReleaseAge: 10080
+# Fail when a package's trust evidence is weaker than that of its earlier releases.
+trustPolicy: no-downgrade
