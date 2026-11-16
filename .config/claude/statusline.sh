@@ -105,7 +105,9 @@ if [ "$TMUX_RENAME" = "1" ] && [ -n "$TMUX" ] && [ -n "$TMUX_PANE" ] && [ -n "$s
   # reusing the same pane id (e.g. after a tmux server restart) still renames.
   title_cache="${TMPDIR:-/tmp}/claude-tmux-title-${TMUX_PANE#%}"
   title_state="${session_id}	${session_title_short}"
-  if [ "$(cat "$title_cache" 2>/dev/null)" != "$title_state" ]; then
+  cached=""
+  { IFS= read -r cached < "$title_cache"; } 2>/dev/null
+  if [ "$cached" != "$title_state" ]; then
     printf '%s' "$title_state" > "$title_cache"
     tmux rename-window -t "$TMUX_PANE" "$session_title_short" 2>/dev/null
   fi
