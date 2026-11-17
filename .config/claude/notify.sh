@@ -4,6 +4,11 @@
 # post a macOS notification.
 # usage: notify.sh <status>   (the hook JSON is read from stdin)
 #   title: "Claude Code: <status>", body: the session name
+# Meant to be called from the Stop and Notification hooks in ~/.claude/settings.json.
+#
+# macOS attributes osascript notifications to Script Editor. To keep them on screen until
+# dismissed, set System Settings > Notifications > Application Notifications > Script Editor >
+# Alert Style from Temporary to Persistent. This applies to every osascript notification.
 
 status=$1
 transcript_path=$(jq -r '.transcript_path // empty')
