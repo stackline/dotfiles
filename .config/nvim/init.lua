@@ -139,13 +139,6 @@ local plugins = {
     }
   },
   {
-    -- UI for Neovim notifications and LSP progress messages.
-    -- NOTE: `opts = {}` will automatically call `require("fidget").setup(opts)`
-    "j-hui/fidget.nvim",
-    event = "LspAttach",
-    opts = {},
-  },
-  {
     'nvimdev/lspsaga.nvim',
     event = "LspAttach",
     config = function()
