@@ -97,6 +97,14 @@ vim.diagnostic.config({
   virtual_text = true,
 })
 
+vim.keymap.set('n', 'tt', function()
+  if vim.fn.getqflist({ winid = 0 }).winid ~= 0 then
+    vim.cmd.cclose()
+  else
+    vim.diagnostic.setqflist()
+  end
+end, { desc = 'Diagnostics (quickfix)' })
+
 
 ------------------------------------------------------------
 -- Bootstrap lazy.nvim
@@ -214,21 +222,6 @@ local plugins = {
     dependencies = {
       "nvim-tree/nvim-web-devicons"
     }
-  },
-  {
-    "folke/trouble.nvim", -- pretty list for showing diagnostics
-    dependencies = {
-      "nvim-tree/nvim-web-devicons"
-    },
-    opts = {},
-    cmd = "Trouble",
-    keys = {
-      {
-        "tt",
-        "<cmd>Trouble diagnostics toggle<cr>",
-        desc = "Diagnostics (Trouble)",
-      },
-    },
   },
   { "lewis6991/gitsigns.nvim" }, -- display git diff signs
 }
