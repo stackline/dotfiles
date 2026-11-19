@@ -165,30 +165,12 @@ local plugins = {
     branch = "main",
     lazy = false, -- lazy-loading is not supported on the main branch
     build = ":TSUpdate",
-    dependencies = {
-      --
-      -- NOTE: Difference in behavior between nvim-treesitter-endwise and vim-endwise
-      --
-      -- ### nvim-treesitter-endwise
-      --
-      -- `end` keyword is added if I enter a class name or method name.
-      --
-      --   class Foo
-      --            ^-- send newline
-      --   end <-- added
-      --
-      -- ### vim-endwise
-      --
-      -- `end` keyword is added even if I don't enter the class name or method name.
-      --
-      --   class
-      --        ^-- send newline
-      --   end <-- added
-      --
-      -- ref. https://github.com/nvim-treesitter/nvim-treesitter/issues/703
-      --
-      'RRethy/nvim-treesitter-endwise', -- alternative to vim-endwise
-    }
+  },
+  {
+    "RRethy/nvim-treesitter-endwise",
+    -- Load it only for the filetypes that use `end`-like keywords.
+    ft = { "bash", "lua", "ruby", "sh" },
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
   },
   {
     "hrsh7th/nvim-cmp", -- completion engine

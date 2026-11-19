@@ -30,8 +30,15 @@ ts.install({
 -- nvim-treesitter's `main` branch doesn't enable highlighting or indentation by itself,
 -- so set them up per buffer.
 -- pcall skips filetypes without an installed parser.
+-- Filetypes that skip treesitter to avoid the query load time.
+local skip_filetypes = { typescript = true, typescriptreact = true }
+
 vim.api.nvim_create_autocmd('FileType', {
   callback = function(args)
+    if skip_filetypes[args.match] then
+      return
+    end
+
     if not pcall(vim.treesitter.start, args.buf) then
       return
     end

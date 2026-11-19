@@ -110,6 +110,17 @@ vim.lsp.config('clangd', {
 vim.lsp.enable('clangd')
 
 -- TypeScript
+-- Skip the version probe that the root_dir of lsp/tsc.lua runs synchronously, and use tsc on PATH.
+vim.lsp.config('tsc', {
+  cmd = { 'tsc', '--lsp', '--stdio' },
+  root_dir = function(bufnr, on_dir)
+    local root = vim.fs.root(bufnr, {
+      { 'package-lock.json', 'yarn.lock', 'pnpm-lock.yaml' },
+      { '.git' },
+    })
+    on_dir(root or vim.fn.getcwd())
+  end,
+})
 vim.lsp.enable('tsc')
 
 vim.lsp.config('lua_ls', {
