@@ -146,7 +146,8 @@ function update-various-packages() {
   echo '' # spacer
 
   echo::bold '[neovim: mason update]'
-  nvim --headless -c "luafile $HOME/.config/nvim/headless/mason_update.lua"
+  echo 'skip (update manually when needed)'
+  # nvim --headless -c "luafile $HOME/.config/nvim/headless/mason_update.lua"
 
   echo '' # spacer
 
