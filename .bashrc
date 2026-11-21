@@ -146,11 +146,6 @@ function update-various-packages() {
 
   echo '' # spacer
 
-  echo::bold '[homebrew: brew update]'
-  brew update
-
-  echo '' # spacer
-
   echo::bold '[homebrew: brew upgrade --greedy-auto-updates]'
   brew upgrade --greedy-auto-updates
 
