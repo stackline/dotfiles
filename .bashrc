@@ -135,11 +135,6 @@ fi
 # Utilities
 # --------------------------------------
 function update-various-packages() {
-  echo::bold '[neovim: lazy check]'
-  nvim --headless "+Lazy! check" +qa
-
-  echo '' # spacer
-
   echo::bold '[neovim: lazy sync]'
   nvim --headless "+Lazy! sync" +qa
 
